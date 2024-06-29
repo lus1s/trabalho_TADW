@@ -15,5 +15,9 @@ services:
     environment:
     - MARIADB_USER=root
     - MARIADB_ROOT_PASSWORD=123
+  adminer:
+    image: adminer:4.8.1
+    container_name: "adm_carros"
+    restart: always
     ports:
-      - 3307:3308
+      - 81:8080
