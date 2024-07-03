@@ -3,11 +3,10 @@
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
-SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-DROP DATABASE IF EXISTS `bd_carrosFarias`;
-CREATE DATABASE `bd_carrosFarias` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */;
-USE `bd_carrosFarias`;
+DROP DATABASE IF EXISTS `bd_veiculosFaria`;
+CREATE DATABASE `bd_veiculosFaria` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */;
+USE `bd_veiculosFaria`;
 
 DROP TABLE IF EXISTS `tb_aluguel`;
 CREATE TABLE `tb_aluguel` (
@@ -141,4 +140,4 @@ CREATE TABLE `tb_veiculo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
--- 2024-06-29 23:03:46
+-- 2024-07-03 21:56:11
