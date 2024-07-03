@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    Cpf: <br>
-    <input type="text" name="nome" id=""><br><br>
-    Carteira de motorista: <br>
-    <input type="text" name="nome" id=""><br><br>
 
-    <button>
-        cadastro
-    </button>
+<body>
+    <form action="dados_cliente.php">
+
+        <!-- Hidden == escondido. Serve para marcar a origem da página-->
+        <input type="hidden" name="origem" value="3">
+
+        cnpj: <br>
+        <input type="text" name="cnpj" id=""><br><br>
+        endereco:
+        <input type="text" name="endereco" id=""> <br><br>
+
+        <input type="submit" value="Realizar pedido">
+    </form>
 </body>
+
 </html>

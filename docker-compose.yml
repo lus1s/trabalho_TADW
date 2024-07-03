@@ -20,4 +20,4 @@ services:
     container_name: "adm_carros"
     restart: always
     ports:
-      - 81:8080
+      - 82:8080
