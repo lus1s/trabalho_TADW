@@ -6,31 +6,31 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
+    <form action="form_veiculo.php">
         
-        <input type="radio" name="veiculo">Carro
-        <input type="radio" name="veiculo">Moto  <br> <br>
+        <input type="radio" name="veiculo" value="c">Carro
+        <input type="radio" name="veiculo" value="m">Moto  <br> <br>
 
         Marca: 
-        <input type="text"  name="marcaveiculo" id=""> <br><br>
+        <input type="text"  name="marcaveiculo" value="marca" id=""> <br><br>
 
         Nome:
-        <input type="text" name="nomeveiculo"  id=""> <br><br>
+        <input type="text" name="nomeveiculo" value="nomeveiculo" id=""> <br><br>
 
         Ano: 
-        <input type="text" name="anoveiculo" id=""> <br><br>
+        <input type="text" name="anoveiculo" value="anoveiculo" id=""> <br><br>
 
         Cor: 
-        <input type="text" name="corveiculo" id=""> <br><br>
+        <input type="text" name="corveiculo" value="corveiculo" id=""> <br><br>
 
         Placa:
-        <input type="text" name="corveiculo" id=""> <br><br>
+        <input type="text" name="placaveiculo" value="placaveiculo" id=""> <br><br>
 
         Disponibilidade: 
-        <input type="radio" name="disponivel" id=""> <br><br>
+        <input type="radio" name="disponivel" value="disponibildade" id=""> <br><br>
 
         Motor: 
-        <select name="" id="">
+        <select name="motor" id="">
             <option value="1.0">1.0</option>
             <option value="1.4">1.4</option>
             <option value="1.6">1.6</option>
@@ -39,36 +39,36 @@
         </select> <br><br>
 
         Km rodados:
-        <input type="text" name="kmrodado" id=""> <br><br>
+        <input type="text" name="kmrodado" value="kmrodado" id=""> <br><br>
 
         Quantidade de passageiros:
-        <input type="radio" name="passageiro" value="passageiro" id="">2
-        <input type="radio" name="passageiro" value="passageiro" id="">4
-        <input type="radio" name="passageiro" value="passageiro"  id="">5
-        <input type="radio" name="passageiro" value="passageiro" id="">6
-        <input type="radio" name="passageiro" value="passageiro" id="">7 <br><br>
+        <input type="radio" name="passageiro" value="pas2" id="">2
+        <input type="radio" name="passageiro" value="pas4" id="">4
+        <input type="radio" name="passageiro" value="pas5" id="">5
+        <input type="radio" name="passageiro" value="pas6" id="">6
+        <input type="radio" name="passageiro" value="pas7" id="">7 <br><br>
 
         Quantidade de portas:
-        <input type="radio" name="quantidade" value="quantidade" id="">0
-        <input type="radio" name="quantidade" value="quantidade" id="">2
-        <input type="radio" name="quantidade" value="quantidade" id="">4 <br><br>
+        <input type="radio" name="portas" value="por0" id="">0
+        <input type="radio" name="portas" value="por2" id="">2
+        <input type="radio"  name="portas" value="por4" id="">4 <br><br>
 
         Arcondicionado:
-        <input type="radio" name="ar">Sim
-        <input type="radio" name="ar">Não <br><br>
+        <input type="radio" name="ar" value="s">Sim
+        <input type="radio" name="ar" value="n">Não <br><br>
 
         Portamalas: 
-        <input type="radio" name="ar">Sim
-        <input type="radio" name="ar">Não <br><br> 
+        <input type="radio" name="s">Sim
+        <input type="radio" name="n">Não <br><br> 
             
         
         Cambio: 
-        <select name="" id="">
+        <select name="cambio" id="">
             <option value="manual">Manual</option>
             <option value="altomatico">Altomático</option>
         </select> <br><br>
         Tamanho: 
-        <select name="" id="">
+        <select name="tamanho" id="">
             <option value="pequeno">Pequeno</option>
             <option value="medio">Medio</option>
             <option value="grande">Grande</option>
