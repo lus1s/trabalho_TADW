@@ -207,7 +207,7 @@ INSERT INTO `tb_pessoa` (`id_pessoa`, `cpf`, `cnh`, `tb_cliente_id_cliente`) VAL
 (20, '951.456.753-00', 'FGH951456', 3);
 
 -- Inserindo dados na tabela tb_carro_aluguel
-INSERT INTO `tb_carro_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`) VALUES
+INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`) VALUES
 (1, 1),
 (2, 2),
 (3, 3),

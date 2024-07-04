@@ -31,24 +31,27 @@
 
         Motor: 
         <select name="" id="">
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
+            <option value="1.0">1.0</option>
+            <option value="1.4">1.4</option>
+            <option value="1.6">1.6</option>
+            <option value="1.8">1.8</option>
+            <option value="2.0">2.0</option>
         </select> <br><br>
 
         Quilometragem rodadas:
         <input type="text" name="kmrodado" id=""> <br><br>
 
+        Quantidade de passageiros:
+        <input type="radio" name="passageiro" value="passageiro" id="">2
+        <input type="radio" name="passageiro" value="passageiro" id="">4
+        <input type="radio" name="passageiro" value="passageiro"  id="">5
+        <input type="radio" name="passageiro" value="passageiro" id="">6
+        <input type="radio" name="passageiro" value="passageiro" id="">7 <br><br>
+
         Quantidade de portas:
-        <input type="radio" name="quatidade" id="">0
-        <input type="radio" name="quatidade" id="">2
-        <input type="radio" name="quantidade" id="">4 <br><br>
+        <input type="radio" name="quantidade" value="quantidade" id="">0
+        <input type="radio" name="quantidade" value="quantidade" id="">2
+        <input type="radio" name="quantidade" value="quantidade" id="">4 <br><br>
 
         Ar condicionado:
         <input type="radio" name="ar">Sim
@@ -58,7 +61,24 @@
         <input type="radio" name="ar">Sim
         <input type="radio" name="ar">Não <br><br> 
             
+        
+        Cambio: 
+        <select name="" id="">
+            <option value="manual">Manual</option>
+            <option value="altomatico">Altomático</option>
+        </select> <br><br>
+        Tamanho: 
+        <select name="" id="">
+            <option value="pequeno">Pequeno</option>
+            <option value="medio">Medio</option>
+            <option value="grande">Grande</option>
+        </select> <br><br>
+        Descrição do veiculo:
+        <input type="text"> <br><br>
+        Cadastrar
         <input type="submit" value="Cadastrar Veículo">
+
+
     </form>
 </body>
 </html> 
