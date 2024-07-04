@@ -23,8 +23,8 @@ CREATE TABLE `tb_aluguel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
-DROP TABLE IF EXISTS `tb_carro_aluguel`;
-CREATE TABLE `tb_carro_aluguel` (
+DROP TABLE IF EXISTS `tb_veiculo_aluguel`;
+CREATE TABLE `tb_veiculo_aluguel` (
   `tb_veiculo_id_veiculo` int(11) NOT NULL,
   `tb_aluguel_id_aluguel` int(11) NOT NULL,
   PRIMARY KEY (`tb_veiculo_id_veiculo`,`tb_aluguel_id_aluguel`),
