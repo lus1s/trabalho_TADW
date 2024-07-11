@@ -21,6 +21,32 @@ INSERT INTO `tb_cliente` (`id_cliente`, `nome_cliente`, `tipo_cliente`) VALUES
 (19, 'Sofia Costa', 'p'),
 (20, 'Empresa MNB', 'e');
 
+-- Inserindo dados na tabela tb_empresa
+INSERT INTO `tb_empresa` (`id_empresa`, `nome_empresa`, `cnpj`, `func_responsavel`, `tb_cliente_id_cliente`) VALUES
+(1, 'Empresa ABC', '12.345.678/0001-99', 'Marcos Lima', 3),
+(2, 'Empresa XYZ', '98.765.432/0001-88', 'Fernanda Souza', 5),
+(3, 'Empresa QWE', '11.111.111/0001-11', 'Lucas Martins', 7),
+(4, 'Empresa RTY', '22.222.222/0001-22', 'Ana Paula', 9),
+(5, 'Empresa UIO', '33.333.333/0001-33', 'Ricardo Mendes', 12),
+(6, 'Empresa PAS', '44.444.444/0001-44', 'Cláudia Silva', 15),
+(7, 'Empresa LKO', '55.555.555/0001-55', 'Daniel Borges', 17),
+(8, 'Empresa MNB', '66.666.666/0001-66', 'Patrícia Souza', 20);
+
+-- Inserindo dados na tabela tb_pessoa
+INSERT INTO `tb_pessoa` (`id_pessoa`, `cpf`, `cnh`, `tb_cliente_id_cliente`) VALUES
+(1, '123.456.789-00', 'ABC123456', 1),
+(2, '987.654.321-00', 'DEF654321', 2),
+(3, '456.789.123-00', 'GHI789123', 4),
+(4, '654.321.987-00', 'MNO321654', 6),
+(5, '159.753.486-00', 'STU159753', 8),
+(6, '258.147.369-00', 'YZA258147', 10),
+(7, '147.258.369-00', 'BCD147258', 11),
+(8, '951.753.852-00', 'HIJ951753', 13),
+(9, '852.951.753-00', 'KLM852951', 14),
+(10, '456.321.789-00', 'QRS456321', 16),
+(11, '147.369.258-00', 'WXY147369', 18),
+(12, '258.963.147-00', 'ZAB258963', 19);
+
 -- Inserindo dados na tabela tb_funcionario
 INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcionario`, `senha_funcionario`) VALUES
 (1, 'Ana Pereira', '123.456.789-00', 'senha123'),
@@ -114,28 +140,6 @@ INSERT INTO `tb_devolucao` (`id_devolucao`, `data_devolucao`, `km_rodados`, `val
 (19, '2024-09-10', '10000', '280', 19),
 (20, '2024-09-15', '60000', '290', 20);
 
--- Inserindo dados na tabela tb_empresa
-INSERT INTO `tb_empresa` (`id_empresa`, `nome_empresa`, `cnpj`, `func_responsavel`, `tb_cliente_id_cliente`) VALUES
-(1, 'Empresa ABC', '12.345.678/0001-99', 'Marcos Lima', 3),
-(2, 'Empresa XYZ', '98.765.432/0001-88', 'Fernanda Souza', 5),
-(3, 'Empresa QWE', '11.111.111/0001-11', 'Lucas Martins', 7),
-(4, 'Empresa RTY', '22.222.222/0001-22', 'Ana Paula', 9),
-(5, 'Empresa UIO', '33.333.333/0001-33', 'Ricardo Mendes', 12),
-(6, 'Empresa PAS', '44.444.444/0001-44', 'Cláudia Silva', 15),
-(7, 'Empresa LKO', '55.555.555/0001-55', 'Daniel Borges', 17),
-(8, 'Empresa MNB', '66.666.666/0001-66', 'Patrícia Souza', 20),
-(9, 'Empresa ZXC', '77.777.777/0001-77', 'Fernando Lima', 4),
-(10, 'Empresa VBN', '88.888.888/0001-88', 'Carla Lopes', 6),
-(11, 'Empresa YHG', '99.999.999/0001-99', 'Rafael Silva', 8),
-(12, 'Empresa TGB', '12.345.678/0002-99', 'Lucas Pereira', 10),
-(13, 'Empresa RFD', '21.765.432/0001-88', 'Ana Costa', 11),
-(14, 'Empresa SEW', '34.567.890/0001-99', 'Juliana Souza', 13),
-(15, 'Empresa AQW', '45.678.901/0001-99', 'Mariana Santos', 14),
-(16, 'Empresa PLO', '56.789.012/0001-99', 'Felipe Gomes', 16),
-(17, 'Empresa MJK', '67.890.123/0001-99', 'Thiago Lima', 18),
-(18, 'Empresa NHY', '78.901.234/0001-99', 'Gabriela Almeida', 19),
-(19, 'Empresa BVC', '89.012.345/0001-99', 'Bruno Costa', 1),
-(20, 'Empresa NML', '90.123.456/0001-99', 'Sofia Almeida', 2);
 
 -- Inserindo dados na tabela tb_enderecos
 INSERT INTO `tb_enderecos` (`id_enderecos`, `endereco`, `tb_cliente_id_cliente`) VALUES
@@ -182,29 +186,6 @@ INSERT INTO `tb_manutencao` (`id_manutencao`, `data_ida`, `data_prev_volta`, `tb
 (18, '2024-11-20', '2024-11-25', 18),
 (19, '2024-12-01', '2024-12-05', 19),
 (20, '2024-12-10', '2024-12-15', 20);
-
--- Inserindo dados na tabela tb_pessoa
-INSERT INTO `tb_pessoa` (`id_pessoa`, `cpf`, `cnh`, `tb_cliente_id_cliente`) VALUES
-(1, '123.456.789-00', 'ABC123456', 1),
-(2, '987.654.321-00', 'DEF654321', 2),
-(3, '456.789.123-00', 'GHI789123', 4),
-(4, '321.654.987-00', 'JKL654321', 5),
-(5, '654.321.987-00', 'MNO321654', 6),
-(6, '789.123.456-00', 'PQR987123', 7),
-(7, '159.753.486-00', 'STU159753', 8),
-(8, '357.951.852-00', 'VWX357951', 9),
-(9, '258.147.369-00', 'YZA258147', 10),
-(10, '147.258.369-00', 'BCD147258', 11),
-(11, '369.258.147-00', 'EFG369258', 12),
-(12, '951.753.852-00', 'HIJ951753', 13),
-(13, '852.951.753-00', 'KLM852951', 14),
-(14, '753.852.951-00', 'NOP753852', 15),
-(15, '456.321.789-00', 'QRS456321', 16),
-(16, '789.654.123-00', 'TUV789654', 17),
-(17, '147.369.258-00', 'WXY147369', 18),
-(18, '258.963.147-00', 'ZAB258963', 19),
-(19, '369.147.258-00', 'CDE369147', 20),
-(20, '951.456.753-00', 'FGH951456', 3);
 
 -- Inserindo dados na tabela tb_carro_aluguel
 INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`) VALUES
