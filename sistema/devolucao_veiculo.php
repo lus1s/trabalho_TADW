@@ -11,6 +11,8 @@ require_once 'conexao.php';
 </head>
 
 <body>
+    <!-- Estas exibições apenas mostram todos os clientes, mesmo depois de relizar a devolução, portanto confira no bd para saber se a devolução 
+     realmente ocorreu --> <!--PS: VOu tentar corrigir depois da entrega-->
     <table border="1">
         <tr>
             <td>CPF</td>
@@ -60,17 +62,24 @@ require_once 'conexao.php';
                                         while ($linha_veiculo = (mysqli_fetch_array($resultados_veiculos))) {
                                             $id_veiculo = $linha_veiculo['tb_veiculo_id_veiculo'];
 
-                                            $sql = "SELECT nome_veiculo FROM tb_veiculo WHERE id_veiculo = '$id_veiculo'";
+                                            $sql = "SELECT * FROM tb_veiculo WHERE id_veiculo = '$id_veiculo'";
 
                                             $resultados_veiculos2 = mysqli_query($conexao, $sql);
 
                                             if (mysqli_num_rows($resultados_veiculos2) > 0) {
                                                 while ($linha_veiculo2 = (mysqli_fetch_array($resultados_veiculos2))) {
-                                                    
+
                                                     $nome_veiculo = $linha_veiculo2['nome_veiculo'];
+                                                    $estado = $linha_veiculo2['estado_veiculo'];
+
                                                     echo "<td>" . $nome_veiculo . "</td>";
 
-                                                    echo "<td> <button> <a href='devolucao.php?id_aluguel=$coisa&nome_veiculo=$nome_veiculo'>Devolver</a> </button> </td>";
+                                                    if ($estado == "d") {
+                                                        echo "<td> Já devolvido </td>";
+                                                    } else {
+
+                                                        echo "<td> <button> <a href='devolucao.php?id_aluguel=$coisa&nome_veiculo=$nome_veiculo&id_veiculo=$id_veiculo'>Devolver</a> </button> </td>";
+                                                    }
                                                     echo "<tr>";
                                                 }
                                             }
@@ -133,17 +142,24 @@ require_once 'conexao.php';
                                         while ($linha_veiculo = (mysqli_fetch_array($resultados_veiculos))) {
                                             $id_veiculo = $linha_veiculo['tb_veiculo_id_veiculo'];
 
-                                            $sql = "SELECT nome_veiculo FROM tb_veiculo WHERE id_veiculo = '$id_veiculo'";
+                                            $sql = "SELECT * FROM tb_veiculo WHERE id_veiculo = '$id_veiculo'";
 
                                             $resultados_veiculos2 = mysqli_query($conexao, $sql);
 
                                             if (mysqli_num_rows($resultados_veiculos2) > 0) {
                                                 while ($linha_veiculo2 = (mysqli_fetch_array($resultados_veiculos2))) {
+
                                                     $nome_veiculo2 = $linha_veiculo2['nome_veiculo'];
+                                                    $estado_veiculo = $linha_veiculo2['estado_veiculo'];
 
                                                     echo "<td>" . $nome_veiculo2 . "</td>";
 
-                                                    echo "<td> <button> <a href='devolucao.php?id_aluguel=$id_aluguel&nome_veiculo=$nome_veiculo2'>Devolver</a> </button> </td>";
+                                                    if ($estado_veiculo == "d") {
+                                                        echo "<td> Já devolvido </td>";
+                                                    } else {
+
+                                                        echo "<td> <button> <a href='devolucao.php?id_aluguel=$id_aluguel&nome_veiculo=$nome_veiculo2&id_veiculo=$id_veiculo'>Devolver</a> </button> </td>";
+                                                    }
                                                     echo "<tr>";
                                                 }
                                             }

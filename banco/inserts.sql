@@ -71,7 +71,7 @@ INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcion
 (20, 'Rodrigo Silva', '951.456.753-00', 'senha951');
 
 -- Inserindo dados na tabela tb_veiculo
-INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `acordicinado_veiculo`, `portamala_ veiculo`, `tamaho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`) VALUES
+INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`) VALUES
 (1, 'Fiat Uno', '2018', 'Fiat', 'c', 'Branco', 'ABC-1234', 'a', '1.0', '50000', 'Econômico', '2', 's', 's', 'p', 'm', '5'),
 (2, 'Honda Civic', '2020', 'Honda', 'c', 'Preto', 'DEF-5678', 'a', '2.0', '30000', 'Confortável', '4', 's', 's', 'm', 'a', '5'),
 (3, 'Yamaha YZF', '2019', 'Yamaha', 'm', 'Azul', 'GHI-9012', 'a', '600cc', '10000', 'Esportiva', '0', 'n', 'n', 'p', 'm', '2'),
