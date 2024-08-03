@@ -25,9 +25,9 @@
            $lista = [$nome_funcionario, $cpf_funcionario];
         }
 
-        foreach($lista as $dados){
-            $_SESSION['nomeFuncionario'] = $dados[0];
-            $_SESSION['cpf_funcionario'] = $dados[1];
+        foreach($lista as $keys => $dados){
+            $_SESSION['nomeFuncionario'] = $dados;
+            $_SESSION['cpf_funcionario'] = $dados;
         }
 
         mysqli_stmt_close($stmt);

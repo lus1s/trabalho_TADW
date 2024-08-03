@@ -1,7 +1,7 @@
 <?php
     require_once 'conexao.php';
     require_once 'testeLogin.php';
-    session_start();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
