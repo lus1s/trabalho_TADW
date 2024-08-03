@@ -1,4 +1,5 @@
 <?php
+    require_once 'testeLogin.php';
     require_once "conexao.php";
 
     $nome = $_GET['nome'];

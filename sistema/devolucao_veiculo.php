@@ -1,5 +1,6 @@
 <?php
 require_once 'conexao.php';
+require_once 'testeLogin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

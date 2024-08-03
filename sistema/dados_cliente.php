@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once 'testeLogin.php';
     require_once 'conexao.php';
 
     if ($_GET['origem'] == 1) {

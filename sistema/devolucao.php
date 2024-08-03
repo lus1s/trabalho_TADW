@@ -1,5 +1,6 @@
 <?php
 require_once 'conexao.php';
+require_once 'testeLogin.php';
 require_once 'operacoes.php';
 
 $nome_veiculo = $_GET['nome_veiculo'];
@@ -35,10 +36,6 @@ if (isset($_GET['origem'])) {
 
     mysqli_stmt_bind_param($stmt2, "i", $id_veiculo);
 
-
-    
-
-    
     if(mysqli_stmt_execute($stmt2)){
         
         mysqli_stmt_close($stmt2);
