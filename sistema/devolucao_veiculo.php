@@ -11,8 +11,7 @@ require_once 'conexao.php';
 </head>
 
 <body>
-    <!-- Estas exibições apenas mostram todos os clientes, mesmo depois de relizar a devolução, portanto confira no bd para saber se a devolução 
-     realmente ocorreu --> <!--PS: VOu tentar corrigir depois da entrega-->
+
     <table border="1">
         <tr>
             <td>CPF</td>
@@ -177,6 +176,8 @@ require_once 'conexao.php';
 
             ?>
     </table>
+    <br> 
+    <button><a href="index.html">Home</a></button>
 </body>
 
 </html>
