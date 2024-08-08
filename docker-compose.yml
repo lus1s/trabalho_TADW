@@ -7,14 +7,20 @@ services:
     volumes:
      - ./sistema/:/var/www/html/
     ports:
-     - 8080:80      
+     - 8080:80 
+
   db:
     image: mariadb:10.5
     container_name: "mariadb_carros"
     restart: always
+    volumes:
+      - ./banco/bd_carrosFaria.sql:/docker-entrypoint-initdb.d/banco.sql
     environment:
-    - MARIADB_USER=root
-    - MARIADB_ROOT_PASSWORD=123
+      - MARIADB_USER=root
+      - MARIADB_ROOT_PASSWORD=123
+    ports:
+        - 81:3306
+    
   adminer:
     image: adminer:4.8.1
     container_name: "adm_carros"
