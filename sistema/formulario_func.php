@@ -14,13 +14,20 @@
 
         mysqli_stmt_bind_param($stmt, "sss", $name, $cpf, $password);
 
-    mysqli_stmt_execute($stmt);
        
     
-    mysqli_stmt_close($stmt);
-   
-    header('Location: formulario_funci.html');
-    
+        
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_close($stmt);
+            header('Location: home.php');
+            exit();
+        }
+        else {
+            mysqli_stmt_close($stmt);
+
+             header('Location: formulario_funci.html');
+            exit();
+        }
 
     
 ?>
