@@ -52,7 +52,7 @@ INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcion
 (1, 'Luís Carlos', '087.671.801-24', 'senha123'),
 (2, 'Ana Júlia', '091.411.261-90', 'senha456'),
 (3, 'Maria Beatriz', '456.789.123-00', 'senha789'),
-(3, 'Julian Victor', '084.545.461-70', 'senha101');
+(4, 'Julian Victor', '084.545.461-70', 'senha101');
 
 -- Inserindo dados na tabela tb_veiculo
 INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`) VALUES
