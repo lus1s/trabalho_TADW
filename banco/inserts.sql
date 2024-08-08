@@ -49,26 +49,10 @@ INSERT INTO `tb_pessoa` (`id_pessoa`, `cpf`, `cnh`, `tb_cliente_id_cliente`) VAL
 
 -- Inserindo dados na tabela tb_funcionario
 INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcionario`, `senha_funcionario`) VALUES
-(1, 'Ana Pereira', '123.456.789-00', 'senha123'),
-(2, 'Carlos Almeida', '987.654.321-00', 'senha456'),
-(3, 'Bruno Costa', '456.789.123-00', 'senha789'),
-(4, 'Lúcia Lima', '321.654.987-00', 'senha321'),
-(5, 'Ricardo Gomes', '654.321.987-00', 'senha654'),
-(6, 'Joana Prado', '789.123.456-00', 'senha987'),
-(7, 'Marcelo Lopes', '159.753.486-00', 'senha159'),
-(8, 'Gabriela Reis', '357.951.852-00', 'senha357'),
-(9, 'Paulo Souza', '258.147.369-00', 'senha258'),
-(10, 'Clara Ferreira', '147.258.369-00', 'senha147'),
-(11, 'Rafael Lima', '369.258.147-00', 'senha369'),
-(12, 'Amanda Santos', '951.753.852-00', 'senha951'),
-(13, 'Júlio Mendes', '852.951.753-00', 'senha852'),
-(14, 'Fábio Ribeiro', '753.852.951-00', 'senha753'),
-(15, 'Sofia Almeida', '456.321.789-00', 'senha456'),
-(16, 'Daniel Borges', '789.654.123-00', 'senha789'),
-(17, 'Carla Lopes', '147.369.258-00', 'senha147'),
-(18, 'Lucas Costa', '258.963.147-00', 'senha258'),
-(19, 'Patrícia Souza', '369.147.258-00', 'senha369'),
-(20, 'Rodrigo Silva', '951.456.753-00', 'senha951');
+(1, 'Luís Carlos', '087.671.801-24', 'senha123'),
+(2, 'Ana Júlia', '091.411.261-90', 'senha456'),
+(3, 'Maria Beatriz', '456.789.123-00', 'senha789'),
+(3, 'Julian Victor', '084.545.461-70', 'senha101');
 
 -- Inserindo dados na tabela tb_veiculo
 INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`) VALUES

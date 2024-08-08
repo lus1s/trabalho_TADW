@@ -1,6 +1,7 @@
 <?php
     require_once 'conexao.php';
-    session_start();
+    require_once 'testeLogin.php';
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +35,7 @@
                         $estado = $linha['estado_veiculo'];
 
                         if ($estado == "d"){$estado_exibido = "Disponível"; $acao = "<button><a href='form_aluguel.php?id_veiculo=$id_veiculo'>Alugar</a></button>";} 
-                        elseif ($estado == "a"){$estado_exibido = "Alugado"; $acao =  "<button><a href='devolucao_veiculo.php'>Devolver</a></button>";}
+                        elseif ($estado == "a"){$estado_exibido = "Alugado"; $acao =  "<button><a href='devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo'>Devolver</a></button>";}
 
                         echo "<td> $nome_veiculo  </td>";
                         echo "<td> $marca </td>";

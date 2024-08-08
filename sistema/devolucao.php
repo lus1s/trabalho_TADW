@@ -1,11 +1,14 @@
 <?php
 require_once 'conexao.php';
+require_once 'testeLogin.php';
+require_once 'operacoes.php';
 
 $nome_veiculo = $_GET['nome_veiculo'];
-$id_aluguel = $_GET['id_aluguel'];
 $id_veiculo = $_GET['id_veiculo'];
+$id_aluguel = idAluguelPorTbVeiculo($conexao, $id_veiculo);
 
 $data = date('Y-m-d');
+$data2 = date('d-m-Y');
 
 if (isset($_GET['origem'])) {
 
@@ -15,19 +18,33 @@ if (isset($_GET['origem'])) {
     $id_veiculo = $_GET['id_veiculo'];
 
     $sql_devolucao = "INSERT INTO `tb_devolucao` (`data_devolucao`, `km_rodados`, `valor_cobrado`, `tb_aluguel_id_aluguel`) 
-        VALUES ('$data', '$km_rodado', '$valor', '$aluguel')";
+        VALUES (?, ?, ?, ?)";
 
-    mysqli_query($conexao, $sql_devolucao);
+    $stmt = mysqli_prepare($conexao, $sql_devolucao);
 
-    $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = 'd' WHERE `id_veiculo` = '$id_veiculo'";
+    mysqli_stmt_bind_param($stmt, "sidi", $data, $km_rodado, $valor, $id_aluguel);
 
-    if(mysqli_query($conexao, $sql)){
 
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    //alterção no estado do veículo
+    $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = 'd' WHERE `id_veiculo` = ? ";
+
+    $stmt2 = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt2, "i", $id_veiculo);
+
+    if(mysqli_stmt_execute($stmt2)){
+        
+        mysqli_stmt_close($stmt2);
         header('Location: devolucao_veiculo.php');
         exit();
 
     }else{
-
+        
+        mysqli_stmt_close($stmt2);
         header('Location: devolucao.php');
         exit;
     }

@@ -1,5 +1,6 @@
 <?php
 require_once 'conexao.php';
+require_once 'testeLogin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,12 +8,11 @@ require_once 'conexao.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Devolução</title>
 </head>
 
 <body>
-    <!-- Estas exibições apenas mostram todos os clientes, mesmo depois de relizar a devolução, portanto confira no bd para saber se a devolução 
-     realmente ocorreu --> <!--PS: VOu tentar corrigir depois da entrega-->
+
     <table border="1">
         <tr>
             <td>CPF</td>
@@ -51,8 +51,9 @@ require_once 'conexao.php';
                                 while ($linha3 = mysqli_fetch_array($resultados_busca3)) {
 
                                     $coisa = $linha3['id_aluguel'];
+                                    $data_aluguel = $linha3['data_aluguel'];
 
-                                    echo "<td>" . $linha3['data_aluguel'] . "</td>";
+                                    echo "<td>" . $data_aluguel . "</td>";
 
                                     $sql_veiculo = "SELECT tb_veiculo_id_veiculo FROM tb_veiculo_aluguel Where tb_aluguel_id_aluguel = '$coisa'";
 
@@ -72,7 +73,7 @@ require_once 'conexao.php';
                                                     $nome_veiculo = $linha_veiculo2['nome_veiculo'];
                                                     $estado = $linha_veiculo2['estado_veiculo'];
 
-                                                    echo "<td>" . $nome_veiculo . "</td>";
+                                                    echo "<td>" . $estado . "</td>";
 
                                                     if ($estado == "d") {
                                                         echo "<td> Já devolvido </td>";
@@ -159,8 +160,8 @@ require_once 'conexao.php';
                                                     } else {
 
                                                         echo "<td> <button> <a href='devolucao.php?id_aluguel=$id_aluguel&nome_veiculo=$nome_veiculo2&id_veiculo=$id_veiculo'>Devolver</a> </button> </td>";
+                                                        echo "<tr>";
                                                     }
-                                                    echo "<tr>";
                                                 }
                                             }
                                         }
@@ -176,6 +177,8 @@ require_once 'conexao.php';
 
             ?>
     </table>
+    <br> 
+    <button><a href="index.html">Home</a></button>
 </body>
 
 </html>
