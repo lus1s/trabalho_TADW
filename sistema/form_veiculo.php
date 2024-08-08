@@ -18,17 +18,16 @@
     $cambio = $_GET['cambio'];
     $tamanho = $_GET['tamanho'];
     $descricao = $_GET['descricao'];
-    $disponibilidade = "d";
+    $disponibilidade = $_GET['disponibilidade'];
     
 
 
-    $sql = "INSERT INTO tb_veiculo (nome_veiculo, ano_veiculo, marca_veiculo, tipo_veiculo, cor_veiculo, placa_veiculo, motor_veiculo, 
-    km_rodados, descricao_veiculo, qtd_portas, arcondicionado_veiculo, portamala_veiculo, tamanho_veiculo, cambio_veiculo, npassageiro_veiculo)VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_veiculo (nome_veiculo, ano_veiculo, marca_veiculo, tipo_veiculo, cor_veiculo, placa_veiculo, estado_veiculo, motor_veiculo, 
+    km_rodados, descricao_veiculo, qtd_portas, arcondicionado_veiculo, portamala_veiculo, tamanho_veiculo, cambio_veiculo, npassageiro_veiculo,)VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     $stmt =  mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt,"ssssssssssssssss",$nomeveiculo,$anoveiculo,$marcaveiculo, $tipoveiculo ,$corveiculo, $placaveiculo, $motor,$kmrodado,
-     $descricao ,$portas, $arcondicionado,$portamala,$tamanho,$cambio, $descricao,$passageiro);
+    mysqli_stmt_bind_param($stmt,"ssssssssssssssss",$nomeveiculo,$anoveiculo,$marcaveiculo, $tipoveiculo ,$corveiculo, $placaveiculo, $disponibilidade, $motor, $kmrodado, $disponibilidade ,$portas, $arcondicionado,$portamala,$tamanho,$cambio, $descricao, $passageiro);
     
 
     mysqli_stmt_execute($stmt);
