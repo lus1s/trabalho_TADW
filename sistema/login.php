@@ -18,23 +18,25 @@
 
     mysqli_stmt_store_result($stmt);
 
-    $lista = array();
+    $lista = [];
 
     if (mysqli_stmt_num_rows($stmt) > 0) {
-        while (mysqli_stmt_fetch($stmt)) {
-           $lista = [$nome_funcionario, $cpf_funcionario];
-        }
+       mysqli_stmt_fetch($stmt);
+       
+           $lista[] = [$nome_funcionario, $cpf_funcionario];
 
-        foreach($lista as $keys => $dados){
-            $_SESSION['nomeFuncionario'] = $dados;
-            $_SESSION['cpf_funcionario'] = $dados;
-        }
+
+        $_SESSION['lista'] = $lista;
 
         mysqli_stmt_close($stmt);
 
         $_SESSION['logado'] = true;
  
         header('Location: home.php');
+        exit();
+    }else {
+
+        header('Location: index.html');
         exit();
     }
 
