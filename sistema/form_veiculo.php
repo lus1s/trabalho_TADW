@@ -27,7 +27,7 @@
     
     $stmt =  mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt,"ssssssssssssssss",$nomeveiculo,$anoveiculo,$marcaveiculo, $tipoveiculo ,$corveiculo, $placaveiculo, $disponibilidade, $motor, $kmrodado, $disponibilidade ,$portas, $arcondicionado,$portamala,$tamanho,$cambio, $descricao, $passageiro);
+    mysqli_stmt_bind_param($stmt,"ssssssssssssssss",$nomeveiculo,$anoveiculo,$marcaveiculo, $tipoveiculo ,$corveiculo, $placaveiculo, $disponibilidade, $motor, $kmrodado, $descricao ,$portas, $arcondicionado,$portamala,$tamanho,$cambio, $passageiro);
     
 
     mysqli_stmt_execute($stmt);
