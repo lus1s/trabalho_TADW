@@ -52,7 +52,7 @@ INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcion
 (1, 'Luís Carlos', '087.671.801-24', 'senha123'),
 (2, 'Ana Júlia', '091.411.261-90', 'senha456'),
 (3, 'Maria Beatriz', '456.789.123-00', 'senha789'),
-(3, 'Julian Victor', '084.545.461-70', 'senha101');
+(4, 'Julian Victor', '084.545.461-70', 'senha101');
 
 -- Inserindo dados na tabela tb_veiculo
 INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`) VALUES
@@ -82,23 +82,7 @@ INSERT INTO `tb_aluguel` (`id_aluguel`, `data_aluguel`, `tb_funcionario_id_funci
 (1, '2024-06-01', 1, 1),
 (2, '2024-06-05', 2, 2),
 (3, '2024-06-10', 1, 3),
-(4, '2024-06-15', 3, 4),
-(5, '2024-06-20', 2, 5),
-(6, '2024-06-25', 4, 6),
-(7, '2024-06-30', 5, 7),
-(8, '2024-07-05', 6, 8),
-(9, '2024-07-10', 7, 9),
-(10, '2024-07-15', 8, 10),
-(11, '2024-07-20', 9, 11),
-(12, '2024-07-25', 10, 12),
-(13, '2024-07-30', 11, 13),
-(14, '2024-08-05', 12, 14),
-(15, '2024-08-10', 13, 15),
-(16, '2024-08-15', 14, 16),
-(17, '2024-08-20', 15, 17),
-(18, '2024-08-25', 16, 18),
-(19, '2024-08-30', 17, 19),
-(20, '2024-09-05', 18, 20);
+(4, '2024-06-15', 3, 4);
 
 
 -- Inserindo dados na tabela tb_devolucao
@@ -176,20 +160,4 @@ INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_alugue
 (1, 1),
 (2, 2),
 (3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10),
-(11, 11),
-(12, 12),
-(13, 13),
-(14, 14),
-(15, 15),
-(16, 16),
-(17, 17),
-(18, 18),
-(19, 19),
-(20, 20);
+(4, 4);
