@@ -1,6 +1,8 @@
 <?php
     require_once "conexao.php";
 
+    function salvar($nome, $cpf, $password);
+
     $nome = $_GET['nome'];
     $cpf = $_GET['cpf'];
     $password = $_GET['password'];
