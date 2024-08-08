@@ -1,7 +1,11 @@
 <?php
     require_once 'testeLogin.php';
-    $nomeFuncionario = $_SESSION['nomeFuncionario'];
-    $cpf = $_SESSION['cpf_funcionario'];
+    
+    foreach($_SESSION['lista'] as $dados){
+
+        $nomeFuncionario = $dados[0];
+        $cpf_funcionario = $dados[1];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +33,7 @@
         ?>
         <br>
         nome: <?php echo$nomeFuncionario; ?>
-        <br>cpf: <?php echo $cpf ; ?>
+        <br>cpf: <?php echo $cpf_funcionario ; ?>
 
     </pre>
 </body>
