@@ -25,16 +25,20 @@
            $lista = [$nome_funcionario, $cpf_funcionario];
         }
 
-        foreach($lista as $keys => $dados){
-            $_SESSION['nomeFuncionario'] = $dados;
-            $_SESSION['cpf_funcionario'] = $dados;
+        foreach($lista as $dados){
+            $_SESSION['nomeFuncionario'] = $dados[0];
+            $_SESSION['cpf_funcionario'] = $dados[1];
         }
-
+        $_SESSION['lista'] = $lista;
         mysqli_stmt_close($stmt);
 
         $_SESSION['logado'] = true;
  
         header('Location: home.php');
+        exit();
+    }else {
+
+        header('Location: index.html');
         exit();
     }
 
