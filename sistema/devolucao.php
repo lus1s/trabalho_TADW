@@ -1,14 +1,13 @@
 <?php
 require_once 'conexao.php';
-require_once 'testeLogin.php';
 require_once 'operacoes.php';
+require_once 'testeLogin.php';
 
 $nome_veiculo = $_GET['nome_veiculo'];
 $id_veiculo = $_GET['id_veiculo'];
 $id_aluguel = idAluguelPorTbVeiculo($conexao, $id_veiculo);
 
 $data = date('Y-m-d');
-$data2 = date('d-m-Y');
 
 if (isset($_GET['origem'])) {
 

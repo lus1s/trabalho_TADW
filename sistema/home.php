@@ -20,7 +20,6 @@
         <div style="background-color:rgb(119, 243, 243);">
             <a href="form_veiculo.html">Formulário de veículo</a> <br><br>
             <a href="formulario_funci.html">Formulário de funcionário</a> <br><br> 
-            <a href="devolucao_veiculo.php">Formulário de devolução</a> <br><br>  
             <a href="exibir_veiculos.php">veiculos</a> <br><br>
             <a href="logout.php">sair</a>
         </div>
