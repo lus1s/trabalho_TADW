@@ -3,22 +3,22 @@
     require_once "conexao.php";
     require_once "operacoes.php";
 
-    $tipoveiculo = $_GET['veiculo'];
-    $marcaveiculo = $_GET['marcaveiculo'];
     $nomeveiculo = $_GET['nomeveiculo'];
     $anoveiculo = $_GET['anoveiculo'];
+    $marcaveiculo = $_GET['marcaveiculo'];
+    $tipoveiculo = $_GET['veiculo'];
     $corveiculo = $_GET['corveiculo'];
     $placaveiculo = $_GET['placaveiculo'];
+    $disponibilidade = $_GET['disponibilidade'];
     $motor = $_GET['motor'];
     $kmrodado = $_GET['kmrodado'];
-    $passageiro = $_GET['passageiro'];
+    $descricao = $_GET['descricao'];
     $portas = $_GET['portas'];
     $arcondicionado = $_GET['ar'];
     $portamala = $_GET['portamala'];
-    $cambio = $_GET['cambio'];
     $tamanho = $_GET['tamanho'];
-    $descricao = $_GET['descricao'];
-    $disponibilidade = $_GET['disponibilidade'];
+    $cambio = $_GET['cambio'];
+    $passageiro = $_GET['passageiro'];
     
 
 
