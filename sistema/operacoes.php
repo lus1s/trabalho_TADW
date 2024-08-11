@@ -1,9 +1,11 @@
 <?php
 
     function idAluguelPorTbVeiculo($conexao, $id_veiculo){
-        $sql = "SELECT tb_aluguel_id_aluguel FROM tb_veiculo_aluguel WHERE tb_veiculo_id_veiculo = '$id_veiculo'";
+        $sql = "SELECT tb_aluguel_id_aluguel FROM tb_veiculo_aluguel WHERE tb_veiculo_id_veiculo = ?";
 
         $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $id_veiculo);
 
         mysqli_stmt_execute($stmt);
     

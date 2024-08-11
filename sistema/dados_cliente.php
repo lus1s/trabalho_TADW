@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require_once 'testeLogin.php';
     require_once 'conexao.php';
 
@@ -8,12 +7,13 @@
         $nome_cliente = $_GET['nome_cliente'];
         $tipo_cliente = $_GET['tipo'];
         $id_veiculo = $_GET['id_veiculo'];
-        $funcionario = $_GET['funcionario'];
+        $funcionario = $_SESSION['idFuncionario'];
 
         $_SESSION['dados'] = array($nome_cliente, $tipo_cliente, $id_veiculo, $funcionario);
 
         //futuramente adicionar uma verificação para que um cliente cadastrado não seja cadastrado de novo.
         //até lá vai ficar assim
+        // Fazer com função
 
         // Direciona p/ o proximo formulário a ser preenchido
         if ($tipo_cliente == "p") {
@@ -32,52 +32,74 @@
         $endereco = $_GET['endereco'];
         $data = date('Y-m-d');
 
+
         //separa os dados do array em variaveis
         list($nome, $tipo, $veiculo, $funcionario) = $_SESSION['dados'];
 
 
         //cadastra os dados que foram separados no banco
-        $sql = "INSERT INTO `tb_cliente` (`nome_cliente`, `tipo_cliente`) VALUES ('$nome', '$tipo')";
+        $sql = "INSERT INTO `tb_cliente` (`nome_cliente`, `tipo_cliente`) VALUES (?, ?)";
 
-        mysqli_query($conexao, $sql);
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "ss", $nome, $tipo);
+
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_close($stmt);
+
 
         //busca para pegar o último id cadstrado
         $sql_busca = "SELECT id_cliente FROM tb_cliente";
 
-        $resultado = mysqli_query($conexao, $sql_busca);
+        $stmt_resultado = mysqli_prepare($conexao, $sql_busca);
 
-        if (mysqli_num_rows($resultado) > 0) {
-            while ($linha = (mysqli_fetch_array($resultado))) {
-                $id_cliente = $linha['id_cliente'];
-            }
-        }
+        mysqli_stmt_execute($stmt_resultado);
+
+        mysqli_stmt_bind_result($stmt_resultado, $id_cliente);
+
+        // if (mysqli_stmt_fetch($stmt_resultado)) {
+        //     $id_cliente = $id_cliente;
+        // }
+        mysqli_stmt_close($stmt_resultado);
+
 
         //cadastro dos dados do formulario pessoa fisica
-        $sql2 = "INSERT INTO `tb_pessoa` (`cpf`, `cnh`, `tb_cliente_id_cliente`) VALUES ('$cpf', '$cnh', $id_cliente)";
+        $sql2 = "INSERT INTO `tb_pessoa` (`cpf`, `cnh`, `tb_cliente_id_cliente`) VALUES (?, ?, ?)";
+        
+        $stmt2 = mysqli_prepare($conexao, $sql2);
 
-        mysqli_query($conexao, $sql2);
+        mysqli_stmt_bind_param($stmt2, "ssi", $cpf, $cnh, $id_cliente);
+
+        mysqli_stmt_execute($stmt2);
+
+        mysqli_stmt_close($stmt2);
+
 
         //cadastro na tabela de endereços
-        $sql3 = "INSERT INTO `tb_enderecos` (`endereco`, `tb_cliente_id_cliente`) VALUES ('$endereco', '$id_cliente')";
+        $sql3 = "INSERT INTO `tb_enderecos` (`endereco`, `tb_cliente_id_cliente`) VALUES (?, ?)";
 
-        mysqli_query($conexao, $sql3);
+        $stmt3 = mysqli_prepare($conexao, $sql3);
 
-        //busca do funcionario 
-        $sql4 = "SELECT id_funcionario FROM tb_funcionario WHERE cpf_funcionario = '$funcionario'";
+        mysqli_stmt_bind_param($stmt3, "si", $endereco, $id_cliente);
+
+        mysqli_stmt_execute($stmt3);
+
+        mysqli_stmt_close($stmt3);
         
-        $resultado_4 = mysqli_query($conexao, $sql4);
-        
-        if (mysqli_num_rows($resultado_4) > 0) {
-            while ($linha = (mysqli_fetch_array($resultado_4))) {
-                $id_funcionario = $linha['id_funcionario'];
-            }
-        }
-        
+
         //cadastro de aluguel
-        $sql5 = "INSERT INTO `tb_aluguel` (`data_aluguel`, `tb_funcionario_id_funcionario`, `tb_cliente_id_cliente`) 
-            VALUES ('$data', '$id_funcionario', '$id_cliente')";
+        $sql4 = "INSERT INTO `tb_aluguel` (`data_aluguel`, `tb_funcionario_id_funcionario`, `tb_cliente_id_cliente`) 
+            VALUES (?, ?, ?)";
 
-            mysqli_query($conexao, $sql5);
+            $stmt4 = mysqli_prepare($conexao, $sql4);
+
+            mysqli_stmt_bind_param($stmt4, "sii", $data, $funcionario, $id_cliente);
+
+            mysqli_stmt_execute($stmt4);
+
+            mysqli_stmt_close($stmt4);
+
 
         //busca no cadastro aluguel
 

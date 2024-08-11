@@ -26,9 +26,6 @@
         <input type="radio" name="tipo" value="p">CPF
         <input type="radio" name="tipo" value="e">CNPJ <br><br>
 
-        <!-- Isso será substituido por um sistema de login, mas até lá vai ficar assim -->
-        CPF do funcionario <br>
-        <input type="text" name="funcionario" id="">
 
 
         <input type="submit" value="&#10145;&#65039;">

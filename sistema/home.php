@@ -4,8 +4,9 @@
     foreach($_SESSION['lista'] as $dados){
 
         $nomeFuncionario = $dados[0];
-        $cpf_funcionario = $dados[1];
+        $id_funcionario = $dados[1];
     }
+    $_SESSION['idFuncionario'] = $id_funcionario;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,7 @@
             <a href="form_veiculo.html">Formulário de veículo</a> <br><br>
             <a href="formulario_funci.html">Formulário de funcionário</a> <br><br> 
             <a href="exibir_veiculos.php">veiculos</a> <br><br>
-            <a href="logout.php">sair</a>
+            <a href="logout.php">sair</a> <br>
         </div>
     </center>
 
@@ -31,8 +32,6 @@
 
         ?>
         <br>
-        nome: <?php echo$nomeFuncionario; ?>
-        <br>cpf: <?php echo $cpf_funcionario ; ?>
 
     </pre>
 </body>
