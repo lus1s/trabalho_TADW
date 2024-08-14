@@ -1,6 +1,9 @@
 <?php
     require_once 'testeLogin.php';
+    require_once 'operacoes.php';
+    require_once 'conexao.php';
     
+   
     foreach($_SESSION['lista'] as $dados){
 
         $nomeFuncionario = $dados[0];
@@ -27,12 +30,47 @@
     </center>
 
     <pre>
-        <?php
-            print_r($_SESSION['lista']);
+        <!-- <?php
+            // print_r($_SESSION['lista']);
 
         ?>
-        <br>
+        <br> -->
 
+    <!-- <form action="home.php" method="get">
+        <input type="text" name="valor" id=""> 
+        <input type="hidden" name="origem" value="1">
+
+        <input type="submit" value="CAdastrar">
+    </form> -->
+
+    <?php
+        
+        // if ($_GET['origem'] == "1") {
+        //     $valor = $_GET['valor'];
+    
+        //     $sql = "INSERT INTO tb_teste (valor_aleatorio) VALUES (?)";
+
+        //     $stmt = mysqli_prepare($conexao, $sql);
+            
+        //     mysqli_stmt_bind_param($stmt, "s", $valor);
+            
+        //     mysqli_stmt_execute($stmt);
+            
+        //     mysqli_stmt_close($stmt);
+            
+        //     $id = mysqli_insert_id($conexao);
+
+        //     echo "id = " . $id;
+
+        // }
+
+        // $nome = "teste";
+
+        // $tipo = "p";
+
+        // print_r(insereClienteVerificaID($conexao, $nome, $tipo));
+        
+    ?>
     </pre>
 </body>
 </html>

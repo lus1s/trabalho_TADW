@@ -1,5 +1,6 @@
 <?php
     require_once 'testeLogin.php';
+    require_once 'operacoes.php';
     require_once 'conexao.php';
 
     if ($_GET['origem'] == 1) {
@@ -38,30 +39,36 @@
 
 
         //cadastra os dados que foram separados no banco
-        $sql = "INSERT INTO `tb_cliente` (`nome_cliente`, `tipo_cliente`) VALUES (?, ?)";
+        // $sql = "INSERT INTO `tb_cliente` (`nome_cliente`, `tipo_cliente`) VALUES (?, ?)";
 
-        $stmt = mysqli_prepare($conexao, $sql);
+        // $stmt = mysqli_prepare($conexao, $sql);
 
-        mysqli_stmt_bind_param($stmt, "ss", $nome, $tipo);
+        // mysqli_stmt_bind_param($stmt, "ss", $nome, $tipo);
 
-        mysqli_stmt_execute($stmt);
+        // mysqli_stmt_execute($stmt);
 
-        mysqli_stmt_close($stmt);
+        // mysqli_stmt_close($stmt);
 
 
-        //busca para pegar o último id cadstrado
-        $sql_busca = "SELECT id_cliente FROM tb_cliente";
+        // //busca para pegar o último id cadstrado
+        // $sql_busca = "SELECT id_cliente FROM tb_cliente";
 
-        $stmt_resultado = mysqli_prepare($conexao, $sql_busca);
+        // $stmt_resultado = mysqli_prepare($conexao, $sql_busca);
 
-        mysqli_stmt_execute($stmt_resultado);
+        // mysqli_stmt_execute($stmt_resultado);
 
-        mysqli_stmt_bind_result($stmt_resultado, $id_cliente);
+        // mysqli_stmt_bind_result($stmt_resultado, $id_cliente);
 
-        // if (mysqli_stmt_fetch($stmt_resultado)) {
-        //     $id_cliente = $id_cliente;
-        // }
-        mysqli_stmt_close($stmt_resultado);
+        // mysqli_stmt_store_result($stmt_resultado);
+
+        //   if (mysqli_stmt_fetch($stmt_resultado)) {
+        //       $id_cliente = $id_cliente;
+        //   }
+        // mysqli_stmt_close($stmt_resultado);
+
+
+        //faz tudo que os dois trechos anteriores fazem.(os que estão comentados)
+        $id_cliente = insereClienteVerificaID($conexao, $nome, $tipo);
 
 
         //cadastro dos dados do formulario pessoa fisica
@@ -89,50 +96,46 @@
         
 
         //cadastro de aluguel
-        $sql4 = "INSERT INTO `tb_aluguel` (`data_aluguel`, `tb_funcionario_id_funcionario`, `tb_cliente_id_cliente`) 
-            VALUES (?, ?, ?)";
+        // $sql4 = "INSERT INTO `tb_aluguel` (`data_aluguel`, `tb_funcionario_id_funcionario`, `tb_cliente_id_cliente`) 
+        //     VALUES (?, ?, ?)";
 
-            $stmt4 = mysqli_prepare($conexao, $sql4);
+        //     $stmt4 = mysqli_prepare($conexao, $sql4);
 
-            mysqli_stmt_bind_param($stmt4, "sii", $data, $funcionario, $id_cliente);
+        //     mysqli_stmt_bind_param($stmt4, "sii", $data, $funcionario, $id_cliente);
 
-            mysqli_stmt_execute($stmt4);
+        //     mysqli_stmt_execute($stmt4);
 
-            mysqli_stmt_close($stmt4);
+        //     mysqli_stmt_close($stmt4);
 
 
         //busca no cadastro aluguel
-
-        $sql6 = "SELECT id_aluguel FROM tb_aluguel";
-
-        $resultados6 = mysqli_query($conexao, $sql6);
-
-        if (mysqli_fetch_array($resultados6)>0) {
-            while ($linha6 = mysqli_fetch_array($resultados6)) {
-                $id_aluguel = $linha6['id_aluguel'];
-            }
-        }
+        $id_aluguel = insereAluguelVerificaID($conexao, $data, $funcionario, $id_cliente);
 
         //cadastro na veiculo_aluguel
 
         $sql_final = "INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`) 
-            VALUES ('$veiculo', '$id_aluguel')";
+                       VALUES (?, ?)";
 
+        $stmt_final = mysqli_prepare($conexao, $sql_final);
+
+        mysqli_stmt_bind_param($stmt_final, "ii", $veiculo, $id_aluguel);
+
+        
         //Desfaz o array no session
-        if (isset($_SESSION['dados'])) {
-            unset($_SESSION['dados']);
-        }
-
+        
         //executa o cadastro na tabela endereço e redireciona p/ prox. página
-        if (mysqli_query($conexao, $sql_final)) {
+        if (mysqli_stmt_execute($stmt_final)) {
+            
+            mysqli_stmt_close($stmt_final);
+            
+            if (isset($_SESSION['dados'])){unset($_SESSION['dados']);}
+
             header('Location: index.html');
             exit();
         } else {
             header('Location: form_aluguel');
             exit();
         }
-
-
 
         //Formulário de empresa
     } elseif ($_GET['origem'] == 3) {
