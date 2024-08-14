@@ -38,13 +38,13 @@ if (isset($_GET['origem'])) {
     if(mysqli_stmt_execute($stmt2)){
         
         mysqli_stmt_close($stmt2);
-        header('Location: devolucao_veiculo.php');
+        header('Location: exibir_veiculos.php');
         exit();
 
     }else{
         
         mysqli_stmt_close($stmt2);
-        header('Location: devolucao.php');
+        header('Location: exibir_veiculos.php');
         exit;
     }
 }

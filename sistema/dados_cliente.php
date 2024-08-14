@@ -7,7 +7,7 @@
 
         $nome_cliente = $_GET['nome_cliente'];
         $tipo_cliente = $_GET['tipo'];
-        $id_veiculo = $_GET['id_veiculo'];
+        $id_veiculo = $_GET['idVeiculo'];
         $funcionario = $_SESSION['idFuncionario'];
 
         $_SESSION['dados'] = array($nome_cliente, $tipo_cliente, $id_veiculo, $funcionario);
@@ -118,19 +118,29 @@
 
         $stmt_final = mysqli_prepare($conexao, $sql_final);
 
-        mysqli_stmt_bind_param($stmt_final, "ii", $veiculo, $id_aluguel);
+        mysqli_stmt_bind_param($stmt_final, "ss", $veiculo, $id_aluguel);
 
+        mysqli_stmt_execute($stmt_final);
+
+        mysqli_stmt_close($stmt_final);
         
-        //Desfaz o array no session
+        //Update no estado do carro
+        $update = "UPDATE `tb_veiculo` SET `estado_veiculo` = 'a' WHERE `id_veiculo` = ? ";
         
-        //executa o cadastro na tabela endereço e redireciona p/ prox. página
-        if (mysqli_stmt_execute($stmt_final)) {
+        $stmtUpdate = mysqli_prepare($conexao, $update);
+        
+        mysqli_stmt_bind_param($stmtUpdate, "i", $veiculo);
+        
+        if (mysqli_stmt_execute($stmtUpdate)) {
+
+            mysqli_stmt_close($stmtUpdate);
             
-            mysqli_stmt_close($stmt_final);
             
+            //Desfaz o array no session
             if (isset($_SESSION['dados'])){unset($_SESSION['dados']);}
-
-            header('Location: index.html');
+            
+            //redireciona p/ prox. página
+            header('Location: exibir_veiculos.php');
             exit();
         } else {
             header('Location: form_aluguel');

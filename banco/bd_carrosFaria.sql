@@ -19,8 +19,8 @@ CREATE TABLE `tb_aluguel` (
   UNIQUE KEY `id_aluguel_UNIQUE` (`id_aluguel`),
   KEY `fk_tb_aluguel_tb_funcionario1_idx` (`tb_funcionario_id_funcionario`),
   KEY `fk_tb_aluguel_tb_cliente1_idx` (`tb_cliente_id_cliente`),
-  CONSTRAINT `fk_tb_aluguel_tb_cliente1` FOREIGN KEY (`tb_cliente_id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_aluguel_tb_funcionario1` FOREIGN KEY (`tb_funcionario_id_funcionario`) REFERENCES `tb_funcionario` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_aluguel_tb_cliente1` FOREIGN KEY (`tb_cliente_id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_tb_aluguel_tb_funcionario1` FOREIGN KEY (`tb_funcionario_id_funcionario`) REFERENCES `tb_funcionario` (`id_funcionario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -42,7 +42,7 @@ CREATE TABLE `tb_devolucao` (
   `tb_aluguel_id_aluguel` int(11) NOT NULL,
   PRIMARY KEY (`id_devolucao`,`tb_aluguel_id_aluguel`),
   KEY `fk_tb_devolucao_tb_aluguel1_idx` (`tb_aluguel_id_aluguel`),
-  CONSTRAINT `fk_tb_devolucao_tb_aluguel1` FOREIGN KEY (`tb_aluguel_id_aluguel`) REFERENCES `tb_aluguel` (`id_aluguel`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_devolucao_tb_aluguel1` FOREIGN KEY (`tb_aluguel_id_aluguel`) REFERENCES `tb_aluguel` (`id_aluguel`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -55,7 +55,7 @@ CREATE TABLE `tb_empresa` (
   `tb_cliente_id_cliente` int(11) NOT NULL,
   PRIMARY KEY (`id_empresa`,`tb_cliente_id_cliente`),
   KEY `fk_tb_empresa_tb_cliente1_idx` (`tb_cliente_id_cliente`),
-  CONSTRAINT `fk_tb_empresa_tb_cliente1` FOREIGN KEY (`tb_cliente_id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_empresa_tb_cliente1` FOREIGN KEY (`tb_cliente_id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -66,7 +66,7 @@ CREATE TABLE `tb_enderecos` (
   `tb_cliente_id_cliente` int(11) NOT NULL,
   PRIMARY KEY (`id_enderecos`,`tb_cliente_id_cliente`),
   KEY `fk_tb_enderecos_tb_cliente1_idx` (`tb_cliente_id_cliente`),
-  CONSTRAINT `fk_tb_enderecos_tb_cliente1` FOREIGN KEY (`tb_cliente_id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_enderecos_tb_cliente1` FOREIGN KEY (`tb_cliente_id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -88,7 +88,7 @@ CREATE TABLE `tb_manutencao` (
   `tb_veiculo_id_veiculo` int(11) NOT NULL,
   PRIMARY KEY (`id_manutencao`,`tb_veiculo_id_veiculo`),
   KEY `fk_tb_manutencao_tb_veiculo1_idx` (`tb_veiculo_id_veiculo`),
-  CONSTRAINT `fk_tb_manutencao_tb_veiculo1` FOREIGN KEY (`tb_veiculo_id_veiculo`) REFERENCES `tb_veiculo` (`id_veiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_manutencao_tb_veiculo1` FOREIGN KEY (`tb_veiculo_id_veiculo`) REFERENCES `tb_veiculo` (`id_veiculo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -102,7 +102,7 @@ CREATE TABLE `tb_pessoa` (
   UNIQUE KEY `cpf_UNIQUE` (`cpf`),
   UNIQUE KEY `cnh_UNIQUE` (`cnh`),
   KEY `fk_tb_pessoa_tb_cliente_idx` (`tb_cliente_id_cliente`),
-  CONSTRAINT `fk_tb_pessoa_tb_cliente` FOREIGN KEY (`tb_cliente_id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_pessoa_tb_cliente` FOREIGN KEY (`tb_cliente_id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -133,11 +133,10 @@ DROP TABLE IF EXISTS `tb_veiculo_aluguel`;
 CREATE TABLE `tb_veiculo_aluguel` (
   `tb_veiculo_id_veiculo` int(11) NOT NULL,
   `tb_aluguel_id_aluguel` int(11) NOT NULL,
-  PRIMARY KEY (`tb_veiculo_id_veiculo`,`tb_aluguel_id_aluguel`),
   KEY `fk_tb_veiculo_has_tb_aluguel_tb_aluguel1_idx` (`tb_aluguel_id_aluguel`),
   KEY `fk_tb_veiculo_has_tb_aluguel_tb_veiculo1_idx` (`tb_veiculo_id_veiculo`),
-  CONSTRAINT `fk_tb_veiculo_has_tb_aluguel_tb_aluguel1` FOREIGN KEY (`tb_aluguel_id_aluguel`) REFERENCES `tb_aluguel` (`id_aluguel`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_veiculo_has_tb_aluguel_tb_veiculo1` FOREIGN KEY (`tb_veiculo_id_veiculo`) REFERENCES `tb_veiculo` (`id_veiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_veiculo_has_tb_aluguel_tb_aluguel1` FOREIGN KEY (`tb_aluguel_id_aluguel`) REFERENCES `tb_aluguel` (`id_aluguel`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_tb_veiculo_has_tb_aluguel_tb_veiculo1` FOREIGN KEY (`tb_veiculo_id_veiculo`) REFERENCES `tb_veiculo` (`id_veiculo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 

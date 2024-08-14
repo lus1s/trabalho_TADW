@@ -1,11 +1,8 @@
 <?php
     require_once 'conexao.php';
     require_once 'testeLogin.php';
-
-    if (isset($_GET['id_veiculo'])) {
         
         $id_veiculo = $_GET['id_veiculo'];
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +16,7 @@
 
         <!-- Hidden == escondido. Serve para marcar a origem da página-->
         <input type="hidden" name="origem" value="1">
-        <input type="hidden" name="id_veiculo" value="<?php $id_veiculo ?>">
+        <input type="hidden" name="idVeiculo" value="<?php echo $id_veiculo; ?>">
 
         Nome do cliente: <br>
         <input type="text" name="nome_cliente" id=""><br><br>

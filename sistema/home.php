@@ -20,7 +20,7 @@
 </head>
 <body>
     <center>
-        <h3>Bem vindo(a): <?php echo $nomeFuncionario; ?></h3> 
+        <h3>Bem vinda(o): <?php echo $nomeFuncionario; ?></h3> 
         <div style="background-color:rgb(119, 243, 243);">
             <a href="form_veiculo.html">Formulário de veículo</a> <br><br>
             <a href="formulario_funci.html">Formulário de funcionário</a> <br><br> 
@@ -31,10 +31,9 @@
 
     <pre>
         <!-- <?php
-            // print_r($_SESSION['lista']);
-
+            // print_r($_SESSION['dados']);
         ?>
-        <br> -->
+        <br>  -->
 
     <!-- <form action="home.php" method="get">
         <input type="text" name="valor" id=""> 
@@ -64,12 +63,19 @@
 
         // }
 
-        // $nome = "teste";
+    //      $nome = "teste";
 
-        // $tipo = "p";
+    // $tipo = "p";
 
-        // print_r(insereClienteVerificaID($conexao, $nome, $tipo));
-        
+    // print_r("id_cliente = " . insereClienteVerificaID($conexao, $nome, $tipo) . "<br>");
+
+
+    // $data = date('Y-m-d');
+
+    // $funcionario = "1";
+
+    // $id_cliente = "19";
+    // print_r("id_aluguel= " . insereAluguelVerificaID($conexao, $data, $funcionario, $id_cliente));
     ?>
     </pre>
 </body>

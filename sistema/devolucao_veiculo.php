@@ -12,7 +12,8 @@ require_once 'testeLogin.php';
 </head>
 
 <body>
-
+    <!-- ESTA PAGINA NÃO ESTÁ SENDO UTILIZADA, PORÉM EU NÃO ME RECORDO EXATAMENTE OQUE ELA TEM. PORTANTO, ATÉ QUE EU ANALIZE-A
+     E DECIDA SE VALE OU NÃO A PENA DEIXAR ELA, ELA FICARÁ PS.: so deus sabe quando -->
     <table border="1">
         <tr>
             <td>CPF</td>
@@ -177,7 +178,7 @@ require_once 'testeLogin.php';
 
             ?>
     </table>
-    <br> 
+    <br>
     <button><a href="index.html">Home</a></button>
 </body>
 
