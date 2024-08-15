@@ -29,11 +29,11 @@
         </div>
     </center>
 
-    <!-- <pre>
+     <pre>
          <?php
              print_r($_SESSION['dados']);
         ?>
-        <br>   -->
+        <br>   
 
     <!-- <form action="home.php" method="get">
         <input type="text" name="valor" id=""> 

@@ -25,6 +25,10 @@
             exit();
         }
 
+
+
+
+
         //Formulario pessoa física
     } elseif ($_GET['origem'] == 2) {
 
@@ -107,6 +111,7 @@
     } elseif ($_GET['origem'] == 3) {
 
         $cnpj_cliente = $_GET['cnpj'];
+        $responsavel = $_GET['func_resp'];
         $endereco = $_GET['endereco'];
         $data = date('Y-m-d');
 
@@ -151,7 +156,7 @@
 
         $stmtFinal = mysqli_prepare($conexao, $sql_final);
         
-        mysqli_stmt_bind_param($stmtFinal, "ii", $id_aluguel, $id_aluguel);
+        mysqli_stmt_bind_param($stmtFinal, "ii", $veiculo, $id_aluguel);
 
         mysqli_stmt_execute($stmtFinal);
 
@@ -173,7 +178,7 @@
                 unset($_SESSION['dados']);
                 }
 
-            header('Location: index.html');
+            header('Location: exibir_veiculos.php');
             exit();
         } else {
             header('Location: form_aluguel');
