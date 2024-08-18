@@ -82,7 +82,6 @@ require_once 'testeLogin.php';
 
                                                         echo "<td> <button> <a href='devolucao.php?id_aluguel=$coisa&nome_veiculo=$nome_veiculo&id_veiculo=$id_veiculo'>Devolver</a> </button> </td>";
                                                     }
-                                                    echo "<tr>";
                                                 }
                                             }
                                         }
@@ -91,6 +90,7 @@ require_once 'testeLogin.php';
                             }
                         }
                     }
+                    echo "<tr>";
                 }
             } else {
                 echo "Não há veiculo em aluguel";
@@ -161,7 +161,6 @@ require_once 'testeLogin.php';
                                                     } else {
 
                                                         echo "<td> <button> <a href='devolucao.php?id_aluguel=$id_aluguel&nome_veiculo=$nome_veiculo2&id_veiculo=$id_veiculo'>Devolver</a> </button> </td>";
-                                                        echo "<tr>";
                                                     }
                                                 }
                                             }
@@ -171,6 +170,7 @@ require_once 'testeLogin.php';
                             }
                         }
                     }
+                    echo "<tr>";
                 }
             } else {
                 echo "Não há veiculo em aluguel";

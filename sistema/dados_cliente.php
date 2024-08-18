@@ -37,6 +37,11 @@
         $endereco = $_GET['endereco'];
         $data = date('Y-m-d');
 
+        // a verificação de cadastro será realizada ensta parte
+        // essa verificação será feita da seguinte forma: 
+            //1º - um select buscando o cpf ou cnh no banco, para verificar se é igual ao digitado;
+            //2º - caso o cpf ou cnh já esteja cadastrado, é necessário que os dados sigam para o cadstro nas tabelas
+                //relacionadas ao aluguel;
 
         //separa os dados do array em variaveis
         list($nome, $tipo, $veiculo, $funcionario) = $_SESSION['dados'];
