@@ -200,27 +200,7 @@ INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcion
 (4, 'Julian Victor', '084.545.461-70', 'senha101');
 
 -- Inserindo dados na tabela tb_veiculo
-INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`) VALUES
-(1, 'Fiat Uno', '2018', 'Fiat', 'c', 'Branco', 'ABC-1234', 'a', '1.0', '50000', 'Econômico', '2', 's', 's', 'p', 'm', '5'),
-(2, 'Honda Civic', '2020', 'Honda', 'c', 'Preto', 'DEF-5678', 'a', '2.0', '30000', 'Confortável', '4', 's', 's', 'm', 'a', '5'),
-(3, 'Yamaha YZF', '2019', 'Yamaha', 'm', 'Azul', 'GHI-9012', 'a', '600cc', '10000', 'Esportiva', '0', 'n', 'n', 'p', 'm', '2'),
-(4, 'Chevrolet Onix', '2021', 'Chevrolet', 'c', 'Vermelho', 'JKL-3456', 'a', '1.4', '20000', 'Compacto', '4', 's', 's', 'm', 'm', '5'),
-(5, 'Volkswagen Golf', '2017', 'Volkswagen', 'c', 'Cinza', 'MNO-7890', 'd', '1.6', '60000', 'Luxo', '4', 's', 's', 'm', 'a', '5'),
-(6, 'Ford Ka', '2019', 'Ford', 'c', 'Prata', 'PQR-6789', 'd', '1.5', '25000', 'Popular', '4', 's', 's', 'p', 'm', '5'),
-(7, 'BMW X1', '2020', 'BMW', 'c', 'Preto', 'STU-5432', 'd', '2.0', '15000', 'Luxo', '4', 's', 's', 'g', 'a', '5'),
-(8, 'Kawasaki Ninja', '2018', 'Kawasaki', 'm', 'Verde', 'VWX-9876', 'd', '650cc', '8000', 'Esportiva', '0', 'n', 'n', 'p', 'm', '2'),
-(9, 'Hyundai HB20', '2021', 'Hyundai', 'c', 'Azul', 'YZA-4321', 'd', '1.6', '10000', 'Compacto', '4', 's', 's', 'm', 'm', '5'),
-(10, 'Toyota Corolla', '2019', 'Toyota', 'c', 'Branco', 'BCD-1234', 'd', '2.0', '35000', 'Sedan', '4', 's', 's', 'm', 'a', '5'),
-(11, 'Renault Kwid', '2020', 'Renault', 'c', 'Laranja', 'EFG-5678', 'd', '1.0', '12000', 'Popular', '4', 's', 's', 'p', 'm', '5'),
-(12, 'Audi A3', '2017', 'Audi', 'c', 'Cinza', 'HIJ-9012', 'd', '1.8', '45000', 'Luxo', '4', 's', 's', 'm', 'a', '5'),
-(13, 'Suzuki GSX', '2019', 'Suzuki', 'm', 'Preto', 'KLM-3456', 'd', '750cc', '7000', 'Esportiva', '0', 'n', 'n', 'p', 'm', '2'),
-(14, 'Peugeot 208', '2021', 'Peugeot', 'c', 'Vermelho', 'NOP-7890', 'd', '1.2', '15000', 'Hatch', '4', 's', 's', 'p', 'm', '5'),
-(15, 'Chevrolet Cruze', '2018', 'Chevrolet', 'c', 'Prata', 'QRS-6789', 'd', '1.4', '30000', 'Sedan', '4', 's', 's', 'm', 'a', '5'),
-(16, 'Honda Fit', '2020', 'Honda', 'c', 'Azul', 'TUV-5432', 'd', '1.5', '20000', 'Compacto', '4', 's', 's', 'm', 'm', '5'),
-(17, 'Jeep Compass', '2019', 'Jeep', 'c', 'Preto', 'WXY-9876', 'd', '2.0', '25000', 'SUV', '4', 's', 's', 'g', 'a', '5'),
-(18, 'Volkswagen Polo', '2018', 'Volkswagen', 'c', 'Branco', 'ZAB-4321', 'd', '1.0', '40000', 'Hatch', '4', 's', 's', 'p', 'm', '5'),
-(19, 'Ford Fiesta', '2017', 'Ford', 'c', 'Cinza', 'CDE-1234', 'd', '1.6', '50000', 'Popular', '4', 's', 's', 'p', 'm', '5'),
-(20, 'Nissan Versa', '2021', 'Nissan', 'c', 'Prata', 'FGH-5678', 'd', '1.6', '8000', 'Sedan', '4', 's', 's', 'm', 'm', '5');
+
 
 -- Inserindo dados na tabela tb_aluguel
 INSERT INTO `tb_aluguel` (`id_aluguel`, `data_aluguel`, `tb_funcionario_id_funcionario`, `tb_cliente_id_cliente`) VALUES
