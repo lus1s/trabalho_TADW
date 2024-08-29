@@ -25,7 +25,7 @@
             <a href="form_veiculo.html">Formulário de veículo</a> <br><br>
             <a href="formulario_funci.html">Formulário de funcionário</a> <br><br> 
             <a href="exibir_veiculos.php">veiculos</a> <br><br>
-            <a href="clientes.php">Exibir clientes / Histórico de alugueis</a> <br><br>
+            <a href="busca_clientes.html">Exibir clientes / Histórico de alugueis</a> <br><br>
             <a href="logout.php">sair</a> <br>
         </div>
     </center>
