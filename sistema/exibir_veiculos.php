@@ -21,13 +21,13 @@
         </tr>
         <tr>
             <?php
-                $sql = "SELECT * FROM tb_veiculo";
+                $sql = "SELECT id_veiculo, nome_veiculo, marca_veiculo, cor_veiculo, placa_veiculo, estado_veiculo FROM tb_veiculo";
 
                 $stmt = mysqli_prepare($conexao, $sql);
 
                 mysqli_stmt_execute($stmt);
 
-                mysqli_stmt_bind_result($stmt, $id_veiculo, $nome_veiculo, $marca, $cor, $estado);
+                mysqli_stmt_bind_result($stmt, $id_veiculo, $nome_veiculo, $marca, $cor, $placa, $estado);
 
                 mysqli_stmt_store_result($stmt);
 
@@ -35,7 +35,7 @@
                 if (mysqli_stmt_num_rows($stmt) > 0) {
                     while ($linha = mysqli_stmt_fetch($stmt)) {
                        
-                        $dados_veiculos[] = [ $id_veiculo, $nome_veiculo, $marca, $cor, $estado];
+                        $dados_veiculos[] = [$id_veiculo, $nome_veiculo, $marca, $cor, $estado];
 
                         if ($estado == "d"){$estado_exibido = "Disponível"; $acao = "<button><a href='form_aluguel.php?id_veiculo=$id_veiculo'>Alugar</a></button>";} 
                         elseif ($estado == "a"){$estado_exibido = "Alugado"; $acao =  "<button><a href='devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo'>Devolver</a></button>";}
