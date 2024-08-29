@@ -1,32 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/script.js"></script>
-    <title>Faça seu Login</title>
-</head>
-
-<body id="corpo">
-    <center>
-        <div style="background-color:rgb(0, 0, 0); color: aliceblue;">
-            <form action="login.php" onkeyup="return colors()" method="post">
-
-                <h2>Carros Faria</h2>
-                CPF: <br>
-                <input type="text" name="cpf" ><br><br>
-                Senha: <br>
-                <input type="password" name="senha" id=""><br><br>
-
-                <input type="submit" value="Login">
-            </form>
-        </div>
-    </center>
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 
 <!-- This code was generated using AnimaApp.com. 

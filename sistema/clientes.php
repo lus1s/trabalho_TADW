@@ -43,12 +43,12 @@
                 mysqli_stmt_bind_result($stmt);
 
                 $listar = [];
-                    if (mysqli_num_rows($stmt) > 0) {
+                    if (mysqli_stmt_num_rows($stmt) > 0) {
                         while (mysqli_stmt_fetch($stmt)) {
-                            $lista[] = [$tb_cliente_idcliente]
+                            $lista[] = [$tb_cliente_idcliente];
                         }
                     }
-
+                
         
 
             }else {
