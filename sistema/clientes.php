@@ -30,7 +30,24 @@
                 
                 
 
-    }elseif ($_GET['origem'] = "3") {
+             }elseif ($_GET['origem'] = "3") {
+
+                $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel";
+
+                $stmt = mysqli_prepare($conexão, $sql);
+
+                mysqli_stmt_execute($stmt);
+
+                mysqli_stmt_bind_result($stmt, $tb_cliente_id_cliente);
+
+                mysqli_stmt_bind_result($stmt);
+
+                $listar = [];
+                    if (mysqli_num_rows($stmt) > 0) {
+                        while (mysqli_stmt_fetch($stmt)) {
+                            $lista[] = [$tb_cliente_idcliente]
+                        }
+                    }
 
         
 
