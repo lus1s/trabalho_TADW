@@ -21,18 +21,21 @@
         </tr>
         <tr>
             <?php
-                $sql = "SELECT * FROM tb_veiculo";
-    
-                $resultados = mysqli_query($conexao, $sql);
+                $sql = "SELECT id_veiculo, nome_veiculo, marca_veiculo, cor_veiculo, placa_veiculo, estado_veiculo FROM tb_veiculo";
 
-                if (mysqli_num_rows($resultados) > 0) {
-                    while ($linha = mysqli_fetch_array($resultados)) {
-                        
-                        $id_veiculo = $linha['id_veiculo'];
-                        $nome_veiculo = $linha['nome_veiculo'];
-                        $marca = $linha['marca_veiculo'];
-                        $cor = $linha['cor_veiculo'];
-                        $estado = $linha['estado_veiculo'];
+                $stmt = mysqli_prepare($conexao, $sql);
+
+                mysqli_stmt_execute($stmt);
+
+                mysqli_stmt_bind_result($stmt, $id_veiculo, $nome_veiculo, $marca, $cor, $placa, $estado);
+
+                mysqli_stmt_store_result($stmt);
+
+                $dados_veiculos = [];
+                if (mysqli_stmt_num_rows($stmt) > 0) {
+                    while ($linha = mysqli_stmt_fetch($stmt)) {
+                       
+                        $dados_veiculos[] = [$id_veiculo, $nome_veiculo, $marca, $cor, $estado];
 
                         if ($estado == "d"){$estado_exibido = "Disponível"; $acao = "<button><a href='form_aluguel.php?id_veiculo=$id_veiculo'>Alugar</a></button>";} 
                         elseif ($estado == "a"){$estado_exibido = "Alugado"; $acao =  "<button><a href='devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo'>Devolver</a></button>";}

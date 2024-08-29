@@ -50,9 +50,10 @@
 
             mysqli_stmt_execute($stmt);
 
-            return $id_cliente = mysqli_stmt_insert_id($stmt);
+            $id_cliente = mysqli_stmt_insert_id($stmt);
 
             mysqli_stmt_close($stmt);
 
+            return $id_cliente;
     }
 ?>
