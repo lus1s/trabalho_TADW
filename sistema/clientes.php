@@ -12,6 +12,13 @@
     <title>Document</title>
 </head>
 <body>
+    <table>
+        <tr>
+            <td>id_cliente</td>
+            <td>nome_cliente</td>
+            <td>tipo_cliente</td>
+        </tr>
+    </table>
     
     <?php
 
@@ -31,6 +38,13 @@
                 
 
              }elseif ($_GET['origem'] = "3") {
+               echo" <table border='1'>
+                 <tr>
+                    <td>id_cliente</td>
+                    <td>nome_cliente</td>
+                    <td>tipo_cliente</td>
+                </tr>
+                </table>";
 
                 $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel";
 
@@ -38,14 +52,24 @@
 
                 mysqli_stmt_execute($stmt);
 
-                mysqli_stmt_bind_result($stmt, $tb_cliente_id_cliente);
+                mysqli_stmt_bind_result($stmt, $id_cliente);
 
                 mysqli_stmt_bind_result($stmt);
 
                 $listar = [];
-                    if (mysqli_num_rows($stmt) > 0) {
+                    if (mysqli_stmt_num_rows($stmt) > 0) {
                         while (mysqli_stmt_fetch($stmt)) {
-                            $lista[] = [$tb_cliente_idcliente]
+                            $lista[] = [$id_cliente];
+
+                            $sql2 = "SELECT * FROM `tb_cliente` WHERE `id_cliente` = ?";
+                            $stmt = mysqli_prepare($conexao, $sql);
+                            mysqli_stmt_bind_param($stmt, "i", $id_cliente);
+                            mysqli_stmt_execute($stmt);
+                            mysqli_stmt_bind_result($stmt, $id_cliente, $nome_cliente, $tipo_cliente);
+
+                            if (mysqli_stmt_fetch($stmt));
+                                
+
                         }
                     }
 
