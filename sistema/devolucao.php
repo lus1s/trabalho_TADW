@@ -30,7 +30,7 @@ if (isset($_GET['origem'])) {
     mysqli_stmt_close($stmt);
 
     //alterção no estado do veículo
-    $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = 'd' WHERE `id_veiculo` = ? ";
+    $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = '1' WHERE `id_veiculo` = ? ";
 
     $stmt2 = mysqli_prepare($conexao, $sql);
 

@@ -90,7 +90,7 @@
         mysqli_stmt_close($stmt_final);
         
         //Update no estado do carro
-        $update = "UPDATE `tb_veiculo` SET `estado_veiculo` = 'a' WHERE `id_veiculo` = ? ";
+        $update = "UPDATE `tb_veiculo` SET `estado_veiculo` = '2' WHERE `id_veiculo` = ? ";
         
         $stmtUpdate = mysqli_prepare($conexao, $update);
         
