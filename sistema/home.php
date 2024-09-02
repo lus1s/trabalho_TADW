@@ -4,7 +4,7 @@
     require_once 'conexao.php';
     
    
-    foreach($_SESSION['lista'] as $dados){
+    foreach($_SESSION['dados_funcionario'] as $dados){
 
         $nomeFuncionario = $dados[0];
         $id_funcionario = $dados[1];

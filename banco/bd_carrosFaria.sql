@@ -119,7 +119,7 @@ CREATE TABLE `tb_veiculo` (
   `motor_veiculo` varchar(45) NOT NULL,
   `km_rodados` varchar(45) NOT NULL,
   `descricao_veiculo` varchar(45) NOT NULL,
-  `qtd_portas` enum('0','2','4') NOT NULL,
+  `qtd_portas` varchar(1) NOT NULL,
   `arcondicionado_veiculo` enum('1','2') NOT NULL,
   `portamala_veiculo` enum('1','2') NOT NULL,
   `tamanho_veiculo` enum('1','2','3') NOT NULL,

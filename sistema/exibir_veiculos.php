@@ -21,6 +21,7 @@
         </tr>
         <tr>
             <?php
+                
                 $sql = "SELECT id_veiculo, nome_veiculo, marca_veiculo, cor_veiculo, placa_veiculo, estado_veiculo FROM tb_veiculo";
 
                 $stmt = mysqli_prepare($conexao, $sql);
@@ -37,8 +38,11 @@
                        
                         $dados_veiculos[] = [$id_veiculo, $nome_veiculo, $marca, $cor, $estado];
 
-                        if ($estado == "1"){$estado_exibido = "Disponível"; $acao = "<button><a href='form_aluguel.php?id_veiculo=$id_veiculo'>Alugar</a></button>";} 
+                        if ($estado == "1"){$estado_exibido = "Disponível"; $acao = "<button><a href='form_aluguel.php?id_veiculo=$id_veiculo'>Alugar</a></button> <button><a href='carrinho.php?id_veiculo=$id_veiculo'>selecionar</a></button>";} 
                         elseif ($estado == "2"){$estado_exibido = "Alugado"; $acao =  "<button><a href='devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo'>Devolver</a></button>";}
+                        elseif ($estado == "3") {
+                            
+                        }
 
                         echo "<td> $nome_veiculo  </td>";
                         echo "<td> $marca </td>";
@@ -48,7 +52,7 @@
                         echo "</tr>";
                     }
                 }else {
-                    echo "<td colspan='7'>não há veiculos cadastrados</td>
+                    echo "<td colspan='4'>não há veiculos cadastrados</td>
                         </tr>";
                 }
                 
