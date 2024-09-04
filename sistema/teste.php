@@ -13,7 +13,9 @@
 <body>
     <pre>
     <?php
-        print_r($_SESSION['carrinho']['veiculos']);
+        print_r($_SESSION['carrinho']);
+
+        echo "";
     ?>
     </pre>
 </body>

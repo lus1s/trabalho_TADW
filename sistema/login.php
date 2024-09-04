@@ -33,7 +33,7 @@
         
         $_SESSION['carrinho']['veiculos'] = array();
         $_SESSION['carrinho']['nome']= array();
-
+        $_SESSION['nome_veiculo'] = array();
         header('Location: home.php');
         exit();
 
