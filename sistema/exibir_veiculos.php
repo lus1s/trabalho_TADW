@@ -8,9 +8,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/script.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
     <title>veiculos</title>
 </head>
 <body>
+<iframe src="./exibir_carrinho.php" frameborder="1" width="98%"></iframe>
+    <div id="veiculos">
     <table border="1">
         <tr>
             <td>Nome do veiculo</td>
@@ -38,13 +42,10 @@
                        
                         $dados_veiculos[] = [$id_veiculo, $nome_veiculo, $marca, $cor, $estado];
 
-                        if ($estado == "1"){$estado_exibido = "Disponível"; $acao = "<button><a href='form_aluguel.php?id_veiculo=$id_veiculo'>Alugar</a></button> <button><a href='carrinho.php?id_veiculo=$id_veiculo'>selecionar</a></button>";} 
+                        if ($estado == "1"){$estado_exibido = "Disponível"; $acao = "<button id='botoes'><a id='links' href='form_aluguel.php?id_veiculo=$id_veiculo'>Alugar</a></button> <button><a href='carrinho.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo'>selecionar</a></button>";} 
                         elseif ($estado == "2"){$estado_exibido = "Alugado"; $acao =  "<button><a href='devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo'>Devolver</a></button>";}
-                        elseif ($estado == "3") {
-                            
-                        }
 
-                        echo "<td> $nome_veiculo  </td>";
+                        echo "<td> $nome_veiculo </td>";
                         echo "<td> $marca </td>";
                         echo "<td> $cor </td>";
                         echo "<td> $estado_exibido </td>";
@@ -52,10 +53,14 @@
                         echo "</tr>";
                     }
                 }else {
-                    echo "<td colspan='4'>não há veiculos cadastrados</td>
+                    echo "<td colspan='5'>não há veiculos cadastrados</td>
                         </tr>";
                 }
                 
             ?>
+            </table>
+            </div>
+            
+        <button disabled><a href="teste.php">teste</a></button>
 </body>
 </html>

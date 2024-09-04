@@ -1,7 +1,7 @@
 <?php
     require_once 'conexao.php';
     require_once 'testeLogin.php';
-    require_once 'operacoes.php';
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +11,9 @@
     <title>Document</title>
 </head>
 <body>
-    <pre>
-    <?php
-        print_r($_SESSION['carrinho']['veiculos']);
-    ?>
-    </pre>
+        <?php
+
+            $_SESSION['carrinho']['veiculos']
+        ?>
 </body>
 </html>

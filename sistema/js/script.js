@@ -7,3 +7,11 @@ function colors() {
     
     return false;
 }
+
+function disableLinks() {
+    const link = document.getElementById('links');
+
+    const atributo = element.getAttributeNode("href");
+
+    element.removeAttributeNode(atributo);
+}

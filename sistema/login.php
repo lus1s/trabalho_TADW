@@ -32,6 +32,7 @@
         $_SESSION['logado'] = true;
         
         $_SESSION['carrinho']['veiculos'] = array();
+        $_SESSION['carrinho']['nome']= array();
 
         header('Location: home.php');
         exit();
