@@ -18,22 +18,31 @@
     <form action="">
         <div class="position-relative">
     <?php
-        $nome_veiculo = $_SESSION['nome_veiculo'];
+        if (empty($_SESSION['nome_veiculo'])) {
+            echo "selecione alguns veiculos";
+        }else {
+            $nome_veiculo = $_SESSION['nome_veiculo'];
 
-        foreach ($nome_veiculo as $id => $nome) {
-            echo"
-                <div class='card' style='width: 18rem;'>
-                    <img src='...' class='card-img-top' alt='...'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>$nome</h5>
-                        <a href='limpar_sessions.php?id=$id&origem=3' class='btn btn-primary'>remover</a>
-                    </div>
-                </div> <br>";
+            foreach ($nome_veiculo as $id => $nome) {
+                echo"
+                    <div class='card' style='width: 18rem;'>
+                        <img src='...' class='card-img-top' alt='...'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>$nome</h5>
+                            <a href='limpar_sessions.php?id=$id&origem=3' class='btn btn-primary'>remover</a>
+                        </div>
+                    </div> <br>";
+
+                }
+                echo "<a href='limpar_sessions.php?origem=2'>esvaziar carrinho</a>";
+
+                echo '<button> <a href="">Continuar Aluguel</a></button>';
         }
         
-        ?>
-    <a href='limpar_sessions.php?origem=2'>esvaziar carrinho</a>
-    <button> <a href="">Continuar Aluguel</a></button>
+        
+    ?>
+    
+    
 </div>
     </form>
 

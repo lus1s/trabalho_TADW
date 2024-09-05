@@ -25,10 +25,6 @@
             exit();
         }
 
-
-
-
-
         //Formulario pessoa física
     } elseif ($_GET['origem'] == 2) {
 
@@ -61,33 +57,18 @@
 
         mysqli_stmt_close($stmt2);
 
-
         //cadastro na tabela de endereços
-        $sql3 = "INSERT INTO `tb_enderecos` (`endereco`, `tb_cliente_id_cliente`) VALUES (?, ?)";
-
-        $stmt3 = mysqli_prepare($conexao, $sql3);
-
-        mysqli_stmt_bind_param($stmt3, "si", $endereco, $id_cliente);
-
-        mysqli_stmt_execute($stmt3);
-
-        mysqli_stmt_close($stmt3);
+        insereEnderecos($conexao,$endereco, $id_cliente);
 
         //busca no cadastro aluguel
-        $id_aluguel = insereAluguelVerificaID($conexao, $data, $funcionario, $id_cliente);
+        $id_aluguel = insereAluguelVerificaID($conexao, $funcionario, $id_cliente);
 
+        //busca na tb_veiculo, retornando  o km já rodado
+        $km_inicial = KmAtual($conexao, $veiculo);
+        
+        $km_final = 0;
         //cadastro na veiculo_aluguel
-
-        $sql_final = "INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`) 
-                       VALUES (?, ?)";
-
-        $stmt_final = mysqli_prepare($conexao, $sql_final);
-
-        mysqli_stmt_bind_param($stmt_final, "ss", $veiculo, $id_aluguel);
-
-        mysqli_stmt_execute($stmt_final);
-
-        mysqli_stmt_close($stmt_final);
+        insereVeiculosAluguel($conexao, $veiculo, $id_aluguel, $km_inicial, $km_final);
         
         //Update no estado do carro
         $update = "UPDATE `tb_veiculo` SET `estado_veiculo` = '2' WHERE `id_veiculo` = ? ";
@@ -127,8 +108,8 @@
         $id_cliente = insereClienteVerificaID($conexao, $nome, $tipo);
 
         //insere os dado na tabela empresa;
-        $sql2 = "INSERT INTO `tb_empresa` (`nome_empresa`, `cnpj`, `func_responsavel`, `tb_cliente_id_cliente`) VALUES
-                    (?, ?, ?, ?)";
+        $sql2 = "INSERT INTO `tb_empresa` (`nome_empresa`, `cnpj`, `func_responsavel`, `tb_cliente_id_cliente`)
+                 VALUES (?, ?, ?, ?)";
 
         $stmt2 = mysqli_prepare($conexao, $sql2);
 
@@ -139,33 +120,18 @@
         mysqli_stmt_close($stmt2);
 
         //cadastro na tabela de endereços
-        $sql3 = "INSERT INTO `tb_enderecos` (`endereco`, `tb_cliente_id_cliente`) VALUES (?, ?)";
-        
-        $stmt3 = mysqli_prepare($conexao, $sql3);
-        
-        mysqli_stmt_bind_param($stmt3, "si", $endereco, $id_cliente);
-
-        mysqli_stmt_execute($stmt3);
-
-        mysqli_stmt_close($stmt3);
+        insereEnderecos($conexao,$endereco, $id_cliente);
 
        
         //cadastro na tabela aluguel, e retorno do id;
         $id_aluguel = insereAluguelVerificaID($conexao, $data, $funcionario, $id_cliente);
 
-            
-        //cadastro na veiculo_aluguel
-            
-        $sql_final = "INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`) 
-                    VALUES (?, ?)";
-
-        $stmtFinal = mysqli_prepare($conexao, $sql_final);
+          //busca na tb_veiculo, retornando  o km já rodado
+        $km_inicial = KmAtual($conexao, $veiculo);
         
-        mysqli_stmt_bind_param($stmtFinal, "ii", $veiculo, $id_aluguel);
-
-        mysqli_stmt_execute($stmtFinal);
-
-        mysqli_stmt_close($stmtFinal);
+        $km_final = 0;
+        //cadastro na veiculo_aluguel
+        insereVeiculosAluguel($conexao, $veiculo, $id_aluguel, $km_inicial, $km_final);
 
          //Update no estado do carro
          $update = "UPDATE `tb_veiculo` SET `estado_veiculo` = 'a' WHERE `id_veiculo` = ? ";

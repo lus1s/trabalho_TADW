@@ -8,8 +8,7 @@ $id_veiculo = $_GET['id_veiculo'];
 
 $id_aluguel = idAluguelPorTbVeiculo($conexao, $id_veiculo);
 
-$data = date('Y-m-d');
-
+$data = date('d/m/Y');
 if (isset($_GET['origem'])) {
 
     $aluguel = $_GET['id_aluguel'];
@@ -17,7 +16,7 @@ if (isset($_GET['origem'])) {
     $valor = $_GET['valor'];
     $id_veiculo = $_GET['id_veiculo'];
 
-    $sql_devolucao = "INSERT INTO `tb_devolucao` (`data_devolucao`, `km_rodados`, `valor_cobrado`, `tb_aluguel_id_aluguel`) 
+    $sql_devolucao = "INSERT INTO `tb_devolucao` (`km_rodados`, `valor_cobrado`, `tb_aluguel_id_aluguel`) 
         VALUES (?, ?, ?, ?)";
 
     $stmt = mysqli_prepare($conexao, $sql_devolucao);
@@ -29,6 +28,8 @@ if (isset($_GET['origem'])) {
 
     mysqli_stmt_close($stmt);
 
+    
+    
     //alterção no estado do veículo
     $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = '1' WHERE `id_veiculo` = ? ";
 
@@ -72,6 +73,9 @@ if (isset($_GET['origem'])) {
 
         Kilometragem rodada durante o aluguel:
         <input type="text" name="km_rodados" id=""> <br><br>
+
+        Metodo de pagamento:
+        <input type="text" name="met_pagamento"> <br><br>
 
         Valor cobrado:
         <input type="text" name="valor" id="">
