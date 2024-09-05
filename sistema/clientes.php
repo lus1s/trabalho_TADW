@@ -37,6 +37,7 @@
                  <td>id_cliente</td>
                  <td>nome_cliente</td>
                  <td>tipo_cliente</td>
+                 <td>exibir_perfil</td>
              </tr>
              ";
 
@@ -75,6 +76,7 @@
                                  echo "<td> $id_cliente  </td>";
                                  echo "<td> $nome_cliente </td>";
                                  echo "<td> $tipo_cliente </td>";
+                                 echo "<td><button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button></td>";
                                  echo "</tr>";
                              }
                          } 
