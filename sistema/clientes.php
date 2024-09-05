@@ -25,63 +25,63 @@
     <?php
         if ($origem == 1) {
             
-            // $nome = $_GET['cliente'];
-            
-            // $sql = "SELECT * FROM tb_cliente WHERE nome_cliente = %? AND nome_cliente = ?% ";
-            
-            // $stmt = mysqli_prepare($conexao, $sql);
-            // mysqli_stmt_bind_param($stmt, "s", $nome);
-            // mysqli_stmt_execute($stmt);
-            
-            echo"php";
-            echo"
-              <tr>
-                 <td>id_cliente</td>
-                 <td>nome_cliente</td>
-                 <td>tipo_cliente</td>
-             </tr>
-             ";
-
-             $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel";
-            
+             $nome = $_GET['cliente'];
+    
+             $sql = "SELECT * FROM tb_cliente WHERE nome_cliente LIKE  %?%";
+    
              $stmt = mysqli_prepare($conexao, $sql);
-
+             mysqli_stmt_bind_param($stmt, "s", $nome);
              mysqli_stmt_execute($stmt);
+            
+            // echo"php";
+            // echo"
+            //   <tr>
+            //      <td>id_cliente</td>
+            //      <td>nome_cliente</td>
+            //      <td>tipo_cliente</td>
+            //  </tr>
+            //  ";
 
-             mysqli_stmt_bind_result($stmt, $id_cliente);
+            //  $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel";
+            
+            //  $stmt = mysqli_prepare($conexao, $sql);
 
-             mysqli_stmt_store_result($stmt);
+            //  mysqli_stmt_execute($stmt);
 
-             $listar = [];
-             $listar2 = [];   
-             if (mysqli_stmt_num_rows($stmt) > 0) {
-                 while (mysqli_stmt_fetch($stmt)) {
-                         $listar[] = [$id_cliente];
+            //  mysqli_stmt_bind_result($stmt, $id_cliente);
 
-                         $sql2 = "SELECT * FROM `tb_cliente` WHERE `id_cliente` = ?";
+            //  mysqli_stmt_store_result($stmt);
 
-                         $stmt2 = mysqli_prepare($conexao, $sql2);
+            //  $listar = [];
+            //  $listar2 = [];   
+            //  if (mysqli_stmt_num_rows($stmt) > 0) {
+            //      while (mysqli_stmt_fetch($stmt)) {
+            //              $listar[] = [$id_cliente];
 
-                         mysqli_stmt_bind_param($stmt2, "i", $id_cliente);
+            //              $sql2 = "SELECT * FROM `tb_cliente` WHERE `id_cliente` = ?";
 
-                         mysqli_stmt_execute($stmt2);
+            //              $stmt2 = mysqli_prepare($conexao, $sql2);
 
-                         mysqli_stmt_bind_result($stmt2, $id_cliente, $nome_cliente, $tipo_cliente);
+            //              mysqli_stmt_bind_param($stmt2, "i", $id_cliente);
 
-                         mysqli_stmt_store_result($stmt2);
+            //              mysqli_stmt_execute($stmt2);
 
-                         if (mysqli_stmt_num_rows($stmt2) > 0){
-                             while (mysqli_stmt_fetch($stmt2)) {
-                                 $listar2[] = [$id_cliente, $nome_cliente, $tipo_cliente];
+            //              mysqli_stmt_bind_result($stmt2, $id_cliente, $nome_cliente, $tipo_cliente);
+
+            //              mysqli_stmt_store_result($stmt2);
+
+            //              if (mysqli_stmt_num_rows($stmt2) > 0){
+            //                  while (mysqli_stmt_fetch($stmt2)) {
+            //                      $listar2[] = [$id_cliente, $nome_cliente, $tipo_cliente];
                                  
-                                 echo "<td> $id_cliente  </td>";
-                                 echo "<td> $nome_cliente </td>";
-                                 echo "<td> $tipo_cliente </td>";
-                                 echo "</tr>";
-                             }
-                         } 
-                     } 
-                 }
+            //                      echo "<td> $id_cliente  </td>";
+            //                      echo "<td> $nome_cliente </td>";
+            //                      echo "<td> $tipo_cliente </td>";
+            //                      echo "</tr>";
+            //                  }
+            //              } 
+            //          } 
+            //      }
              
      
             
