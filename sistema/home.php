@@ -4,7 +4,7 @@
     require_once 'conexao.php';
     
    
-    foreach($_SESSION['lista'] as $dados){
+    foreach($_SESSION['dados_funcionario'] as $dados){
 
         $nomeFuncionario = $dados[0];
         $id_funcionario = $dados[1];
@@ -27,7 +27,7 @@
             <a href="exibir_veiculos.php">veiculos</a> <br><br>
             <a href="busca_clientes.html">Exibir clientes / Histórico de alugueis</a> <br><br>
             <a href="teste.php">Testes</a> <br><br>
-            <a href="logout.php">sair</a> <br>
+            <a href="limpar_sessions.php?origem=1">sair</a> <br>
         </div>
     </center>
 

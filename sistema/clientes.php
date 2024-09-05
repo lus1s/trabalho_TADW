@@ -2,6 +2,8 @@
     require_once 'testeLogin.php';
     require_once 'operacoes.php';
     require_once 'conexao.php';
+
+    $origem = $_GET['origem'];
  ?>   
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +23,7 @@
 -->
     
     <?php
-        if ($_GET['origem'] = 1) {
+        if ($origem == 1) {
             
             // $nome = $_GET['cliente'];
             
@@ -37,7 +39,6 @@
                  <td>id_cliente</td>
                  <td>nome_cliente</td>
                  <td>tipo_cliente</td>
-                 <td>exibir_perfil</td>
              </tr>
              ";
 
@@ -76,7 +77,6 @@
                                  echo "<td> $id_cliente  </td>";
                                  echo "<td> $nome_cliente </td>";
                                  echo "<td> $tipo_cliente </td>";
-                                 echo "<td><button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button></td>";
                                  echo "</tr>";
                              }
                          } 
@@ -85,22 +85,21 @@
              
      
             
-        }elseif ($_GET['origem'] = 2) {
+        }elseif ($origem == 2) {
             
             
             
-        }elseif ($_GET['origem'] = 3) {
-                 echo"php";
+        }elseif ($origem == 3) {
+               
                echo" <table border='1'>
                  <tr>
                     <td>id_cliente</td>
                     <td>nome_cliente</td>
                     <td>tipo_cliente</td>
-                </tr>
-                </table>";
+                </tr>";
 
                 $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel";
-                echo"Pós sql";
+                
                 $stmt = mysqli_prepare($conexao, $sql);
 
                 mysqli_stmt_execute($stmt);
@@ -134,6 +133,8 @@
                                     echo "<td> $id_cliente  </td>";
                                     echo "<td> $nome_cliente </td>";
                                     echo "<td> $tipo_cliente </td>";
+                                    echo "<td><button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button></td>";
+
                                     echo "</tr>";
                                 }
                             } 

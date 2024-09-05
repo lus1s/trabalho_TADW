@@ -119,7 +119,7 @@ CREATE TABLE `tb_veiculo` (
   `motor_veiculo` varchar(45) NOT NULL,
   `km_rodados` varchar(45) NOT NULL,
   `descricao_veiculo` varchar(45) NOT NULL,
-  `qtd_portas` enum('0','2','4') NOT NULL,
+  `qtd_portas` varchar(1) NOT NULL,
   `arcondicionado_veiculo` enum('1','2') NOT NULL,
   `portamala_veiculo` enum('1','2') NOT NULL,
   `tamanho_veiculo` enum('1','2','3') NOT NULL,
@@ -202,26 +202,26 @@ INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcion
 -- Inserindo dados na tabela tb_veiculo
 INSERT INTO `tb_veiculo` (`nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`)
 VALUES
-(1, 'Civic', '2022', 'Honda', '1', 'Preto', 'ABC-1234', '1', '2.0', '10000', 'Sedan confortável', '4', '1', '1', '2', '1', '5'),
-(2, 'Corolla', '2021', 'Toyota', '1', 'Branco', 'XYZ-5678', '1', '1.8', '15000', 'Sedan econômico', '4', '1', '1', '2', '1', '5'),
-(3, 'Uno', '2015', 'Fiat', '1', 'Vermelho', 'DEF-9876', '2', '1.0', '50000', 'Compacto urbano', '2', '2', '2', '1', '2', '4'),
-(3, 'Gol', '2019', 'Volkswagen', '1', 'Prata', 'GHI-5432', '1', '1.6', '30000', 'Hatch popular', '2', '2', '1', '1', '2', '5'),
-(5, 'Tucson', '2018', 'Hyundai', '2', 'Azul', 'JKL-3210', '1', '2.0', '40000', 'SUV espaçoso', '4', '1', '1', '3', '1', '5'),
-(6, 'EcoSport', '2020', 'Ford', '2', 'Cinza', 'MNO-6543', '1', '1.5', '20000', 'SUV compacto', '4', '1', '1', '3', '2', '5'),
-(7, 'HB20', '2017', 'Hyundai', '1', 'Branco', 'PQR-8765', '2', '1.6', '35000', 'Hatchback confiável', '4', '1', '2', '2', '2', '5'),
-(8, 'Polo', '2022', 'Volkswagen', '1', 'Preto', 'STU-4321', '1', '1.0', '5000', 'Hatch moderno', '4', '1', '2', '2', '1', '5'),
-(9, 'Duster', '2019', 'Renault', '2', 'Verde', 'VWX-0987', '1', '2.0', '25000', 'SUV robusto', '4', '1', '1', '3', '1', '5'),
-(10, 'Focus', '2016', 'Ford', '1', 'Prata', 'YZA-7654', '2', '2.0', '60000', 'Sedan esportivo', '4', '1', '1', '2', '1', '5'),
-(11, 'Celta', '2014', 'Chevrolet', '1', 'Vermelho', 'BCD-2345', '2', '1.0', '70000', 'Compacto econômico', '2', '2', '2', '1', '2', '4'),
-(12, 'Ranger', '2020', 'Ford', '2', 'Preto', 'EFG-8765', '1', '3.2', '15000', 'Picape poderosa', '4', '1', '1', '3', '2', '5'),
-(13, 'Cruze', '2017', 'Chevrolet', '1', 'Branco', 'NOP-5432', '1', '1.4', '35000', 'Sedan sofisticado', '4', '1', '1', '2', '1', '5')
-(14, 'CB 500F', '2022', 'Honda', '2', 'Preto', 'JKL-7890', '1', '500cc', '5000', 'Moto esportiva', '0', '2', '2', '1', '2', '2'),
-(15, 'Ninja 300', '2021', 'Kawasaki', '2', 'Verde', 'MNO-0987', '1', '300cc', '7000', 'Moto esportiva', '0', '2', '2', '1', '2', '2'),
-(16, 'Fazer 250', '2019', 'Yamaha', '2', 'Azul', 'PQR-4321', '1', '250cc', '10000', 'Moto urbana', '0', '2', '2', '1', '2', '2'),
-(17, 'Harley-Davidson', '2018', 'Harley-Davidson', '2', 'Preto', 'STU-6543', '1', '883cc', '8000', 'Moto custom', '0', '2', '2', '2', '2', '2'),
-(18, 'CB 650R', '2020', 'Honda', '2', 'Vermelho', 'VWX-3210', '1', '650cc', '6000', 'Moto naked', '0', '2', '2', '1', '2', '2'),
-(19, 'MT-09', '2021', 'Yamaha', '2', 'Cinza', 'YZA-8765', '1', '900cc', '4000', 'Moto naked', '0', '2', '2', '1', '2', '2'),
-(20, 'Ducati Panigale V4', '2022', 'Ducati', '2', 'Vermelho', 'BCD-5432', '1', '1103cc', '2000', 'Moto esportiva premium', '0', '2', '2', '1', '2', '2');
+('Civic', '2022', 'Honda', 1, 'Preto', 'ABC-1234', 1, '2.0', '10000', 'Sedan confortável', 4, 1, 1, 2, 1, 5),
+('Corolla', '2021', 'Toyota', 1, 'Branco', 'XYZ-5678', 1, '1.8', '15000', 'Sedan econômico', 4, 1, 1, 2, 1, 5),
+('Uno', '2015', 'Fiat', 1, 'Vermelho', 'DEF-9876', 2, '1.0', '50000', 'Compacto urbano', 2, 2, 2, 1, 2, 4),
+('Gol', '2019', 'Volkswagen', 1, 'Prata', 'GHI-5432', 1, '1.6', '30000', 'Hatch popular', 2, 2, 1, 1, 2, 5),
+('Tucson', '2018', 'Hyundai', 2, 'Azul', 'JKL-3210', 1, '2.0', '40000', 'SUV espaçoso', 4, 1, 1, 3, 1, 5),
+('EcoSport', '2020', 'Ford', 2, 'Cinza', 'MNO-6543', 1, '1.5', '20000', 'SUV compacto', 4, 1, 1, 3, 2, 5),
+('HB20', '2017', 'Hyundai', 1, 'Branco', 'PQR-8765', 2, '1.6', '35000', 'Hatchback confiável', 4, 1, 2, 2, 2, 5),
+('Polo', '2022', 'Volkswagen', 1, 'Preto', 'STU-4321', 1, '1.0', '5000', 'Hatch moderno', 4, 1, 2, 2, 1, 5),
+('Duster', '2019', 'Renault', 2, 'Verde', 'VWX-0987', 1, '2.0', '25000', 'SUV robusto', 4, 1, 1, 3, 1, 5),
+('Focus', '2016', 'Ford', 1, 'Prata', 'YZA-7654', 2, '2.0', '60000', 'Sedan esportivo', 4, 1, 1, 2, 1, 5),
+('Celta', '2014', 'Chevrolet', 1, 'Vermelho', 'BCD-2345', 2, '1.0', '70000', 'Compacto econômico', 2, 2, 2, 1, 2, 4),
+('Ranger', '2020', 'Ford', 2, 'Preto', 'EFG-8765', 1, '3.2', '15000', 'Picape poderosa', 4, 1, 1, 3, 2, 5),
+('Cruze', '2017', 'Chevrolet', 1, 'Branco', 'NOP-5432', 1, '1.4', '35000', 'Sedan sofisticado', 4, 1, 1, 2, 1, 5),
+('CB 500F', '2022', 'Honda', 2, 'Preto', 'JKL-7890', 1, '500cc', '5000', 'Moto esportiva', 0, 2, 2, 1, 2, 2),
+('Ninja 300', '2021', 'Kawasaki', 2, 'Verde', 'MNO-0987', 1, '300cc', '7000', 'Moto esportiva', 0, 2, 2, 1, 2, 2),
+('Fazer 250', '2019', 'Yamaha', 2, 'Azul', 'PQR-4321', 1, '250cc', '10000', 'Moto urbana', 0, 2, 2, 1, 2, 2),
+('Harley-Davidson', '2018', 'Harley-Davidson', 2, 'Preto', 'STU-6543', 1, '883cc', '8000', 'Moto custom', 0, 2, 2, 2, 2, 2),
+('CB 650R', '2020', 'Honda', 2, 'Vermelho', 'VWX-3210', 1, '650cc', '6000', 'Moto naked', 0, 2, 2, 1, 2, 2),
+('MT-09', '2021', 'Yamaha', 2, 'Cinza', 'YZA-8765', 1, '900cc', '4000', 'Moto naked', 0, 2, 2, 1, 2, 2),
+('Ducati Panigale V4', '2022', 'Ducati', 2, 'Vermelho', 'BCD-5432', 1, '1103cc', '2000', 'Moto esportiva premium', 0, 2, 2, 1, 2, 2);
 
 
 -- Inserindo dados na tabela tb_aluguel

@@ -16,22 +16,24 @@
 
     mysqli_stmt_bind_result($stmt, $nome_funcionario, $id_funcionario);
 
-    //essa linha só é usada quando há mais de 1 linha de resultados
     mysqli_stmt_store_result($stmt);
 
-    $lista = [];
+    $dados_funcionario = [];
 
     if (mysqli_stmt_num_rows($stmt) > 0) {
 
        mysqli_stmt_fetch($stmt);
        
-        $lista[] = [$nome_funcionario, $id_funcionario];
-        $_SESSION['lista'] = $lista;
+        $dados_funcionario[] = [$nome_funcionario, $id_funcionario];
+        $_SESSION['dados_funcionario'] = $dados_funcionario;
 
         mysqli_stmt_close($stmt);
 
         $_SESSION['logado'] = true;
- 
+        
+        $_SESSION['carrinho']['veiculos'] = array();
+        $_SESSION['carrinho']['nome']= array();
+        $_SESSION['nome_veiculo'] = array();
         header('Location: home.php');
         exit();
 
