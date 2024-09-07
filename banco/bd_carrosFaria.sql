@@ -12,7 +12,7 @@ USE `bd_veiculosFaria`;
 DROP TABLE IF EXISTS `tb_aluguel`;
 CREATE TABLE `tb_aluguel` (
   `id_aluguel` int(11) NOT NULL AUTO_INCREMENT,
-  `data_aluguel` date NOT NULL,
+  `data_aluguel` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `tb_funcionario_id_funcionario` int(11) NOT NULL,
   `tb_cliente_id_cliente` int(11) NOT NULL,
   PRIMARY KEY (`id_aluguel`),
@@ -22,7 +22,6 @@ CREATE TABLE `tb_aluguel` (
   CONSTRAINT `fk_tb_aluguel_tb_cliente1` FOREIGN KEY (`tb_cliente_id_cliente`) REFERENCES `tb_cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_tb_aluguel_tb_funcionario1` FOREIGN KEY (`tb_funcionario_id_funcionario`) REFERENCES `tb_funcionario` (`id_funcionario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
 
 DROP TABLE IF EXISTS `tb_cliente`;
 CREATE TABLE `tb_cliente` (
@@ -36,9 +35,9 @@ CREATE TABLE `tb_cliente` (
 DROP TABLE IF EXISTS `tb_devolucao`;
 CREATE TABLE `tb_devolucao` (
   `id_devolucao` int(11) NOT NULL AUTO_INCREMENT,
-  `data_devolucao` date NOT NULL,
-  `km_rodados` varchar(45) NOT NULL,
-  `valor_cobrado` varchar(45) NOT NULL,
+  `data_devolucao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `valor_cobrado` decimal(10,2) NOT NULL,
+  `forma_pagamento` varchar(45) NOT NULL,
   `tb_aluguel_id_aluguel` int(11) NOT NULL,
   PRIMARY KEY (`id_devolucao`,`tb_aluguel_id_aluguel`),
   KEY `fk_tb_devolucao_tb_aluguel1_idx` (`tb_aluguel_id_aluguel`),
@@ -133,6 +132,8 @@ DROP TABLE IF EXISTS `tb_veiculo_aluguel`;
 CREATE TABLE `tb_veiculo_aluguel` (
   `tb_veiculo_id_veiculo` int(11) NOT NULL,
   `tb_aluguel_id_aluguel` int(11) NOT NULL,
+  `km_incial` varchar(25) NOT NULL,
+  `km_final` varchar(45) NOT NULL,
   KEY `fk_tb_veiculo_has_tb_aluguel_tb_aluguel1_idx` (`tb_aluguel_id_aluguel`),
   KEY `fk_tb_veiculo_has_tb_aluguel_tb_veiculo1_idx` (`tb_veiculo_id_veiculo`),
   CONSTRAINT `fk_tb_veiculo_has_tb_aluguel_tb_aluguel1` FOREIGN KEY (`tb_aluguel_id_aluguel`) REFERENCES `tb_aluguel` (`id_aluguel`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -226,10 +227,12 @@ VALUES
 
 -- Inserindo dados na tabela tb_aluguel
 INSERT INTO `tb_aluguel` (`id_aluguel`, `data_aluguel`, `tb_funcionario_id_funcionario`, `tb_cliente_id_cliente`) VALUES
-(1, '2024-06-01', 1, 1),
-(2, '2024-06-05', 2, 2),
-(3, '2024-06-10', 1, 3),
-(4, '2024-06-15', 3, 4);
+(5,	'2024-09-05 22:31:06',	1,	7),
+(6,	'2024-09-05 22:33:26',	1,	8),
+(7,	'2024-09-05 23:19:50',	1,	9),
+(10,	'2024-09-05 23:29:44',	1,	12),
+(11,	'2024-09-05 23:31:57',	1,	13),
+(12,	'2024-09-05 23:32:30',	1,	14);
 
 
 -- Inserindo dados na tabela tb_devolucao
@@ -303,8 +306,10 @@ INSERT INTO `tb_manutencao` (`id_manutencao`, `data_ida`, `data_prev_volta`, `tb
 (20, '2024-12-10', '2024-12-15', 20);
 
 -- Inserindo dados na tabela tb_carro_aluguel
-INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4);
+INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`, `km_incial`, `km_final`) VALUES
+(1,	5,	'10000',	'0'),
+(2,	6,	'15000',	'0'),
+(3,	7,	'50000',	'0'),
+(6,	10,	'20000',	'0'),
+(4,	11,	'30000',	'0'),
+(4,	12,	'30000',	'0');

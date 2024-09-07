@@ -124,7 +124,7 @@
 
        
         //cadastro na tabela aluguel, e retorno do id;
-        $id_aluguel = insereAluguelVerificaID($conexao, $data, $funcionario, $id_cliente);
+        $id_aluguel = insereAluguelVerificaID($conexao, $funcionario, $id_cliente);
 
           //busca na tb_veiculo, retornando  o km já rodado
         $km_inicial = KmAtual($conexao, $veiculo);
@@ -134,7 +134,7 @@
         insereVeiculosAluguel($conexao, $veiculo, $id_aluguel, $km_inicial, $km_final);
 
          //Update no estado do carro
-         $update = "UPDATE `tb_veiculo` SET `estado_veiculo` = 'a' WHERE `id_veiculo` = ? ";
+         $update = "UPDATE `tb_veiculo` SET `estado_veiculo` = '2' WHERE `id_veiculo` = ? ";
         
          $stmtUpdate = mysqli_prepare($conexao, $update);
          
