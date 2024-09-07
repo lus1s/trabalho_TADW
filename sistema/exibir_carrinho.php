@@ -36,7 +36,7 @@
                 }
                 echo "<a href='limpar_sessions.php?origem=2'>esvaziar carrinho</a>";
 
-                echo '<button> <a href="">Continuar Aluguel</a></button>';
+                echo '<button> <a href="clientes.php?origem=2">Continuar Aluguel</a></button>';
         }
         
         

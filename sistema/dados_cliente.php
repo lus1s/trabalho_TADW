@@ -12,10 +12,6 @@
 
         $_SESSION['dados'] = array($nome_cliente, $tipo_cliente, $id_veiculo, $funcionario);
 
-        //futuramente adicionar uma verificação para que um cliente cadastrado não seja cadastrado de novo.
-        //até lá vai ficar assim
-        // Fazer com função
-
         // Direciona p/ o proximo formulário a ser preenchido
         if ($tipo_cliente == "p") {
             header('Location: pessoa_fisica.html');
@@ -32,12 +28,6 @@
         $cnh = $_GET['cnh'];
         $endereco = $_GET['endereco'];
         $data = date('Y-m-d');
-
-        // a verificação de cadastro será realizada ensta parte
-        // essa verificação será feita da seguinte forma: 
-            //1º - um select buscando o cpf ou cnh no banco, para verificar se é igual ao digitado;
-            //2º - caso o cpf ou cnh já esteja cadastrado, é necessário que os dados sigam para o cadstro nas tabelas
-                //relacionadas ao aluguel;
 
         //separa os dados do array em variaveis
         list($nome, $tipo, $veiculo, $funcionario) = $_SESSION['dados'];
@@ -152,8 +142,40 @@
             header('Location: exibir_veiculos.php');
             exit();
         } else {
-            header('Location: form_aluguel');
+            header('Location: form_aluguel.php');
             exit();
         }
+
+        //Adastros de vairios aluguéis, com clientes já cadastrados
+    }elseif ($_GET['origem'] == 4) {
+
+        $id_cliente = $_GET['id_cliente'];
+        
+        $funcionario = $_SESSION['idFuncionario'];
+
+        $veiculos = $_SESSION['nome_veiculo'];
+
+        $id_aluguel = insereAluguelVerificaID($conexao, $funcionario, $id_cliente);
+
+        foreach ($veiculos as $id => $nome) {
+
+            $km_inicial = KmAtual($conexao, $id);
+        
+            $km_final = 0;
+
+            insereVeiculosAluguel($conexao, $id, $id_aluguel, $km_inicial, $km_final);
+            
+            $update = "UPDATE `tb_veiculo` SET `estado_veiculo` = '2' WHERE `id_veiculo` = ? ";
+        
+            $stmtUpdate = mysqli_prepare($conexao, $update);
+         
+            mysqli_stmt_bind_param($stmtUpdate, "i", $id);
+            mysqli_stmt_execute($stmtUpdate);
+            mysqli_stmt_close($stmtUpdate);
+        }        
+        
+            header('Location: limpar_sessions.php?origem=2');
+            exit();
+        
     }
-    ?>
+?>

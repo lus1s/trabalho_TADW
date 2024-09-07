@@ -1,6 +1,6 @@
 <?php
 
-    function idAluguelPorTbVeiculo($conexao, $id_veiculo){
+    function idAluguelPorTbVeiculoAluguel($conexao, $id_veiculo){
         $sql = "SELECT tb_aluguel_id_aluguel FROM tb_veiculo_aluguel WHERE tb_veiculo_id_veiculo = ?";
 
         $stmt = mysqli_prepare($conexao, $sql);
@@ -56,7 +56,7 @@
             return $id_cliente;
     }
     
-   function insereEnderecos($conexao, $endereco, $id_cliente){
+    function insereEnderecos($conexao, $endereco, $id_cliente){
         $sql3 = "INSERT INTO `tb_enderecos` (`endereco`, `tb_cliente_id_cliente`) VALUES (?, ?)";
 
         $stmt3 = mysqli_prepare($conexao, $sql3);
@@ -103,4 +103,6 @@
 
         mysqli_stmt_close($stmt_final);
     }
-    ?>
+
+
+?>

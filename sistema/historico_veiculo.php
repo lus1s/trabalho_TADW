@@ -11,21 +11,6 @@
     <title>Document</title>
 </head>
 <body>
-    <pre>
-        <?php
-            print_r($_SESSION['nome_veiculo']);
-        ?>
-    </pre>
     
-    
-    <?php
-        if (empty($_SESSION['nome_veiculo'])) {
-            echo"ñ possui coisas";
-        }
-        else {
-            
-            echo "possui";
-        }
-    ?>
 </body>
 </html>

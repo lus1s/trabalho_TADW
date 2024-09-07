@@ -6,7 +6,7 @@ require_once 'testeLogin.php';
 $nome_veiculo = $_GET['nome_veiculo'];
 $id_veiculo = $_GET['id_veiculo'];
 
-$id_aluguel = idAluguelPorTbVeiculo($conexao, $id_veiculo);
+$id_aluguel = idAluguelPorTbVeiculoAluguel($conexao, $id_veiculo);
 
 $data = date('d/m/Y');
 if (isset($_GET['origem'])) {

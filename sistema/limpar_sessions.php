@@ -11,7 +11,7 @@ if ($_GET['origem'] == 1) {
         header('Location: index.html');
         exit();
     } else {
-        header('Location: index.html');
+        header('Location: home.php');
         exit();
     
     }
@@ -26,12 +26,12 @@ elseif ($_GET['origem'] == 2) {
         $_SESSION['carrinho']['nome']= array();
         $_SESSION['nome_veiculo'] = array();
 
-        header('Location: exibir_carrinho.php');
+        header('Location: exibir_veiculos.php');
         exit();
 
     } else {
 
-        header('Location: exibir_carrinho.php');
+        header('Location: exibir_veiculos.php');
         exit();
     
     }
@@ -41,7 +41,7 @@ elseif ($_GET['origem'] == 3) {
     
     unset($_SESSION['nome_veiculo'][$id]);
 
-    header('Location: exibir_carrinho.php');
+    header('Location: exibir_veiculos.php');
         exit();
 }
 ?>

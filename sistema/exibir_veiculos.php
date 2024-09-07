@@ -16,7 +16,7 @@
 <body>
     <a href="home.php">home</a>
     <div class="position-relative">
-        <iframe src="./exibir_carrinho.php" frameborder="1" height="120%" class="position-absolute top-0 end-0" id="frame"></iframe>
+        <!-- <iframe src="./exibir_carrinho.php" frameborder="1" height="120%" class="position-absolute top-0 end-0" id="frame" allowfullscreen="true"></iframe> -->
         <table class="">
             <tr>
                 <td>Nome do veiculo</td>
@@ -46,7 +46,7 @@
 
                         if ($estado == "1"){$estado_exibido = "Disponível"; $acao = "<button id='botoes' class='btn btn-success'><a id='links' href='form_aluguel.php?id_veiculo=$id_veiculo' style='color: white;'>Alugar</a></button> <button class='btn btn-dark'><a href='carrinho.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo' style='color: white;'>selecionar</a></button>";} 
 
-                        elseif ($estado == "2"){$estado_exibido = "Alugado"; $acao =  "<button class='btn btn-danger'><a href='devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo' style='color: white;'>Devolver</a></button>";}
+                        elseif ($estado == "2"){$estado_exibido = "Alugado"; $acao =  "<button class='btn btn-danger'><a href='devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo' style='color: white;'>Devolver</a></button> <button class='btn btn-danger'><a href='devolucao.php?id_veiculo=$id_veiculo' style='color: white;'>inspecionar</a></button>";}
 
                         echo "<td scope='col'> $nome_veiculo </td>";
                         echo "<td scope='col'> $marca </td>";
@@ -54,11 +54,39 @@
                         echo "<td scope='col'> $estado_exibido </td>";
                         echo "<td scope='col'> $acao </td>";
                         echo "</tr>";
+
+                        
                     }
+
+                    echo '<div class="position-absolute top-0 end-0" id="frame">';
+                    if (empty($_SESSION['nome_veiculo'])) {
+                        echo "selecione alguns veiculos";
+                    }else {
+                        $nome_veiculo = $_SESSION['nome_veiculo'];
+            
+                        foreach ($nome_veiculo as $id => $nome) {
+                            echo"
+                                <div class='card' style='width: 18rem;'>
+                                    <img src='...' class='card-img-top' alt='...'>
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>$nome</h5>
+                                        <a href='limpar_sessions.php?id=$id&origem=3' class='btn btn-primary'>remover</a>
+                                    </div>
+                                </div> <br>";
+            
+                            }
+                            echo "<a href='limpar_sessions.php?origem=2'>esvaziar carrinho</a>";
+            
+                            echo '<button> <a href="clientes.php?origem=2">Continuar Aluguel</a></button>';
+                            echo '</div>';
+                    }
+                    
                 }else {
                     echo "<td colspan='5'>não há veiculos cadastrados</td>
                         </tr>";
                 }
+                    
+                
                 
             ?>
             </table>
