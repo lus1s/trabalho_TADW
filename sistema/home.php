@@ -23,6 +23,7 @@
         <h3>Bem vinda(o): <?php echo $nomeFuncionario; ?></h3> 
         <div style="background-color:rgb(119, 243, 243);">
             <a href="form_veiculo.html">Formulário de veículo</a> <br><br>
+            <a href="cad_cliente.php">Cadastrar cliente</a> <br><br>
             <a href="formulario_funci.html">Formulário de funcionário</a> <br><br> 
             <a href="exibir_veiculos.php">veiculos</a> <br><br>
             <a href="busca_clientes.html">Exibir clientes / Histórico de alugueis</a> <br><br>
