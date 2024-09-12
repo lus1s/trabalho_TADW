@@ -14,13 +14,6 @@
 </head>
 <body>
     <table border="1">
-    <!-- <table>
-        <tr>
-            <td>id_cliente</td>
-            <td>nome_cliente</td>
-            <td>tipo_cliente</td>
-        </tr>
--->
     
     <?php
         if ($origem == 1) {
