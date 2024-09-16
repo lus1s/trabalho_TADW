@@ -24,6 +24,29 @@
         return $id;
     }
 
+    function idAluguelPorTbCliente($conexao, $id_cliente){
+
+        $sql = "SELECT id_aluguel FROM tb_aluguel WHERE tb_cliente_id_cliente = ?";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $id_cliente);
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_bind_result($stmt, $id);
+        mysqli_stmt_store_result($stmt);
+
+        $lista = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $lista[] = [$id];
+            }
+        }
+        mysqli_stmt_close($stmt);
+    
+        return $id;
+    }
+
     function insereClienteVerificaID($conexao, $nome, $tipo){
         $sql = "INSERT INTO `tb_cliente` (`nome_cliente`, `tipo_cliente`) VALUES (?, ?)";
 
@@ -104,5 +127,28 @@
         mysqli_stmt_close($stmt_final);
     }
 
+    function dadosVeiculoPorIdVeiculo($conexao, $id_veiculo){
+        $sql = "SELECT nome_veiculo, marca_veiculo, km_rodados FROM tb_veiculo WHERE id_veiculo = ?";
 
+        $stmt = mysqli_prepare($conexao, $sql);
+          
+        mysqli_stmt_bind_param($stmt, "i", $id_veiculo);
+        
+        mysqli_stmt_execute($stmt);
+        
+        mysqli_stmt_bind_result($stmt, $nome, $marca, $km_rodados);
+        
+        mysqli_stmt_store_result($stmt);
+        
+        $dados_veiculos = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $dados_veiculos[] = [$nome, $marca, $km_rodados];
+            }
+        }
+        
+        mysqli_stmt_close($stmt);
+
+        return $dados_veiculos;
+    }
 ?>
