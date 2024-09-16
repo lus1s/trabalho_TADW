@@ -7,5 +7,29 @@ function colors() {
     
     return false;
 }
+    //validacão do funcionario 
+function validacao() {
+    let name = document.getElementById("name");
+    let cpf = document.getElementById("cpf");
+    let password = document.getElementById("password");
+
+    if (name.value == "") {
+        alert("Preencha o campo nome!!");
+        name.focus(); 
+        return false;
+    }
+    if (cpf.value == "") {
+        alert("Preencha o campo CPF!!");
+        cpf.focus(); 
+        return false;
+    }
+    if (password.value == "") {
+        alert("Preencha o campo senha!!");
+        password.focus(); 
+        return false;
+    }
+
+    return true;
+}
 
 
