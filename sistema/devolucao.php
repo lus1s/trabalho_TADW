@@ -34,7 +34,13 @@ $id_aluguel = idAluguelPorTbVeiculoAluguel($conexao, $id_veiculo);
         <input type="text" name="km_rodados" id=""> <br><br>
 
         Metodo de pagamento:
-        <input type="text" name="met_pagamento"> <br><br>
+        <select name="met_pagamento" id="">
+            <option value=""></option>
+            <option value="1">Cartão</option>
+            <option value="2">Pix</option>
+            <option value="3">Dinheiro</option>
+            
+        </select> <br><br>
 
         Valor cobrado:
         <input type="text" name="valor" id="">
