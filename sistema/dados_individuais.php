@@ -12,11 +12,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
     <title>Dados: <?php echo $nome_cliente; ?></title>
 </head>
 <body>
     
+   
         
     <?php
 
@@ -41,6 +42,13 @@
             echo "CNH: $cnh <br><br>";    
         }     
 
+        echo "  <table border='1'>
+        <tr>
+           
+        
+    ";
+
+
         $id_aluguel = idAluguelPorTbCliente($conexao, $id_cliente);
 
         $sql = "SELECT tb_veiculo_id_veiculo FROM tb_veiculo_aluguel WHERE tb_aluguel_id_aluguel = ?";
@@ -58,18 +66,21 @@
             while (mysqli_stmt_fetch($stmt)) {
                 $dados_veiculos[] = [$id_veiculo];
 
-                echo "<td> $id_veiculo </td>";
-                
                 $veiculos = dadosVeiculoPorIdVeiculo($conexao, $id_veiculo,);
 
-                foreach ($veiculos as $key => $value) {
-                    
+                foreach ($veiculos as $dados) {
+                    $nome = $dados[0];
+                   echo "<td>" . $dados[0] ."</td>";
+                   echo "<td>" . $dados[1] . "</td>";
+                   echo "<td>" . $dados[2] . "</td>";
+                   echo "<td><button><a href='devolucao.php?nome_veiculo=$nome&id_veiculo=$id_veiculo'> Devolução </a></button></td>";
+                   echo "</tr>";
                 }
             }
         }   
     ?>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</table>
+<!-- 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 </body>
 </html>

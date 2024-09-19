@@ -6,50 +6,9 @@ require_once 'testeLogin.php';
 $nome_veiculo = $_GET['nome_veiculo'];
 $id_veiculo = $_GET['id_veiculo'];
 
-$id_aluguel = idAluguelPorTbVeiculoAluguel($conexao, $id_veiculo);
-
 $data = date('d/m/Y');
-if (isset($_GET['origem'])) {
 
-    $aluguel = $_GET['id_aluguel'];
-    $km_rodado = $_GET['km_rodados'];
-    $valor = $_GET['valor'];
-    $id_veiculo = $_GET['id_veiculo'];
-
-    $sql_devolucao = "INSERT INTO `tb_devolucao` (`km_rodados`, `valor_cobrado`, `tb_aluguel_id_aluguel`) 
-        VALUES (?, ?, ?, ?)";
-
-    $stmt = mysqli_prepare($conexao, $sql_devolucao);
-
-    mysqli_stmt_bind_param($stmt, "sidi", $data, $km_rodado, $valor, $id_aluguel);
-
-
-    mysqli_stmt_execute($stmt);
-
-    mysqli_stmt_close($stmt);
-
-    
-    
-    //alterção no estado do veículo
-    $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = '1' WHERE `id_veiculo` = ? ";
-
-    $stmt2 = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($stmt2, "i", $id_veiculo);
-
-    if(mysqli_stmt_execute($stmt2)){
-        
-        mysqli_stmt_close($stmt2);
-        header('Location: exibir_veiculos.php');
-        exit();
-
-    }else{
-        
-        mysqli_stmt_close($stmt2);
-        header('Location: exibir_veiculos.php');
-        exit;
-    }
-}
+$id_aluguel = idAluguelPorTbVeiculoAluguel($conexao, $id_veiculo);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +20,7 @@ if (isset($_GET['origem'])) {
 </head>
 
 <body>
-    <form action="devolucao.php">
+    <form action="devolver.php">
 
         <input type="hidden" name="origem" value="1">
         <input type="hidden" name="nome_veiculo" value="<?php echo $nome_veiculo; ?>">
