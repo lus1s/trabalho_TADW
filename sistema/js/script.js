@@ -33,3 +33,30 @@ function validacao() {
 }
 
 
+//validacão do cliente 
+function validacaoCliente() {
+let nome = document.getElementById("nome");
+let cpf = document.getElementById("cpf");
+let cnpj = document.getElementById("cnpj");
+
+if (nome.value == "") {
+    alert("Preencha o campo nome!!");
+    nome.focus(); 
+    return false;
+}
+if (cpf.checked == "" && cnpj.checked == false) {
+    alert("Preencha o campo tipo!!");
+    console.log("oi");
+    tipo.focus(); 
+    return false;
+}
+
+// if (tipo2.value == "") {
+//     alert("Preencha o campo tipo!!");
+//     tipo2.focus(); 
+//     return false;
+// }
+
+return true;
+}
+
