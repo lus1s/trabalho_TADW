@@ -155,12 +155,12 @@
 
     function devolucaoIndividual ($conexao, $valor, $pagamento, $id_aluguel){
 
-        $sql_devolucao = "INSERT INTO `tb_devolucao` (`valor_cobrado`, 'forma_pagamento', `tb_aluguel_id_aluguel`) 
+        $sql_devolucao = "INSERT INTO `tb_devolucao` (`valor_cobrado`, `forma_pagamento`, `tb_aluguel_id_aluguel`) 
         VALUES (?, ?, ?)";
 
         $stmt = mysqli_prepare($conexao, $sql_devolucao);
 
-        mysqli_stmt_bind_param($stmt, "isi", $valor, $pagamento, $id_aluguel);
+        mysqli_stmt_bind_param($stmt, "dii", $valor, $pagamento, $id_aluguel);
 
         mysqli_stmt_execute($stmt);
 

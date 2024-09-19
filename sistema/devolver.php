@@ -6,6 +6,7 @@
     $aluguel = $_GET['id_aluguel'];
     $km_rodado = $_GET['km_rodados'];
     $valor = $_GET['valor'];
+    $pagamento = $_GET['met_pagamento'];
     
     devolucaoIndividual($conexao, $valor, $pagamento, $aluguel);
     
