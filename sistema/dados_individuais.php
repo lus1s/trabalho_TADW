@@ -48,7 +48,7 @@
 
         $id_aluguel = idAluguelPorTbCliente($conexao, $id_cliente);
 
-        $sql = "SELECT tb_veiculo_id_veiculo FROM tb_veiculo_aluguel WHERE tb_aluguel_id_aluguel = ?";
+        $sql = "SELECT tb_veiculo_id_veiculo FROM tb_veiculo_aluguel WHERE tb_aluguel_id_aluguel = ? AND km_final = 0";
 
         $stmt = mysqli_prepare($conexao, $sql);
         mysqli_stmt_bind_param($stmt, "i", $id_aluguel);
@@ -96,7 +96,7 @@
                 }
                 echo "<a href='limpar_sessions_devolucao.php?origem=1&cliente=$id_cliente&nome=$nome_cliente'>esvaziar carrinho</a>";
 
-                echo '<button> <a href="dados_devolucao.php">Continuar devolução</a></button>';
+                echo "<button> <a href='dados_devolucao.php?nome=$nome_cliente&cliente=$id_cliente&aluguel=$id_aluguel'>Continuar devolução</a></button>";
                 echo '</div>';
         }
     ?>

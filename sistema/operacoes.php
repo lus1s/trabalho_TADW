@@ -168,4 +168,15 @@
         
     }
 
+    function dadosAluguel ($conexao, $id_aluguel){
+        
+        $sql = "SELECT data_aluguel, tb_funcionario_id_funcionario FROM tb_aluguel WHERE id_aluguel = ? ";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $id_aluguel);
+
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $id_veiculo);
+        mysqli_stmt_store_result($stmt);
+    }
 ?>

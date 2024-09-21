@@ -51,12 +51,18 @@ if (cpf.checked == "" && cnpj.checked == false) {
     return false;
 }
 
-// if (tipo2.value == "") {
-//     alert("Preencha o campo tipo!!");
-//     tipo2.focus(); 
-//     return false;
-// }
+
 
 return true;
 }
 
+function KmFinal() {
+    let kmInicial = document.getElementsByName("km_inicial");
+    let kmRodados = document.getElementsByName("km_devolucao");
+
+    let KmFinal = lengthkmInicial - kmRodados;
+
+    document.getElementsByName("km_final").value = KmFinal ;
+
+    return false;
+}
