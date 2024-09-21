@@ -21,6 +21,7 @@ elseif ($_GET['origem'] == 2) {
     if (isset($_SESSION['carrinho'])) {
 
         unset($_SESSION['nome_veiculo']);
+        unset($_SESSION['carrinho']);
         
         $_SESSION['carrinho']['veiculos'] = array();
         $_SESSION['carrinho']['nome']= array();
@@ -42,6 +43,6 @@ elseif ($_GET['origem'] == 3) {
     unset($_SESSION['nome_veiculo'][$id]);
 
     header('Location: exibir_veiculos.php');
-        exit();
+    exit();
 }
 ?>

@@ -13,7 +13,9 @@
 <body>
     <pre>
         <?php
-            print_r($_SESSION['nome_veiculo']);
+
+           $veiculos = $_SESSION['nome_veiculo_devolucao'];
+            print_r($veiculos);
         ?>
     </pre>
     
