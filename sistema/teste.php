@@ -14,8 +14,8 @@
     <pre>
         <?php
 
-           $veiculos = $_SESSION['nome_veiculo_devolucao'];
-            print_r($veiculos);
+            $veiculo = $_SESSION['veiculoKM'];
+            print_r($veiculo);
         ?>
     </pre>
     

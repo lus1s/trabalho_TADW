@@ -60,7 +60,7 @@ function KmFinal() {
     let kmInicial = document.getElementsByName("km_inicial");
     let kmRodados = document.getElementsByName("km_devolucao");
 
-    let KmFinal = lengthkmInicial - kmRodados;
+    let KmFinal = kmInicial - kmRodados;
 
     document.getElementsByName("km_final").value = KmFinal ;
 

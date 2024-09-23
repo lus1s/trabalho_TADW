@@ -1,7 +1,7 @@
 <?php
 
     function idAluguelPorTbVeiculoAluguel($conexao, $id_veiculo){
-        $sql = "SELECT tb_aluguel_id_aluguel FROM tb_veiculo_aluguel WHERE tb_veiculo_id_veiculo = ?";
+        $sql = "SELECT tb_aluguel_id_aluguel FROM tb_veiculo_aluguel WHERE tb_veiculo_id_veiculo = ? AND km_final= 0";
 
         $stmt = mysqli_prepare($conexao, $sql);
 
@@ -153,14 +153,14 @@
         return $dados_veiculos;
     }
 
-    function devolucaoIndividual ($conexao, $valor, $pagamento, $id_aluguel){
+    function devolucaoIndividual ($conexao, $valor, $pagamento, $id_aluguel, $id_funcionario){
 
-        $sql_devolucao = "INSERT INTO `tb_devolucao` (`valor_cobrado`, `forma_pagamento`, `tb_aluguel_id_aluguel`) 
-        VALUES (?, ?, ?)";
+        $sql_devolucao = "INSERT INTO `tb_devolucao` (`valor_cobrado`, `forma_pagamento`, `tb_aluguel_id_aluguel`, `tb_funcionario_id_funcionario`) 
+        VALUES (?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($conexao, $sql_devolucao);
 
-        mysqli_stmt_bind_param($stmt, "dii", $valor, $pagamento, $id_aluguel);
+        mysqli_stmt_bind_param($stmt, "dii", $valor, $pagamento, $id_aluguel, $id_funcionario);
 
         mysqli_stmt_execute($stmt);
 
@@ -168,15 +168,120 @@
         
     }
 
-    function dadosAluguel ($conexao, $id_aluguel){
-        
-        $sql = "SELECT data_aluguel, tb_funcionario_id_funcionario FROM tb_aluguel WHERE id_aluguel = ? ";
+    function metodoPagamento($metPagamneto){
+       
+        if ($metPagamneto == 1) {$metPagamneto = "cartão";}
+        elseif ($metPagamneto == 2) {$metPagamneto = "pix";}
+        elseif ($metPagamneto == 3) {$metPagamneto = "dinheiro";}
+
+        return $metPagamneto;
+    }
+
+    function dadosClientePessoa($conexao, $id_cliente){
+        $sql = "SELECT cpf, cnh FROM tb_pessoa WHERE tb_cliente_id_cliente = ?";
 
         $stmt = mysqli_prepare($conexao, $sql);
-        mysqli_stmt_bind_param($stmt, "i", $id_aluguel);
-
+        mysqli_stmt_bind_param($stmt, "s", $id_cliente);
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $id_veiculo);
+        mysqli_stmt_bind_result($stmt, $cpf, $cnh);
         mysqli_stmt_store_result($stmt);
+
+        $dados_cliente = [];
+
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+
+            mysqli_stmt_fetch($stmt);
+
+            $dados_cliente[] = [$cpf, $cnh];
+        }
+
+        mysqli_stmt_close($stmt);
+
+        return $dados_cliente;
+    }
+
+    function dadosClienteEmpresa($conexao, $id_cliente){
+        $sql = "SELECT cnpj, func_responsavel FROM tb_empresa WHERE tb_cliente_id_cliente = ?";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $id_cliente);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $cnpj, $resposavel);
+        mysqli_stmt_store_result($stmt);
+
+        $dados_cliente = [];
+
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+
+            mysqli_stmt_fetch($stmt);
+
+            $dados_cliente[] = [$cnpj, $resposavel];
+        }
+
+        mysqli_stmt_close($stmt);
+
+        return $dados_cliente;
+    }
+
+    function dataAluguel($conexao, $id_cliente){
+        $sql = "SELECT data_aluguel FROM tb_aluguel WHERE id_aluguel = ?";
+        
+        $stmt = mysqli_prepare($conexao, $sql);
+        
+        mysqli_stmt_bind_param($stmt, "i", $id_cliente);
+        
+        mysqli_stmt_execute($stmt);
+        
+        mysqli_stmt_bind_result($stmt, $data_aluguel);
+        
+        mysqli_stmt_store_result($stmt);
+        
+        $lista = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $lista[] = [$data_aluguel];
+            }
+        }
+        mysqli_stmt_close($stmt);
+        
+        return $data_aluguel;
+    }
+
+    function estadoVeiculo($conexao, $id){
+        $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = '1' WHERE `id_veiculo` = ? ";
+
+        $stmt2 = mysqli_prepare($conexao, $sql);
+    
+        mysqli_stmt_bind_param($stmt2, "i", $id);
+    
+        mysqli_stmt_execute($stmt2);
+            
+        mysqli_stmt_close($stmt2);
+    }
+
+    function kmFinal($conexao, $id, $km_final){
+
+        $sql = "UPDATE `tb_veiculo_aluguel` SET `km_final` = '?' WHERE `id_veiculo` = ? ";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+    
+        mysqli_stmt_bind_param($stmt, "si", $km_final, $id);
+    
+        mysqli_stmt_execute($stmt);
+            
+        mysqli_stmt_close($stmt);
+    }
+
+    function updateKmInicial ($conexao, $id, $km){
+
+        $sql = "UPDATE `tb_veiculo` SET `km_rodados` = '?' WHERE `id_veiculo` = ? ";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+    
+        mysqli_stmt_bind_param($stmt, "si", $km, $id);
+    
+        mysqli_stmt_execute($stmt);
+            
+        mysqli_stmt_close($stmt);
     }
 ?>

@@ -25,18 +25,28 @@
     <title>Veiculos de <?php echo $nome_cliente; ?></title>
 </head>
 <body>
-    <form action="">
+    <form action="confirmar_devolucao.php">
         Data das Devoluções:
         <input type="text" disabled value="<?php echo $date; ?>">  
+
+        <!-- o hidden vai p/ o php, ou outro não -->
+        <input type="hidden" name="dt_devolucao" value="<?php echo $date; ?>">
+
         Funcionario responsável pela devolução: 
-        <input type="text" disabled value="<?php echo $nomeFuncionario; ?>">
+        <input type="text" name="funcdevolucao" disabled value="<?php echo $nomeFuncionario; ?>">
+
+        <input type="hidden" name="funcdevolucao" value="<?php echo $nomeFuncionario; ?>">
+
+
+        <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>">
+        <input type="hidden" name="nome" value="<?php echo $nome_cliente; ?>">
+
         <br><br>
-        <hr>
+        <hr><hr>
 
 
         <?php
             
-
             foreach ($dados_veiculos as $id_veiculo => $nome) {
 
                 $veiculos = dadosVeiculoPorIdVeiculo($conexao, $id_veiculo);
@@ -50,16 +60,13 @@
 
                    echo "Marca: " . $marca_veiculo . "<br>";
 
-                   echo "Km ao alugar: <input type='text' name='km_inicial' disabled value=" . $km_incial . "km <br>";
-                   echo "Km ao devolver: <input type='text' name='km_devolucao'> ";
-                   echo "Km ao rodados: <input type='text' disabled name='km_final'>";
-                   echo "";
+                   echo "Km ao alugar: <input type='text' name='km_inicial' disabled value=" . $km_incial . ">";
+                   echo 'Km ao devolver: <td><input type="text" name="km_devolucao[' . $id_veiculo . ']"></td>';
                    echo "<hr>";                   
                 }
             }
 
         ?>
-        <button onclick="return kmfinal()">Calcular</button> <br><br>
         Metodo de pagamento:
         <select name="met_pagamento" id="">
             <option value=""></option>
@@ -70,7 +77,7 @@
         </select> <br><br>
 
         Valor cobrado:
-        <input type="text" disabled name="valor" id="">
+        <input type="text" name="valor" id="">
 
         <br><br>
         <input type="submit" value="Confirmar devolução">

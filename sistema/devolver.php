@@ -8,7 +8,9 @@
     $valor = $_GET['valor'];
     $pagamento = $_GET['met_pagamento'];
     
-    devolucaoIndividual($conexao, $valor, $pagamento, $aluguel);
+    foreach($_SESSION['dados_funcionario'] as $dados){$id_funcionario = $dados[1];}
+
+    devolucaoIndividual($conexao, $valor, $pagamento, $aluguel, $id_funcionario);
     
     //alterção no estado do veículo
     $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = '1' WHERE `id_veiculo` = ? ";
