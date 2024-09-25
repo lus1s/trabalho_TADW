@@ -14,8 +14,31 @@
     <pre>
         <?php
 
-            $veiculo = $_SESSION['veiculoKM'];
-            print_r($veiculo);
+            // $veiculo = $_SESSION['carrinho_devolucao']['veiculos_devolucao'];
+            // $kmRodado = $_SESSION['kmdevolucao'];
+            // $veiculoKm = array_combine($veiculo, $kmRodado);
+
+
+            // foreach ($veiculoKm as $id => $km) {
+
+                
+            // }
+
+            $km = 0;
+
+            $id = 1;
+            $sql = "UPDATE tb_veiculo_aluguel SET km_final = ? WHERE tb_veiculo_id_veiculo = ? ";
+
+            $stmt = mysqli_prepare($conexao, $sql);
+    
+            mysqli_stmt_bind_param($stmt, "ii", $km, $id);
+        
+            mysqli_stmt_execute($stmt);
+    
+            mysqli_stmt_close($stmt);
+
+
+            // print_r($id_aluguel);
         ?>
     </pre>
     

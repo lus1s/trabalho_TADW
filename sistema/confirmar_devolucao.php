@@ -17,6 +17,8 @@
 
    $kmDevolucao = $_GET['km_devolucao'];
 
+   $_SESSION['kmdevolucao'] = $kmDevolucao;
+
    $valorTotal = $_GET['valor'];
 ?>
 <!DOCTYPE html>
@@ -58,13 +60,22 @@
 
                     $nome_veiculo = $_SESSION['nome_veiculo_devolucao'];
 
+                    foreach ($nome_veiculo as $key => $value) {
+                        
+                    }
+
                     $veiculoKm = array_combine($nome_veiculo, $kmDevolucao);
 
+                    $kmVeiculo = [];
                     foreach ($veiculoKm as $veiculo => $km) {
                         echo "<tr>";
                         echo"<td colspan='3'>$veiculo</td>";
                         echo"<td colspan='3'>" . $km . "</td>";
                         echo "</tr>";
+
+                        $kmVeiculo[] =[
+
+                        ]; 
                     } 
                    
                 ?>
@@ -81,7 +92,6 @@
         </table>
         <br>
         <input type="hidden" name="idCliente" value="<?php echo $idCliente; ?>">
-        <input type="hidden" name="kmRodado" value="<?php echo $kmDevolucao; ?>">
         <input type="hidden" name="valorDevolucao" value="<?php echo $valorTotal; ?>">
         <input type="hidden" name="tipoPgamento" value="<?php echo $metPagamento; ?>">
 

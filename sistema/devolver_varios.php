@@ -4,18 +4,16 @@
       require_once 'conexao.php';
       
       $idCliente = $_GET['idCliente'];
-      $kmRodado = $_GET['kmRodado'];
+      $kmRodado = $_SESSION['kmdevolucao'];
       $valorDevolucao = $_GET['valorDevolucao'];
       $tipoPgamento = $_GET['tipoPgamento'];
 
-      
       foreach($_SESSION['dados_funcionario'] as $dados){$id_funcionario = $dados[1];}
-      
+
       $veiculo = $_SESSION['carrinho_devolucao']['veiculos_devolucao'];
-
-      $veiculoKm = array_combine($kmRodado, $veiculo);
-
-
+      $veiculoKm = array_combine($veiculo, $kmRodado);
+      
+      
       foreach ($veiculoKm as $id => $km) {
 
             $id_aluguel = idAluguelPorTbVeiculoAluguel($conexao, $id);
@@ -27,6 +25,8 @@
             kmFinal($conexao, $id, $km);
 
             updateKmInicial($conexao, $id, $km);
+
+            limparSessionDevolucao();
       }
 
       header('Location: home.php');

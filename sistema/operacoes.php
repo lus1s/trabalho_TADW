@@ -160,7 +160,7 @@
 
         $stmt = mysqli_prepare($conexao, $sql_devolucao);
 
-        mysqli_stmt_bind_param($stmt, "dii", $valor, $pagamento, $id_aluguel, $id_funcionario);
+        mysqli_stmt_bind_param($stmt, "diii", $valor, $pagamento, $id_aluguel, $id_funcionario);
 
         mysqli_stmt_execute($stmt);
 
@@ -250,31 +250,31 @@
     function estadoVeiculo($conexao, $id){
         $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = '1' WHERE `id_veiculo` = ? ";
 
-        $stmt2 = mysqli_prepare($conexao, $sql);
-    
-        mysqli_stmt_bind_param($stmt2, "i", $id);
-    
-        mysqli_stmt_execute($stmt2);
-            
-        mysqli_stmt_close($stmt2);
-    }
-
-    function kmFinal($conexao, $id, $km_final){
-
-        $sql = "UPDATE `tb_veiculo_aluguel` SET `km_final` = '?' WHERE `id_veiculo` = ? ";
-
         $stmt = mysqli_prepare($conexao, $sql);
     
-        mysqli_stmt_bind_param($stmt, "si", $km_final, $id);
+        mysqli_stmt_bind_param($stmt, "i", $id);
     
         mysqli_stmt_execute($stmt);
             
         mysqli_stmt_close($stmt);
     }
 
+    function kmFinal($conexao, $id, $km_final){
+
+        $sql = "UPDATE tb_veiculo_aluguel SET km_final = ? WHERE tb_veiculo_id_veiculo = ? ";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "ii", $km_final, $id);
+    
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_close($stmt);
+    }
+
     function updateKmInicial ($conexao, $id, $km){
 
-        $sql = "UPDATE `tb_veiculo` SET `km_rodados` = '?' WHERE `id_veiculo` = ? ";
+        $sql = "UPDATE `tb_veiculo` SET `km_rodados` = ? WHERE `id_veiculo` = ? ";
 
         $stmt = mysqli_prepare($conexao, $sql);
     
@@ -283,5 +283,17 @@
         mysqli_stmt_execute($stmt);
             
         mysqli_stmt_close($stmt);
+    }
+
+    function limparSessionDevolucao (){
+        if (isset($_SESSION['carrinho_devolucao'])) {
+           
+            unset($_SESSION['nome_veiculo_devolucao']);
+            unset($_SESSION['carrinho_devolucao']);
+            
+            $_SESSION['carrinho_devolucao']['veiculos_devolucao'] = array();
+            $_SESSION['carrinho_devolucao']['nome_devolucao']= array();
+            $_SESSION['nome_veiculo_devolucao'] = array();
+        }
     }
 ?>
