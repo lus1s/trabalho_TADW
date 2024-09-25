@@ -29,6 +29,7 @@
             
         }elseif ($origem == 2) {
             
+            
             $dados_cliente = [];
 
             echo"<tr>
@@ -62,8 +63,7 @@
                     echo "</tr>";
 
                 }
-
-                echo "<button><a href='form_aluguel.php'>cadastrar novo cliente</a></button>";
+                echo "<button><a href='cad_cliente.php?origem=1'>cadastrar novo cliente</a></button>";
             }
         }elseif ($origem == 3) {
                
