@@ -52,7 +52,6 @@ CREATE TABLE `tb_devolucao` (
 DROP TABLE IF EXISTS `tb_empresa`;
 CREATE TABLE `tb_empresa` (
   `id_empresa` int(11) NOT NULL AUTO_INCREMENT,
-  `nome_empresa` varchar(45) NOT NULL,
   `cnpj` varchar(45) NOT NULL,
   `func_responsavel` varchar(45) NOT NULL,
   `tb_cliente_id_cliente` int(11) NOT NULL,
@@ -163,15 +162,15 @@ INSERT INTO `tb_cliente` (`id_cliente`, `nome_cliente`, `tipo_cliente`) VALUES
 (20, 'Empresa MNB', 'e');
 
 -- Inserindo dados na tabela tb_empresa
-INSERT INTO `tb_empresa` (`id_empresa`, `nome_empresa`, `cnpj`, `func_responsavel`, `tb_cliente_id_cliente`) VALUES
-(1, 'Empresa ABC', '12.345.678/0001-99', 'Marcos Lima', 3),
-(2, 'Empresa XYZ', '98.765.432/0001-88', 'Fernanda Souza', 5),
-(3, 'Empresa QWE', '11.111.111/0001-11', 'Lucas Martins', 7),
-(4, 'Empresa RTY', '22.222.222/0001-22', 'Ana Paula', 9),
-(5, 'Empresa UIO', '33.333.333/0001-33', 'Ricardo Mendes', 12),
-(6, 'Empresa PAS', '44.444.444/0001-44', 'Cláudia Silva', 15),
-(7, 'Empresa LKO', '55.555.555/0001-55', 'Daniel Borges', 17),
-(8, 'Empresa MNB', '66.666.666/0001-66', 'Patrícia Souza', 20);
+INSERT INTO `tb_empresa` (`id_empresa`, `cnpj`, `func_responsavel`, `tb_cliente_id_cliente`) VALUES
+(1, '12.345.678/0001-99', 'Marcos Lima', 3),
+(2, '98.765.432/0001-88', 'Fernanda Souza', 5),
+(3, '11.111.111/0001-11', 'Lucas Martins', 7),
+(4, '22.222.222/0001-22', 'Ana Paula', 9),
+(5, '33.333.333/0001-33', 'Ricardo Mendes', 12),
+(6, '44.444.444/0001-44', 'Cláudia Silva', 15),
+(7, '55.555.555/0001-55', 'Daniel Borges', 17),
+(8, '66.666.666/0001-66', 'Patrícia Souza', 20);
 
 -- Inserindo dados na tabela tb_pessoa
 INSERT INTO `tb_pessoa` (`id_pessoa`, `cpf`, `cnh`, `tb_cliente_id_cliente`) VALUES
@@ -193,31 +192,32 @@ INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcion
 (1, 'Luís Carlos', '087.671.801-24', 'senha123'),
 (2, 'Ana Júlia', '091.411.261-90', 'senha456'),
 (3, 'Maria Beatriz', '456.789.123-00', 'senha789'),
-(4, 'Julian Victor', '084.545.461-70', 'senha101');
+(4, 'Julian Victor', '084.545.461-70', 'senha101')
+(5, 'Lucas Faria' , '123.456.789.00', 'senha121');
 
 -- Inserindo dados na tabela tb_veiculo
-INSERT INTO `tb_veiculo` (`nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`)
-VALUES
-('Civic', '2022', 'Honda', 1, 'Preto', 'ABC-1234', 1, '2.0', '10000', 'Sedan confortável', 4, 1, 1, 2, 1, 5),
-('Corolla', '2021', 'Toyota', 1, 'Branco', 'XYZ-5678', 1, '1.8', '15000', 'Sedan econômico', 4, 1, 1, 2, 1, 5),
-('Uno', '2015', 'Fiat', 1, 'Vermelho', 'DEF-9876', 2, '1.0', '50000', 'Compacto urbano', 2, 2, 2, 1, 2, 4),
-('Gol', '2019', 'Volkswagen', 1, 'Prata', 'GHI-5432', 1, '1.6', '30000', 'Hatch popular', 2, 2, 1, 1, 2, 5),
-('Tucson', '2018', 'Hyundai', 2, 'Azul', 'JKL-3210', 1, '2.0', '40000', 'SUV espaçoso', 4, 1, 1, 3, 1, 5),
-('EcoSport', '2020', 'Ford', 2, 'Cinza', 'MNO-6543', 1, '1.5', '20000', 'SUV compacto', 4, 1, 1, 3, 2, 5),
-('HB20', '2017', 'Hyundai', 1, 'Branco', 'PQR-8765', 2, '1.6', '35000', 'Hatchback confiável', 4, 1, 2, 2, 2, 5),
-('Polo', '2022', 'Volkswagen', 1, 'Preto', 'STU-4321', 1, '1.0', '5000', 'Hatch moderno', 4, 1, 2, 2, 1, 5),
-('Duster', '2019', 'Renault', 2, 'Verde', 'VWX-0987', 1, '2.0', '25000', 'SUV robusto', 4, 1, 1, 3, 1, 5),
-('Focus', '2016', 'Ford', 1, 'Prata', 'YZA-7654', 2, '2.0', '60000', 'Sedan esportivo', 4, 1, 1, 2, 1, 5),
-('Celta', '2014', 'Chevrolet', 1, 'Vermelho', 'BCD-2345', 2, '1.0', '70000', 'Compacto econômico', 2, 2, 2, 1, 2, 4),
-('Ranger', '2020', 'Ford', 2, 'Preto', 'EFG-8765', 1, '3.2', '15000', 'Picape poderosa', 4, 1, 1, 3, 2, 5),
-('Cruze', '2017', 'Chevrolet', 1, 'Branco', 'NOP-5432', 1, '1.4', '35000', 'Sedan sofisticado', 4, 1, 1, 2, 1, 5),
-('CB 500F', '2022', 'Honda', 2, 'Preto', 'JKL-7890', 1, '500cc', '5000', 'Moto esportiva', 0, 2, 2, 1, 2, 2),
-('Ninja 300', '2021', 'Kawasaki', 2, 'Verde', 'MNO-0987', 1, '300cc', '7000', 'Moto esportiva', 0, 2, 2, 1, 2, 2),
-('Fazer 250', '2019', 'Yamaha', 2, 'Azul', 'PQR-4321', 1, '250cc', '10000', 'Moto urbana', 0, 2, 2, 1, 2, 2),
-('Harley-Davidson', '2018', 'Harley-Davidson', 2, 'Preto', 'STU-6543', 1, '883cc', '8000', 'Moto custom', 0, 2, 2, 2, 2, 2),
-('CB 650R', '2020', 'Honda', 2, 'Vermelho', 'VWX-3210', 1, '650cc', '6000', 'Moto naked', 0, 2, 2, 1, 2, 2),
-('MT-09', '2021', 'Yamaha', 2, 'Cinza', 'YZA-8765', 1, '900cc', '4000', 'Moto naked', 0, 2, 2, 1, 2, 2),
-('Ducati Panigale V4', '2022', 'Ducati', 2, 'Vermelho', 'BCD-5432', 1, '1103cc', '2000', 'Moto esportiva premium', 0, 2, 2, 1, 2, 2);
+INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`) VALUES
+(1,	'Civic',	'2022',	'Honda',	'1',	'Preto',	'ABC-1234',	'2',	'2.0',	'10000',	'Sedan confortável',	'4',	'1',	'1',	'2',	'1',	'7'),
+(2,	'Corolla',	'2021',	'Toyota',	'1',	'Branco',	'XYZ-5678',	'2',	'1.8',	'15000',	'Sedan econômico',	'4',	'1',	'1',	'2',	'1',	'7'),
+(3,	'Uno',	'2015',	'Fiat',	'1',	'Vermelho',	'DEF-9876',	'2',	'1.0',	'50000',	'Compacto urbano',	'2',	'2',	'2',	'1',	'2',	'6'),
+(4,	'Gol',	'2019',	'Volkswagen',	'1',	'Prata',	'GHI-5432',	'2',	'1.6',	'30000',	'Hatch popular',	'2',	'2',	'1',	'1',	'2',	'7'),
+(5,	'Tucson',	'2018',	'Hyundai',	'2',	'Azul',	'JKL-3210',	'1',	'2.0',	'40000',	'SUV espaçoso',	'4',	'1',	'1',	'3',	'1',	'7'),
+(6,	'EcoSport',	'2020',	'Ford',	'2',	'Cinza',	'MNO-6543',	'2',	'1.5',	'20000',	'SUV compacto',	'4',	'1',	'1',	'3',	'2',	'7'),
+(7,	'HB20',	'2017',	'Hyundai',	'1',	'Branco',	'PQR-8765',	'2',	'1.6',	'35000',	'Hatchback confiável',	'4',	'1',	'2',	'2',	'2',	'7'),
+(8,	'Polo',	'2022',	'Volkswagen',	'1',	'Preto',	'STU-4321',	'2',	'1.0',	'5000',	'Hatch moderno',	'4',	'1',	'2',	'2',	'1',	'7'),
+(9,	'Duster',	'2019',	'Renault',	'2',	'Verde',	'VWX-0987',	'2',	'2.0',	'25000',	'SUV robusto',	'4',	'1',	'1',	'3',	'1',	'7'),
+(10,	'Focus',	'2016',	'Ford',	'1',	'Prata',	'YZA-7654',	'2',	'2.0',	'60000',	'Sedan esportivo',	'4',	'1',	'1',	'2',	'1',	'7'),
+(11,	'Celta',	'2014',	'Chevrolet',	'1',	'Vermelho',	'BCD-2345',	'2',	'1.0',	'70000',	'Compacto econômico',	'2',	'2',	'2',	'1',	'2',	'6'),
+(12,	'Ranger',	'2020',	'Ford',	'2',	'Preto',	'EFG-8765',	'1',	'3.2',	'15000',	'Picape poderosa',	'4',	'1',	'1',	'3',	'2',	'7'),
+(13,	'Cruze',	'2017',	'Chevrolet',	'1',	'Branco',	'NOP-5432',	'1',	'1.4',	'35000',	'Sedan sofisticado',	'4',	'1',	'1',	'2',	'1',	'7'),
+(14,	'CB 500F',	'2022',	'Honda',	'2',	'Preto',	'JKL-7890',	'1',	'500cc',	'5000',	'Moto esportiva',	'0',	'2',	'2',	'1',	'2',	'4'),
+(15,	'Ninja 300',	'2021',	'Kawasaki',	'2',	'Verde',	'MNO-0987',	'1',	'300cc',	'7000',	'Moto esportiva',	'0',	'2',	'2',	'1',	'2',	'4'),
+(16,	'Fazer 250',	'2019',	'Yamaha',	'2',	'Azul',	'PQR-4321',	'1',	'250cc',	'10000',	'Moto urbana',	'0',	'2',	'2',	'1',	'2',	'4'),
+(17,	'Harley-Davidson',	'2018',	'Harley-Davidson',	'2',	'Preto',	'STU-6543',	'1',	'883cc',	'8000',	'Moto custom',	'0',	'2',	'2',	'2',	'2',	'4'),
+(18,	'CB 650R',	'2020',	'Honda',	'2',	'Vermelho',	'VWX-3210',	'1',	'650cc',	'45678',	'Moto naked',	'0',	'2',	'2',	'1',	'2',	'4'),
+(19,	'MT-09',	'2021',	'Yamaha',	'2',	'Cinza',	'YZA-8765',	'1',	'900cc',	'26000',	'Moto naked',	'0',	'2',	'2',	'1',	'2',	'4'),
+(20,	'Ducati Panigale V4',	'2022',	'Ducati',	'2',	'Vermelho',	'BCD-5432',	'1',	'1103cc',	'2000',	'Moto esportiva premium',	'0',	'2',	'2',	'1',	'2',	'4');
+
 
 
 -- Inserindo dados na tabela tb_aluguel
@@ -227,32 +227,11 @@ INSERT INTO `tb_aluguel` (`id_aluguel`, `data_aluguel`, `tb_funcionario_id_funci
 (7,	'2024-09-05 23:19:50',	1,	9),
 (10,	'2024-09-05 23:29:44',	1,	12),
 (11,	'2024-09-05 23:31:57',	1,	13),
-(12,	'2024-09-05 23:32:30',	1,	14);
-
-
--- Inserindo dados na tabela tb_devolucao
-INSERT INTO `tb_devolucao` (`id_devolucao`, `data_devolucao`, `km_rodados`, `valor_cobrado`, `tb_aluguel_id_aluguel`) VALUES
-(1, '2024-06-10', '50500', '100', 1),
-(2, '2024-06-15', '30500', '150', 2),
-(3, '2024-06-20', '11000', '200', 3),
-(4, '2024-06-25', '20500', '120', 4),
-(5, '2024-06-30', '60500', '180', 5),
-(6, '2024-07-05', '25000', '140', 6),
-(7, '2024-07-10', '15000', '160', 7),
-(8, '2024-07-15', '8000', '130', 8),
-(9, '2024-07-20', '10000', '170', 9),
-(10, '2024-07-25', '35000', '190', 10),
-(11, '2024-07-30', '12000', '200', 11),
-(12, '2024-08-05', '45000', '210', 12),
-(13, '2024-08-10', '7000', '220', 13),
-(14, '2024-08-15', '15000', '230', 14),
-(15, '2024-08-20', '8000', '240', 15),
-(16, '2024-08-25', '20000', '250', 16),
-(17, '2024-08-30', '40000', '260', 17),
-(18, '2024-09-05', '50000', '270', 18),
-(19, '2024-09-10', '10000', '280', 19),
-(20, '2024-09-15', '60000', '290', 20);
-
+(12,	'2024-09-05 23:32:30',	1,	14),
+(13,	'2024-09-07 19:27:38',	1,	8),
+(14,	'2024-09-07 19:28:10',	1,	8),
+(15,	'2024-09-07 19:31:37',	1,	9),
+(16,	'2024-09-12 18:37:45',	1,	12);
 
 -- Inserindo dados na tabela tb_enderecos
 INSERT INTO `tb_enderecos` (`id_enderecos`, `endereco`, `tb_cliente_id_cliente`) VALUES
@@ -276,29 +255,6 @@ INSERT INTO `tb_enderecos` (`id_enderecos`, `endereco`, `tb_cliente_id_cliente`)
 (18, 'Praça R, 606', 18),
 (19, 'Rua S, 707', 19),
 (20, 'Av. T, 808', 20);
-
--- Inserindo dados na tabela tb_manutencao
-INSERT INTO `tb_manutencao` (`id_manutencao`, `data_ida`, `data_prev_volta`, `tb_veiculo_id_veiculo`) VALUES
-(1, '2024-06-01', '2024-06-05', 1),
-(2, '2024-06-10', '2024-06-15', 2),
-(3, '2024-06-20', '2024-06-25', 3),
-(4, '2024-07-01', '2024-07-05', 4),
-(5, '2024-07-10', '2024-07-15', 5),
-(6, '2024-07-20', '2024-07-25', 6),
-(7, '2024-08-01', '2024-08-05', 7),
-(8, '2024-08-10', '2024-08-15', 8),
-(9, '2024-08-20', '2024-08-25', 9),
-(10, '2024-09-01', '2024-09-05', 10),
-(11, '2024-09-10', '2024-09-15', 11),
-(12, '2024-09-20', '2024-09-25', 12),
-(13, '2024-10-01', '2024-10-05', 13),
-(14, '2024-10-10', '2024-10-15', 14),
-(15, '2024-10-20', '2024-10-25', 15),
-(16, '2024-11-01', '2024-11-05', 16),
-(17, '2024-11-10', '2024-11-15', 17),
-(18, '2024-11-20', '2024-11-25', 18),
-(19, '2024-12-01', '2024-12-05', 19),
-(20, '2024-12-10', '2024-12-15', 20);
 
 -- Inserindo dados na tabela tb_carro_aluguel
 INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`, `km_incial`, `km_final`) VALUES
