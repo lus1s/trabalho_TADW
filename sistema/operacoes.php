@@ -91,6 +91,31 @@
         mysqli_stmt_close($stmt3);
     }
 
+    function inserePessoa($conexao, $cpf, $cnh, $id_cliente){
+        $sql = "INSERT INTO `tb_pessoa` (`cpf`, `cnh`, `tb_cliente_id_cliente`) VALUES (?, ?, ?)";
+        
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "ssi", $cpf, $cnh, $id_cliente);
+
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_close($stmt);
+    }
+
+    function insereEmpresa($conexao, $cnpj_cliente, $responsavel, $id_cliente){
+
+        $sql2 = "INSERT INTO `tb_empresa` (`cnpj`, `func_responsavel`, `tb_cliente_id_cliente`) VALUES (?, ?, ?)";
+
+        $stmt2 = mysqli_prepare($conexao, $sql2);
+
+        mysqli_stmt_bind_param($stmt2, "ssi", $cnpj_cliente, $responsavel, $id_cliente);
+
+        mysqli_stmt_execute($stmt2);
+
+        mysqli_stmt_close($stmt2);
+    }
+
     function KmAtual($conexao, $id_veiculo){
         $sql = "SELECT km_rodados FROM tb_veiculo WHERE id_veiculo = ?";
         

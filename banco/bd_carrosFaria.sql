@@ -1,9 +1,9 @@
 -- Adminer 4.8.1 MySQL 5.5.5-10.5.25-MariaDB-ubu2004 dump
--- CRIANDO O BANCO E AS TABELAS
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 DROP DATABASE IF EXISTS `bd_veiculosFaria`;
 CREATE DATABASE `bd_veiculosFaria` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */;
@@ -23,6 +23,7 @@ CREATE TABLE `tb_aluguel` (
   CONSTRAINT `fk_tb_aluguel_tb_funcionario1` FOREIGN KEY (`tb_funcionario_id_funcionario`) REFERENCES `tb_funcionario` (`id_funcionario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+
 DROP TABLE IF EXISTS `tb_cliente`;
 CREATE TABLE `tb_cliente` (
   `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
@@ -37,11 +38,14 @@ CREATE TABLE `tb_devolucao` (
   `id_devolucao` int(11) NOT NULL AUTO_INCREMENT,
   `data_devolucao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `valor_cobrado` decimal(10,2) NOT NULL,
-  `forma_pagamento` varchar(45) NOT NULL,
+  `forma_pagamento` enum('1','2','3') NOT NULL,
   `tb_aluguel_id_aluguel` int(11) NOT NULL,
+  `tb_funcionario_id_funcionario` int(11) NOT NULL,
   PRIMARY KEY (`id_devolucao`,`tb_aluguel_id_aluguel`),
   KEY `fk_tb_devolucao_tb_aluguel1_idx` (`tb_aluguel_id_aluguel`),
-  CONSTRAINT `fk_tb_devolucao_tb_aluguel1` FOREIGN KEY (`tb_aluguel_id_aluguel`) REFERENCES `tb_aluguel` (`id_aluguel`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `tb_funcionario_id_funcionario` (`tb_funcionario_id_funcionario`),
+  CONSTRAINT `fk_tb_devolucao_tb_aluguel1` FOREIGN KEY (`tb_aluguel_id_aluguel`) REFERENCES `tb_aluguel` (`id_aluguel`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tb_devolucao_ibfk_1` FOREIGN KEY (`tb_funcionario_id_funcionario`) REFERENCES `tb_funcionario` (`id_funcionario`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -76,18 +80,6 @@ CREATE TABLE `tb_funcionario` (
   `cpf_funcionario` varchar(45) NOT NULL,
   `senha_funcionario` varchar(45) NOT NULL,
   PRIMARY KEY (`id_funcionario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
-
-DROP TABLE IF EXISTS `tb_manutencao`;
-CREATE TABLE `tb_manutencao` (
-  `id_manutencao` int(11) NOT NULL AUTO_INCREMENT,
-  `data_ida` date NOT NULL,
-  `data_prev_volta` date NOT NULL,
-  `tb_veiculo_id_veiculo` int(11) NOT NULL,
-  PRIMARY KEY (`id_manutencao`,`tb_veiculo_id_veiculo`),
-  KEY `fk_tb_manutencao_tb_veiculo1_idx` (`tb_veiculo_id_veiculo`),
-  CONSTRAINT `fk_tb_manutencao_tb_veiculo1` FOREIGN KEY (`tb_veiculo_id_veiculo`) REFERENCES `tb_veiculo` (`id_veiculo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -132,13 +124,16 @@ DROP TABLE IF EXISTS `tb_veiculo_aluguel`;
 CREATE TABLE `tb_veiculo_aluguel` (
   `tb_veiculo_id_veiculo` int(11) NOT NULL,
   `tb_aluguel_id_aluguel` int(11) NOT NULL,
-  `km_incial` varchar(25) NOT NULL,
-  `km_final` varchar(45) NOT NULL,
+  `km_incial` int(11) NOT NULL,
+  `km_final` int(11) NOT NULL,
   KEY `fk_tb_veiculo_has_tb_aluguel_tb_aluguel1_idx` (`tb_aluguel_id_aluguel`),
   KEY `fk_tb_veiculo_has_tb_aluguel_tb_veiculo1_idx` (`tb_veiculo_id_veiculo`),
   CONSTRAINT `fk_tb_veiculo_has_tb_aluguel_tb_aluguel1` FOREIGN KEY (`tb_aluguel_id_aluguel`) REFERENCES `tb_aluguel` (`id_aluguel`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_tb_veiculo_has_tb_aluguel_tb_veiculo1` FOREIGN KEY (`tb_veiculo_id_veiculo`) REFERENCES `tb_veiculo` (`id_veiculo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+-- 2024-09-25 17:58:56
 
 
 -- 2024-07-12 19:28:58

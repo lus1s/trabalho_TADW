@@ -37,15 +37,7 @@
 
 
         //cadastro dos dados do formulario pessoa fisica
-        $sql2 = "INSERT INTO `tb_pessoa` (`cpf`, `cnh`, `tb_cliente_id_cliente`) VALUES (?, ?, ?)";
-        
-        $stmt2 = mysqli_prepare($conexao, $sql2);
-
-        mysqli_stmt_bind_param($stmt2, "ssi", $cpf, $cnh, $id_cliente);
-
-        mysqli_stmt_execute($stmt2);
-
-        mysqli_stmt_close($stmt2);
+        inserePessoa($conexao, $cpf, $cnh, $id_cliente);
 
         //cadastro na tabela de endereços
         insereEnderecos($conexao,$endereco, $id_cliente);
@@ -98,16 +90,7 @@
         $id_cliente = insereClienteVerificaID($conexao, $nome, $tipo);
 
         //insere os dado na tabela empresa;
-        $sql2 = "INSERT INTO `tb_empresa` (`nome_empresa`, `cnpj`, `func_responsavel`, `tb_cliente_id_cliente`)
-                 VALUES (?, ?, ?, ?)";
-
-        $stmt2 = mysqli_prepare($conexao, $sql2);
-
-        mysqli_stmt_bind_param($stmt2, "sssi", $nome, $cnpj_cliente, $responsavel, $id_cliente);
-
-        mysqli_stmt_execute($stmt2);
-
-        mysqli_stmt_close($stmt2);
+        insereEmpresa($conexao, $nome, $cnpj_cliente, $responsavel, $id_cliente); 
 
         //cadastro na tabela de endereços
         insereEnderecos($conexao,$endereco, $id_cliente);
