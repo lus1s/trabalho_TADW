@@ -29,6 +29,7 @@
             
         }elseif ($origem == 2) {
             
+            
             $dados_cliente = [];
 
             echo"<tr>
@@ -59,20 +60,22 @@
                     echo "<td> $cliente </td>";
                     echo "<td> $acao </td>";
 
-                    echo "</tr>";
+                    echo "</tr>";          
 
                 }
-
-                echo "<button><a href='form_aluguel.php'>cadastrar novo cliente</a></button>";
+                echo "<button><a href='cad_cliente.php?origem=1'>cadastrar novo cliente</a></button>";
             }
         }elseif ($origem == 3) {
                
                echo" <table border='1'>
                  <tr>
+                 
                     <td>id_cliente</td>
                     <td>nome_cliente</td>
                     <td>tipo_cliente</td>
                 </tr>";
+
+                $id_cliente = idClienteTbAluguel($conexao , $id_aluguel);
 
                 $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel";
                 
@@ -113,9 +116,6 @@
     
     
                                         echo "</tr>";
-                                   
-                                
-                                   
                                 }
                             } 
                         } 

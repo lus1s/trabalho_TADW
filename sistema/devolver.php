@@ -7,27 +7,21 @@
     $km_rodado = $_GET['km_rodados'];
     $valor = $_GET['valor'];
     $pagamento = $_GET['met_pagamento'];
+    $id_veiculo = $_GET['id_veiculo'];
     
-    devolucaoIndividual($conexao, $valor, $pagamento, $aluguel);
+    foreach($_SESSION['dados_funcionario'] as $dados){$id_funcionario = $dados[1];}
+
+    devolucaoIndividual($conexao, $valor, $pagamento, $aluguel, $id_funcionario);
     
+    kmFinal($conexao, $id_veiculo, $km_rodado);
+
+    updateKmInicial($conexao, $id_veiculo, $km_rodado);
+
     //alterção no estado do veículo
-    $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = '1' WHERE `id_veiculo` = ? ";
+    updateEstadoVeiculo($conexao, $id_veiculo);
+    
+    header('Location: exibir_veiculos.php');
+    exit;
 
-    $stmt2 = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($stmt2, "i", $id_veiculo);
-
-    if(mysqli_stmt_execute($stmt2)){
-        
-        mysqli_stmt_close($stmt2);
-        header('Location: exibir_veiculos.php');
-        exit();
-
-    }else{
-        
-        mysqli_stmt_close($stmt2);
-        header('Location: exibir_veiculos.php');
-        exit;
-    }
 
 ?>

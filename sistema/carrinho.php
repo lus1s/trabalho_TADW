@@ -19,6 +19,6 @@
     }
 
 
-    header('Location: exibir_veiculos.php?origem=1');
+    header("Location: exibir_veiculos.php?origem=1");
     exit();
 ?>

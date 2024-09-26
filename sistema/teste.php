@@ -13,7 +13,31 @@
 <body>
     <pre>
         <?php
-            print_r($_SESSION['nome_veiculo']);
+
+            // $veiculo = $_SESSION['carrinho_devolucao']['veiculos_devolucao'];
+            // $kmRodado = $_SESSION['kmdevolucao'];
+            // $veiculoKm = array_combine($veiculo, $kmRodado);
+
+
+            // foreach ($veiculoKm as $id => $km) {
+
+                
+            // }
+
+            $km = 0;
+
+            $id = 1;
+
+            $stmt = mysqli_prepare($conexao, $sql);
+    
+            mysqli_stmt_bind_param($stmt, "ii", $km, $id);
+        
+            mysqli_stmt_execute($stmt);
+    
+            mysqli_stmt_close($stmt);
+
+
+            // print_r($id_aluguel);
         ?>
     </pre>
     

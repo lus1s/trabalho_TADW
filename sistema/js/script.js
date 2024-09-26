@@ -51,11 +51,7 @@ if (cpf.checked == "" && cnpj.checked == false) {
     return false;
 }
 
-// if (tipo2.value == "") {
-//     alert("Preencha o campo tipo!!");
-//     tipo2.focus(); 
-//     return false;
-// }
+
 
 return true;
 }
