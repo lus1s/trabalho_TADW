@@ -60,3 +60,30 @@ if (cpf.checked == "" && cnpj.checked == false) {
 return true;
 }
 
+//validacão de pessoa física
+function validacaofísica() {
+let cpf = document.getElementById("cpf");
+let carteira = document.getElementById("carteira");
+let endereco = document.getElementById("endereco");
+
+if (cpf.value == "") {
+    alert("Preencha o campo cpf!!");
+    document.getElementById("cpf").focus();
+    cpf.focus(); 
+    return false;
+}
+if (carteira.value == "") {
+    alert("Preencha o campo carteira!!");
+    document.getElementById("carteira");
+    carteira.focus(); 
+    return false;
+}
+if (endereco.value == "") {
+    alert("Preencha o campo endereco!!");
+    document.getElementById("endereco");
+    endereco.focus(); 
+    return false;
+}
+
+return true;
+}
