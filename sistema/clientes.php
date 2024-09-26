@@ -69,6 +69,7 @@
                
                echo" <table border='1'>
                  <tr>
+                 
                     <td>id_cliente</td>
                     <td>nome_cliente</td>
                     <td>tipo_cliente</td>
