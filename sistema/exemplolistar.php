@@ -70,3 +70,4 @@ $pdf->Output();
 ?>
 </body>
 </html>
+<!-- listar aluguel veiculo, mostrando o alugel e o veiculo -->
