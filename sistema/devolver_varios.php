@@ -26,6 +26,8 @@
 
             updateKmInicial($conexao, $id, $km);
 
+            updateEstadoVeiculo($conexao, $id);
+
             limparSessionDevolucao();
       }
 

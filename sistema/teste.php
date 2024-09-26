@@ -27,7 +27,6 @@
             $km = 0;
 
             $id = 1;
-            $sql = "UPDATE tb_veiculo_aluguel SET km_final = ? WHERE tb_veiculo_id_veiculo = ? ";
 
             $stmt = mysqli_prepare($conexao, $sql);
     

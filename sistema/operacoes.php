@@ -47,6 +47,29 @@
         return $id;
     }
 
+    function idClienteTbAluguel ($conexao, $id_aluguel){
+        $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel WHERE id_aluguel = ?";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $id_aluguel);
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_bind_result($stmt, $id);
+        mysqli_stmt_store_result($stmt);
+
+        $lista = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $lista[] = [$id];
+            }
+        }
+        mysqli_stmt_close($stmt);
+    
+        return $id;
+
+    }
+
     function insereClienteVerificaID($conexao, $nome, $tipo){
         $sql = "INSERT INTO `tb_cliente` (`nome_cliente`, `tipo_cliente`) VALUES (?, ?)";
 
@@ -202,6 +225,29 @@
         return $metPagamneto;
     }
 
+    function dadosCliente($conexao, $id_cliente){
+        $sql = "SELECT id_cliente, nome_cliente, tipo_cliente FROM tb_cliente WHERE id_cliente = ?";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $id_cliente);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $cpf, $cnh);
+        mysqli_stmt_store_result($stmt);
+
+        $dados_cliente = [];
+
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+
+            mysqli_stmt_fetch($stmt);
+
+            $dados_cliente[] = [$cpf, $cnh];
+        }
+
+        mysqli_stmt_close($stmt);
+
+        return $dados_cliente;
+    }
+
     function dadosClientePessoa($conexao, $id_cliente){
         $sql = "SELECT cpf, cnh FROM tb_pessoa WHERE tb_cliente_id_cliente = ?";
 
@@ -308,6 +354,20 @@
         mysqli_stmt_execute($stmt);
             
         mysqli_stmt_close($stmt);
+    }
+
+    function updateEstadoVeiculo ($conexao, $id_veiculo){
+
+        $sql = "UPDATE `tb_veiculo` SET `estado_veiculo` = '1' WHERE `id_veiculo` = ? ";
+
+        $stmt2 = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt2, "i", $id_veiculo);
+
+        mysqli_stmt_execute($stmt2);
+        
+        mysqli_stmt_close($stmt2);
+
     }
 
     function limparSessionDevolucao (){

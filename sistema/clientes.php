@@ -60,7 +60,7 @@
                     echo "<td> $cliente </td>";
                     echo "<td> $acao </td>";
 
-                    echo "</tr>";
+                    echo "</tr>";          
 
                 }
                 echo "<button><a href='cad_cliente.php?origem=1'>cadastrar novo cliente</a></button>";
@@ -73,6 +73,8 @@
                     <td>nome_cliente</td>
                     <td>tipo_cliente</td>
                 </tr>";
+
+                $id_cliente = idClienteTbAluguel($conexao , $id_aluguel);
 
                 $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel";
                 
@@ -113,9 +115,6 @@
     
     
                                         echo "</tr>";
-                                   
-                                
-                                   
                                 }
                             } 
                         } 
