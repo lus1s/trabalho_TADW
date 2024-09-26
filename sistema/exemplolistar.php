@@ -47,7 +47,7 @@ $pdf->Ln();
 // $sql = "SELECT * FROM veiculo";
 // $retorno = mysqli_query($conexao, $sql);
 
-$carros = listarVeiculos($conexao);
+// $carros = listarVeiculos($conexao);
 
 if (sizeof($carros) > 0) {
     $pdf->Cell(30, 10, 'Cód.', 1, 0, 'C');
@@ -71,3 +71,5 @@ $pdf->Output();
 </body>
 </html>
 <!-- listar aluguel veiculo, mostrando o alugel e o veiculo -->
+<!-- comprovante de venda, quem comprou, quem alugou, data de alugel, km, valor pago --> 
+<!-- listar veiculo: id, marca, ano, cor, kilometragem, -->
