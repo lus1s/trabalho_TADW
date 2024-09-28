@@ -271,6 +271,72 @@
         return $dados_cliente;
     }
 
+    function dadosCompletosCliente ($conexao, $id_cliente){
+        $sql = "SELECT c.nome_cliente, p.cpf, p.cnh, e.endereco
+        FROM tb_cliente AS c, tb_pessoa AS p, tb_enderecos AS e
+        WHERE c.id_cliente = ?
+        AND  c.id_cliente = p.tb_cliente_id_cliente
+        AND c.id_cliente = e.tb_cliente_id_cliente";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $id_cliente);
+        
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_bind_result($stmt, $nomeCliente, $cpf, $cnh, $endereco);
+
+        mysqli_stmt_store_result($stmt);
+
+        $cliente = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $cliente[] = [
+                    "cliente" => $nomeCliente,
+                    "cpf" => $cpf,
+                    "cnh" => $cnh,
+                    "endereco" => $endereco
+                ];
+            }
+        }
+        mysqli_stmt_close($stmt);
+
+        return $cliente;
+    }
+
+    function dadosCompletosEmpresa($conexao, $id_cliente){
+
+        $sql = "SELECT c.nome_cliente, em.cnpj, em.func_responsavel, e.endereco
+        FROM tb_cliente AS c, tb_empresa AS em, tb_enderecos AS e
+        WHERE c.id_cliente = ?
+        AND c.id_cliente = em.tb_cliente_id_cliente
+        AND c.id_cliente = e.tb_cliente_id_cliente";
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $id_cliente);
+        
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_bind_result($stmt, $nomeCliente, $cnpj, $funcResponsavel, $endereco);
+
+        mysqli_stmt_store_result($stmt);
+
+        $cliente = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $cliente[] = [
+                    "cliente" => $nomeCliente,
+                    "cnpj" => $cnpj,
+                    "funcResponsavel" => $funcResponsavel,
+                    "endereco" => $endereco
+                ];
+            }
+        }
+        mysqli_stmt_close($stmt);
+
+        return $cliente;
+    }
+
     function dadosClienteEmpresa($conexao, $id_cliente){
         $sql = "SELECT cnpj, func_responsavel FROM tb_empresa WHERE tb_cliente_id_cliente = ?";
 

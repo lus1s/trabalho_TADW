@@ -21,26 +21,31 @@
         
     <?php
 
-        $sql = "SELECT cpf, cnh FROM tb_pessoa WHERE tb_cliente_id_cliente = ?";
+        $dados_cliente = dadosCompletosCliente($conexao, $id_cliente);
+        
+        if (!empty($dados_cliente)) {
+            
+            foreach ($dados_cliente as $cliente) {
+                echo "Nome do usuario: " .  $cliente['cliente'] . "<br>";
+                echo "CPF: " .  $cliente['cpf'] . " <br>";
+                echo "CNH: " .  $cliente['cnh'] . " <br>";
+                echo "Endereco: " .  $cliente['endereco'] . " <br>";
+                echo "<br><br>";
+            }
+        }else {
+            $dados_cliente = dadosCompletosEmpresa($conexao, $id_cliente);
 
-        $stmt = mysqli_prepare($conexao, $sql);
-        mysqli_stmt_bind_param($stmt, "s", $id_cliente);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $cpf, $cnh);
-        mysqli_stmt_store_result($stmt);
+            foreach ($dados_cliente as $cliente) {
+                echo "Nome do usuario: " .  $cliente['cliente'] . "<br>";
+                echo "CNPJ: " .  $cliente['cnpj'] . " <br>";
+                echo "FUNCIONARIO RESPONSÁVEL: " .  $cliente['funcResponsavel'] . " <br>";
+                echo "Endereco: " .  $cliente['endereco'] . " <br>";
+                echo "<br><br>";
+            }
+        }
 
-        $dados_cliente = [];
-
-        if (mysqli_stmt_num_rows($stmt) > 0) {
-
-            mysqli_stmt_fetch($stmt);
-
-            $dados_cliente[] = [$cpf, $cnh];
-
-            echo "Nome do usuario: $nome_cliente <br>";
-            echo "CPF: $cpf <br>";
-            echo "CNH: $cnh <br><br>";    
-        }     
+                
+    
 
         echo "  <table border='1'>
         <tr>";

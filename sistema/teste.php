@@ -13,9 +13,39 @@
 <body>
     <pre>
         <?php
-            $algueis = alugueisRealizados($conexao);
+            $sql = "SELECT c.id_cliente, c.nome_cliente, c.tipo_cliente
+            FROM tb_cliente AS c, tb_aluguel AS a, tb_veiculo_aluguel AS va
+            WHERE a.id_aluguel = va.tb_aluguel_id_aluguel
+            AND km_final = 0
+            AND c.id_cliente = a.tb_cliente_id_cliente";
+             $stmt = mysqli_prepare($conexao, $sql);
+             
+             mysqli_stmt_execute($stmt);
+     
+             mysqli_stmt_bind_result($stmt, $id, $nomeCliente, $endereco);
+     
+             mysqli_stmt_store_result($stmt);
+     
+             $cliente = [];
+             if (mysqli_stmt_num_rows($stmt) > 0) {
+                 while (mysqli_stmt_fetch($stmt)) {
+                     $cliente[] = [
+                         "id" => $id,
+                         "cliente" => $nomeCliente,
+                         "tipo" => $endereco
+                     ];
+                 }
+             }
+             mysqli_stmt_close($stmt);
+            
 
-            print_r($algueis);
+             foreach ($cliente as $dados){
+            
+                if (in_array)) {
+                    
+                }
+                print_r($dados["id"]);
+            }
         ?>
     </pre>
     

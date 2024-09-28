@@ -29,13 +29,14 @@
             
         }elseif ($origem == 2) {
             
-            
+            $valor = 1;
             $dados_cliente = [];
 
             echo"<tr>
-                    <td>nome cliente</td>
-                    <td>tipo cliente</td>
-                    <td>ação</td>
+                    <td>#</td>
+                    <td>Nome Cliente</td>
+                    <td>Tipo Cliente</td>
+                    <td>Ação</td>
                 </tr>";
             
             $sql = "SELECT id_cliente, nome_cliente, tipo_cliente FROM tb_cliente";
@@ -56,12 +57,12 @@
 
                     else {$acao = "<button><a href='dados_cliente.php?origem=4&id_cliente=$id_cliente'>selecionar</a></button>";}
 
+                    echo "<td> $valor </td>";
                     echo "<td> $nome_cliente </td>";
                     echo "<td> $cliente </td>";
                     echo "<td> $acao </td>";
-
                     echo "</tr>";          
-
+                    $valor ++;
                 }
                 echo "<button><a href='cad_cliente.php?origem=1'>cadastrar novo cliente</a></button>";
             }
@@ -70,13 +71,11 @@
                echo" <table border='1'>
                  <tr>
                  
-                    <td>id_cliente</td>
-                    <td>nome_cliente</td>
-                    <td>tipo_cliente</td>
+                    <td>#</td>
+                    <td>Nome Cliente</td>
+                    <td>Tipo Cliente</td>
                 </tr>";
-
-                $id_cliente = idClienteTbAluguel($conexao , $id_aluguel);
-
+                $valor = 1;
                 $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel";
                 
                 $stmt = mysqli_prepare($conexao, $sql);
@@ -108,14 +107,16 @@
                             if (mysqli_stmt_num_rows($stmt2) > 0){
                                 while (mysqli_stmt_fetch($stmt2)) {
                                     $listar2[] = [$id_cliente, $nome_cliente, $tipo_cliente];
+                                    if ($tipo_cliente == "p"){$cliente = "pessoa fisica";}
+                                    else {$cliente ="empresa";}
                                         
-                                        echo "<td> $id_cliente  </td>";
+                                        echo "<td>" .  $valor . "</td>";
                                         echo "<td> $nome_cliente </td>";
-                                        echo "<td> $tipo_cliente </td>";
+                                        echo "<td> $cliente </td>";
                                         echo "<td><button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button></td>";
-    
-    
-                                        echo "</tr>";
+                                        echo "</tr>"; 
+
+                                        $valor ++;
                                 }
                             } 
                         } 
