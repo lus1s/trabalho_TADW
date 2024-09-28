@@ -381,4 +381,66 @@
             $_SESSION['nome_veiculo_devolucao'] = array();
         }
     }
+
+    function alugueisRealizados ($conexao){
+        $sql = "SELECT a.id_aluguel, a.data_aluguel, n.nome_veiculo, f.nome_funcionario, c.nome_cliente
+                FROM tb_aluguel AS a, tb_veiculo AS n, tb_veiculo_aluguel AS va, tb_funcionario AS f, tb_cliente as c
+                WHERE n.id_veiculo = va.tb_veiculo_id_veiculo
+                AND c.id_cliente = a.tb_cliente_id_cliente
+                AND a.id_aluguel = va.tb_aluguel_id_aluguel
+                AND a.tb_funcionario_id_funcionario = f.id_funcionario";
+        
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_execute($stmt);
+        
+        mysqli_stmt_bind_result($stmt, $id_aluguel, $dtAluguel, $nomeVeiculo, $nomeFuncionario, $nomeCliente);
+        
+        mysqli_stmt_store_result($stmt);
+        
+        $alugueis = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $alugueis[] = [
+                    "aluguel" => $id_aluguel,
+                    "data" => $dtAluguel,
+                    "veiculo" => $nomeVeiculo,
+                    "funcionario" => $nomeFuncionario,
+                    "cliente" => $nomeCliente
+                ];
+            }
+        }
+        mysqli_stmt_close($stmt);
+        
+        return $alugueis;
+    }
+
+    function pessoasCadastradas ($conexao){
+        $sql = "SELECT c.nome_cliente, p.cpf, p.cnh, e.endereco
+                FROM tb_cliente AS c, tb_pessoa AS p, tb_enderecos AS e
+                WHERE c.id_cliente = p.tb_cliente_id_cliente
+                AND c.id_cliente = e.tb_cliente_id_cliente";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_bind_result($stmt, $nomeCliente, $cpf, $cnh, $endereco);
+
+        mysqli_stmt_store_result($stmt);
+
+        $clientes = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $clientes[] = [
+                    "cliente" => $nomeCliente,
+                    "cpf" => $cpf,
+                    "cnh" => $endereco
+                ];
+            }
+        }
+        mysqli_stmt_close($stmt);
+
+        return $clientes;
+    }
 ?>

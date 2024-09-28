@@ -192,8 +192,8 @@ INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcion
 (1, 'Luís Carlos', '087.671.801-24', 'senha123'),
 (2, 'Ana Júlia', '091.411.261-90', 'senha456'),
 (3, 'Maria Beatriz', '456.789.123-00', 'senha789'),
-(4, 'Julian Victor', '084.545.461-70', 'senha101')
-(5, 'Lucas Faria' , '123.456.789.00', 'senha121');
+(4, 'Julian Victor', '084.545.461-70', 'senha101'),
+(5, 'Lucas Faria' , '987.456.789.00', 'senha121');
 
 -- Inserindo dados na tabela tb_veiculo
 INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`) VALUES
@@ -222,16 +222,16 @@ INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_ve
 
 -- Inserindo dados na tabela tb_aluguel
 INSERT INTO `tb_aluguel` (`id_aluguel`, `data_aluguel`, `tb_funcionario_id_funcionario`, `tb_cliente_id_cliente`) VALUES
-(5,	'2024-09-05 22:31:06',	1,	7),
-(6,	'2024-09-05 22:33:26',	1,	8),
-(7,	'2024-09-05 23:19:50',	1,	9),
-(10,	'2024-09-05 23:29:44',	1,	12),
-(11,	'2024-09-05 23:31:57',	1,	13),
-(12,	'2024-09-05 23:32:30',	1,	14),
-(13,	'2024-09-07 19:27:38',	1,	8),
-(14,	'2024-09-07 19:28:10',	1,	8),
-(15,	'2024-09-07 19:31:37',	1,	9),
-(16,	'2024-09-12 18:37:45',	1,	12);
+(1,	'2024-09-05 22:31:06',	1,	7),
+(2,	'2024-09-05 22:33:26',	1,	8),
+(3,	'2024-09-05 23:19:50',	1,	9),
+(4,	'2024-09-05 23:29:44',	1,	12),
+(5,	'2024-09-05 23:31:57',	1,	13),
+(6,	'2024-09-05 23:32:30',	1,	14),
+(7,	'2024-09-07 19:27:38',	1,	8),
+(8,	'2024-09-07 19:28:10',	1,	8),
+(9,	'2024-09-07 19:31:37',	1,	9),
+(10,	'2024-09-12 18:37:45',	1,	12);
 
 -- Inserindo dados na tabela tb_enderecos
 INSERT INTO `tb_enderecos` (`id_enderecos`, `endereco`, `tb_cliente_id_cliente`) VALUES
@@ -258,9 +258,9 @@ INSERT INTO `tb_enderecos` (`id_enderecos`, `endereco`, `tb_cliente_id_cliente`)
 
 -- Inserindo dados na tabela tb_carro_aluguel
 INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_aluguel`, `km_incial`, `km_final`) VALUES
-(1,	5,	'10000',	'0'),
-(2,	6,	'15000',	'0'),
-(3,	7,	'50000',	'0'),
-(6,	10,	'20000',	'0'),
-(4,	11,	'30000',	'0'),
-(4,	12,	'30000',	'0');
+(1,	1,	'10000',	'0'),
+(2,	2,	'15000',	'0'),
+(3,	3,	'50000',	'0'),
+(6,	4,	'20000',	'0'),
+(4,	5,	'30000',	'0'),
+(4,	6,	'30000',	'0');
