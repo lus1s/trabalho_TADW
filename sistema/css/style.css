@@ -1,3 +1,33 @@
-a{
-    text-decoration: none;
+.pesquisa{
+    margin-left: 150px;
+    width: 400px;
+}
+
+.icones{
+    margin-left: auto;
+}
+
+#caixa {
+    background-color: #ffffff;
+    color: #000000;
+    padding-top: 40px;
+    padding-left: 13%;
+}
+
+h2 {
+    padding-left: 25%;
+}
+
+#primeiro {
+    font-weight: bold;
+}
+
+
+.tabela-alugueis {
+    width: 900px;
+    text-align: justify;
+}
+
+td {
+    text-align: center;
 }
