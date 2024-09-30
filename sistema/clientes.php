@@ -1,134 +1,136 @@
 <?php
-    require_once 'testeLogin.php';
-    require_once 'operacoes.php';
-    require_once 'conexao.php';
+require_once 'testeLogin.php';
+require_once 'operacoes.php';
+require_once 'conexao.php';
 
-    $origem = $_GET['origem'];
- ?>   
+$origem = $_GET['origem'];
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <table border="1">
-    
-    <?php
+
+        <?php
         if ($origem == 1) {
-            
-             $nome = $_GET['cliente'];
-    
-             $sql = "SELECT nome_cliente FROM tb_cliente WHERE nome_cliente LIKE %?%";
-    
-             $stmt = mysqli_prepare($conexao, $sql);
-             mysqli_stmt_bind_param($stmt, "s", $nome);
-             mysqli_stmt_execute($stmt);
-     
-            
-        }elseif ($origem == 2) {
-            
+
+            $nome = $_GET['cliente'];
+
+            $sql = "SELECT nome_cliente FROM tb_cliente WHERE nome_cliente LIKE %?%";
+
+            $stmt = mysqli_prepare($conexao, $sql);
+            mysqli_stmt_bind_param($stmt, "s", $nome);
+            mysqli_stmt_execute($stmt);
+        } elseif ($origem == 2) {
+
             $valor = 1;
             $dados_cliente = [];
 
-            echo"<tr>
+            echo "<tr>
                     <td>#</td>
                     <td>Nome Cliente</td>
                     <td>Tipo Cliente</td>
                     <td>Ação</td>
                 </tr>";
-            
+
             $sql = "SELECT id_cliente, nome_cliente, tipo_cliente FROM tb_cliente";
-   
+
             $stmt = mysqli_prepare($conexao, $sql);
-    
-            mysqli_stmt_execute($stmt);    
+
+            mysqli_stmt_execute($stmt);
             mysqli_stmt_bind_result($stmt, $id_cliente, $nome_cliente, $tipo_cliente);
             mysqli_stmt_store_result($stmt);
 
-            if (mysqli_stmt_num_rows($stmt) > 0){
+            if (mysqli_stmt_num_rows($stmt) > 0) {
                 while (mysqli_stmt_fetch($stmt)) {
                     $dados_cliente[] = [$id_cliente, $nome_cliente, $tipo_cliente];
-                    
-                    if ($tipo_cliente == "p"){$cliente = "pessoa fisica";}
-                    else {$cliente ="empresa";}
-                    if (empty($_SESSION['nome_veiculo'])) {$acao = "<button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button>";}
 
-                    else {$acao = "<button><a href='dados_cliente.php?origem=4&id_cliente=$id_cliente'>selecionar</a></button>";}
+                    if ($tipo_cliente == "p") {
+                        $cliente = "pessoa fisica";
+                    } else {
+                        $cliente = "empresa";
+                    }
+                    if (empty($_SESSION['nome_veiculo'])) {
+                        $acao = "<button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button>";
+                    } else {
+                        $acao = "<button><a href='dados_cliente.php?origem=4&id_cliente=$id_cliente'>selecionar</a></button>";
+                    }
 
                     echo "<td> $valor </td>";
                     echo "<td> $nome_cliente </td>";
                     echo "<td> $cliente </td>";
                     echo "<td> $acao </td>";
-                    echo "</tr>";          
-                    $valor ++;
+                    echo "</tr>";
+                    $valor++;
                 }
                 echo "<button><a href='cad_cliente.php?origem=1'>cadastrar novo cliente</a></button>";
             }
-        }elseif ($origem == 3) {
-               
-               echo" <table border='1'>
+        } elseif ($origem == 3) {
+
+            echo " <table border='1'>
                  <tr>
                  
                     <td>#</td>
                     <td>Nome Cliente</td>
                     <td>Tipo Cliente</td>
                 </tr>";
-                $valor = 1;
-                $sql = "SELECT tb_cliente_id_cliente FROM tb_aluguel";
+
+            $valor = 1;
+                $sql = "SELECT c.id_cliente, c.nome_cliente, c.tipo_cliente
+                FROM tb_cliente AS c, tb_aluguel AS a, tb_veiculo_aluguel AS va
+                WHERE a.id_aluguel = va.tb_aluguel_id_aluguel
+                AND km_final = 0
+                AND c.id_cliente = a.tb_cliente_id_cliente";
+
+              $stmt = mysqli_prepare($conexao, $sql);
+             
+              mysqli_stmt_execute($stmt);
+     
+              mysqli_stmt_bind_result($stmt, $id, $nomeCliente, $endereco);
+     
+              mysqli_stmt_store_result($stmt);
+     
+              $cliente = [];
+              if (mysqli_stmt_num_rows($stmt) > 0) {
+                  while (mysqli_stmt_fetch($stmt)) {
+                      $cliente[] = [
+                          "id" => $id,
+                          "cliente" => $nomeCliente,
+                          "tipo" => $endereco
+                         ];
+                     }
+                 }
+              mysqli_stmt_close($stmt);
+
+             $unico = array_unique($cliente, SORT_REGULAR);
+            foreach ($unico as $dados) {
+                $tipo_cliente = $dados["tipo"];
+                $nome_cliente = $dados["cliente"];
+                $id_cliente = $dados["id"];
+                if ($tipo_cliente == "p") { $cliente = "pessoa fisica";}
+                else {$cliente = "empresa";}
                 
-                $stmt = mysqli_prepare($conexao, $sql);
-
-                mysqli_stmt_execute($stmt);
-
-                mysqli_stmt_bind_result($stmt, $id_cliente);
-
-                mysqli_stmt_store_result($stmt);
-
-                $listar = [];
-                $listar2 = [];   
-                if (mysqli_stmt_num_rows($stmt) > 0) {
-                    while (mysqli_stmt_fetch($stmt)) {
-                            $listar[] = [$id_cliente];
-
-                            $sql2 = "SELECT * FROM `tb_cliente` WHERE `id_cliente` = ?";
-
-                            $stmt2 = mysqli_prepare($conexao, $sql2);
-
-                            mysqli_stmt_bind_param($stmt2, "i", $id_cliente);
-
-                            mysqli_stmt_execute($stmt2);
-
-                            mysqli_stmt_bind_result($stmt2, $id_cliente, $nome_cliente, $tipo_cliente);
-
-                            mysqli_stmt_store_result($stmt2);
-
-                            if (mysqli_stmt_num_rows($stmt2) > 0){
-                                while (mysqli_stmt_fetch($stmt2)) {
-                                    $listar2[] = [$id_cliente, $nome_cliente, $tipo_cliente];
-                                    if ($tipo_cliente == "p"){$cliente = "pessoa fisica";}
-                                    else {$cliente ="empresa";}
-                                        
-                                        echo "<td>" .  $valor . "</td>";
-                                        echo "<td> $nome_cliente </td>";
-                                        echo "<td> $cliente </td>";
-                                        echo "<td><button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button></td>";
-                                        echo "</tr>"; 
-
-                                        $valor ++;
-                                }
-                            } 
-                        } 
-                    }
-                
-        
-
-            }else {
-                echo "Realize sua busca";
+                echo "<td>" . $valor . "</td>";
+                echo "<td>" . $dados["cliente"] ."</td>";
+                echo "<td> $cliente </td>";
+                echo "<td><button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button></td>";
+                echo "</tr>";
+                $valor++;
             }
+            
+            
+        } else {
+            echo "Realize sua busca";
+        }
 
-            ?>
-            </table>  
+        ?>
+    </table>
 </body>
+
 </html>

@@ -21,6 +21,8 @@
         
     <?php
 
+        $id_aluguel[] = idAluguelPorTbCliente($conexao, $id_cliente);
+
         $dados_cliente = dadosCompletosCliente($conexao, $id_cliente);
         
         if (!empty($dados_cliente)) {
@@ -44,44 +46,26 @@
             }
         }
 
-                
-    
-
         echo "  <table border='1'>
+                <tr>
+                <td>Veiculo</td>
+                <td>Data</td>
+                <td>Ação</td>
+                </tr>
         <tr>";
 
-
-        $id_aluguel = idAluguelPorTbCliente($conexao, $id_cliente);
-
-        $sql = "SELECT tb_veiculo_id_veiculo FROM tb_veiculo_aluguel WHERE tb_aluguel_id_aluguel = ? AND km_final = 0";
-
-        $stmt = mysqli_prepare($conexao, $sql);
-        mysqli_stmt_bind_param($stmt, "i", $id_aluguel);
-
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $id_veiculo);
-        mysqli_stmt_store_result($stmt);
-
-        $dados_veiculos = [];
-
-        if (mysqli_stmt_num_rows($stmt) > 0) {
-            while (mysqli_stmt_fetch($stmt)) {
-                $dados_veiculos[] = [$id_veiculo];
-
-                $veiculos = dadosVeiculoPorIdVeiculo($conexao, $id_veiculo,);
-
-                foreach ($veiculos as $dados) {
-                    $nome = $dados[0];
-                   echo "<td>" . $dados[0] ."</td>";
-                   echo "<td>" . $dados[1] . "</td>";
-                   echo "<td>" . $dados[2] . "</td>";
-                   echo "<td><button><a href='devolucao.php?nome_veiculo=$nome&id_veiculo=$id_veiculo'> Devolução </a></button> <button class='btn btn-dark'><a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente' style='color: white;'>selecionar</a></button></td>";
-                   
-                   echo "</tr>";
-                }
+            $veiculos = dadosAluguelIdAluguel($conexao, $id_cliente);
+        
+            foreach ($veiculos as $dados) {
+                $nome = $dados["nome"];
+                $id_veiculo = $dados["id"];
+               echo "<td>" . $dados["nome"] ."</td>";
+               echo "<td>" . $dados["data"] . "</td>";
+               echo "<td><button><a href='devolucao.php?nome_veiculo=$nome&id_veiculo=$id_veiculo'> Devolução </a></button> <button class='btn btn-dark'><a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente' style='color: white;'>selecionar</a></button></td>";
+               
+               echo "</tr>";
             }
-        }   
-
+        
         echo '<div class="position-absolute top-0 end-0" id="frame">';
         if (empty($_SESSION['nome_veiculo_devolucao'])) {
             echo "selecione alguns veiculos";
@@ -101,7 +85,7 @@
                 }
                 echo "<a href='limpar_sessions_devolucao.php?origem=1&cliente=$id_cliente&nome=$nome_cliente'>esvaziar carrinho</a>";
 
-                echo "<button> <a href='dados_devolucao.php?nome=$nome_cliente&cliente=$id_cliente&aluguel=$id_aluguel'>Continuar devolução</a></button>";
+                echo '<button> <a href=dados_devolucao.php?nome=$nome_cliente&cliente=$id_cliente&aluguel=$id_aluguel[] .>Continuar devolução</a></button>';
                 echo '</div>';
         }
     ?>

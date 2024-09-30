@@ -36,15 +36,15 @@
         mysqli_stmt_bind_result($stmt, $id);
         mysqli_stmt_store_result($stmt);
 
-        $lista = [];
+        $alugueis = [];
         if (mysqli_stmt_num_rows($stmt) > 0) {
             while (mysqli_stmt_fetch($stmt)) {
-                $lista[] = [$id];
+                $alugueis[] = [$id];
             }
         }
         mysqli_stmt_close($stmt);
     
-        return $id;
+        return $alugueis;
     }
 
     function idClienteTbAluguel ($conexao, $id_aluguel){
@@ -231,7 +231,7 @@
         $stmt = mysqli_prepare($conexao, $sql);
         mysqli_stmt_bind_param($stmt, "s", $id_cliente);
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $cpf, $cnh);
+        mysqli_stmt_bind_result($stmt, $id, $nome, $tipo);
         mysqli_stmt_store_result($stmt);
 
         $dados_cliente = [];
@@ -240,7 +240,11 @@
 
             mysqli_stmt_fetch($stmt);
 
-            $dados_cliente[] = [$cpf, $cnh];
+            $dados_cliente[] = [
+                "id" =>$id, 
+                "nome" => $nome,
+                "tipo" => $tipo
+            ];
         }
 
         mysqli_stmt_close($stmt);
@@ -446,6 +450,41 @@
             $_SESSION['carrinho_devolucao']['nome_devolucao']= array();
             $_SESSION['nome_veiculo_devolucao'] = array();
         }
+    }
+
+    function dadosAluguelIdAluguel($conexao, $id_cliente){
+
+        $id_aluguel = idAluguelPorTbCliente($conexao, $id_cliente);
+
+        foreach ($id_aluguel as $id) {
+
+            $idAluguel = $id[0];
+
+            $sql = "SELECT a.data_aluguel, n.nome_veiculo, n.id_veiculo
+                FROM tb_aluguel AS a, tb_veiculo AS n, tb_veiculo_aluguel AS va, tb_cliente as c 
+                WHERE n.id_veiculo = va.tb_veiculo_id_veiculo
+                AND c.id_cliente = a.tb_cliente_id_cliente
+                AND a.id_aluguel = va.tb_aluguel_id_aluguel
+                AND a.id_aluguel = ?";
+
+            $stmt = mysqli_prepare($conexao, $sql);
+
+            mysqli_stmt_bind_param($stmt, "i", $idAluguel);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $dtAluguel, $nomeVeiculo, $id_veiculo);
+            mysqli_stmt_store_result($stmt);
+
+            if (mysqli_stmt_num_rows($stmt) > 0) {
+                while (mysqli_stmt_fetch($stmt)) {
+                    $dadosAluguel[] = [
+                        "data" => $dtAluguel,
+                        "nome" => $nomeVeiculo,
+                        "id" => $id_veiculo
+                    ];    
+                }
+            }   
+        }
+        return $dadosAluguel;
     }
 
     function alugueisRealizados ($conexao){
