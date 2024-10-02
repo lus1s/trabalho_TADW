@@ -47,8 +47,8 @@
         <?php
             
             foreach ($dados_veiculos as $dados) {
-                
-                $id_veiculo = $dados["veiculo"];
+
+                $id_veiculo = $dados["id_veiculo"];
 
                 $veiculos = dadosVeiculoPorIdVeiculo($conexao, $id_veiculo);
 

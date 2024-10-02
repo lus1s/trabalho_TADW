@@ -13,15 +13,11 @@
 <body>
     <pre>
         <?php
+        
+           $veiculos_devolucao = $_SESSION['carrinho_devolucao']['nome_devolucao'];
+
+           print_r($veiculos_devolucao);
             
-            $veiculos = $_SESSION['carrinho_devolucao']['veiculos_devolucao'];
-
-           
-
-            foreach ($veiculos as $dados_veiculos) {
-                
-            }
-            print_r($veiculos);
 
     //         echo " <table border='1'>
     //         <tr>

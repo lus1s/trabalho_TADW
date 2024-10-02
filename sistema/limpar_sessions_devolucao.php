@@ -8,7 +8,7 @@ session_start();
         
         if (isset($_SESSION['carrinho_devolucao'])) {
            
-            unset($_SESSION['nome_veiculo_devolucao']);
+            unset($_SESSION['carrinho_devolucao']['nome_devolucao']);
             unset($_SESSION['carrinho_devolucao']);
             
             $_SESSION['carrinho_devolucao']['veiculos_devolucao'] = array();

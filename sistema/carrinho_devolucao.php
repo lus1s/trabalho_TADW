@@ -9,6 +9,8 @@
     $id_cliente = $_GET['cliente'];
     $nome_cliente = $_GET['nome'];
 
+    $_SESSION['carrinho_devolucao']['nome_devolucao'][] = $nome;
+
     $_SESSION['carrinho_devolucao']['veiculos_devolucao'][] = [
         "id_veiculo" => $veiculo,
         "nome" => $nome,

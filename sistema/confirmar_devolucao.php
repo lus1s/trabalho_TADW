@@ -58,16 +58,12 @@
             </tr>
                 <?php
 
-                    $nome_veiculo = $_SESSION['nome_veiculo_devolucao'];
+                    $veiculos_devolucao = $_SESSION['carrinho_devolucao']['nome_devolucao'];
 
-                    foreach ($nome_veiculo as $key => $value) {
-                        
-                    }
-
-                    $veiculoKm = array_combine($nome_veiculo, $kmDevolucao);
+                    $veiculoKm = array_combine($kmDevolucao, $veiculos_devolucao);
 
                     $kmVeiculo = [];
-                    foreach ($veiculoKm as $veiculo => $km) {
+                    foreach ($veiculoKm as $km => $veiculo) {
                         echo "<tr>";
                         echo"<td colspan='3'>$veiculo</td>";
                         echo"<td colspan='3'>" . $km . "</td>";
