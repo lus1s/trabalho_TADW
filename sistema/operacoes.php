@@ -460,7 +460,7 @@
 
             $idAluguel = $id[0];
 
-            $sql = "SELECT a.data_aluguel, n.nome_veiculo, n.id_veiculo
+            $sql = "SELECT a.data_aluguel, n.nome_veiculo, n.id_veiculo, va.tb_aluguel_id_aluguel
                 FROM tb_aluguel AS a, tb_veiculo AS n, tb_veiculo_aluguel AS va, tb_cliente as c 
                 WHERE n.id_veiculo = va.tb_veiculo_id_veiculo
                 AND c.id_cliente = a.tb_cliente_id_cliente
@@ -471,7 +471,7 @@
 
             mysqli_stmt_bind_param($stmt, "i", $idAluguel);
             mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $dtAluguel, $nomeVeiculo, $id_veiculo);
+            mysqli_stmt_bind_result($stmt, $dtAluguel, $nomeVeiculo, $id_veiculo, $aluguel);
             mysqli_stmt_store_result($stmt);
 
             if (mysqli_stmt_num_rows($stmt) > 0) {
@@ -479,7 +479,8 @@
                     $dadosAluguel[] = [
                         "data" => $dtAluguel,
                         "nome" => $nomeVeiculo,
-                        "id" => $id_veiculo
+                        "id" => $id_veiculo,
+                        "aluguel" => $aluguel
                     ];    
                 }
             }   
@@ -547,5 +548,10 @@
         mysqli_stmt_close($stmt);
 
         return $clientes;
+    }
+
+    function removerRepetidosArray ($array){
+        $unico = array_unique($array, SORT_REGULAR);
+        return $unico;
     }
 ?>

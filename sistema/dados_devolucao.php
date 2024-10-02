@@ -5,8 +5,8 @@
 
     $nome_cliente = $_GET['nome'];
     $id_cliente = $_GET['cliente'];
-    $id_aluguel = $_GET['aluguel'];
-    $dados_veiculos = $_SESSION['nome_veiculo_devolucao'];
+    $id_aluguel[] = $_GET['aluguel'];
+    $dados_veiculos =  removerRepetidosArray($_SESSION['carrinho_devolucao']['veiculos_devolucao']);
 
     $date = date('d-m-Y');
     foreach($_SESSION['dados_funcionario'] as $dados){
@@ -44,10 +44,11 @@
         <br><br>
         <hr><hr>
 
-
         <?php
             
-            foreach ($dados_veiculos as $id_veiculo => $nome) {
+            foreach ($dados_veiculos as $dados) {
+                
+                $id_veiculo = $dados["veiculo"];
 
                 $veiculos = dadosVeiculoPorIdVeiculo($conexao, $id_veiculo);
 
