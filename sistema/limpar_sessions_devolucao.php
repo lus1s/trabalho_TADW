@@ -12,6 +12,7 @@ session_start();
             unset($_SESSION['carrinho_devolucao']);
             
             $_SESSION['carrinho_devolucao']['veiculos_devolucao'] = array();
+            $_SESSION['carrinho_devolucao']['veiculo_devolucao'] = array();
 
             header("Location: dados_individuais.php?id_cliente=$cliente&nome_cliente=$nome_cliente");
             exit();

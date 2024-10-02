@@ -68,8 +68,6 @@
                         echo"<td colspan='3'>$veiculo</td>";
                         echo"<td colspan='3'>" . $km . "</td>";
                         echo "</tr>";
-
-                        $kmVeiculo[] = []; 
                     } 
                    
                 ?>

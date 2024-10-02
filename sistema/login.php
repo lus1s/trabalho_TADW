@@ -37,6 +37,7 @@
         
         $_SESSION['carrinho_devolucao']['nome_devolucao']= array();
         $_SESSION['carrinho_devolucao']['veiculos_devolucao'] = array();
+        $_SESSION['carrinho_devolucao']['veiculo_devolucao'] =array();
         
         header('Location: home.php');
         exit();

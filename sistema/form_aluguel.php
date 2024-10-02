@@ -12,6 +12,7 @@
     <title>Adicionar novo aluguel</title>
 </head>
 <body>
+    <a href="home.php">home</a>
     <form action="dados_cliente.php">
 
         <!-- Hidden == escondido. Serve para marcar a origem da página-->

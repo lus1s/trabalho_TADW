@@ -19,6 +19,7 @@ if ($_GET['origem'] == 1) {
 
     echo '
         <body>
+        <a href="home.php">home</a>
             <form action="cadastroCliente.php" onsubmit="return validacaoCliente()">
                 
                 <!-- Hidden == escondido. Serve para marcar a origem da página-->
@@ -43,6 +44,7 @@ elseif ($_GET['origem'] == 3) {
         $id_cliente = $_GET['id_cliente'];
         echo '
             <body>
+            <a href="home.php">home</a>
                 <form action="cadastroCliente.php">
 
                     <!-- Hidden == escondido. Serve para marcar a origem da página-->
@@ -68,6 +70,7 @@ elseif ($_GET['origem'] == 3) {
         $id_cliente = $_GET['id_cliente'];
         echo '
             <body>
+            <a href="home.php">home</a>
                 <form action="cadastroCliente.php">
 
                     <!-- Hidden == escondido. Serve para marcar a origem da página-->

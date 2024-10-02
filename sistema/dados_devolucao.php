@@ -25,6 +25,7 @@
     <title>Veiculos de <?php echo $nome_cliente; ?></title>
 </head>
 <body>
+    <?php echo "<a href='dados_individuais.php?nome_cliente=$nome_cliente&id_cliente=$id_cliente'>home</a>"; ?>
     <form action="confirmar_devolucao.php">
         Data das Devoluções:
         <input type="text" disabled value="<?php echo $date; ?>">  

@@ -16,6 +16,7 @@
     <title>Dados: <?php echo $nome_cliente; ?></title>
 </head>
 <body>
+    <a href="./busca_clientes.html">voltar</a> <br><br>
     <?php
 
         $id_aluguel[] = idAluguelPorTbCliente($conexao, $id_cliente);

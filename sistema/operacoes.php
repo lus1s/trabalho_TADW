@@ -443,10 +443,11 @@
     function limparSessionDevolucao (){
         if (isset($_SESSION['carrinho_devolucao'])) {
            
-            unset($_SESSION['nome_veiculo_devolucao']);
+            unset($_SESSION['veiculo_devolucao']);
             unset($_SESSION['carrinho_devolucao']);
             
-            $_SESSION['carrinho_devolucao']['veiculos_devolucao'] = array();
+            $_SESSION['carrinho_devolucao']['nome_devolucao'] = array();
+            $_SESSION['carrinho_devolucao']['veiculo_devolucao'] =array();
             $_SESSION['carrinho_devolucao']['nome_devolucao']= array();
         }
     }

@@ -15,6 +15,7 @@ $origem = $_GET['origem'];
 </head>
 
 <body>
+    <a href="./busca_clientes.html">voltar</a>
     <table border="1">
 
         <?php
