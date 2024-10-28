@@ -60,7 +60,9 @@
 
                     $veiculos_devolucao = $_SESSION['carrinho_devolucao']['nome_devolucao'];
 
-                    $veiculoKm = array_combine($kmDevolucao, $veiculos_devolucao);
+                    $veiculosss = removerRepetidosArray($veiculos_devolucao);
+
+                    $veiculoKm = array_combine($kmDevolucao, $veiculosss);
 
                     $kmVeiculo = [];
                     foreach ($veiculoKm as $km => $veiculo) {
