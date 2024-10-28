@@ -1,8 +1,25 @@
 <?php
+
+/** 
+ * Cadastro docliente
+ * 
+ * Este arquivo contém todos os formularios relacionados ao cadastro do cliente
+ * @author Luís Carlos e Maria Beatriz<@email>
+ * 
+ * @requires /conexao.php
+ * @requires /testeLogin.php
+ * @requires /operacoes.php
+ * 
+*/
+
 require_once 'conexao.php';
 require_once 'testeLogin.php';
 require_once 'operacoes.php';
 ?>
+
+ /**
+  * Cabeçalho html
+  */
 <!DOCTYPE html>
         <html lang="en">
 
@@ -14,6 +31,10 @@ require_once 'operacoes.php';
         </head>
         
 <?php
+/**
+ * se origem for 1 a pagina é direcionada para o formulario cliente fisico
+ * se origem for 3 a pagina sera direcionada para o formulario do clienete juridico
+ */
 
 if ($_GET['origem'] == 1) {
 
