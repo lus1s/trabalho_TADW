@@ -1,8 +1,27 @@
 <?php
+    /**
+     * carrinho devolucão 
+     * 
+     * ela adciona os itens alugados e devolver os itens alugados
+     * 
+     * @author Luis carlos <email@email.com>
+     * 
+     * @require_once /conexao.php
+     * @require_once /testelogin.php
+     * @require_ONCE /operacoes
+     * 
+     *  
+     */
+    /**
+     * 
+     */
     require_once 'conexao.php';
     require_once 'testeLogin.php';
     require_once 'operacoes.php';
-
+    /**
+     * @var string $veiculo 
+     * 
+     */
     $veiculo = $_GET['id_veiculo'];
     $nome = $_GET['nome_veiculo'];
     $aluguel = $_GET['id_aluguel'];
