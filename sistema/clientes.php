@@ -1,4 +1,17 @@
 <?php
+
+/**
+ * Cadastro de cliente
+ * 
+ * Esta página processa os dados e envia para o banco
+ * 
+ * @author Luís Carlos <email@email.com>
+ * 
+ * @requires conexao.php
+ * @requires testeLogin.php
+ * @requires operacoes.php
+ */
+
 require_once 'testeLogin.php';
 require_once 'operacoes.php';
 require_once 'conexao.php';
