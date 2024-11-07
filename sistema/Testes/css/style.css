@@ -1,0 +1,49 @@
+body {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+
+nav {
+    z-index: 999;
+    position: fixed;
+    top: 40px;
+    border-radius: 30px 30px 30px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: burlywood;
+    backdrop-filter: blur(10px);
+    color: white;
+    height: 40px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 10px;
+    cursor: pointer;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(200px, 1fr));
+    background-color: rgb(8, 39, 218);
+}

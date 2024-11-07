@@ -1,6 +1,6 @@
 .pesquisa{
-    margin-left: 150px;
-    width: 400px;
+    padding-left: 10px;
+    width: 300px;
 }
 
 .icones{
@@ -30,4 +30,19 @@ h2 {
 
 td {
     text-align: center;
+}
+
+/*========================================*/
+
+nav{
+    color: #000000;
+}
+.container{
+    background-color: blueviolet;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
 }
