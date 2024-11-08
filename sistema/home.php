@@ -17,18 +17,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Home</title>
 </head>
 <body>
-<header>
+
+/** */
+<nav>
+  <ul>
+    <li>
+      <a href="home.php" class="nav-link text-white">
+        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+          </svg>
+        </svg>
+        Início
+      </a>
+    </li>
+                <li>
+                    <a href="#"><i class="bi bi-info"></i> About</a>
+                </li>
+                <li>
+                    <a href="#"><i class="bi bi-gear"></i> Services</a>
+                </li>
+                <li>
+                    <a href="#"><i class="bi bi-person"></i> Contact</a>
+                </li>
+  </ul>
+</nav>
+/** */
+
+<nav>
         <div class="px-3 py-2 text-bg-dark border-bottom">
           <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
               <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                 <!-- ícone para retornar a página inicial. -->
                 <li>
-                  <a href="home.html" class="nav-link text-white">
+                  <a href="home.php" class="nav-link text-white">
                     <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                         <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
@@ -109,7 +136,7 @@
             </div>
           </div>
         </div>
-      </header>
+  </nav>
     <center>
         <h3>Bem vinda(o): <?php echo $nomeFuncionario; ?></h3> 
         <div style="background-color:rgb(119, 243, 243);">

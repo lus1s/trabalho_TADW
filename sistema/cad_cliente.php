@@ -1,7 +1,7 @@
 <?php
 
 /** 
- * Cadastro docliente
+ * Cadastro do cliente
  * 
  * Este arquivo contém todos os formularios relacionados ao cadastro do cliente
  * @author Luís Carlos e Maria Beatriz<@email>
@@ -27,9 +27,10 @@ require_once 'operacoes.php';
         </head>
         
 <?php
-/**
- * se origem for 1 a pagina é direcionada para o formulario cliente fisico
- * se origem for 3 a pagina sera direcionada para o formulario do clienete juridico
+
+ /**
+ * Este trecho verifica o valor de 'origem', vindo da home.
+ * Se 'origem' for igual a 1, sera direcionado a pagina de cadastro, que verifica o tipo de cliente.
  */
 
 if ($_GET['origem'] == 1) {
@@ -53,7 +54,9 @@ if ($_GET['origem'] == 1) {
         </html>
     ';
 }
-
+/**
+ * Apos verificar se o cliente e fisico ou jurido, a origem 1 muda o que sera exibido pela 
+ */
 elseif ($_GET['origem'] == 3) {
     if ($_GET['tipo'] == "p") {
 
