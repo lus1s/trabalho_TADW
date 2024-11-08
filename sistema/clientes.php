@@ -41,7 +41,8 @@ $origem = $_GET['origem'];
             $stmt = mysqli_prepare($conexao, $sql);
             mysqli_stmt_bind_param($stmt, "s", $nome);
             mysqli_stmt_execute($stmt);
-        } elseif ($origem == 2) {
+        } 
+        elseif ($origem == 2) {
 
             $valor = 1;
             $dados_cliente = [];
@@ -96,31 +97,8 @@ $origem = $_GET['origem'];
                 </tr>";
 
             $valor = 1;
-                $sql = "SELECT c.id_cliente, c.nome_cliente, c.tipo_cliente
-                FROM tb_cliente AS c, tb_aluguel AS a, tb_veiculo_aluguel AS va
-                WHERE a.id_aluguel = va.tb_aluguel_id_aluguel
-                AND km_final = 0
-                AND c.id_cliente = a.tb_cliente_id_cliente";
-
-              $stmt = mysqli_prepare($conexao, $sql);
-             
-              mysqli_stmt_execute($stmt);
-     
-              mysqli_stmt_bind_result($stmt, $id, $nomeCliente, $endereco);
-     
-              mysqli_stmt_store_result($stmt);
-     
-              $cliente = [];
-              if (mysqli_stmt_num_rows($stmt) > 0) {
-                  while (mysqli_stmt_fetch($stmt)) {
-                      $cliente[] = [
-                          "id" => $id,
-                          "cliente" => $nomeCliente,
-                          "tipo" => $endereco
-                         ];
-                     }
-                 }
-              mysqli_stmt_close($stmt);
+               
+            $cliente = clientesCadastradasSemAluguel($conexao);
 
              $unico = array_unique($cliente, SORT_REGULAR);
             foreach ($unico as $dados) {

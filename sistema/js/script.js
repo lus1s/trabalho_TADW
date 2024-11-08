@@ -7,4 +7,4 @@ function colors() {
     
     return false;
 }
-    //validacão do funcionario 
+   
