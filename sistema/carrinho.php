@@ -7,7 +7,7 @@
     require_once 'testeLogin.php';
     require_once 'operacoes.php';
 
-    // Recebe os parâmetros da URL para a origem da navegação e os dados do veículo.
+// Recebe os parâmetros da URL para a origem da navegação e os dados do veículo.
     $origem = $_GET['origem']; // Define a origem da navegação
     $veiculo = $_GET['id_veiculo']; // ID do veículo que está sendo adicionado ao carrinho
     $nome = $_GET['nome_veiculo']; // Nome do veículo que está sendo adicionado ao carrinho
