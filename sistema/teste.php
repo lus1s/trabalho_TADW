@@ -17,6 +17,18 @@
            $veiculos_devolucao = $_SESSION['carrinho_devolucao']['nome_devolucao'];
 
            print_r($veiculos_devolucao);
+
+           $sql = "SELECT a.id_aluguel, c.nome_cliente, c.id_cliente
+FROM tb_aluguel AS a, tb_veiculo_aluguel AS va, tb_cliente as c
+WHERE c.id_cliente = a.tb_cliente_id_cliente
+AND a.id_aluguel = va.tb_aluguel_id_aluguel;
+
+SELECT c.id_cliente, c.nome_cliente, c.tipo_cliente
+        FROM tb_cliente AS c, tb_aluguel AS a, tb_veiculo_aluguel AS va
+        WHERE a.id_aluguel = va.tb_aluguel_id_aluguel
+        AND km_final = 0
+        AND c.id_cliente = a.tb_cliente_id_cliente
+";
             
 
     //         echo " <table border='1'>

@@ -1,18 +1,23 @@
 <?php
 /**
  * Este arquivo coleta os dados do veículo e os organiza no carrinho.
- * @author Luís Carlos <@email>
+ * @author Luís Carlos <@email>.
  * 
- * @requires /conexao.php
- * @requires /testeLogin.php
- * @requires /operacoes.php
+ * @requires /conexao.php.
+ * @requires /testeLogin.php.
+ * @requires /operacoes.php.
  * 
  */
-    require_once 'conexao.php';
-    require_once 'testeLogin.php';
-    require_once 'operacoes.php';
+    require_once 'conexao.php';// Conexão com o banco de dados.
+    require_once 'testeLogin.php';// Verifica o login do usuário.
+    require_once 'operacoes.php';// Funções auxiliares para as operações no sistema.
 
-// Recebe os parâmetros da URL para a origem da navegação e os dados do veículo.
+/**
+ * @var int @$origem.
+ * @var int @$veiculo.
+ * @var string @$nome.
+ */
+
     $origem = $_GET['origem']; // Define a origem da navegação.
     $veiculo = $_GET['id_veiculo']; // ID do veículo que está sendo adicionado ao carrinho.
     $nome = $_GET['nome_veiculo']; // Nome do veículo que está sendo adicionado ao carrinho.

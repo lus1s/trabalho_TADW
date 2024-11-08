@@ -23,6 +23,7 @@
      * @var int             $id_cliente             id cliente e o id que vai está alugando veiculo
      * @var string          $nome_cliente           nome do cliente que vai alugar o veiculo
      */
+
     $veiculo = $_GET['id_veiculo'];
     $nome = $_GET['nome_veiculo'];
     $aluguel = $_GET['id_aluguel'];
