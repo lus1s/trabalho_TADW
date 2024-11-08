@@ -18,7 +18,13 @@
         $_SESSION['nome_veiculo'] = array_combine($_SESSION['carrinho']['veiculos'], $_SESSION['carrinho']['nome']);
     }
 
-
-    header("Location: exibir_veiculos.php?origem=1");
-    exit();
+    if ($_GET['origem'] == 1) {
+        
+        header("Location: exibir_veiculos.php?origem=1");
+        exit();
+    }elseif ($_GET['origem'] == 2) {
+        
+        header("Location: exibir_veiculos.php?origem=1");
+        exit();
+    }
 ?>
