@@ -1,7 +1,21 @@
+/**
+     * carrinho devolucão 
+     * 
+     * adciona os itens alugados e devolver os itens alugados
+     * 
+     * @author Luis carlos <email@email.com>
 <?php
-    require_once 'testeLogin.php';
-    require_once 'operacoes.php';
+    require_once 'testeLogin.php'; 
+    require_once 'operacoes.php';  
     require_once 'conexao.php';
+    /**
+     * 
+     * @var string          $nome_cliente                  nome do cliente
+     * @var int             $id_cliente                    id do cliente que vai devolver o veiculo 
+     * @var int             $id_aluguel                    id do aluguel para saber quem é que está alugando
+     * @var string          $dados_veiculos           daados do 
+     */
+
 
     $nome_cliente = $_GET['nome'];
     $id_cliente = $_GET['cliente'];

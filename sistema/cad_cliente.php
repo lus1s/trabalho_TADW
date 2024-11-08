@@ -28,9 +28,12 @@ require_once 'operacoes.php';
         
 <?php
 
- /**
- * Este trecho verifica o valor de 'origem', vindo da home.
- * Se 'origem' for igual a 1, sera direcionado a pagina de cadastro, que verifica o tipo de cliente.
+ /** 
+ * Este trecho verifica o valor de 'origem' enviado via URL (parâmetro GET).
+ * Se a origem for igual a 1, a página exibirá um formulário para que o usuário escolha o tipo de cliente (físico ou jurídico).
+ * 
+ * - Se 'origem' for 1, exibe um formulário onde o usuário escolhe entre CPF (cliente físico) ou CNPJ (cliente jurídico).
+ * - Após a escolha, o formulário será enviado com 'origem' alterado para 2, indicando a próxima etapa do cadastro.
  */
 
 if ($_GET['origem'] == 1) {
@@ -55,11 +58,16 @@ if ($_GET['origem'] == 1) {
     ';
 }
 /**
- * Apos verificar se o cliente e fisico ou jurido, a origem 1 muda o que sera exibido pela 
+ * Após o usuário selecionar o tipo de cliente (físico ou jurídico), 
+ * a origem 3 determina qual formulário será exibido para o cadastro adicional de informações.
+ * 
+ * - Se 'origem' for igual a 3, o formulário será ajustado conforme o tipo de cliente selecionado (físico ou jurídico).
+ * - Para clientes físicos ('tipo' = 'p'), serão solicitadas informações como CPF, CNH e endereço.
+ * - Para clientes jurídicos ('tipo' = 'e'), serão solicitadas informações como CNPJ, responsável e endereço.
  */
 elseif ($_GET['origem'] == 3) {
     if ($_GET['tipo'] == "p") {
-
+/** Para clientes físicos: exibe formulário para CPF, CNH e endereço */
         $tipo = $_GET['tipo'];
         $id_cliente = $_GET['id_cliente'];
         echo '
@@ -87,6 +95,7 @@ elseif ($_GET['origem'] == 3) {
         ';
 
     } elseif ($_GET['tipo'] == "e") {
+/** Para clientes jurídicos: exibe formulário para CNPJ, nome responsável e endereço */
         $id_cliente = $_GET['id_cliente'];
         echo '
             <body>
