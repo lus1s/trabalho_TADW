@@ -30,18 +30,15 @@
     $id_cliente = $_GET['cliente'];
     $nome_cliente = $_GET['nome'];
 
-/**
- * @var string  $_SESSION['carrinho_devolucao']['nome_devolucao'][]     é um session onde dentro dele tem dois array relcionados ao carrinho de devolução
- * @var string  $_SESSION['carrinho_devolucao']['veiculo_devolucao'][]  é um session onde dentro dele tem dois array relacionados ao carrinho de devolução 
- *$_SESSION['carrinho_devolucao']['nome_devolucao'][] = $nome;         é uma session onde dentro dele tem dois array onde adiciona o um valor nome na sessão atual
- *  $_SESSION['carrinho_devolucao']['veiculo_devolucao'][] = $veiculo;   é um session onde dentro dele tem dois array onde adiciona  o valor de `$veiculo` ao final da lista de veículos na sessão atual.
- *
- *   $_SESSION['carrinho_devolucao']['veiculos_devolucao'][] = [     é um session onde dentro dele tem dois array relcionados ao carrinho 
- *        "id_veiculo" => $veiculo,                                   Essa linha coloca um "pacote" com o ID do veículo
- *        "nome" => $nome,                                            nome e valor do aluguel na lista de devoluções da sessão
- *        "aluguel" => $aluguel                                       basicamente juntando essas informações pra cada veículo devolvido
- *    ];
-**/
+    $_SESSION['carrinho_devolucao']['nome_devolucao'][] = $nome;    
+    $_SESSION['carrinho_devolucao']['veiculo_devolucao'][] = $veiculo;
+
+    $_SESSION['carrinho_devolucao']['veiculos_devolucao'][] = [   
+        "id_veiculo" => $veiculo,
+        "nome" => $nome,
+        "aluguel" => $aluguel
+    ];
+
     header("Location: dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente");
     exit();
 
