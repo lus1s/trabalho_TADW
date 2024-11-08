@@ -1,11 +1,11 @@
 <?php
 /**
  * Este arquivo coleta os dados do veículo e os organiza no carrinho.
- * @author Luís Carlos <@email>
+ * @author Luís Carlos <@email>.
  * 
- * @requires /conexao.php
- * @requires /testeLogin.php
- * @requires /operacoes.php
+ * @requires /conexao.php.
+ * @requires /testeLogin.php.
+ * @requires /operacoes.php.
  * 
  */
     require_once 'conexao.php';// Conexão com o banco de dados.
