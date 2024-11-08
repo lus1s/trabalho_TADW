@@ -129,7 +129,7 @@
             exit();
         }
 
-        //Adastros de vairios aluguéis, com clientes já cadastrados
+        //Cadastros de varios aluguéis, com clientes já cadastrados
     }elseif ($_GET['origem'] == 4) {
 
         $id_cliente = $_GET['id_cliente'];
