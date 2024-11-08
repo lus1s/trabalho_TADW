@@ -8,7 +8,7 @@
     $id_aluguel[] = $_GET['aluguel'];
     $dados_veiculos =  removerRepetidosArray($_SESSION['carrinho_devolucao']['veiculos_devolucao']);
 
-    $date = date('d-m-Y');
+    $date = date('d/m/Y');
     foreach($_SESSION['dados_funcionario'] as $dados){
 
         $nomeFuncionario = $dados[0];
@@ -25,7 +25,7 @@
     <title>Veiculos de <?php echo $nome_cliente; ?></title>
 </head>
 <body>
-    <?php echo "<a href='dados_individuais.php?nome_cliente=$nome_cliente&id_cliente=$id_cliente'>home</a>"; ?>
+    <?php echo "<a href='dados_individuais.php?nome_cliente=$nome_cliente&id_cliente=$id_cliente'>home</a>"; ?> <br><br>
     <form action="confirmar_devolucao.php">
         Data das Devoluções:
         <input type="text" disabled value="<?php echo $date; ?>">  
@@ -62,7 +62,7 @@
 
                    echo "Marca: " . $marca_veiculo . "<br>";
 
-                   echo "Km ao alugar: <input type='text' name='km_inicial' disabled value=" . $km_incial . ">";
+                   echo "Km ao alugar: <input type='text' name='km_inicial' disabled value=" . $km_incial . "km> ";
                    echo 'Km ao devolver: <td><input type="text" name="km_devolucao[' . $id_veiculo . ']"></td>';
                    echo "<hr>";                   
                 }

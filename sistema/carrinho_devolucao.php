@@ -17,12 +17,13 @@
     require_once 'testeLogin.php';
     require_once 'operacoes.php';
     /**
-     * @var int     $veiculo        id do veiculo
-     * @var string  $nome           nome do veiculo
-     * @var string  $aluguel        id do aluguel veiculo
-     * @var int     $id_cliente             id cliente e o id que vai está alugando veiculo
-     * @var string  $nome_cliente   nome do cliente que vai alugar o veiculo
+     * @var int             $veiculo                id do veiculo
+     * @var string          $nome                   nome do veiculo
+     * @var string          $aluguel                id do aluguel veiculo
+     * @var int             $id_cliente             id cliente e o id que vai está alugando veiculo
+     * @var string          $nome_cliente           nome do cliente que vai alugar o veiculo
      */
+
     $veiculo = $_GET['id_veiculo'];
     $nome = $_GET['nome_veiculo'];
     $aluguel = $_GET['id_aluguel'];
@@ -31,7 +32,7 @@
 
 /**
  * @var string  $_SESSION['carrinho_devolucao']['nome_devolucao'][] ele vai devolver de acordo com o nome do carro 
- * @var string  $_SESSION['carrinho_devolucao']['veiculo_devolucao'][] = $veiculo; a devolução está acontecendo de acordo com o veiculo que esta sendo devolvido
+ * @var string  $_SESSION['carrinho_devolucao']['veiculo_devolucao'][] a devolução está acontecendo de acordo com o veiculo que esta sendo devolvido
  */
 
     $_SESSION['carrinho_devolucao']['nome_devolucao'][] = $nome;    
