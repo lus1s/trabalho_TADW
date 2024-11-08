@@ -7,9 +7,9 @@
  * 
  * @author Luís Carlos <email@email.com>
  * 
- * @requires conexao.php
  * @requires testeLogin.php
  * @requires operacoes.php
+ * @requires conexao.php
  */
 
 require_once 'testeLogin.php';
