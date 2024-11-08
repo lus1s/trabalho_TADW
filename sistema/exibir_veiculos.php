@@ -43,7 +43,16 @@
                        
                         $dados_veiculos[] = [$id_veiculo, $nome_veiculo, $marca, $placa, $estado];
 
-                        if ($estado == "1"){$estado_exibido = "Disponível"; $acao = "<button id='botoes' class='btn btn-success'><a id='links' href='clientes.php?origem=2' style='color: white;'>Alugar</a></button> <button class='btn btn-dark'><a href='carrinho.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo' style='color: white;'>selecionar</a></button>";} 
+                        if ($estado == "1"){
+                            $estado_exibido = "Disponível"; 
+                            $acao = "<button id='botoes' class='btn btn-success'>
+                                        <a id='links' href='carrinho.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo&origem=2' style='color: white;'>Alugar</a>
+                                    </button>
+                                    <button class='btn btn-dark'>
+                                        <a href='carrinho.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo&origem=1' style='color: white'>selecionar
+                                        </a>
+                                    </button>"
+                             ;} 
 
                         elseif ($estado == "2"){$estado_exibido = "Alugado"; $acao =  "<button class='btn btn-danger'><a href='devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo' style='color: white;'>Devolver</a></button> <button class='btn btn-danger'><a href='devolucao.php?id_veiculo=$id_veiculo' style='color: white;'>inspecionar</a></button>";}
 
