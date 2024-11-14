@@ -13,11 +13,11 @@
      * @var string          $nome_cliente                  nome do cliente
      * @var int             $id_cliente                    id do cliente que vai devolver o veiculo 
      * @var int             $id_aluguel                    id do aluguel para saber quem é que está alugando
-     * @var string          $dados_veiculos           daados do 
+     * @var string          $dados_veiculos                dados dos veiculos e que dsq  remove os repetidos 
      */
 
 
-    $nome_cliente = $_GET['nome'];
+    $nome_cliente = $_GET['nome'];   
     $id_cliente = $_GET['cliente'];
     $id_aluguel[] = $_GET['aluguel'];
     $dados_veiculos =  removerRepetidosArray($_SESSION['carrinho_devolucao']['veiculos_devolucao']);

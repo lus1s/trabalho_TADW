@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/script.js"></script>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
     <a href="home.php">home</a>
-    <form onsubmit="return validacao()" action="formulario_func.php">
+    <form id="formulario_funci" action="formulario_func.php">
         Nome do funcionario: <br>
         <input type="text" name="name" id="name"><br><br>
         Cpf do funcionario: <br>
