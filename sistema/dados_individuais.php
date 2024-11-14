@@ -53,18 +53,24 @@
             <tr>";
 
             $veiculos = dadosAluguelIdAluguel($conexao, $id_cliente);
-        
-            foreach ($veiculos as $dados) {
-                $nome = $dados["nome"];
-                $id_veiculo = $dados["id"];
-                $id_aluguel = $dados["aluguel"];
-               echo "<td>" . $dados["nome"] ."</td>";
-               echo "<td>" . $dados["data"] . "</td>";
-               echo "<td><button><a href='devolucao.php?nome_veiculo=$nome&id_veiculo=$id_veiculo'> Devolução </a></button> <button class='btn btn-dark'><a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente&id_aluguel=$id_aluguel' style='color: white;'>selecionar</a></button></td>";
-               
-               echo "</tr>";
+
+            if ($veiculos > 0) {
+                foreach ($veiculos as $dados) {
+                    $nome = $dados["nome"];
+                    $id_veiculo = $dados["id"];
+                    $id_aluguel = $dados["aluguel"];
+                   echo "<td>" . $dados["nome"] ."</td>";
+                   echo "<td>" . $dados["data"] . "</td>";
+                   echo "<td><button><a href='devolucao.php?nome_veiculo=$nome&id_veiculo=$id_veiculo'> Devolução </a></button> <button class='btn btn-dark'><a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente&id_aluguel=$id_aluguel' style='color: white;'>selecionar</a></button></td>";
+                   
+                   echo "</tr>";
+                }
+                echo "</table>";
             }
-        echo "</table>";
+            else {
+                echo "Não há veiculos alugados";
+            }
+           
 
         echo '<form action="dados_devolucao.php">';
         echo '<div class="position-absolute top-0 end-0" id="frame">';

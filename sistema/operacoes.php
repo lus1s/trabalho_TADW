@@ -478,7 +478,7 @@
     function dadosAluguelIdAluguel($conexao, $id_cliente){
 
         $id_aluguel = idAluguelPorTbCliente($conexao, $id_cliente);
-
+       
         foreach ($id_aluguel as $id) {
 
             $idAluguel = $id[0];
@@ -506,7 +506,10 @@
                         "aluguel" => $aluguel
                     ];    
                 }
-            }   
+            }
+            else {
+                $dadosAluguel = 0;   
+            }
         }
         return $dadosAluguel;
     }

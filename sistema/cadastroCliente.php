@@ -5,7 +5,7 @@
  * 
  * Esta página processa os dados e envia para o banco
  * 
- * @author Luís Carlos <email@email.com>
+ * @author Julian Victor <email@email.com>
  * 
  * @requires conexao.php
  * @requires testeLogin.php
@@ -41,9 +41,7 @@ if ($_GET['origem'] == 2) {
     $nome = $_GET['nome_cliente'];
     $tipo = $_GET['tipo'];
 
-    $id_cliente = insereClienteVerificaID($conexao, $nome, $tipo);
-
-    header("Location: cad_cliente.php?origem=3&id_cliente=$id_cliente&tipo=$tipo");
+    header("Location: cad_cliente.php?origem=3&tipo=$tipo&nome=$nome");
     exit();
 }
 
@@ -60,12 +58,14 @@ if ($_GET['origem'] == 2) {
  */
 
 elseif ($_GET['origem'] == 4){
-
+    $nome = $_GET['nome_cliente'];
     $cpf = $_GET['cpf'];
     $cnh = $_GET['cnh'];
     $endereco = $_GET['endereco'];
     $tipo_cliente = $_GET['tipo'];
-    $id_cliente = $_GET['id_cliente'];
+
+
+    $id_cliente = insereClienteVerificaID($conexao, $nome, $tipo_cliente);
 
     /** 
      * a função a seguir tem o propósito de inserir o cliente no banco
@@ -96,10 +96,12 @@ elseif ($_GET['origem'] == 4){
  */
 
 elseif ($_GET['origem'] == 5){
+    $nome = $_GET['nome_cliente'];
     $cnpj_cliente = $_GET['cnpj'];
     $responsavel = $_GET['func_resp'];
     $endereco = $_GET['endereco'];
-    $id_cliente = $_GET['id_cliente'];
+
+    $id_cliente = insereClienteVerificaID($conexao, $nome, $tipo);
 
     /** 
      * a função a seguir tem o propósito de inserir a empresa/pessoa jurídica no banco
