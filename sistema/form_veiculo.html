@@ -91,9 +91,12 @@
                         required: true
                     }, 
                     marcaveiculo:{
-                        required: true
+                        required: true,
+                        pattern: /^[a-zA-Z]+$/ // pattern condição que aceita apenas letra ou numro no caso dessa apenas letras maiusclas e minusculas de a ate z //
                     },
                     
+
+
                 },
             })
         })
