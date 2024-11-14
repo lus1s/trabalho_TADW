@@ -35,9 +35,10 @@
       <a href="funcionario.php" id="funcionario">
         Funcionário: <u><?php echo $nomeFuncionario; ?></u>
       </a>
+
       <button class="btn btn-danger" type="submit"><a href="limpar_sessions.php?origem=1" id="sair">Sair</a></button>
     </div>
-  </nav>
+     </nav>
       
     <center>
         <div class="container-fluid">

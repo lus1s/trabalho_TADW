@@ -69,7 +69,8 @@ elseif ($_GET['origem'] == 3) {
     if ($_GET['tipo'] == "p") {
 /** Para clientes físicos: exibe formulário para CPF, CNH e endereço */
         $tipo = $_GET['tipo'];
-        $id_cliente = $_GET['id_cliente'];
+        
+        $nome = $_GET['nome'];
         echo '
             <body>
             <a href="home.php">home</a>
@@ -77,8 +78,8 @@ elseif ($_GET['origem'] == 3) {
 
                     <!-- Hidden == escondido. Serve para marcar a origem da página-->
                     <input type="hidden" name="origem" value="4">
-                    <input type="hidden" name="id_cliente" value=' . $id_cliente .'>
                     <input type="hidden" name="tipo" value=' . $tipo .'>
+                    <input type="hidden" name="nome_cliente" value=' . $nome .'>
                     <input type="hidden" name="tipo" value="p">
 
                     Cpf: <br>
@@ -105,6 +106,7 @@ elseif ($_GET['origem'] == 3) {
                     <!-- Hidden == escondido. Serve para marcar a origem da página-->
                     <input type="hidden" name="origem" value="5">
                     <input type="hidden" name="id_cliente" value=' . $id_cliente .'>
+                    <input type="hidden" name="nome_cliente" value=' . $nome .'>
                     <input type="hidden" name="tipo" value="e">
                     cnpj: <br>
                     <input type="text" name="cnpj" id=""><br><br>
