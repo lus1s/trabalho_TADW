@@ -29,14 +29,28 @@
 </head>
 
 <body>
+    
+    <!--Foi feita uma tabela para apresentar os dados dos clientes:
+        $tipo_cliente   => string   => define o tipo do cliente:
+            $cliente    => situação => pessoa física;
+            $cliente    => situação => empresa;
+
+        Os dados apresentados podem ser:
+        $nome           => string   => recebe o nome do cliente; 
+        $tipo_cliente   => string   => recebe o tipo do cliente, em pessoa física ou pessoa jurídica;
+        $acao           => ação     => seleciona um cliente ou executa um ação de pesquiza;
+    -->
+    
     <a href="./busca_clientes.html">voltar</a>
     <table border="1">
         <?php
             if ($origem == 1) {
                 $nome = $_GET['cliente'];
 
+                //$sql  => mysqli   => seleciona o cliente da tabela cliente onde o nome for o pesquisado;
                 $sql = "SELECT nome_cliente FROM tb_cliente WHERE nome_cliente LIKE %?%";
 
+                //$stmt => mysqli   => prepara a execução do $sql;
                 $stmt = mysqli_prepare($conexao, $sql);
 
                 mysqli_stmt_bind_param($stmt, "s", $nome);
@@ -54,8 +68,10 @@
                         <td>Ação</td>
                      </tr>";
 
+                //$sql  => mysqli   => seleciona o cliente da tabela cliente onde o nome for o pesquisado;
                 $sql = "SELECT id_cliente, nome_cliente, tipo_cliente FROM tb_cliente";
 
+                //$stmt => mysqli   => prepara a execução do $sql;
                 $stmt = mysqli_prepare($conexao, $sql);
 
                 mysqli_stmt_execute($stmt);
