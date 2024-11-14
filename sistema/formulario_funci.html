@@ -12,15 +12,55 @@
 <body>
     <a href="home.php">home</a>
     <form id="formulario_funci" action="formulario_func.php">
-        Nome do funcionario: <br>
+        <label for="Nome">Nome do funcionario:</label> <br>
         <input type="text" name="name" id="name"><br><br>
-        Cpf do funcionario: <br>
+        <label for="cpf">Cpf do funcionario:</label> <br>
         <input type="text" name="cpf" id="cpf"><br><br>
-        senha do funcionario: <br>
+        <label for="password">Senha do funcionario:</label> <br>
         <input type="text" name="password" id="password"><br><br>
+       
 
         <input type="submit" value="Adicionar">
     </form>
+
+    <script>
+        
+    $(document).ready(function() {
+        $("#formulario_funci").validate({
+            rules: { 
+                name: {
+                    required: true,
+                    minlength: 2,
+                },
+                cpf: {
+                    required: true,
+                    minlength: 8,
+                },
+                password: {
+                    required: true,
+                    minlength: 8,
+
+                }
+            },
+            messages: {
+                name: {
+                    required: "campo nome obrigatório.",
+                    minlength: "O nome deve ter pelo menos 2 caracteres."
+                },
+                cpf: {
+                    required: "Campo cpf obrigatório.",
+                    minlength: "O usuário deve ter pelo menos 8 caracteres. "
+                },
+                password: {
+                    required: "Senha obrigatória.",
+                    minlength: "A senha deve ter 8 caracteres."
+                }
+            }
+        })
+    }
+    )
+
+    </script>
 </body>
 
 </html>
