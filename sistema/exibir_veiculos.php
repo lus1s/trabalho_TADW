@@ -17,7 +17,7 @@
 <body>
     <a href="home.php">home</a>
     <div class="position-relative">
-        <table class="">
+        <table class=""  style='color: white'>
             <tr>
                 <td>Nome do veiculo</td>
                 <td>Marca</td>
@@ -57,11 +57,7 @@
                                 
                                 elseif ($estado == "2"){
                                     $estado_exibido = "Alugado"; 
-                                    
-                                    $id_aluguel = idAluguelPorTbVeiculoAluguel($conexao, $id_veiculo);
-                            $acao =  "<button class='btn btn-danger'>
-                                        <a href='historico_veiculo.php?idVeiculo=$id_veiculo' style='color: white;'>inspecionar</a>
-                                    </button>";
+                                    $acao =  "<button class='btn btn-danger' disabled> Alugado </button>";
                             }
 
                         echo "<td scope='col'> $nome_veiculo </td>";

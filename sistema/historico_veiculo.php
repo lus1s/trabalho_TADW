@@ -2,12 +2,7 @@
     require_once 'conexao.php';
     require_once 'testeLogin.php';
     require_once 'operacoes.php';
-
-    $idVeiculo = $_GET['idVeiculo'];
-
-    $id_aluguel = idAluguelPorTbVeiculoAluguel($conexao, $idVeiculo);
-
-   
+     
 
 ?>
 <!DOCTYPE html>

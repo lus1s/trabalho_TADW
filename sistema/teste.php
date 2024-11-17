@@ -13,11 +13,9 @@
 <body>
     <pre>
         <?php
-        
-        $id_aluguel = 12;
-           $veiculos_devolucao = dadosAluguelIdAluguel($conexao, $id_aluguel);
+            $array = dadosAluguelNaoDevolvido($conexao);
 
-           print_r($veiculos_devolucao);
+            print_r($array);
 
 //            $sql = "SELECT a.id_aluguel, c.nome_cliente, c.id_cliente
 // FROM tb_aluguel AS a, tb_veiculo_aluguel AS va, tb_cliente as c
