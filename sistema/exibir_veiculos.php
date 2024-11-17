@@ -60,11 +60,8 @@
                                     
                                     $id_aluguel = idAluguelPorTbVeiculoAluguel($conexao, $id_veiculo);
                             $acao =  "<button class='btn btn-danger'>
-                                            <a href='devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo'  style='color: white;'>Devolver</a>
-                                        </button> 
-                                        <button class='btn btn-danger'>
-                                            <a href='devolucao.php?id_veiculo=$id_veiculo' style='color: white;'>inspecionar</a>
-                                        </button>";
+                                        <a href='historico_veiculo.php?idVeiculo=$id_veiculo' style='color: white;'>inspecionar</a>
+                                    </button>";
                             }
 
                         echo "<td scope='col'> $nome_veiculo </td>";

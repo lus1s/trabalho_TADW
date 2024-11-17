@@ -46,13 +46,20 @@
 
         echo "<table border='1'>
                 <tr>
+                <td colspan='4'>
+                    <center>
+                        Veiculos p/ devolução
+                    </center>
+                </td>
+                </tr>
+                <tr>
                 <td>Veiculo</td>
                 <td>Data</td>
                 <td>Ação</td>
                 </tr>
             <tr>";
 
-            $veiculos = dadosAluguelIdAluguel($conexao, $id_cliente);
+            $veiculos = dadosAluguelIdcliente($conexao, $id_cliente);
 
             if ($veiculos > 0) {
                 foreach ($veiculos as $dados) {

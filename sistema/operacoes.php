@@ -475,7 +475,35 @@
         }
     }
 
-    function dadosAluguelIdAluguel($conexao, $id_cliente){
+    function dadosDevoluçãoAluguel($conexao){
+        $sql = "SELECT a.data_aluguel, d.data_devolucao, d.valor_cobrado, f.nome_funcionario, c.nome_cliente
+                FROM tb_devolucao AS d, tb_aluguel AS a, tb_funcionario AS f, tb_cliente AS c
+                WHERE d.tb_aluguel_id_aluguel = a.id_aluguel
+                AND d.tb_funcionario_id_funcionario = f.id_funcionario
+                AND a.tb_cliente_id_cliente = c.id_cliente";
+
+            $stmt = mysqli_prepare($conexao, $sql);
+
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $dtAluguel, $data_devolucao, $valorCobrado, $nomeFuncionario, $nome_cliente);
+            mysqli_stmt_store_result($stmt);
+
+            if (mysqli_stmt_num_rows($stmt) > 0) {
+                while (mysqli_stmt_fetch($stmt)) {
+                    $dadosAluguel[] = [
+                        "data" => $dtAluguel,
+                        "dataDevolucao" => $data_devolucao,
+                        "valor" => $valorCobrado,
+                        "funcionario" => $nomeFuncionario,
+                        "cliente" => $nome_cliente
+                    ];    
+                }
+            }
+            return $dadosAluguel;
+
+    }
+
+    function dadosAluguelIdcliente($conexao, $id_cliente){
 
         $id_aluguel = idAluguelPorTbCliente($conexao, $id_cliente);
        
@@ -488,7 +516,8 @@
                 WHERE n.id_veiculo = va.tb_veiculo_id_veiculo
                 AND c.id_cliente = a.tb_cliente_id_cliente
                 AND a.id_aluguel = va.tb_aluguel_id_aluguel
-                AND a.id_aluguel = ?";
+                AND a.id_aluguel = ?
+                AND va.km_final = 0";
 
             $stmt = mysqli_prepare($conexao, $sql);
 
@@ -610,4 +639,5 @@
         $unico = array_unique($array, SORT_REGULAR);
         return $unico;
     }
+
 ?>
