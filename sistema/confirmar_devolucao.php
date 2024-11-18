@@ -1,25 +1,49 @@
 <?php
-   require_once 'testeLogin.php';
-   require_once 'operacoes.php';
-   require_once 'conexao.php';
+/**
+ * Este arquivo confirma a devolução.
+ * 
+ * @author Luís Carlos <@email>.
+ * 
+ * @requires /testeLogin.php.
+ * @requires /operacoes.php.
+ * @requires /conexao.php.
+ */
+   require_once 'testeLogin.php';// Conexão com o banco de dados.
+   require_once 'operacoes.php';// Verifica o login do usuário.
+   require_once 'conexao.php';// Conexão com o banco de dados.
+   /**
+    * @var string $data_devolucao.
+    * @var string $funcDevolucao.
+    * @var string $nome_cliente.
+    * @var int $idCliente.
+    */
 
-   $data_devolucao = $_GET['dt_devolucao'];
-   $funcDevolucao = $_GET['funcdevolucao'];
-
-   $nome_cliente = $_GET['nome'];
-   $idCliente = $_GET['id_cliente'];
+   $data_devolucao = $_GET['dt_devolucao'];//Data em que o veículo foi devolvido.
+   $funcDevolucao = $_GET['funcdevolucao'];//Nome ou identificação do funcionário responsável pela devolução.
+   $nome_cliente = $_GET['nome'];//Nome do cliente que está realizando a devolução.
+   $idCliente = $_GET['id_cliente'];//Identificador único do cliente no sistema.
 
    if(!empty(dadosClientePessoa($conexao, $idCliente))){$dadosCliente = dadosClientePessoa($conexao, $idCliente);}
-   else{$dadosCliente = dadosClienteEmpresa($conexao, $idCliente);}
+   else{$dadosCliente = dadosClienteEmpresa($conexao, $idCliente);}//Verifica se o cliente é pessoa fisica ou juridica.
+   //Se o cliente for uma pessoa física, os dados são obtidos com a função dadosClientePessoa().
+   //Se não for uma pessoa física, assume-se que é uma empresa, e os dados são obtidos com dadosClienteEmpresa().
 
-   $metPagamento = $_GET['met_pagamento'];
-   $tipoPagamento = metodoPagamento($metPagamento);
+   /**
+    * @var string $metPagamento. 
+    * @var string $tipoPagamento.
+    * @var int $kmDevolucao.  
+    * @var float $valotTotal.
+    */
 
-   $kmDevolucao = $_GET['km_devolucao'];
+   $metPagamento = $_GET['met_pagamento'];//Identificador do método de pagamento (como "dinheiro", "cartão", etc.).
+   $tipoPagamento = metodoPagamento($metPagamento);//A função metodoPagamento() recebe um identificador (metPagamento)
+   //e retorna o nome ou descrição do método de pagamento (ex: "Cartão de Crédito", "Dinheiro", etc.).
 
-   $_SESSION['kmdevolucao'] = $kmDevolucao;
+   $kmDevolucao = $_GET['km_devolucao'];//Quilometragem do veículo no momento da devolução.
 
-   $valorTotal = $_GET['valor'];
+   $_SESSION['kmdevolucao'] = $kmDevolucao;// A quilometragem da devolução ($kmDevolucao) é armazenada navariável de sessão 
+   //$_SESSION['kmdevolucao']. Isso permite que esses dados sejam acessados em outras páginas durante a mesma sessão de usuário, sem a necessidade de passá-los pela URL.
+   $valorTotal = $_GET['valor'];//Valor total da devolução.
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +53,8 @@
     <title>Confirmar dados para devolução</title>
 </head>
 <body>
+
+    <!--  -->
     <form action="devolver_varios.php">
         <table border="1">
             <tr>
