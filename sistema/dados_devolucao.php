@@ -12,16 +12,16 @@
      */
 
 
-    $nome_cliente = $_GET['nome'];   
-    $id_cliente = $_GET['cliente'];
-    $id_aluguel[] = $_GET['aluguel'];
-    $dados_veiculos =  removerRepetidosArray($_SESSION['carrinho_devolucao']['veiculos_devolucao']);
+    $nome_cliente = $_GET['nome']; //Captura o valor do parâmetro nome enviado via URL e o armazena na variável $nome_cliente.  
+    $id_cliente = $_GET['cliente']; //Captura o valor do parâmetro cliente enviado via URL e o armazena na variável $id_cliente.
+    $id_aluguel[] = $_GET['aluguel']; //Adiciona o valor do parâmetro aluguel enviado via URL como um novo elemento no array $id_aluguel.
+    $dados_veiculos =  removerRepetidosArray($_SESSION['carrinho_devolucao']['veiculos_devolucao']); // Obtém o array veiculos_devolucao da sessão, remove duplicados usando a função removerRepetidosArray, e armazena o resultado na variável $dados_veiculos.
 
-    $date = date('d/m/Y');
-    foreach($_SESSION['dados_funcionario'] as $dados){
+    $date = date('d/m/Y'); //Obtém a data atual no formato e armazena na variável date.
+    foreach($_SESSION['dados_funcionario'] as $dados){ //Passa por cada item da lista `dados_funcionario` que está guardada na sessão, jogando o conteúdo de cada item na variável `$dados` enquanto roda o loop.
 
-        $nomeFuncionario = $dados[0];
-        $id_funcionario = $dados[1];
+        $nomeFuncionario = $dados[0]; //Pega o primeiro valor do array "dados" (índice 0) e guarda na variável "nomeFuncionario".
+        $id_funcionario = $dados[1];  //Pega o segundo valor do array "dados" (índice 1) e guarda na variável "id_funcionario".
     }
 
 ?>
@@ -34,33 +34,42 @@
     <title>Veiculos de <?php echo $nome_cliente; ?></title>
 </head>
 <body>
+
+    <!--Cria um link HTML (<a>), onde a URL aponta para dados_individuais.php com os parâmetros nome_cliente e id_cliente passados dinamicamente via PHP.-->
     <?php echo "<a href='dados_individuais.php?nome_cliente=$nome_cliente&id_cliente=$id_cliente'>home</a>"; ?> <br><br>
-    <form action="confirmar_devolucao.php">
-        Data das Devoluções:
-        <input type="text" disabled value="<?php echo $date; ?>">  
+
+    <!--Inicia um formulário que, ao ser submetido, enviará os dados para o arquivo confirmar_devolucao.php usando o método padrão GET.-->
+<form action="confirmar_devolucao.php">
+
+    Data das Devoluções:
+    <input type="text" disabled value="<?php echo $date; ?>">  
+    <!--Coloca uma caixinha de texto desativada, só para exibir a data atual que está guardada na variável "$date", no formato "dia/mês/ano". Como está desativada, não dá pra editar, é só pra mostrar mesmo.-->
 
         <!-- o hidden vai p/ o php, ou outro não -->
         <input type="hidden" name="dt_devolucao" value="<?php echo $date; ?>">
 
         Funcionario responsável pela devolução: 
         <input type="text" name="funcdevolucao" disabled value="<?php echo $nomeFuncionario; ?>">
+        <!--Cria um campo de texto desativado, com o nome "funcdevolucao", que exibe o valor da variável PHP $nomeFuncionario sem permitir edição.-->
 
         <input type="hidden" name="funcdevolucao" value="<?php echo $nomeFuncionario; ?>">
-
+        <!--Cria um campo oculto com o nome "funcdevolucao" e o valor do nome do funcionário, que é enviado no formulário sem ser visível para o usuário.-->
 
         <input type="hidden" name="id_cliente" value="<?php echo $id_cliente; ?>">
-        <input type="hidden" name="nome" value="<?php echo $nome_cliente; ?>">
+        <!--Cria um campo invisível que guarda o ID do cliente e envia essa informação no formulário, mas o usuário não vê.-->
 
+        <input type="hidden" name="nome" value="<?php echo $nome_cliente; ?>">
+        <!--Cria outro campo invisível que guarda o nome do cliente e também envia essa informação no formulário sem mostrar pro usuário.-->
         <br><br>
         <hr><hr>
 
         <?php
             
-            foreach ($dados_veiculos as $dados) {
+            foreach ($dados_veiculos as $dados) { //O "foreach ($dados_veiculos as $dados)" vai passar por cada item da lista "$dados_veiculos" e colocar um de cada vez na variável "$dados" pra usar dentro do loop.
 
-                $id_veiculo = $dados["id_veiculo"];
+                $id_veiculo = $dados["id_veiculo"]; //pega o valor do campo "id_veiculo" do item atual (que está na variável "$dados") e armazena na variável "$id_veiculo".
 
-                $veiculos = dadosVeiculoPorIdVeiculo($conexao, $id_veiculo);
+                $veiculos = dadosVeiculoPorIdVeiculo($conexao, $id_veiculo);//A linha chama uma função pra buscar os dados do veículo usando o ID e a conexão, e armazena os resultados na variável "$veiculos".
 
                 foreach ($veiculos as $dados) {
                    $nome_veiculo = $dados[0];

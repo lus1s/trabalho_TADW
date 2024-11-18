@@ -13,9 +13,16 @@
 <body>
     <pre>
         <?php
-            $array = dadosAluguelNaoDevolvido($conexao);
+            $array = dadosAluguelNaoDevolvido($conexao);    
 
-            print_r($array);
+            $hj = date('Y-m-d');
+
+            foreach ($array as $value) {
+                $data = separarDataHora($value["data"]);
+                
+               
+                print_r($dif);
+            }
 
 //            $sql = "SELECT a.id_aluguel, c.nome_cliente, c.id_cliente
 // FROM tb_aluguel AS a, tb_veiculo_aluguel AS va, tb_cliente as c

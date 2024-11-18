@@ -10,17 +10,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Historico de Alugueis</title>
 </head>
 <body>
+<a href="./busca_clientes.html">voltar</a>
     <table border="1">
         <tr>
-            <td>Aluguel Pendente</td>
+            <td colspan="4">Aluguel Pendente</td>
         </tr>
         <tr>
-
+            <td>Cliente</td>
+            <td>Funcionario</td>
+            <td>Data</td>
+            <td>Devolução</td>
+        </tr>
+        
             <?php
+                $alugueis = dadosAluguelNaoDevolvido($conexao);
 
+                foreach ($alugueis as $valor) {
+                    $id = $valor["idCliente"];
+                    $cliente = $valor["cliente"];
+                    echo "<tr>";
+                    echo "<td>". $valor["cliente"] ."</td>";
+                    echo "<td>". $valor["funcionario"] ."</td>";
+                    echo "<td>". $valor["data"] ."</td>";
+                    echo "<td><button><a href='./dados_individuais.php?id_cliente=$id&nome_cliente=$cliente'>Devolução</a></button></td>";
+                    echo "</tr>";           
+                }
             ?>
         
     </table>
@@ -30,11 +47,11 @@
             <td colspan="5">Alugueis já realizados</td>
         </tr>
         <tr>
+            <td>cliente</td>
+            <td>funcionario </td>
             <td>Data locação</td>
             <td>Data devolução</td>
             <td>Valor cobrado</td>
-            <td>funcionario </td>
-            <td>cliente</td>
         </tr>
         
             <?php
@@ -42,11 +59,11 @@
 
                 foreach($aluguel as $dados){
                     echo "<tr>";
+                    echo "<td>" . $dados["cliente"] . "</td>";
+                    echo "<td>" . $dados["funcionario"] . "</td>";
                     echo "<td>" . $dados["data"] . " </td>";
                     echo "<td>" . $dados["dataDevolucao"] . "</td>";
                     echo "<td>" . $dados["valor"] . "</td>";
-                    echo "<td>" . $dados["funcionario"] . "</td>";
-                    echo "<td>" . $dados["cliente"] . "</td>";
                     echo "</tr >";
                 }
             ?>

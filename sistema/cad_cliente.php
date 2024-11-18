@@ -21,7 +21,8 @@ require_once 'operacoes.php';
 
         <head>
             <meta charset="UTF-8">
-            <script src="./js/script.js"></script>
+            <script src="./js/jquery-3.7.1.min.js"></script>
+            <script src="./js/jquery.validate.min.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Document</title>
         </head>
@@ -41,18 +42,54 @@ if ($_GET['origem'] == 1) {
     echo '
         <body>
         <a href="home.php">home</a>
-            <form action="cadastroCliente.php" onsubmit="return validacaoCliente()">
-                
+            <form id="formulario_cliente" action="cadastroCliente.php"
+                    
                 <!-- Hidden == escondido. Serve para marcar a origem da página-->
                 <input type="hidden" name="origem" value="2">
                 
                 Nome do cliente: <br>
                 <input type="text" name="nome_cliente" id="nome"><br><br>
-                <input type="radio" name="tipo" value="p" id="cpf">CPF 
-                <input type="radio" name="tipo" value="e" id="cnpj">CNPJ  <br><br>
+                <input type="radio" name="tipo" value="p" id="tipo">CPF 
+                <input type="radio" name="tipo" value="e" id="tipo">CNPJ  <br><br>
 
                 <input type="submit" value="&#10145;&#65039;">
             </form>
+    <script>
+             $(document).ready(function() {
+                 $("#formulario_cliente").validate({
+                    rules: { 
+                name: {
+                    required: true,
+                    minlength: 2,
+                },
+                tipo: {
+                    required: true,
+                    minlength: 8,
+                },
+                tipo: {
+                    required: true,
+                    minlength: 8,
+
+                }
+            },
+            messages: {
+                name: {
+                    required: "campo nome obrigatório.",
+                    minlength: "O nome deve ter pelo menos 2 caracteres."
+                },
+                tipo: {
+                    required: "Adicione um dos campus.",
+                    minlength: "clique em apenas um. "
+                },
+                tipo: {
+                    required: "Adicione um dos campus.",
+                    minlength: "clique em apenas um."
+                }
+            }
+        })
+    }
+    )
+            </script>
         </body>
         </html>
     ';
@@ -108,6 +145,7 @@ elseif ($_GET['origem'] == 3) {
                     <input type="hidden" name="id_cliente" value=' . $id_cliente .'>
                     <input type="hidden" name="nome_cliente" value=' . $nome .'>
                     <input type="hidden" name="tipo" value="e">
+
                     cnpj: <br>
                     <input type="text" name="cnpj" id=""><br><br>
                     funcionário responsável: <br>

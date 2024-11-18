@@ -482,53 +482,55 @@
                 AND d.tb_funcionario_id_funcionario = f.id_funcionario
                 AND a.tb_cliente_id_cliente = c.id_cliente";
 
-            $stmt = mysqli_prepare($conexao, $sql);
+        $stmt = mysqli_prepare($conexao, $sql);
 
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $dtAluguel, $data_devolucao, $valorCobrado, $nomeFuncionario, $nome_cliente);
-            mysqli_stmt_store_result($stmt);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $dtAluguel, $data_devolucao, $valorCobrado, $nomeFuncionario, $nome_cliente);
+        mysqli_stmt_store_result($stmt);
 
-            if (mysqli_stmt_num_rows($stmt) > 0) {
-                while (mysqli_stmt_fetch($stmt)) {
-                    $dadosAluguel[] = [
-                        "data" => $dtAluguel,
-                        "dataDevolucao" => $data_devolucao,
-                        "valor" => $valorCobrado,
-                        "funcionario" => $nomeFuncionario,
-                        "cliente" => $nome_cliente
-                    ];    
-                }
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $dadosAluguel[] = [
+                    "data" => $dtAluguel,
+                    "dataDevolucao" => $data_devolucao,
+                    "valor" => $valorCobrado,
+                    "funcionario" => $nomeFuncionario,
+                    "cliente" => $nome_cliente
+                ];    
             }
-            return $dadosAluguel;
+        }
+        return $dadosAluguel;
 
     }
 
     function dadosAluguelNaoDevolvido($conexao){
-        $sql = "SELECT a.data_aluguel, c.nome_cliente, f.nome_funcionario
+        $sql = "SELECT a.data_aluguel, c.nome_cliente, c.id_cliente, f.nome_funcionario
                 FROM tb_aluguel AS a, tb_veiculo AS n, tb_veiculo_aluguel AS va, tb_cliente as c, tb_funcionario as f
                 WHERE n.id_veiculo = va.tb_veiculo_id_veiculo
                 AND c.id_cliente = a.tb_cliente_id_cliente
                 AND a.id_aluguel = va.tb_aluguel_id_aluguel
                 AND a.tb_funcionario_id_funcionario = f.id_funcionario
                 AND va.km_final = 0";
-          $stmt = mysqli_prepare($conexao, $sql);
 
-          mysqli_stmt_execute($stmt);
-          mysqli_stmt_bind_result($stmt, $dtAluguel, $nome_cliente, $nomeFuncionario);
-          mysqli_stmt_store_result($stmt);
+        $stmt = mysqli_prepare($conexao, $sql);
 
-          if (mysqli_stmt_num_rows($stmt) > 0) {
-              while (mysqli_stmt_fetch($stmt)) {
-                  $dadosAluguel[] = [
-                      "data" => $dtAluguel,
-                      "funcionario" => $nomeFuncionario,
-                      "cliente" => $nome_cliente
-                  ];    
-              }
-          }
-          $alugados = removerRepetidosArray($dadosAluguel);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $dtAluguel, $nome_cliente, $idCliente, $nomeFuncionario);
+        mysqli_stmt_store_result($stmt);
 
-          return $alugados;
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $dadosAluguel[] = [
+                    "data" => $dtAluguel,
+                    "cliente" => $nome_cliente,
+                    "idCliente" => $idCliente,
+                    "funcionario" => $nomeFuncionario
+                ];    
+            }
+        }
+        $alugados = removerRepetidosArray($dadosAluguel);
+
+        return $alugados;
     }
 
     function dadosAluguelIdcliente($conexao, $id_cliente){
@@ -666,6 +668,17 @@
     function removerRepetidosArray ($array){
         $unico = array_unique($array, SORT_REGULAR);
         return $unico;
+    }
+
+    function separarDataHora ($array){
+        list($data, $hora) = explode(" ", $array);
+
+        $dtHora[] =[
+            "data" => $data,
+            "hora" => $hora 
+        ];
+
+        return $dtHora;
     }
 
 ?>
