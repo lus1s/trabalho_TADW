@@ -1,11 +1,6 @@
-/**
-     * carrinho devolucão 
-     * 
-     * adciona os itens alugados e devolver os itens alugados
-     * 
-     * @author Luis carlos <email@email.com>
 <?php
-    require_once 'testeLogin.php'; 
+    session_start();
+    // require_once 'testeLogin.php'; 
     require_once 'operacoes.php';  
     require_once 'conexao.php';
     /**

@@ -1,48 +1,29 @@
-.pesquisa{
-    padding-left: 10px;
-    width: 300px;
-}
-
-.icones{
-    margin-left: auto;
-}
-
-#caixa {
-    background-color: #ffffff;
-    color: #000000;
-    padding-top: 40px;
-    padding-left: 13%;
-}
-
-h2 {
-    padding-left: 25%;
-}
-
-#primeiro {
-    font-weight: bold;
-}
-
-
-.tabela-alugueis {
-    width: 900px;
-    text-align: justify;
-}
-
-td {
-    text-align: center;
-}
-
-/*========================================*/
-
-nav{
-    color: #000000;
-}
-.container{
-    background-color: blueviolet;
-    align-items: center;
+body {
+    background-color: #2c2c2c;
 }
 
 a {
     text-decoration: none;
-    color: #000000;
+    color: rgb(0, 0, 0);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff;
+}
+    nav #logo {
+        font-weight: bold;
+        color: #444444;
+    }
+    nav #pesquiza2 {
+        color: #444444;
+
+    }
+    nav #funcionario {
+        color: #444444;
+    }
+    nav #sair {
+        color: #ffffff;
+    }
