@@ -57,4 +57,48 @@ nav {
         width: 100%;
     }
 
+.dados-funcionario {
+    display:grid;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 30px;
+    align-items: center;
+}
+    .card-dados-func{
+        background-color: #444444;
+        color: aliceblue;
+        border-radius: 10PX;
+        border-color: aliceblue;
+        text-align: justify;
+    }
+    .card .card-title {
+        text-align: center;
+    }
+    .card .btn {
+        background-color: #2c2c2c;
+        color: aliceblue;
+        width: 100%;
+    }
 
+.alt-senha-func {
+    display:grid;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 30px;
+    align-items: center;
+}
+    .card-alt-senha-func {
+        background-color: #444444;
+        color: aliceblue;
+        border-radius: 10PX;
+        border-color: aliceblue;
+        text-align: justify;
+    }
+    .card .card-title {
+        text-align: center;
+    }
+    .card .btn {
+        background-color: #2c2c2c;
+        color: aliceblue;
+        width: 100%;
+    }
