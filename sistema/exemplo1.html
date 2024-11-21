@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
+</head>
+
+<body>
+    <form id="formulario" action="teste.html">
+        <label for="nome">Nome:</label> <br>
+        <input type="text" id="nome" name="nome">
+        <br><br>
+
+        <label for="usuario">Nome de usuário:</label> <br>
+        <input type="text" name="usuario" id="usuario">
+        <br><br>
+
+        <label for="usuario2">Confirme o usuário:</label> <br>
+        <input type="text" name="usuario2" id="usuario2">
+        <br><br>
+
+        <label for="email">Endereço de e-mail:</label> <br>
+        <input type="email" name="email" id="email">
+        <br><br>
+
+        <label for="email2">Confirme o e-mail:</label> <br>
+        <input type="email" name="email2" id="email2">
+
+
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        $(document).ready(function () {
+            $("#formulario").validate({
+                rules: {
+                    nome: {
+                        required: true,
+                        minlength: 2,
+                    },
+                    usuario: {
+                        required: true,
+                        minlength: 8,
+                    },
+                    usuario2: {
+                        required: true,
+                        equalTo: "#usuario",
+                    },
+                    email: {
+                        required: true,
+                    },
+                    email2: {
+                        required: true,
+                        equalTo: "#email",
+                    }
+                },
+                messages: {
+                    nome: {
+                        required: "Campo nome é obrigatório.",
+                        minlength: "O nome deve ter pelo menos 2 caracteres."
+                    },
+                    usuario: {
+                        required: "Campo usuário é obrigatório.",
+                        minlength: "O usuário deve ter pelo menos 8 caracteres."
+                    },
+                    usuario2: {
+                        required: "Confirme o nome de usuário.",
+                        equalTo: "Os nomes de usuário não correspondem."
+                    },
+                    email: {
+                        required: "Endereço de e-mail é necessário.",
+                        email: "Informe um e-mail válido."
+                    },
+                    email2: {
+                        required: "Confirme o endereço de e-mail",
+                        equalTo: "Os e-mails não correspondem",
+                        email: "Informe um e-mail válido.",
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
