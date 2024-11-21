@@ -68,7 +68,14 @@
                     $id_aluguel = $dados["aluguel"];
                    echo "<td>" . $dados["nome"] ."</td>";
                    echo "<td>" . $dados["data"] . "</td>";
-                   echo "<td><button><a href='devolucao.php?nome_veiculo=$nome&id_veiculo=$id_veiculo'> Devolução </a></button> <button class='btn btn-dark'><a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente&id_aluguel=$id_aluguel' style='color: white;'>selecionar</a></button></td>";
+                   echo "<td>
+                            <button>
+                                <a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente&id_aluguel=$id_aluguel&origem=2'> Devolução </a>
+                            </button> 
+                            <button class='btn btn-dark'>
+                                <a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente&id_aluguel=$id_aluguel&origem=2' style='color: white;'>selecionar</a>
+                            </button>
+                        </td>";
                    
                    echo "</tr>";
                 }
@@ -78,14 +85,12 @@
                 echo "Não há veiculos alugados";
             }
            
-
+        // Exibiçao do carrinho
         echo '<form action="dados_devolucao.php">';
         echo '<div class="position-absolute top-0 end-0" id="frame">';
         if (empty($_SESSION['carrinho_devolucao']['veiculos_devolucao'])) {
             echo "selecione alguns veiculos";
-        }else {
-
-    
+        }else {    
            $nome_veiculo = removerRepetidosArray($_SESSION['carrinho_devolucao']['veiculos_devolucao']);
             foreach($nome_veiculo as $dados_veiculo) {
 
@@ -94,11 +99,8 @@
 
                 echo"
                     <div class='card' style='width: 18rem;'>
-                        <img src='...' class='card-img-top' alt='...'>
                         <div class='card-body'>
                             <h5 class='card-title'> $nome </h5>
-
-                            <a href='limpar_sessions_devolucao.php?id=$id&origem=2&cliente=$id_cliente&nome=$nome_cliente' class='btn btn-primary'>remover</a>
                         </div>
                     </div> <br>";
 
