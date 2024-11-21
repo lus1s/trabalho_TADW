@@ -6,7 +6,7 @@
     $cpf = $_POST['cpf'];
     $password = $_POST['senha'];
 
-    $sql = "SELECT nome_funcionario, id_funcionario FROM tb_funcionario WHERE cpf_funcionario = ? AND senha_funcionario = ?";
+    $sql = "SELECT * FROM tb_funcionario WHERE cpf_funcionario = ? AND senha_funcionario = ?";
 
     $stmt = mysqli_prepare($conexao, $sql);
     
@@ -14,7 +14,7 @@
 
     mysqli_stmt_execute($stmt);
 
-    mysqli_stmt_bind_result($stmt, $nome_funcionario, $id_funcionario);
+    mysqli_stmt_bind_result($stmt, $id_funcionario, $nome_funcionario, $cpf_func, $pass);
 
     mysqli_stmt_store_result($stmt);
 
@@ -24,7 +24,7 @@
 
        mysqli_stmt_fetch($stmt);
        
-        $dados_funcionario[] = [$nome_funcionario, $id_funcionario];
+        $dados_funcionario[] = [$nome_funcionario, $id_funcionario, $cpf_func, $pass];
         $_SESSION['dados_funcionario'] = $dados_funcionario;
 
         mysqli_stmt_close($stmt);

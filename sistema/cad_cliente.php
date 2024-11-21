@@ -28,7 +28,6 @@ require_once 'operacoes.php';
         </head>
         
 <?php
-
  /** 
  * Este trecho verifica o valor de 'origem' enviado via URL (parâmetro GET).
  * Se a origem for igual a 1, a página exibirá um formulário para que o usuário escolha o tipo de cliente (físico ou jurídico).
@@ -36,13 +35,12 @@ require_once 'operacoes.php';
  * - Se 'origem' for 1, exibe um formulário onde o usuário escolhe entre CPF (cliente físico) ou CNPJ (cliente jurídico).
  * - Após a escolha, o formulário será enviado com 'origem' alterado para 2, indicando a próxima etapa do cadastro.
  */
-
 if ($_GET['origem'] == 1) {
-
     echo '
         <body>
         <a href="home.php">home</a>
-            <form id="formulario_cliente" action="cadastroCliente.php"
+        
+            <form id="formulario_cliente" action="cadastroCliente.php">
                     
                 <!-- Hidden == escondido. Serve para marcar a origem da página-->
                 <input type="hidden" name="origem" value="2">

@@ -31,6 +31,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/script.js"></script>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
     <title>Veiculos de <?php echo $nome_cliente; ?></title>
 </head>
 <body>
@@ -96,13 +98,22 @@
             
         </select> <br><br>
 
+        valor por km (R$): <input type="text" name="custo" id="custo"> <br> <br>
+
         Valor cobrado:
-        <input type="text" name="valor" id="">
+        <input type="text" name="valor" disabled value="0.0" id="valor">
 
         <br><br>
         <input type="submit" value="Confirmar devolução">
     </form>
-
+        
+    <script>
+        (document).ready(function() {
+            $("#custo").keypress (
+                console.log("hello")
+            )
+        })
+    </script>
     
 </body>
 </html>

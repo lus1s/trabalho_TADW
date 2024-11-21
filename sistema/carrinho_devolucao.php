@@ -39,7 +39,13 @@
         "aluguel" => $aluguel
     ];
 
-    header("Location: dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente");
-    exit();
+    if ($_GET["origem"] == 1) {
+        header("Location: dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente");
+        exit();
+    }elseif ($_GET["origem"] == 2) {
+        header("Location: dados_devolucao.php?cliente=$id_cliente&nome=$nome_cliente&aluguel=$aluguel");
+        exit();
+    }
+
 
 ?>

@@ -665,6 +665,19 @@
             return $cliente;
     }
 
+    function alterarSenha ($conexao, $password, $id_funcionario){
+
+        $sql = "UPDATE tb_funcionario SET senha_funcionario = ? WHERE id_funcionario = ?";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+    
+        mysqli_stmt_bind_param($stmt, "si", $password, $id_funcionario);
+    
+        mysqli_stmt_execute($stmt);
+            
+        mysqli_stmt_close($stmt);
+    }
+
     function removerRepetidosArray ($array){
         $unico = array_unique($array, SORT_REGULAR);
         return $unico;
