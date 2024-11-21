@@ -115,7 +115,6 @@
                     },
                     motor:{
                         required:true,
-                        singleRadio: true,
                     },
                     kmrodado:{
                         required: true,
@@ -123,6 +122,25 @@
                     },
                     passageiro:{
                         required: true,
+                    },
+                    portas:{
+                        required: true,
+                    },
+                    ar:{
+                        required: true,
+                    },
+                    portamala:{
+                        required: true,
+                    },
+                    cambio:{
+                        required: true,
+                    },
+                    tamanho:{
+                        required: true,
+                    },
+                    descricao:{
+                        required: true,
+                        regex: /^[a-zA-Z0-9áéíóúãõçÁÉÍÓÚÃÕÇ]=$/,
                     },
 
 
@@ -161,8 +179,27 @@
                         regex: "Apenas numeros",
                     },
                     passageiro:{
-                        required:"Prencha",
+                        required: "Prencha o numero de passageiros",
 
+                    },
+                    portas:{
+                        required: "Prencha o numreo de portas",
+                    },
+                    ar:{
+                        required: "Prencha se a ar sim ou não",
+                    },
+                    portamala:{
+                        required: "Prencha se a portamala sim ou não ",
+                    },
+                    cambio:{
+                        required: "Prencha tipo de cambio",
+                    },
+                    tamanho:{
+                        required: "Prencha o tamaho",
+                    },
+                    descricao:{
+                        required: "Prencha a descrição",
+                        regex: "Apenas letras, numeros e acentos"
                     },
                     
                 }
