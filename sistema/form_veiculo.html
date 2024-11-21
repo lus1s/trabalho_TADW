@@ -12,7 +12,7 @@
     <a href="home.php">home</a>
     <form id="form_veiculo" action="form_veiculo.php">
         
-        <input type="radio" name="veiculo" value="1" id="veiculo">Carro
+        <input type="radio" name="veiculo" value="1" id="veiculo">Carro <br>
         <input type="radio" name="veiculo" value="2" id="veiculo">Moto  <br> <br>
 
         Marca: 
@@ -92,29 +92,85 @@
                     }, 
                     marcaveiculo:{
                         required: true,
-                        regex: /^[a-zA-Z0-9]+$/, // pattern condição que aceita apenas letra ou numro, letras maiusclas e minusculas de a ate z
+                        regex: /^[a-zA-Z0-9áéíóúãõçÁÉÍÓÚÃÕÇ]+$/, // pattern condição que aceita apenas letra ou numro, letras maiusclas e minusculas de a ate z
                     },
-                    nome:{
+                    nomeveiculo:{
                         required: true,
-                        regex:/^[a-zA-Z0-9]+$/, // pattern condição que aceita apenas letra ou numro, letras maiusclas e minusculas de a ate z
+                        regex:/^[a-zA-Z0-9áéíóúãõçÁÉÍÓÚÃÕÇ]+$/, // pattern condição que aceita apenas letra ou numro, letras maiusclas e minusculas de a ate z
+                    },
+                    anoveiculo:{
+                        required: true,
+                        digits: true,
+                        minlength: 4,
+                        maxlength: 4,
+                    },
+                    corveiculo:{
+                        required: true,
+                        regex: /^[a-zA-ZáéíóúãõçÁÉÍÓÚÃÕÇ]+$/,
+                        minlength: 4,
+                    },
+                    placaveiculo:{
+                        required: true,
+                        regex:/^[A-Z0-9-]+$/, 
+                    },
+                    motor:{
+                        required:true,
+                        singleRadio: true,
+                    },
+                    kmrodado:{
+                        required: true,
+                        regex:/^[0-9]+$/,
+                    },
+                    passageiro:{
+                        required: true,
                     },
 
 
                 },
-                menssagem:{
+                messages:{
                     veiculo:{
-                        required: "Selecionar tipo de veiculo.",
+                        required: "Selecionar tipo de veiculo",
                     },
                     marcaveiculo:{
                         required: "Informar nome do veiculo",
                         regex: "O nome deve conter apenas letras e números",
-                    }
+                    },
+                    nomeveiculo:{
+                        required: "Informe o nome do veiculo"
+                    },
+                    anoveiculo:{
+                        required:" Informe a data",
+                        digits: "O campo deve conter apenas numero",
+                        minlength:"Minimo 4 numeros",
+                        maxlength:"Maximo 4 numeros",
+                    },
+                    corveiculo:{
+                        required: "Informe a cor",
+                        regex:"Apenas letras e acentos",
+                        minlength: "Minimo 4 letras",
+                    },
+                    placaveiculo:{
+                        required: "Prencha o campo",
+                        regex:"Apenas letras maiusculas e numeros",
+                    },
+                    motor:{
+                        required:"Prencha ",
+                    },
+                    kmrodado:{
+                        required: "Prencha o campo de KM",
+                        regex: "Apenas numeros",
+                    },
+                    passageiro:{
+                        required:"Prencha",
+
+                    },
                     
                 }
             }),
             $.validator.addMethod("regex", function(value, element, regexp) {
                 return this.optional(element) || regexp.test(value);
             }, "Por favor, insira um valor válido.");
+            //$.validator.addMethod("regex", ...): Cria uma nova regra de validação chamada regex, que pode ser usada em campos do formulário.
             //value: O valor do campo.
             //element: O próprio campo de entrada.
             //regexp: A expressão regular a ser usada para validar o valor.
