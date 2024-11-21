@@ -11,19 +11,50 @@ a {
 nav {
     display: flex;
     justify-content: space-around;
-    background-color: #ffffff;
+    background-color: #444444;
 }
     nav #logo {
         font-weight: bold;
-        color: #444444;
+        color: aliceblue;
     }
     nav #pesquiza2 {
-        color: #444444;
+        color: aliceblue;
 
     }
     nav #funcionario {
-        color: #444444;
+        color: aliceblue;
     }
     nav #sair {
         color: #ffffff;
     }
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 30px;
+    align-items: center;
+}
+.cards2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    align-items: center;
+}
+    .card {
+        background-color: #444444;
+        color: aliceblue;
+        border-color: aliceblue;
+        text-align: justify;
+    }
+    .card .card-title {
+        text-align: center;
+    }
+    .card .btn {
+        background-color: #2c2c2c;
+        color: aliceblue;
+        width: 100%;
+    }
+
+

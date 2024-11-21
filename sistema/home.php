@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Início - Veículos FARIA</title>
 </head>
+
 <body>
   <nav class="navbar">
     <div class="container" id="navbar">
@@ -32,24 +33,60 @@
           </svg>
         </button>
       </form>
+        
       <a href="funcionario.php" id="funcionario">
         Funcionário: <u><?php echo $nomeFuncionario; ?></u>
       </a>
 
       <button class="btn btn-danger" type="submit"><a href="limpar_sessions.php?origem=1" id="sair">Sair</a></button>
     </div>
-     </nav>
-      
-    <center>
-        <div class="container-fluid">
-            <a href="form_veiculo.html">Formulário de veículo</a> <br><br>
-            <a href="cad_cliente.php?origem=1">Cadastrar cliente</a> <br><br>
-            <a href="formulario_funci.html">Formulário de funcionário</a> <br><br> 
-            <a href="exibir_veiculos.php">veiculos</a> <br><br>
-            <a href="busca_clientes.html">Exibir clientes / Histórico de alugueis</a> <br><br>
-        </div>
-    </center>
+  </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <div class="cards">
+    <div class="card" style="width: 18rem;">
+      <img src="./imagens/veiculos.webp" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Novos Veículos</h5>
+        <p class="card-text">Cadastre um novo veículo nesta área sempre que você desejar.</p>
+        <a href="form_veiculo.html" class="btn">Cadastrar Veículo</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="./imagens/clientes.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Novos Clientes</h5>
+        <p class="card-text">Cadastre um novo cliente nesta área sempre que você desejar. <i>"Trate-os sempre com muito respeito!"</i></p>
+        <a href="cad_cliente.php?origem=1" class="btn">Cadastrar Cliente</a>
+      </div>
+    </div>
+  </div>
+  <div class="cards2">
+    <div class="card" style="width: 18rem;">
+      <img src="./imagens/carros.webp" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Nossos Veículos</h5>
+        <p class="card-text">Agora, aqui, você pode ver e analisar todos os nossos veículos disponíveis.</p>
+        <a href="exibir_veiculos.php" class="btn">Nossos Veículos</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="./imagens/registros.webp" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Históricos</h5>
+        <p class="card-text">Mas, caso necessite relembrar de algum valor de operações passadas: VOCÊ PODE OLHAR AQUI!</p>
+        <a href="busca_clientes.html" class="btn">Registros Gerais</a>
+      </div>
+    </div>
+  </div>
+  
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Novo Funcionário</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="formulario_funci.html" class="btn">Cadastrar Funcionário</a>
+      </div>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
