@@ -23,43 +23,41 @@
         <input type="submit" value="Adicionar">
     </form>
 
-    <script>
-        
-    $(document).ready(function() {
-        $("#formulario_funci").validate({
-            rules: { 
-                name: {
-                    required: true,
-                    minlength: 2,
-                },
-                cpf: {
-                    required: true,
-                    minlength: 8,
-                },
-                password: {
-                    required: true,
-                    minlength: 8,
+    <script>    
+        (document).ready(function() {
+            $("#formulario_funci").validate({
+                rules: { 
+                    name: {
+                        required: true,
+                        minlength: 2,
+                    },
+                    cpf: {
+                        required: true,
+                        minlength: 8,
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8,
 
-                }
-            },
-            messages: {
-                name: {
-                    required: "campo nome obrigatório.",
-                    minlength: "O nome deve ter pelo menos 2 caracteres."
+                    }
                 },
-                cpf: {
-                    required: "Campo cpf obrigatório.",
-                    minlength: "O usuário deve ter pelo menos 8 caracteres. "
-                },
-                password: {
-                    required: "Senha obrigatória.",
-                    minlength: "A senha deve ter 8 caracteres."
+                messages: {
+                    name: {
+                        required: "campo nome obrigatório.",
+                        minlength: "O nome deve ter pelo menos 2 caracteres."
+                    },
+                    cpf: {
+                        required: "Campo cpf obrigatório.",
+                        minlength: "O usuário deve ter pelo menos 8 caracteres. "
+                    },
+                    password: {
+                        required: "Senha obrigatória.",
+                        minlength: "A senha deve ter 8 caracteres."
+                    }
                 }
-            }
-        })
-    }
-    )
-
+            })
+        }
+        )
     </script>
 </body>
 

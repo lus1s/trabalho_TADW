@@ -36,6 +36,7 @@
     */
 
    $metPagamento = $_GET['met_pagamento'];//Identificador do método de pagamento (como "dinheiro", "cartão", etc.).
+   
    $tipoPagamento = metodoPagamento($metPagamento);//A função metodoPagamento() recebe um identificador (metPagamento)
    //e retorna o nome ou descrição do método de pagamento (ex: "Cartão de Crédito", "Dinheiro", etc.).
 

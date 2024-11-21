@@ -10,28 +10,28 @@
 <body>
     
     <a href="home.php">home</a>
-    <form action="form_veiculo.php">
+    <form id="form_veiculo" action="form_veiculo.php">
         
-        <input type="radio" name="veiculo" value="1">Carro
-        <input type="radio" name="veiculo" value="2">Moto  <br> <br>
+        <input type="radio" name="veiculo" value="1" id="veiculo">Carro
+        <input type="radio" name="veiculo" value="2" id="veiculo">Moto  <br> <br>
 
         Marca: 
-        <input type="text"  name="marcaveiculo" id=""> <br><br>
+        <input type="text"  name="marcaveiculo" id="marcaveiculo"> <br><br>
 
         Nome:
-        <input type="text" name="nomeveiculo" id=""> <br><br>
+        <input type="text" name="nomeveiculo" id="nomeveiculo"> <br><br>
 
         Ano: 
-        <input type="text" name="anoveiculo" id=""> <br><br>
+        <input type="text" name="anoveiculo" id="anoveiculo"> <br><br>
 
         Cor: 
-        <input type="text" name="corveiculo" id=""> <br><br>
+        <input type="text" name="corveiculo" id="corveiculo"> <br><br>
 
         Placa:
-        <input type="text" name="placaveiculo" id=""> <br><br>
+        <input type="text" name="placaveiculo" id="placaveiculo"> <br><br>
 
         Motor: 
-        <select name="motor" id="">
+        <select name="motor" id="motor">
             <option value="1.0">1.0</option>
             <option value="1.4">1.4</option>
             <option value="1.6">1.6</option>
@@ -40,44 +40,44 @@
         </select> <br><br>
 
         Km rodados:
-        <input type="text" name="kmrodado" id=""> <br><br>
+        <input type="text" name="kmrodado" id="kmrodado"> <br><br>
 
         Quantidade de passageiros:
-        <input type="radio" name="passageiro" value="2" id="">2
-        <input type="radio" name="passageiro" value="4" id="">4
-        <input type="radio" name="passageiro" value="5" id="">5
-        <input type="radio" name="passageiro" value="6" id="">6
-        <input type="radio" name="passageiro" value="7" id="">7 <br><br>
+        <input type="radio" name="passageiro" value="2" id="passageiro">2
+        <input type="radio" name="passageiro" value="4" id="passageiro">4
+        <input type="radio" name="passageiro" value="5" id="passageiro">5
+        <input type="radio" name="passageiro" value="6" id="passageiro">6
+        <input type="radio" name="passageiro" value="7" id="passageiro">7 <br><br>
 
         Quantidade de portas:
-        <input type="radio" name="portas" value="0" id="">0
-        <input type="radio" name="portas" value="2" id="">2
-        <input type="radio" name="portas" value="4" id="">4 <br><br>
+        <input type="radio" name="portas" value="0" id="portas">0
+        <input type="radio" name="portas" value="2" id="portas">2
+        <input type="radio" name="portas" value="4" id="portas">4 <br><br>
 
         Arcondicionado:
-        <input type="radio" name="ar" value="1">Sim
-        <input type="radio" name="ar" value="2">Não <br><br>
+        <input type="radio" name="ar" value="1" id="ar">Sim
+        <input type="radio" name="ar" value="2" id="ar">Não <br><br>
 
         Portamalas: 
-        <input type="radio" name="portamala" value="1">Sim
-        <input type="radio" name="portamala" value="2">Não <br><br> 
+        <input type="radio" name="portamala" value="1" id="portamala">Sim
+        <input type="radio" name="portamala" value="2" id="portamala">Não <br><br> 
             
         
         Cambio: 
-        <select name="cambio" id="">
+        <select name="cambio" id="cambio">
             <option value="1">Manual</option>
             <option value="2">Altomático</option>
         </select> <br><br>
         Tamanho: 
-        <select name="tamanho" id="">
+        <select name="tamanho" id="tamanho">
             <option value="1">Pequeno</option>
             <option value="2">Medio</option>
             <option value="3">Grande</option>
         </select> <br><br>
         Descrição do veiculo:
-        <input type="text" name="descricao"> <br><br>
+        <input type="text" name="descricao" id="descricao"> <br><br>
 
-        <input type="hidden" name="disponibilidade" value="d">
+        <input type="hidden" name="disponibilidade" value="d" id="disponibilidade">
         
         <input type="submit" value="Cadastrar Veículo">
 
@@ -88,17 +88,40 @@
             $("#form_veiculo").validate({
                 rules: {
                     veiculo:{
-                        required: true
+                        required: true,
                     }, 
                     marcaveiculo:{
                         required: true,
-                        pattern: /^[a-zA-Z]+$/ // pattern condição que aceita apenas letra ou numro no caso dessa apenas letras maiusclas e minusculas de a ate z //
+                        regex: /^[a-zA-Z0-9]+$/, // pattern condição que aceita apenas letra ou numro, letras maiusclas e minusculas de a ate z
                     },
-                    
+                    nome:{
+                        required: true,
+                        regex:/^[a-zA-Z0-9]+$/, // pattern condição que aceita apenas letra ou numro, letras maiusclas e minusculas de a ate z
+                    },
 
 
                 },
-            })
+                menssagem:{
+                    veiculo:{
+                        required: "Selecionar tipo de veiculo.",
+                    },
+                    marcaveiculo:{
+                        required: "Informar nome do veiculo",
+                        regex: "O nome deve conter apenas letras e números",
+                    }
+                    
+                }
+            }),
+            $.validator.addMethod("regex", function(value, element, regexp) {
+                return this.optional(element) || regexp.test(value);
+            }, "Por favor, insira um valor válido.");
+            //value: O valor do campo.
+            //element: O próprio campo de entrada.
+            //regexp: A expressão regular a ser usada para validar o valor.
+            //this.optional(element): Retorna true se o campo for opcional (ou seja, vazio e não obrigatório), permitindo que o campo seja considerado válido se não for preenchido.
+            //regexp.test(value): Verifica se o valor do campo corresponde à expressão regular fornecida.
+            //Este código cria uma validação personalizada no jQuery, onde você pode aplicar uma expressão regular em um campo e validar seu conteúdo.
+            // Se a expressão regular não corresponder, o formulário exibirá uma mensagem de erro personalizada
         })
     </script>
 

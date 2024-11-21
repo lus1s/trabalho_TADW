@@ -5,9 +5,8 @@
     
    
     foreach($_SESSION['dados_funcionario'] as $dados){
-
-        $nomeFuncionario = $dados[0];
-        $id_funcionario = $dados[1];
+      $nomeFuncionario = $dados[0];
+      $id_funcionario = $dados[1];
     }
     $_SESSION['idFuncionario'] = $id_funcionario;
 ?>
@@ -33,8 +32,7 @@
           </svg>
         </button>
       </form>
-        
-      <a href="funcionario.php" id="funcionario">
+      <a href="funcionario.php?origem=1" id="funcionario">
         Funcionário: <u><?php echo $nomeFuncionario; ?></u>
       </a>
 
