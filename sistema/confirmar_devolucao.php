@@ -55,17 +55,21 @@
 </head>
 <body>
 
-    <!--  -->
+    <!-- Formulário que envia dados para a página 'devolver_varios.php' -->
     <form action="devolver_varios.php">
+         <!-- Tabela para organizar e exibir os dados do recibo -->
         <table border="1">
+            <!-- Linha com o título do recibo -->
             <tr>
                 <td colspan="6">RECIBO DE DEVOLUÇÃO</td>
             </tr>
             <tr>
+            <!-- Exibe o nome do cliente (variável PHP) -->
             <td colspan="2">Nome: <?php echo $nome_cliente; ?></td>
             
             <td>CPF/CNPJ:</td>
             <?php
+            //  para percorrer os dados do cliente (exemplo: CPF ou CNPJ)
                  foreach ($dadosCliente as $dados) {
                     echo "<td>" . $dados[0] . " </td>";
                    
