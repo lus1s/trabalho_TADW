@@ -44,7 +44,7 @@
 
    $_SESSION['kmdevolucao'] = $kmDevolucao;// A quilometragem da devolução ($kmDevolucao) é armazenada navariável de sessão 
    //$_SESSION['kmdevolucao']. Isso permite que esses dados sejam acessados em outras páginas durante a mesma sessão de usuário, sem a necessidade de passá-los pela URL.
-   $valorTotal = $_GET['valor'];//Valor total da devolução.
+   $valorTotal = $_GET['total'];//Valor total da devolução.
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,18 +55,28 @@
 </head>
 <body>
 
+<<<<<<< HEAD
     <!--  -->
     <form action="devolver_varios.php"><!--Aqui começa o formulário que vai enviar as informações para o arquivo devolver_varios.php.-->
         <table border="1">
    <!-- A primeira linha <tr> tem apenas uma célula <td>, que ocupa 6 colunas (colspan="6"), e exibe o título "RECIBO DE DEVOLUÇÃO".-->
+=======
+    <!-- Formulário que envia dados para a página 'devolver_varios.php' -->
+    <form action="devolver_varios.php">
+         <!-- Tabela para organizar e exibir os dados do recibo -->
+        <table border="1">
+            <!-- Linha com o título do recibo -->
+>>>>>>> 6f4b0984301a06cd6c6bb3859f7d9d2e6d866880
             <tr>
                 <td colspan="6">RECIBO DE DEVOLUÇÃO</td>
             </tr>
             <tr>
+            <!-- Exibe o nome do cliente (variável PHP) -->
             <td colspan="2">Nome: <?php echo $nome_cliente; ?></td>
             
             <td>CPF/CNPJ:</td>
             <?php
+            //  para percorrer os dados do cliente (exemplo: CPF ou CNPJ)
                  foreach ($dadosCliente as $dados) {
                     echo "<td>" . $dados[0] . " </td>";
                    

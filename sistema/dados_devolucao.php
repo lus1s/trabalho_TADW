@@ -63,7 +63,7 @@
         <input type="hidden" name="nome" value="<?php echo $nome_cliente; ?>">
         <!--Cria outro campo invisível que guarda o nome do cliente e também envia essa informação no formulário sem mostrar pro usuário.-->
         <br><br>
-        <hr><hr>
+        <hr color="red"><hr>
 
         <?php
             
@@ -82,13 +82,15 @@
 
                    echo "Marca: " . $marca_veiculo . "<br>";
 
-                   echo "Km ao alugar: <input type='text' name='km_inicial' disabled value=" . $km_incial . "km> ";
-                   echo 'Km ao devolver: <td><input type="text" name="km_devolucao[' . $id_veiculo . ']"></td>';
+                   echo "Km ao alugar: <input type='text' class='calculo' id='kmInicial' disabled name='km_inicial'  value=" . $km_incial . "> ";
+
+                   echo 'Km ao devolver: <input type="text" class="calculo" id="km_final" name="km_devolucao[' . $id_veiculo . ']">';
                    echo "<hr>";                   
                 }
             }
 
         ?>
+        <hr color="red">
         Metodo de pagamento:
         <select name="met_pagamento" id="">
             <option value=""></option>
@@ -98,20 +100,29 @@
             
         </select> <br><br>
 
-        valor por km (R$): <input type="text" name="custo" id="custo"> <br> <br>
+        valor por km (R$): <input type="text" class="calculo" name="custo" id="custo"> <br> <br>
 
         Valor cobrado:
-        <input type="text" name="valor" disabled value="0.0" id="valor">
+        <input type="text" name="total" readonly id="total">
 
         <br><br>
         <input type="submit" value="Confirmar devolução">
     </form>
         
     <script>
-        (document).ready(function() {
-            $("#custo").keypress (
-                console.log("hello")
-            )
+        $(document).ready (function () {
+            $(".calculo").keyup (function(){
+                const kmInicial= $("#kmInicial").val();
+                const km_final = $("#km_final").val();
+                
+                let valor = $("#custo").val();
+
+                let kmRodados = km_final-kmInicial;
+
+                let total = kmRodados * valor;
+
+                $("#total").val(total);
+            })
         })
     </script>
     
