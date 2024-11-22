@@ -38,7 +38,7 @@ require_once 'operacoes.php';
 
 if ($_GET['origem'] == 2) {
         
-    $nome = $_GET['nome_cliente'];
+    $nome = $_GET['nome'];
     $tipo = $_GET['tipo'];
 
     header("Location: cad_cliente.php?origem=3&tipo=$tipo&nome=$nome");

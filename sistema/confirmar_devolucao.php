@@ -56,8 +56,9 @@
 <body>
 
     <!--  -->
-    <form action="devolver_varios.php">
+    <form action="devolver_varios.php"><!--Aqui começa o formulário que vai enviar as informações para o arquivo devolver_varios.php.-->
         <table border="1">
+   <!-- A primeira linha <tr> tem apenas uma célula <td>, que ocupa 6 colunas (colspan="6"), e exibe o título "RECIBO DE DEVOLUÇÃO".-->
             <tr>
                 <td colspan="6">RECIBO DE DEVOLUÇÃO</td>
             </tr>
