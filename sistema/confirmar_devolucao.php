@@ -44,7 +44,7 @@
 
    $_SESSION['kmdevolucao'] = $kmDevolucao;// A quilometragem da devolução ($kmDevolucao) é armazenada navariável de sessão 
    //$_SESSION['kmdevolucao']. Isso permite que esses dados sejam acessados em outras páginas durante a mesma sessão de usuário, sem a necessidade de passá-los pela URL.
-   $valorTotal = $_GET['valor'];//Valor total da devolução.
+   $valorTotal = $_GET['total'];//Valor total da devolução.
 ?>
 <!DOCTYPE html>
 <html lang="en">

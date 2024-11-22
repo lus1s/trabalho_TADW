@@ -73,7 +73,7 @@
                                 <a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente&id_aluguel=$id_aluguel&origem=2'> Devolução </a>
                             </button> 
                             <button class='btn btn-dark'>
-                                <a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente&id_aluguel=$id_aluguel&origem=2' style='color: white;'>selecionar</a>
+                                <a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente&id_aluguel=$id_aluguel&origem=1' style='color: white;'>selecionar</a>
                             </button>
                         </td>";
                    
