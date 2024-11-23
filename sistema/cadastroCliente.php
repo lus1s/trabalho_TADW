@@ -37,12 +37,16 @@ require_once 'operacoes.php';
  */
 
 if ($_GET['origem'] == 2) {
-        
-    $nome = $_GET['nome_cliente'];
     $tipo = $_GET['tipo'];
-
-    header("Location: cad_cliente.php?origem=3&tipo=$tipo&nome=$nome");
-    exit();
+    $nome = $_GET['nome_cliente'];
+    if ($tipo == "e") {
+        header("Location: form_empresa.php?tipo=$tipo&nome=$nome");
+        exit();
+    }
+    elseif ($tipo == "p") {
+        header("Location: form_pessoa.php?tipo=$tipo&nome=$nome");
+        exit();
+    }
 }
 
 /**
@@ -100,8 +104,9 @@ elseif ($_GET['origem'] == 5){
     $cnpj_cliente = $_GET['cnpj'];
     $responsavel = $_GET['func_resp'];
     $endereco = $_GET['endereco'];
+    $tipo_cliente = $_GET['tipo'];
 
-    $id_cliente = insereClienteVerificaID($conexao, $nome, $tipo);
+    $id_cliente = insereClienteVerificaID($conexao, $nome, $tipo_cliente);
 
     /** 
      * a função a seguir tem o propósito de inserir a empresa/pessoa jurídica no banco
