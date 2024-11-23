@@ -55,11 +55,18 @@
 </head>
 <body>
 
+<<<<<<< HEAD
+    <!--  -->
+    <form action="devolver_varios.php"><!--Aqui começa o formulário que vai enviar as informações para o arquivo devolver_varios.php.-->
+        <table border="1">
+   <!-- A primeira linha <tr> tem apenas uma célula <td>, que ocupa 6 colunas (colspan="6"), e exibe o título "RECIBO DE DEVOLUÇÃO".-->
+=======
     <!-- Formulário que envia dados para a página 'devolver_varios.php' -->
     <form action="devolver_varios.php">
          <!-- Tabela para organizar e exibir os dados do recibo -->
         <table border="1">
             <!-- Linha com o título do recibo -->
+>>>>>>> 6f4b0984301a06cd6c6bb3859f7d9d2e6d866880
             <tr>
                 <td colspan="6">RECIBO DE DEVOLUÇÃO</td>
             </tr>
