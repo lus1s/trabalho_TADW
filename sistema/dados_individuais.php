@@ -3,6 +3,7 @@
     require_once 'operacoes.php';
     require_once 'conexao.php';
 
+    //O código pega informações da URL (como o nome e o ID do cliente) e as armazena em variáveis para usá-las em outras partes do sistema.
     $nome_cliente = $_GET['nome_cliente'];
 
     $id_cliente = $_GET['id_cliente'];
@@ -16,31 +17,39 @@
     <title>Dados: <?php echo $nome_cliente; ?></title>
 </head>
 <body>
-    <a href="./busca_clientes.html">voltar</a> <br><br>
+    <a href="./busca_clientes.html">voltar</a> <br><br> <!-- Cria o link com o texto "voltar", e ao ser clicado, leva o usuário para o arquivo busca_clientes.html.-->
     <?php
 
+        //A função busca o ID do aluguel do cliente e o armazena em um array.
         $id_aluguel[] = idAluguelPorTbCliente($conexao, $id_cliente);
-
+        // A função busca todas as informações do cliente (como nome, CPF, etc.) e as armazena em uma variável.
         $dados_cliente = dadosCompletosCliente($conexao, $id_cliente);
-        
-        if (!empty($dados_cliente)) {
-            
+
+        //Verifica se o array $dados_cliente não está vazio. Se estiver vazio, o código dentro do if não é executado.
+        if (!empty($dados_cliente)) { 
+           
+           //Inicia um loop que percorre cada item dentro do array $dados_cliente. A cada iteração, o valor do item é atribuído à variável $cliente.
             foreach ($dados_cliente as $cliente) {
+
+                //: Concatenando o texto "Nome: " com o valor de (nome do cliente).
                 echo "Nome do usuario: " .  $cliente['cliente'] . "<br>";
+                //Concatenando "CPF: " com o valor de (CPF do cliente).
                 echo "CPF: " .  $cliente['cpf'] . " <br>";
+                //Concatenando "CNH: " com o valor de (CNH do cliente).
                 echo "CNH: " .  $cliente['cnh'] . " <br>";
+                //Concatenando "Endereço: " com o valor de (endereço do cliente).
                 echo "Endereco: " .  $cliente['endereco'] . " <br>";
                 echo "<br><br>";
             }
-        }else {
+        }else { //Marca o início do bloco else, que é executado caso a condição anterior (do if) seja falsa.
             $dados_cliente = dadosCompletosEmpresa($conexao, $id_cliente);
 
-            foreach ($dados_cliente as $cliente) {
-                echo "Nome do usuario: " .  $cliente['cliente'] . "<br>";
-                echo "CNPJ: " .  $cliente['cnpj'] . " <br>";
-                echo "FUNCIONARIO RESPONSÁVEL: " .  $cliente['funcResponsavel'] . " <br>";
-                echo "Endereco: " .  $cliente['endereco'] . " <br>";
-                echo "<br><br>";
+            foreach ($dados_cliente as $cliente) { //Inicia um loop que percorre cada item no array $dados_cliente. A cada iteração, o item atual (um cliente/empresa) é armazenado na variável $cliente.
+                echo "Nome do usuario: " .  $cliente['cliente'] . "<br>"; //Exibe o nome do cliente (empresa) usando a chave 'cliente' do array $cliente, seguido de uma quebra de linha <br>.
+                echo "CNPJ: " .  $cliente['cnpj'] . " <br>"; //Exibe o CNPJ da empresa, acessando o valor armazenado em $cliente['cnpj'], seguido de uma quebra de linha.
+                echo "FUNCIONARIO RESPONSÁVEL: " .  $cliente['funcResponsavel'] . " <br>"; //Exibe o nome do funcionário responsável pela empresa, acessando o valor armazenado em $cliente, em seguido de uma quebra de linha.
+                echo "Endereco: " .  $cliente['endereco'] . " <br>"; //Exibe o endereço da empresa, acessando o valor armazenado em $cliente['endereco'], seguido de uma quebra de linha.
+                echo "<br><br>"; //Exibe duas quebras de linha adicionais para separar as informações de cada cliente/empresa.
             }
         }
 
