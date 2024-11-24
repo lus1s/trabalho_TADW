@@ -31,7 +31,7 @@
            //Inicia um loop que percorre cada item dentro do array $dados_cliente. A cada iteração, o valor do item é atribuído à variável $cliente.
             foreach ($dados_cliente as $cliente) {
 
-                //: Concatenando o texto "Nome: " com o valor de (nome do cliente).
+                // Concatenando o texto "Nome: " com o valor de (nome do cliente).
                 echo "Nome do usuario: " .  $cliente['cliente'] . "<br>";
                 //Concatenando "CPF: " com o valor de (CPF do cliente).
                 echo "CPF: " .  $cliente['cpf'] . " <br>";
@@ -67,16 +67,17 @@
                 <td>Ação</td>
                 </tr>
             <tr>";
-
+            //Chama a função dadosAluguelIdcliente passando uma conexão ao banco de dados e o ID do cliente, retornando os dados de veículos alugados por esse cliente.
             $veiculos = dadosAluguelIdcliente($conexao, $id_cliente);
 
+            //Verifica se há veículos alugados (a função retornou mais de 0 resultados).
             if ($veiculos > 0) {
-                foreach ($veiculos as $dados) {
-                    $nome = $dados["nome"];
-                    $id_veiculo = $dados["id"];
-                    $id_aluguel = $dados["aluguel"];
-                   echo "<td>" . $dados["nome"] ."</td>";
-                   echo "<td>" . $dados["data"] . "</td>";
+                foreach ($veiculos as $dados) {             //Itera por cada registro de veículo retornado.
+                    $nome = $dados["nome"];                //Obtém o nome do veículo do registro atual.
+                    $id_veiculo = $dados["id"];            //Obtém o ID do veículo do registro atual.
+                    $id_aluguel = $dados["aluguel"];       //Obtém o ID do aluguel relacionado a esse veículo.
+                   echo "<td>" . $dados["nome"] ."</td>";  //Imprime o nome do veículo dentro de uma célula de tabela HTML.
+                   echo "<td>" . $dados["data"] . "</td>"; //Imprime a data relacionada ao aluguel ou devolução dentro de outra célula da tabela.
                    echo "<td>
                             <button>
                                 <a href='carrinho_devolucao.php?id_veiculo=$id_veiculo&nome_veiculo=$nome&cliente=$id_cliente&nome=$nome_cliente&id_aluguel=$id_aluguel&origem=2'> Devolução </a>
@@ -95,16 +96,19 @@
             }
            
         // Exibiçao do carrinho
+        //Inicia um formulário HTML que será enviado para o arquivo dados_devolucao.php.
         echo '<form action="dados_devolucao.php">';
+        //Cria uma div posicionada no canto superior direito da página usando classes do Bootstrap (position-absolute, top-0, end-0) e define o ID como frame.
         echo '<div class="position-absolute top-0 end-0" id="frame">';
+        //Verifica se a variável de sessão veiculos_devolucao dentro de carrinho_devolucao está vazia.
         if (empty($_SESSION['carrinho_devolucao']['veiculos_devolucao'])) {
-            echo "selecione alguns veiculos";
+            echo "selecione alguns veiculos"; //Exibe a mensagem "selecione alguns veiculos" caso o array esteja vazio.
         }else {    
-           $nome_veiculo = removerRepetidosArray($_SESSION['carrinho_devolucao']['veiculos_devolucao']);
-            foreach($nome_veiculo as $dados_veiculo) {
+           $nome_veiculo = removerRepetidosArray($_SESSION['carrinho_devolucao']['veiculos_devolucao']); //Remove duplicatas do array de veículos da sessão e armazena o resultado em $nome_veiculo.
+            foreach($nome_veiculo as $dados_veiculo) { //Inicia um loop para processar cada veículo único no array $nome_veiculo.
 
-                $nome = $dados_veiculo["nome"];
-                $id = $dados_veiculo["id_veiculo"];
+                $nome = $dados_veiculo["nome"]; //Armazena o nome do veículo atual na variável $nome.
+                $id = $dados_veiculo["id_veiculo"]; //Armazena o ID do veículo atual na variável $id.
 
                 echo"
                     <div class='card' style='width: 18rem;'>
