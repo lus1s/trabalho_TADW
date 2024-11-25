@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author Luis Carlos <email@email.com>
+ */
       require_once 'testeLogin.php';
       require_once 'operacoes.php';
       require_once 'conexao.php';
