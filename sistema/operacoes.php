@@ -534,7 +534,8 @@
     }
 
     function dadosAluguelIdcliente($conexao, $id_cliente){
-
+        
+        $dadosAluguel = array();
         $id_aluguel = idAluguelPorTbCliente($conexao, $id_cliente);
        
         foreach ($id_aluguel as $id) {

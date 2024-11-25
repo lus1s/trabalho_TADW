@@ -41,6 +41,7 @@
             ?>
         
     </table>
+    <button><a href="relatorios?origem=1">Solicitar relatorio</a></button>
     <br><br>
     <table border="1">
         <tr>
