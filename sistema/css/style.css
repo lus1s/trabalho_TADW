@@ -57,48 +57,163 @@ nav {
         width: 100%;
     }
 
-.dados-funcionario {
-    display:grid;
-    flex-wrap: wrap;
+.container-senha {
+    background-color: transparent;
+    padding-top: 70px;
+    display: flex;
     justify-content: space-evenly;
-    padding-top: 30px;
-    align-items: center;
 }
-    .card-dados-func{
+
+input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: aliceblue;
+}
+
+.main {
+
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+    .container-main {
+        display: flex;
+        color: aliceblue;
+        justify-content: center;
+        border-radius: 15px;
         background-color: #444444;
-        color: aliceblue;
-        border-radius: 10PX;
-        border-color: aliceblue;
-        text-align: justify;
-    }
-    .card .card-title {
-        text-align: center;
-    }
-    .card .btn {
-        background-color: #2c2c2c;
-        color: aliceblue;
-        width: 100%;
+        width: 44rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
-.alt-senha-func {
-    display:grid;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding-top: 30px;
-    align-items: center;
+        .titulo {
+            justify-content: center;
+        }
+
+        .required-dados {
+            background-color: #2c2c2c;
+            border-radius: 5px;
+            width: 42.85rem;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            margin-bottom: 0.65rem;
+        }
+
+        .required-dados input {
+            width: 98.5%;
+            height: 40px;
+            border-style: none;
+            background-color: #acacac;
+        }
+
+    #veiculo {
+        width: 1rem;
+        height: 1rem;
+        border-style: none;
+        padding-top: 50px;
+        background-color: #acacac;
+    }
+        #radio1 {
+            background-color: transparent;
+            margin-bottom: 0.40rem;
+        }
+        #radio2 {
+            background-color: transparent;
+        }
+
+    #motor {
+        background-color: #acacac;
+        border-style: none;
+        border-radius: 3px;
+        color: #2c2c2c;
+    } 
+    #cambio {
+        background-color: #acacac;
+        border-style: none;
+        border-radius: 3px;
+        color: #2c2c2c;
+    } 
+    #tamanho {
+        background-color: #acacac;
+        border-style: none;
+        border-radius: 3px;
+        color: #2c2c2c;
+    } 
+    
+    #passageiro {
+        width: 1rem;
+        height: 1rem;
+        border-style: none;
+        padding-top: 50px;
+    }
+    
+    #portas {
+        width: 1rem;
+        height: 1rem;
+        border-style: none;
+        padding-top: 50px;
+    } 
+
+    #ar {
+        width: 1rem;
+        height: 1rem;
+        border-style: none;
+        padding-top: 50px;
+    } 
+
+    #portamala {
+        width: 1rem;
+        height: 1rem;
+        border-style: none;
+        padding-top: 50px;
+    }
+
+
+.container-func {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: aliceblue;
+    background-color: #444444;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-    .card-alt-senha-func {
-        background-color: #444444;
-        color: aliceblue;
-        border-radius: 10PX;
-        border-color: aliceblue;
-        text-align: justify;
-    }
-    .card .card-title {
-        text-align: center;
-    }
-    .card .btn {
-        background-color: #2c2c2c;
-        color: aliceblue;
-        width: 100%;
-    }
+
+#btn-novo-func {
+    background-color: #2c2c2c;
+    color: aliceblue;
+    width: 100%;
+}
+
+p {
+    display: block;
+    margin-bottom: 5px;
+}
+
+label {
+    color: #be4c00;
+}
+
+#passageiro-error {
+    color: #10be00;
+}
+
+#portas-error {
+    color: #10be00;
+}
+
+#ar-error {
+    color: #10be00;
+}
+
+#portamala-error {
+    color: #10be00;
+    position: relative;
+}

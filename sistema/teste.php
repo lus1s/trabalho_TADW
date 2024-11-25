@@ -13,15 +13,15 @@
 <body>
     <pre>
         <?php
-            $array = dadosAluguelNaoDevolvido($conexao);    //Obtém uma lista de alugueis não devolvidos da função dadosAluguelNaoDevolvido.
+            $array = dadosAluguelNaoDevolvido($conexao);    
 
-            $hj = date('Y-m-d');                            // Armazena a data atual no formato Y-m-d (ano-mês-dia).
+            $hj = date('Y-m-d');
 
-            foreach ($array as $value) {                    //o loop vai passar por cada elemento do array $array e, para cada elemento, o valor desse item será armazenado temporariamente na variável $value.
-                $data = separarDataHora($value["data"]);    //Separa a data e hora de cada aluguel.
+            foreach ($array as $value) {
+                $data = separarDataHora($value["data"]);
                 
                
-                print_r($dif); //não foi definido, o que pode causar erro).
+                print_r($dif);
             }
 
 //            $sql = "SELECT a.id_aluguel, c.nome_cliente, c.id_cliente
@@ -123,12 +123,12 @@
     <button><a href="./limpar_sessions_devolucao.php?origem=1">limpar array</a></button>
     
     <?php
-        if (empty($_SESSION['nome_veiculo'])) { //Verifica se a variável de sessão nome_veiculo está vazia.
-            echo"ñ possui coisas";              //Se nome_veiculo estiver vazio, exibe a mensagem "não possui coisas".
+        if (empty($_SESSION['nome_veiculo'])) {
+            echo"ñ possui coisas";
         }
-        else {                                  //Caso contrário, executa o bloco de código dentro do else.
+        else {
             
-            echo "possui";                      //Se nome_veiculo não estiver vazio, exibe a mensagem "possui".
+            echo "possui";
         }
     ?>
 </body>

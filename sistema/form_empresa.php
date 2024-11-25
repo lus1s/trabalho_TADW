@@ -16,7 +16,8 @@ require_once 'conexao.php';
 require_once 'testeLogin.php';
 require_once 'operacoes.php';
 
-    $nome = $_GET["nome"]; //Recupera o valor da variável nome passada na URL (via método GET) e o armazena na variável $nome.
+$id_cliente = $_GET['id_cliente'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +36,8 @@ require_once 'operacoes.php';
 
         <!-- Hidden == escondido. Serve para marcar a origem da página-->
         <input type="hidden" name="origem" value="5">
-        <input type="hidden" name="nome_cliente" value="<?php echo $nome; ?>">
+        <input type="hidden" name="id_cliente" value=' . $id_cliente .'>
+        <input type="hidden" name="nome_cliente" value=' . $nome .'>
         <input type="hidden" name="tipo" value="e">
 
         cnpj: <br>

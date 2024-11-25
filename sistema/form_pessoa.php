@@ -38,7 +38,7 @@ $nome = $_GET['nome'];
         <!-- Hidden == escondido. Serve para marcar a origem da página-->
         <input type="hidden" name="origem" value="4">
         <input type="hidden" name="tipo" value=' . $tipo .'>
-        <input type="hidden" name="nome_cliente" value="<?php echo $nome; ?>>
+        <input type="hidden" name="nome_cliente" value=' . $nome .'>
         <input type="hidden" name="tipo" value="p">
 
         Cpf: <br>
