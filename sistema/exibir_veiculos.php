@@ -21,7 +21,7 @@
             <tr>
                 <td>Nome do veiculo</td>
                 <td>Marca</td>
-                <td> Placa </td>
+                <td>Placa</td>
                 <td>Estado</td>
                 <td>Ações</td>
             </tr>
