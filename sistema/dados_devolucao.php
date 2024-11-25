@@ -30,7 +30,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/script.js"></script>
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
     <title>Veiculos de <?php echo $nome_cliente; ?></title>
@@ -44,14 +43,14 @@
 <form action="confirmar_devolucao.php">
 
     Data das Devoluções:
-    <input type="text" disabled value="<?php echo $date; ?>">  
+    <input type="text" readonly value="<?php echo $date; ?>">  
     <!--Coloca uma caixinha de texto desativada, só para exibir a data atual que está guardada na variável "$date", no formato "dia/mês/ano". Como está desativada, não dá pra editar, é só pra mostrar mesmo.-->
 
         <!-- o hidden vai p/ o php, ou outro não -->
         <input type="hidden" name="dt_devolucao" value="<?php echo $date; ?>">
 
         Funcionario responsável pela devolução: 
-        <input type="text" name="funcdevolucao" disabled value="<?php echo $nomeFuncionario; ?>">
+        <input type="text" name="funcdevolucao" readonly value="<?php echo $nomeFuncionario; ?>">
         <!--Cria um campo de texto desativado, com o nome "funcdevolucao", que exibe o valor da variável PHP $nomeFuncionario sem permitir edição.-->
 
         <input type="hidden" name="funcdevolucao" value="<?php echo $nomeFuncionario; ?>">
@@ -82,9 +81,9 @@
 
                    echo "Marca: " . $marca_veiculo . "<br>";
 
-                   echo "Km ao alugar: <input type='text' class='calculo' id='kmInicial' disabled name='km_inicial'  value=" . $km_incial . "> ";
+                   echo "Km ao alugar: <input type='text' class='calculo' id='kmInicial' readonly name='km_inicial'  value=" . $km_incial . "> ";
 
-                   echo 'Km ao devolver: <input type="text" class="calculo" id="km_final" name="km_devolucao[' . $id_veiculo . ']">';
+                   echo 'Km ao devolver: <input type="text" class="calculo" id="kmFinal" name="km_devolucao[' . $id_veiculo . ']">';
                    echo "<hr>";                   
                 }
             }
@@ -110,18 +109,31 @@
     </form>
         
     <script>
-        $(document).ready (function () {
+        $(document).ready(function () {
             $(".calculo").keyup (function(){
-                const kmInicial= $("#kmInicial").val();
-                const km_final = $("#km_final").val();
+                let somakmInicial = 0;
+                $("input#kmInicial").each(function() {
+                    var kmInicio = $(this).val();
+                    if (kmInicio) {
+                        somakmInicial += parseFloat(kmInicio);
+                    }
+                })
+
+                let somakmFinal = 0;
+                $("input#kmFinal").each(function() {
+                    var kmFim = $(this).val();
+                    if (kmFim) {
+                        somakmFinal += parseFloat(kmFim);
+                    }
+                })
                 
                 let valor = $("#custo").val();
 
-                let kmRodados = km_final-kmInicial;
+                let kmRodados = somakmFinal - somakmInicial;
 
                 let total = kmRodados * valor;
 
-                $("#total").val(total);
+                $("#total").val(total.toFixed(2));
             })
         })
     </script>
