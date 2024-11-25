@@ -4,7 +4,8 @@
  * Cadastro do cliente
  * 
  * Este arquivo contém todos os formularios relacionados ao cadastro do cliente
- * @author Luís Carlos  <luiscarlosantoa1235@gmail.com> e Maria Beatriz<@email>
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com> 
+ * @author Maria <mariabeatriz678@icloud.com>
  * 
  * @requires /conexao.php
  * @requires /testeLogin.php

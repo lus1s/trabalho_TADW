@@ -1,6 +1,6 @@
 <?php
 /**
- * @author MARIA beatris <email@email.com>
+ * @author Maria <mariabeatriz678@icloud.com>
  * @author Luis <email@email.com>
  * 
  */
