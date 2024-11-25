@@ -4,7 +4,7 @@
      * 
      * adciona os itens alugados e devolver os itens alugados
      * 
-     * @author Luis carlos <email@email.com>
+     * @author Luis carlos  <luiscarlosantoa1235@gmail.com>
      * 
      * @require_once /conexao.php
      * @require_once /testelogin.php

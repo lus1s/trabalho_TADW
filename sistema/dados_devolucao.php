@@ -1,4 +1,9 @@
 <?php
+/**
+ * Este arquivo confirma a devolução.
+ * 
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com>.*/
+
     session_start();
     // require_once 'testeLogin.php'; 
     require_once 'operacoes.php';  

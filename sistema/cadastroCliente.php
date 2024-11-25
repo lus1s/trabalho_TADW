@@ -5,7 +5,7 @@
  * 
  * Esta página processa os dados e envia para o banco
  * 
- * @author Julian Victor <email@email.com>
+ * @author Julian Victor <julianvictorlopesoliveira@gmail.com>
  * 
  * @requires conexao.php
  * @requires testeLogin.php
