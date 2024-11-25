@@ -27,25 +27,31 @@
             </tr>
         <tr>
             <?php
-                
+                //Define uma consulta SQL para buscar dados dos veículos (ID, nome, marca, placa e estado) na tabela tb_veiculo.
                 $sql = "SELECT id_veiculo, nome_veiculo, marca_veiculo, placa_veiculo, estado_veiculo FROM tb_veiculo";
 
+                //Prepara a consulta SQL para execução segura, vinculada à conexão $conexao.
                 $stmt = mysqli_prepare($conexao, $sql);
 
+                //Executa a consulta SQL preparada.
                 mysqli_stmt_execute($stmt);
 
+                //Associa os resultados da consulta SQL às variáveis $id_veiculo, $nome_veiculo, $marca, $placa e $estado.
                 mysqli_stmt_bind_result($stmt, $id_veiculo, $nome_veiculo, $marca, $placa, $estado);
 
+                //Armazena os resultados da consulta para que possam ser acessados posteriormente.
                 mysqli_stmt_store_result($stmt);
 
+                //Inicializa um array vazio chamado $dados_veiculos, que será usado para armazenar os dados dos veículos anteriormente.
                 $dados_veiculos = [];
-                if (mysqli_stmt_num_rows($stmt) > 0) {
-                    while ($linha = mysqli_stmt_fetch($stmt)) {
-                       
+                if (mysqli_stmt_num_rows($stmt) > 0) { //Verifica se a consulta retornou alguma linha (se o número de resultados é maior que zero).
+                    while ($linha = mysqli_stmt_fetch($stmt)) { //Percorre cada linha dos resultados da consulta. A função mysqli_stmt_fetch carrega os valores das colunas nas variáveis associadas previamente.
+                        
+                        //Adiciona os valores das variáveis ($id_veiculo, $nome_veiculo, $marca, $placa, $estado) como um array a $dados_veiculos, formando uma lista de veículos.
                         $dados_veiculos[] = [$id_veiculo, $nome_veiculo, $marca, $placa, $estado];
 
-                        if ($estado == "1"){
-                                $estado_exibido = "Disponível"; 
+                        if ($estado == "1"){ //Verifica se o estado do veículo é "1", o que indica que ele está disponível.
+                                $estado_exibido = "Disponível";//Define a variável $estado_exibido com o valor "Disponível" para exibir o status do veículo.
                                 $acao = "<button id='botoes' class='btn btn-success'>
                                             <a id='links' href='carrinho.php?id_veiculo=$id_veiculo&nome_veiculo=$nome_veiculo&origem=2' style='color: white;'>Alugar</a>
                                     </button>
@@ -55,11 +61,11 @@
                                     </button>";
                                 } 
                                 
-                                elseif ($estado == "2"){
-                                    $estado_exibido = "Alugado"; 
-                                    $acao =  "<button class='btn btn-danger' disabled> Alugado </button>";
+                                elseif ($estado == "2"){ //Verifica se o estado do veículo é "2", indicando que ele está alugado.
+                                    $estado_exibido = "Alugado"; //Define a variável $estado_exibido com o valor "Alugado" para indicar o status do veículo. 
+                                    $acao =  "<button class='btn btn-danger' disabled> Alugado </button>"; //Define $acao como um botão vermelho desabilitado com o texto "Alugado".
                             }
-
+                        //Exibe o nome do veículo em uma tabela.
                         echo "<td scope='col'> $nome_veiculo </td>";
                         echo "<td scope='col'> $marca </td>";
                         echo "<td scope='col'> $placa </td>";
@@ -71,18 +77,18 @@
                     }
 
                     echo '<div class="position-absolute top-0 end-0" id="frame">';
-                    if (empty($_SESSION['nome_veiculo'])) {
-                        echo "selecione alguns veiculos";
+                    if (empty($_SESSION['nome_veiculo'])) { //Verifica se a variável de sessão $_SESSION['nome_veiculo'] está vazia.
+                        echo "selecione alguns veiculos"; //Exibe a mensagem "selecione alguns veículos" caso a variável de sessão esteja vazia.
                     }else {
-                        $nome_veiculo = $_SESSION['nome_veiculo'];
+                        $nome_veiculo = $_SESSION['nome_veiculo']; //Atribui o conteúdo de $_SESSION['nome_veiculo'] à variável local $nome_veiculo.
             
-                        foreach ($nome_veiculo as $id => $nome) {
+                        foreach ($nome_veiculo as $id => $nome) { //Percorre o array $nome_veiculo, atribuindo a chave a $id e o valor a $nome.
                             echo"
                                 <div class='card' style='width: 18rem;'>
                                     <img src='...' class='card-img-top' alt='...'>
                                     <div class='card-body'>
                                         <h5 class='card-title'>$nome</h5>
-                                        <a href='limpar_sessions.php?id=$id&origem=3' class='btn btn-primary'>remover</a>
+                                        <a href='limpar_sessions.php?id=$id&origem=3' class='btn btn-primary'>remover</a> 
                                     </div>
                                 </div> <br>";
             

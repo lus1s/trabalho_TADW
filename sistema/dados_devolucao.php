@@ -37,7 +37,7 @@
 </head>
 <body>
 
-    <!--Cria um link HTML (<a>), onde a URL aponta para dados_individuais.php com os parâmetros nome_cliente e id_cliente passados dinamicamente via PHP.-->
+    <!--Cria um link HTML <a>, onde a URL aponta para dados_individuais.php com os parâmetros nome_cliente e id_cliente passados dinamicamente via PHP.-->
     <?php echo "<a href='dados_individuais.php?nome_cliente=$nome_cliente&id_cliente=$id_cliente'>home</a>"; ?> <br><br>
 
     <!--Inicia um formulário que, ao ser submetido, enviará os dados para o arquivo confirmar_devolucao.php usando o método padrão GET.-->
