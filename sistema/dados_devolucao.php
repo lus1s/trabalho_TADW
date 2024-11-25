@@ -1,4 +1,12 @@
 <?php
+/**
+ * Este arquivo confirma a devolução.
+ * 
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com>.
+ * @author Julian Victor ,
+ * @author Maria Beatriz <email@email.com>
+ * @author Ana Julia <email@email.com>  .*/
+
     session_start();
     // require_once 'testeLogin.php'; 
     require_once 'operacoes.php';  

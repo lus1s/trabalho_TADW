@@ -3,7 +3,7 @@
     require_once "conexao.php";
     require_once "operacoes.php";
 
-    $nomeveiculo = $_GET['nomeveiculo']; #s  
+    $nomeveiculo = $_GET['nomeveiculo']; #s
     $anoveiculo = $_GET['anoveiculo'];#s
     $marcaveiculo = $_GET['marcaveiculo'];#s
     $tipoveiculo = $_GET['veiculo'];#i

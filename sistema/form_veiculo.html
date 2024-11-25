@@ -3,93 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
 </head>
+
 <body>
+    <nav class="navbar">
+        <div class="container" id="navbar">
+            <a href="home.php" id="logo">Veículos FARIA</a>
+            <form class="d-flex" role="search">
+                <input class="form-control me-1" type="search" placeholder="Pesquisar" aria-label="search" style="width: 300px;">
+                <button class="btn btn-outline-dark" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                </button>
+            </form>
+            <a href="funcionario.php?origem=1" id="funcionario">
+                Funcionário: <u><?php echo $nomeFuncionario; ?></u>
+            </a>
     
-    <a href="home.php">home</a>
-    <form id="form_veiculo" action="form_veiculo.php">
-        
-        <input type="radio" name="veiculo" value="1" id="veiculo">Carro <br>
-        <input type="radio" name="veiculo" value="2" id="veiculo">Moto  <br> <br>
+            <button class="btn btn-danger" type="submit"><a href="limpar_sessions.php?origem=1" id="sair">Sair</a></button>
+        </div>
+    </nav>
 
-        Marca: 
-        <input type="text"  name="marcaveiculo" id="marcaveiculo"> <br><br>
+    <div class="main">
+        <div class="container-main">
+            <form id="form_veiculo" action="form_veiculo.php">
+                <div class="titulo">
+                    <p><h2>CADASTRO DE VEÍCULO</h2></p>
+                </div>
 
-        Nome:
-        <input type="text" name="nomeveiculo" id="nomeveiculo"> <br><br>
+                <div class="required-dados">
+                    <h5>Tipo do Veículo</h5>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="veiculo" value="1" id="veiculo">CARRO
+                    </div>
+                </div>
 
-        Ano: 
-        <input type="text" name="anoveiculo" id="anoveiculo"> <br><br>
+                <div class="required-dados">
+                    <h4>Dados Complementares</h4>
 
-        Cor: 
-        <input type="text" name="corveiculo" id="corveiculo"> <br><br>
-
-        Placa:
-        <input type="text" name="placaveiculo" id="placaveiculo"> <br><br>
-
-        Motor: 
-        <select name="motor" id="motor">
-            <option value="1.0">1.0</option>
-            <option value="1.4">1.4</option>
-            <option value="1.6">1.6</option>
-            <option value="1.8">1.8</option>
-            <option value="2.0">2.0</option>
-        </select> <br><br>
-
-        Km rodados:
-        <input type="text" name="kmrodado" id="kmrodado"> <br><br>
-
-        Quantidade de passageiros:
-        <input type="radio" name="passageiro" value="2" id="passageiro">2
-        <input type="radio" name="passageiro" value="4" id="passageiro">4
-        <input type="radio" name="passageiro" value="5" id="passageiro">5
-        <input type="radio" name="passageiro" value="6" id="passageiro">6
-        <input type="radio" name="passageiro" value="7" id="passageiro">7 <br><br>
-
-        Quantidade de portas:
-        <input type="radio" name="portas" value="0" id="portas">0
-        <input type="radio" name="portas" value="2" id="portas">2
-        <input type="radio" name="portas" value="4" id="portas">4 <br><br>
-
-        Arcondicionado:
-        <input type="radio" name="ar" value="1" id="ar">Sim
-        <input type="radio" name="ar" value="2" id="ar">Não <br><br>
-
-        Portamalas: 
-        <input type="radio" name="portamala" value="1" id="portamala">Sim
-        <input type="radio" name="portamala" value="2" id="portamala">Não <br><br> 
+                    <h5>Marca do Veículo:</h5>
+                    <input type="text"  name="marcaveiculo" id="marcaveiculo" placeholder="Exemplo: Toyota">
+                    <p></p>
             
+                    <h5>Modelo do Veículo:</h5>   
+                    <input type="text" name="nomeveiculo" id="nomeveiculo" placeholder="Exemplo: Corolla">
+                    <p></p>
+            
+                    <h5>Ano do Veículo:</h5> 
+                    <input type="text" name="anoveiculo" id="anoveiculo" placeholder="Exemplo: 2020">
+                    <p></p>
+            
+                    <h5>Cor do Veículo:</h5> 
+                    <input type="text" name="corveiculo" id="corveiculo" placeholder="Exemplo: Prata">
+                    <p></p>
+            
+                    <h5>Placa do Veículo:</h5>
+                    <input type="text" name="placaveiculo" id="placaveiculo" placeholder="Exemplo: ABC1234">
+                    <p></p>
+                </div>
+    
+                <div class="required-dados">
+                    <h5>Potência do Motor do Veículo:</h5>
+                    <select name="motor" id="motor">
+                        <option>Selecionar</option>
+                        <option value="1.0">1.0</option>
+                        <option value="1.4">1.4</option>
+                        <option value="1.6">1.6</option>
+                        <option value="1.8">1.8</option>
+                        <option value="2.0">2.0</option>
+                    </select>
+                </div>
+    
+                <div class="required-dados">
+                    <h5>Kilometragem já Rodada:</h5>
+                    <input type="text" name="kmrodado" id="kmrodado"  placeholder="Exemplo: 25000">
+                </div>
+    
+                <div class="required-dados">
+                    <h5>Capacidade de Passageiros:</h5>  
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="passageiro" value="2" id="passageiro">2
+                    </div>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="passageiro" value="4" id="passageiro">4
+                    </div>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="passageiro" value="5" id="passageiro">5
+                    </div>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="passageiro" value="6" id="passageiro">6
+                    </div>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="passageiro" value="7" id="passageiro">7
+                    </div>  
+                </div>
+    
+                <div class="required-dados">
+                    <h5>Quantidade de Portas do Veículo:</h5>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="portas" value="0" id="portas">0
+                    </div>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="portas" value="2" id="portas">2
+                    </div>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="portas" value="4" id="portas">4
+                    </div>                    
+                </div>
+    
+                <div class="required-dados">
+                    <h5>Possui Ar-Condicionado:</h5>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="ar" value="1" id="ar">Sim
+                    </div>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="ar" value="2" id="ar">Não
+                    </div>
+                </div>
+    
+                <div class="required-dados">
+                    <h5>Possui Porta-Malas:</h5> 
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="portamala" value="1" id="portamala">Sim
+                    </div>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="portamala" value="2" id="portamala">Não
+                    </div>
+                </div>
+    
+                <div class="required-dados">
+                    <h5>Tipo do Câmbio:</h5>
+                    <select name="cambio" id="cambio">
+                        <option>Selecionar</option>
+                        <option value="1">Manual</option>
+                        <option value="2">Altomático</option>
+                    </select>
+                </div>
+         
+                <div class="required-dados">
+                    <h5>Tamanho do Veículo:</h5> 
+                    <select name="tamanho" id="tamanho">
+                        <option>Selecionar</option>
+                        <option value="1">Pequeno</option>
+                        <option value="2">Medio</option>
+                        <option value="3">Grande</option>
+                    </select> 
+                </div>
+    
+                <div class="required-dados">
+                    <h5>Descrição do Veículo:</h5>
+                    <input type="text" name="descricao" id="descricao"  placeholder="Exemplo: Um sedã confortável e econômico, ideal para famílias e viagens longas. Equip...">
+                </div>
         
-        Cambio: 
-        <select name="cambio" id="cambio">
-            <option value="1">Manual</option>
-            <option value="2">Altomático</option>
-        </select> <br><br>
-        Tamanho: 
-        <select name="tamanho" id="tamanho">
-            <option value="1">Pequeno</option>
-            <option value="2">Medio</option>
-            <option value="3">Grande</option>
-        </select> <br><br>
-        Descrição do veiculo:
-        <input type="text" name="descricao" id="descricao"> <br><br>
-
-        <input type="hidden" name="disponibilidade" value="d" id="disponibilidade">
-        
-        <input type="submit" value="Cadastrar Veículo">
-
-
-    </form>
+                <input type="hidden" name="disponibilidade" value="d" id="disponibilidade">
+                
+                <input type="submit" value="Cadastrar Veículo">
+            </form>
+        </div>
+    </div>
+    
     <script>
         $(document).ready(function(){
             $("#form_veiculo").validate({
-                rules: {
-                    veiculo:{
-                        required: true,
-                    }, 
+                rules: { 
                     marcaveiculo:{
                         required: true,
                         regex: /^[a-zA-Z0-9áéíóúãõçÁÉÍÓÚÃÕÇ]+$/, // pattern condição que aceita apenas letra ou numro, letras maiusclas e minusculas de a ate z
@@ -146,67 +228,64 @@
 
                 },
                 messages:{
-                    veiculo:{
-                        required: "Selecionar tipo de veiculo",
-                    },
                     marcaveiculo:{
-                        required: "Informar nome do veiculo",
-                        regex: "O nome deve conter apenas letras e números",
+                        required: "Informe a marca do veículo!",
+                        regex: "Ela deve conter apenas LETRAS e NÚMEROS!",
                     },
                     nomeveiculo:{
-                        required: "Informe o nome do veiculo"
+                        required: "Informe o modelo do veículo!"
                     },
                     anoveiculo:{
-                        required:" Informe a data",
-                        digits: "O campo deve conter apenas numero",
-                        minlength:"Minimo 4 numeros",
-                        maxlength:"Maximo 4 numeros",
+                        required:" Informe o ano do veículo!",
+                        digits: "O campo deve conter apenas NÚMEROS!",
+                        minlength:"Mínimo 4 números!",
+                        maxlength:"Máximo 4 números!",
                     },
                     corveiculo:{
-                        required: "Informe a cor",
-                        regex:"Apenas letras e acentos",
-                        minlength: "Minimo 4 letras",
+                        required: "Informe a cor do veículo!",
+                        regex:"Neste campo são aceitos apenas LETRAS e ASCENTOS!",
+                        minlength: "Mínimo 4 letras",
                     },
                     placaveiculo:{
-                        required: "Prencha o campo",
-                        regex:"Apenas letras maiusculas e numeros",
+                        required: "Informe a placa do veículo!",
+                        regex:"Neste campo são aceitos apenas LETRAS MAIÚSCULAS e NÚMEROS!",
                     },
                     motor:{
-                        required:"Prencha ",
+                        required:"Selecione a potência do motor!",
                     },
                     kmrodado:{
-                        required: "Prencha o campo de KM",
-                        regex: "Apenas numeros",
+                        required: "Informe a Kilometragem atual do veículo!",
+                        regex: "Este campo somente aceita NÚMEROS!",
                     },
                     passageiro:{
-                        required: "Prencha o numero de passageiros",
+                        required: "Informe o número de passageiros!",
 
                     },
                     portas:{
-                        required: "Prencha o numreo de portas",
+                        required: "Informe o número de portas!",
                     },
                     ar:{
-                        required: "Prencha se a ar sim ou não",
+                        required: "Informe se o veículo possui ar-condicionado!",
                     },
                     portamala:{
-                        required: "Prencha se a portamala sim ou não ",
+                        required: "Informe se o veículo possui porta-malas!",
                     },
                     cambio:{
-                        required: "Prencha tipo de cambio",
+                        required: "Selecione o tipo de câmbio!",
                     },
                     tamanho:{
-                        required: "Prencha o tamaho",
+                        required: "Selecione o tamanho do veículo!",
                     },
                     descricao:{
-                        required: "Prencha a descrição",
-                        regex: "Apenas letras, numeros e acentos"
+                        required: "Crie uma pequena descrição do veículo!",
+                        regex: "Neste campo são aceitos apenas LETRAS, ASCENTOS e NÚMEROS!"
                     },
                     
                 }
             }),
             $.validator.addMethod("regex", function(value, element, regexp) {
                 return this.optional(element) || regexp.test(value);
-            }, "Por favor, insira um valor válido.");
+            }, "Por favor, insira um valor válido!");
             //$.validator.addMethod("regex", ...): Cria uma nova regra de validação chamada regex, que pode ser usada em campos do formulário.
             //value: O valor do campo.
             //element: O próprio campo de entrada.
@@ -217,7 +296,7 @@
             // Se a expressão regular não corresponder, o formulário exibirá uma mensagem de erro personalizada
         })
     </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    
 </body>
-</html> 
+</html>

@@ -5,7 +5,7 @@
  * 
  * Esta página processa os dados e envia para o banco
  * 
- * @author Luís Carlos <email@email.com>
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com>, Julian Victor <julianvictorlopesoliveira@gmail.com> e Maria Beatriz 
  * 
  * @requires testeLogin.php
  * @requires operacoes.php

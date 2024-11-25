@@ -1,7 +1,7 @@
 <?php
 /**
  * Este arquivo coleta os dados do veículo e os organiza no carrinho.
- * @author Luís Carlos <@email>.
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com>.
  * 
  * @requires /conexao.php.
  * @requires /testeLogin.php.

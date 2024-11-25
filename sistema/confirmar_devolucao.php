@@ -2,7 +2,7 @@
 /**
  * Este arquivo confirma a devolução.
  * 
- * @author Luís Carlos <@email>.
+ * @author Luís Carlos <@email> e Maria Beatriz 
  * 
  * @requires /testeLogin.php.
  * @requires /operacoes.php.
@@ -55,18 +55,11 @@
 </head>
 <body>
 
-<<<<<<< HEAD
-    <!--  -->
-    <form action="devolver_varios.php"><!--Aqui começa o formulário que vai enviar as informações para o arquivo devolver_varios.php.-->
-        <table border="1">
-   <!-- A primeira linha <tr> tem apenas uma célula <td>, que ocupa 6 colunas (colspan="6"), e exibe o título "RECIBO DE DEVOLUÇÃO".-->
-=======
     <!-- Formulário que envia dados para a página 'devolver_varios.php' -->
     <form action="devolver_varios.php">
          <!-- Tabela para organizar e exibir os dados do recibo -->
         <table border="1">
             <!-- Linha com o título do recibo -->
->>>>>>> 6f4b0984301a06cd6c6bb3859f7d9d2e6d866880
             <tr>
                 <td colspan="6">RECIBO DE DEVOLUÇÃO</td>
             </tr>
@@ -79,22 +72,33 @@
             //  para percorrer os dados do cliente (exemplo: CPF ou CNPJ)
                  foreach ($dadosCliente as $dados) {
                     echo "<td>" . $dados[0] . " </td>";
-                   
+            
                     $cnh = $dados[1];
                 }
             ?>
-           
+               
+            <!--Exibir o cnh de funcionario-->
             <td>CNH/Funcionario responsável:</td>
             <td><?php echo $cnh; ?></td>
             </tr>
+            <!--Exibe um título para a seção onde serão listados os veículos devolvidos.-->
             <tr>
                 <td colspan="6">VEICULOS ALUGADOS</td>
             </tr>
+            <!--Exibe as colunas "Veículo(s)" e "Km Rodados durante o aluguel"
+             para que os dados dos veículos devolvidos e suas respectivas quilometragens sejam exibidos corretamente.-->
             <tr>
                 <td colspan="3">Veiculo(s):</td>
                 <td colspan="3">Km Rodados durante o aluguel:</td>
             </tr>
+
                 <?php
+                /** 
+                 * O script primeiro recupera a lista de veículos devolvidos a partir da variável de sessão $_SESSION['carrinho_devolucao'].
+                 * Utiliza a função removerRepetidosArray() para remover veículos duplicados da lista de devolução.
+                 * Em seguida, combina os dados de quilometragem e veículos em um array associativo usando array_combine().
+                 * A estrutura de repetição foreach percorre o array associativo e exibe cada veículo e sua quilometragem correspondente na tabela.
+                 */
 
                     $veiculos_devolucao = $_SESSION['carrinho_devolucao']['nome_devolucao'];
 
@@ -103,6 +107,7 @@
                     $veiculoKm = array_combine($kmDevolucao, $veiculosss);
 
                     $kmVeiculo = [];
+                      /**Exibe as informações dos veículos devolvidos*/
                     foreach ($veiculoKm as $km => $veiculo) {
                         echo "<tr>";
                         echo"<td colspan='3'>$veiculo</td>";
@@ -112,10 +117,14 @@
                    
                 ?>
             <tr>
+                <!-- Exibe o nome do funcionário responsável pela devolução (armazenado em $funcDevolucao)
+                 e a data da devolução (armazenada em $data_devolucao).-->
                 <td colspan="4">Func. realizou a devolução:  <?php echo $funcDevolucao; ?></td>
                 <td>Data da devolução:</td>
                 <td><?php echo $data_devolucao; ?></td>
             </tr>
+            <!-- Exibe o valor total da devolução (armazenado em $valorTotal) e o método de pagamento
+             utilizado (armazenado em $tipoPagamento).-->
             <tr>
                 <td colspan="4">Valor total:R$ <?php echo $valorTotal; ?> </td>
                
@@ -123,10 +132,11 @@
             </tr>
         </table>
         <br>
+        <!-- HIDDEN oculta os valores que vão ser enviados para a poroxima pagina-->
         <input type="hidden" name="idCliente" value="<?php echo $idCliente; ?>">
         <input type="hidden" name="valorDevolucao" value="<?php echo $valorTotal; ?>">
         <input type="hidden" name="tipoPgamento" value="<?php echo $metPagamento; ?>">
-
+        <!-- input para submetar o formulario -->
         <input type="submit" value="Confirmar">
     </form>
 </body>

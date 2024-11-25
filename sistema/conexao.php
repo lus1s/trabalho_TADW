@@ -6,7 +6,7 @@
      * Essas variáveis guardam as informações de conexão com o banco de dados;
      *
      * 
-     * @author Luis carlos <email@email.com>
+     * @author Luis carlos <luiscarlosantoa1235@gmail.com>
      * 
      * @$servidor / db                colocou endereço do servidor do banco de dados  "db";
      * @$usuario /                    root  nome de usuário para acessar o banco  "root";

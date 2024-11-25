@@ -4,11 +4,11 @@
     require_once 'conexao.php';
     
    
-    foreach($_SESSION['dados_funcionario'] as $dados){ //Inicia um loop para percorrer os dados de funcionários armazenados na sessão.
-      $nomeFuncionario = $dados[0];                    //Armazena o nome do funcionário na variável $nomeFuncionario.
-      $id_funcionario = $dados[1];                     //Armazena o ID do funcionário na variável $id_funcionario.
+    foreach($_SESSION['dados_funcionario'] as $dados){
+      $nomeFuncionario = $dados[0];
+      $id_funcionario = $dados[1];
     }
-    $_SESSION['idFuncionario'] = $id_funcionario;      //Salva o ID do funcionário na variável de sessão $_SESSION['idFuncionario'].
+    $_SESSION['idFuncionario'] = $id_funcionario;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +72,16 @@
       <div class="card-body">
         <h5 class="card-title">Históricos</h5>
         <p class="card-text">Mas, caso necessite relembrar de algum valor de operações passadas: VOCÊ PODE OLHAR AQUI!</p>
-        <a href="busca_clientes.html" class="btn">Registros Gerais</a>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Registros Gerais
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./clientes.php?origem=2">Clientes Cadastrados</a></li>
+            <li><a class="dropdown-item" href="./clientes.php?origem=3">Clientes com alugel</a></li>
+            <li><a class="dropdown-item" href="./historico_veiculo.php">Histórico de aluguel</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

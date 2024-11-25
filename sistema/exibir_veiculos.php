@@ -1,4 +1,17 @@
 <?php
+ /**
+     * exibir veiculos
+     * 
+     * exibi os veiculos em uma tabela
+     * 
+     * @author Luis carlos <luiscarlosantoa1235@gmail.com>
+     * 
+     * @require_once /conexao.php
+     * @require_once /testelogin.php
+     * @require_ONCE /operacoes
+     * 
+     *  
+     */
     require_once 'conexao.php';
     require_once 'testeLogin.php';
     require_once 'operacoes.php';
@@ -21,7 +34,7 @@
             <tr>
                 <td>Nome do veiculo</td>
                 <td>Marca</td>
-                <td> Placa </td>
+                <td>Placa</td>
                 <td>Estado</td>
                 <td>Ações</td>
             </tr>
