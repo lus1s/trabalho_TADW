@@ -4,7 +4,7 @@
  * Cadastro do cliente
  * 
  * Este arquivo contém todos os formularios relacionados ao cadastro do cliente
- * @author Luís Carlos <@email>
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com> 
  * @author julian <email@email.com>
  * 
  * @requires /conexao.php

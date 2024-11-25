@@ -1,6 +1,6 @@
 <?php
 /** 
- * @author Luis Carlos <email@email.com>
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com> 
  * @author Maria <mariabeatriz678@icloud.com>
  */
 require_once 'testeLogin.php';

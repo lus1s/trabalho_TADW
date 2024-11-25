@@ -4,7 +4,7 @@
      * 
      * Funções gerais do sistema
      * 
-     * @author Luis <luiscarlosantos1235@gmail.com>
+     * @author Luís Carlos  <luiscarlosantoa1235@gmail.com> 
      * 
      * @requires SESSION
      */

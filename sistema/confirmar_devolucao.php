@@ -2,7 +2,7 @@
 /**
  * Este arquivo confirma a devolução.
  * 
- * @author Luís Carlos <@email>
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com> 
  * @author Maria <mariabeatriz678@icloud.com>
  * 
  * @requires /testeLogin.php.

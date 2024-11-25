@@ -2,7 +2,7 @@
 /**
  * @author Maria <mariabeatriz678@icloud.com>
  * @author JUlian 
- * @author Luis <email@email.com>
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com> 
  * 
  */
 require_once 'testeLogin.php';
