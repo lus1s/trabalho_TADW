@@ -3,38 +3,53 @@
     require_once 'operacoes.php';
     require_once 'conexao.php';
 
+    //Inicia um loop que percorre os dados armazenados em $_SESSION['dados_funcionario'], onde cada item é armazenado na variável $dados.
     foreach($_SESSION['dados_funcionario'] as $dados){
+
+        //Atribui o primeiro valor de $dados (presumivelmente o nome do funcionário) à variável $nomeFuncionario.
         $nomeFuncionario = $dados[0];
+
+        //Atribui o segundo valor de $dados (presumivelmente o ID do funcionário) à variável $id_funcionario.
         $id_funcionario = $dados[1];
+        
+        //Atribui o terceiro valor de $dados (presumivelmente o CPF do funcionário) à variável $cpf.
         $cpf = $dados[2];
     }
-
+    //Cria a consulta SQL para selecionar a senha do funcionário com base no id_funcionario.
     $sql = "SELECT senha_funcionario FROM tb_funcionario WHERE id_funcionario = ?";
 
+    //Prepara a consulta SQL para execução, utilizando a conexão $conexao.
     $stmt = mysqli_prepare($conexao, $sql);
-    
+
+    //Associa o valor de $id_funcionario ao parâmetro ? da consulta SQL, especificando que o tipo de dado é um inteiro ("i").
     mysqli_stmt_bind_param($stmt, "i", $id_funcionario);
 
+    //Executa a consulta preparada.
     mysqli_stmt_execute($stmt);
 
+    //Associa o resultado da consulta à variável $pass (onde será armazenada a senha do funcionário).
     mysqli_stmt_bind_result($stmt, $pass);
 
+    //Armazena os resultados da consulta para uso posterior.
     mysqli_stmt_store_result($stmt);
 
+    //Verifica se a consulta retornou algum resultado (se o número de linhas é maior que 0).
     if (mysqli_stmt_num_rows($stmt) > 0) {
+
+        //Inicia um loop para buscar os dados da consulta e armazená-los em $pass.
         while (mysqli_stmt_fetch($stmt)) {
-            $busca_pass = $pass;
+            $busca_pass = $pass; //Atribui o valor de $pass (a senha) à variável $busca_pass.
         }
     }
 
-    if ($_GET["origem"]==1) {} 
-    elseif ($_GET["origem"]==2) {
-        $senha = $_GET["senha"];
+    if ($_GET["origem"]==1) {}      //Verifica se o parâmetro origem na URL é igual a 1. Se for, nada acontece.
+    elseif ($_GET["origem"]==2) {   //Se origem for igual a 2, executa o bloco de código dentro do elseif.
+        $senha = $_GET["senha"];    //Recupera o valor de senha da URL e armazena na variável $senha.
 
-        alterarSenha($conexao, $senha, $id_funcionario);
+        alterarSenha($conexao, $senha, $id_funcionario); //Chama a função alterarSenha para atualizar a senha do funcionário no banco de dados.
 
-        header('Location: funcionario.php?origem=1');
-        exit();
+        header('Location: funcionario.php?origem=1');  //Redireciona para funcionario.php com origem=1 na URL.
+        exit(); //Interrompe a execução do script após o redirecionamento.
     }
 
 ?>

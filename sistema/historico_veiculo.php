@@ -26,15 +26,18 @@
         </tr>
         
             <?php
-                $alugueis = dadosAluguelNaoDevolvido($conexao);
+                $alugueis = dadosAluguelNaoDevolvido($conexao);//Obtém os dados dos alugueis não devolvidos do banco de dados.
 
-                foreach ($alugueis as $valor) {
-                    $id = $valor["idCliente"];
-                    $cliente = $valor["cliente"];
+                foreach ($alugueis as $valor) { //Inicia um loop para percorrer cada aluguel na lista $alugueis.
+                    $id = $valor["idCliente"]; //Atribui o idCliente do aluguel à variável $id.
+
+                    $cliente = $valor["cliente"]; //Atribui o nome do cliente à variável $cliente.
+
                     echo "<tr>";
-                    echo "<td>". $valor["cliente"] ."</td>";
-                    echo "<td>". $valor["funcionario"] ."</td>";
-                    echo "<td>". $valor["data"] ."</td>";
+                    echo "<td>". $valor["cliente"] ."</td>";    //Exibe o nome do cliente em uma célula de tabela.
+                    echo "<td>". $valor["funcionario"] ."</td>";//Exibe o nome do funcionário em uma célula de tabela.
+                    echo "<td>". $valor["data"] ."</td>";       //Exibe a data do aluguel em uma célula de tabela.
+                    //Exibe um botão com um link para a página de devolução, passando id_cliente e nome_cliente como parâmetros.
                     echo "<td><button><a href='./dados_individuais.php?id_cliente=$id&nome_cliente=$cliente'>Devolução</a></button></td>";
                     echo "</tr>";           
                 }
@@ -55,15 +58,18 @@
         </tr>
         
             <?php
+            //Chama a função dadosDevoluçãoAluguel para obter informações sobre os alugueis devolvidos do banco de dados.
                 $aluguel = dadosDevoluçãoAluguel($conexao);
+                //Inicia um loop para percorrer cada registro de aluguel devolvido na variável $aluguel.
 
                 foreach($aluguel as $dados){
+                    //Inicia uma nova linha de tabela (<tr>).
                     echo "<tr>";
-                    echo "<td>" . $dados["cliente"] . "</td>";
-                    echo "<td>" . $dados["funcionario"] . "</td>";
-                    echo "<td>" . $dados["data"] . " </td>";
-                    echo "<td>" . $dados["dataDevolucao"] . "</td>";
-                    echo "<td>" . $dados["valor"] . "</td>";
+                    echo "<td>" . $dados["cliente"] . "</td>";      //Exibe o nome do cliente em uma célula da tabela.
+                    echo "<td>" . $dados["funcionario"] . "</td>";  //Exibe o nome do funcionário em uma célula da tabela.
+                    echo "<td>" . $dados["data"] . " </td>";        //Exibe a data do aluguel em uma célula da tabela.
+                    echo "<td>" . $dados["dataDevolucao"] . "</td>";//Exibe a data da devolução do veículo em uma célula da tabela.
+                    echo "<td>" . $dados["valor"] . "</td>";        //Exibe o valor do aluguel em uma célula da tabela.
                     echo "</tr >";
                 }
             ?>

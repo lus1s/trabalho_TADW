@@ -4,11 +4,11 @@
     require_once 'conexao.php';
     
    
-    foreach($_SESSION['dados_funcionario'] as $dados){
-      $nomeFuncionario = $dados[0];
-      $id_funcionario = $dados[1];
+    foreach($_SESSION['dados_funcionario'] as $dados){ //Inicia um loop para percorrer os dados de funcionários armazenados na sessão.
+      $nomeFuncionario = $dados[0];                    //Armazena o nome do funcionário na variável $nomeFuncionario.
+      $id_funcionario = $dados[1];                     //Armazena o ID do funcionário na variável $id_funcionario.
     }
-    $_SESSION['idFuncionario'] = $id_funcionario;
+    $_SESSION['idFuncionario'] = $id_funcionario;      //Salva o ID do funcionário na variável de sessão $_SESSION['idFuncionario'].
 ?>
 <!DOCTYPE html>
 <html lang="en">

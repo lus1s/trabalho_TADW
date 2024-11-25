@@ -16,7 +16,7 @@ require_once 'conexao.php';
 require_once 'testeLogin.php';
 require_once 'operacoes.php';
 
-    $nome = $_GET["nome"];
+    $nome = $_GET["nome"]; //Recupera o valor da variável nome passada na URL (via método GET) e o armazena na variável $nome.
 ?>
 <!DOCTYPE html>
 <html lang="en">
