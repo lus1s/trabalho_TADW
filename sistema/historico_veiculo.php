@@ -41,7 +41,9 @@
             ?>
         
     </table>
-    <button><a href="relatorios?origem=1">Solicitar relatorio</a></button>
+
+    <button><a href="relatorios.php?origem=1">Solicitar relatorio</a></button>
+
     <br><br>
     <table border="1">
         <tr>
@@ -69,5 +71,7 @@
                 }
             ?>
     </table>
+    <button><a href="relatorios.php?origem=2">Solicitar relatorio</a></button>
+
 </body>
 </html>
