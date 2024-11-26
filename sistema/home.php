@@ -1,4 +1,10 @@
 <?php
+/**
+ * @author Maria <mariabeatriz678@icloud.com>
+ * @author JUlian 
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com> 
+ * 
+ */
     require_once 'testeLogin.php';
     require_once 'operacoes.php';
     require_once 'conexao.php';

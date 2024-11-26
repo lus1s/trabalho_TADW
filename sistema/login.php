@@ -1,4 +1,10 @@
 <?php
+/**
+ * @author Luís Carlos  <luiscarlosantoa1235@gmail.com> 
+ * @author aNA JULIA <email@email.com>
+ * @author julian <email@email.com>
+ * @author Maria <mariabeatriz678@icloud.com>
+ */
     require_once 'operacoes.php';
     require_once 'conexao.php';
     session_start();
