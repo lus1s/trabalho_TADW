@@ -18,7 +18,7 @@ require_once 'testeLogin.php';
 require_once 'operacoes.php';
 
 $tipo = $_GET['tipo'];
-        
+
 $nome = $_GET['nome'];
 ?>
 <!DOCTYPE html>
@@ -50,7 +50,45 @@ $nome = $_GET['nome'];
         <input type="text" name="endereco">
 
         <input type="submit" value="Realizar pedido">
+
     </form>
+    <script>
+        $(document).ready(function() {
+            $("#cadastroCliente").validate({
+                rules: {
+                    cpf: {
+                        required: true,
+                        minlength: 8,
+                        regex: /^[0-9-]+$/,
+                    },
+                    Carteira: {
+                        required: true,
+                        minlength: 8,
+                        regex: /^[a-zA-ZáéíóúãõçÁÉÍÓÚÃÕÇ]+$/,
+                    },
+                    endereco: {
+                        required: true,
+                        minlength: 8,
+
+                    }
+                },
+                messages: {
+                    cpf: {
+                        required: "campo cnpj obrigatório.",
+                        minlength: "O cnpj deve conter pelo menos 5 caracteres."
+                    },
+                    carteira: {
+                        required: "campo cnpj obrigatório.",
+                        minlength: "O cnpj deve conter pelo menos 5 caracteres."
+                    },
+                    endereco: {
+                        required: "campo cnpj obrigatório.",
+                        minlength: "O cnpj deve conter pelo menos 5 caracteres."
+                    }
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
