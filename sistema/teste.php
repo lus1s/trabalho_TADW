@@ -18,15 +18,12 @@
 <body>
     <pre>
         <?php
-            $array = dadosAluguelNaoDevolvido($conexao);    
+            $a = "a";
+            $array = buscaVeiculo($conexao, $a);    
 
-            $hj = date('Y-m-d');
-
-            foreach ($array as $value) {
-                $data = separarDataHora($value["data"]);
-                
+            print_r($array);
+            foreach ($array as $value) {                
                
-                print_r($dif);
             }
 
 //            $sql = "SELECT a.id_aluguel, c.nome_cliente, c.id_cliente

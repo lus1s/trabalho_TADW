@@ -676,7 +676,7 @@
 
         mysqli_stmt_bind_param($stmt, "s", $busca);
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $nomeVeiculo, $id_veiculo, $estadoVeiculo);
+        mysqli_stmt_bind_result($stmt, $id_veiculo, $nomeVeiculo, $estadoVeiculo);
         mysqli_stmt_store_result($stmt);
 
         $resultado = array();
