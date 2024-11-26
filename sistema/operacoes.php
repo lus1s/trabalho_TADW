@@ -666,6 +666,62 @@
             return $cliente;
     }
 
+    function buscaVeiculo ($conexao, $dados){
+        $busca = "%" . $dados . "%";
+        
+        $sql = "SELECT id_veiculo, nome_veiculo, estado_veiculo FROM tb_veiculo WHERE nome_veiculo LIKE ?";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "s", $busca);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $nomeVeiculo, $id_veiculo, $estadoVeiculo);
+        mysqli_stmt_store_result($stmt);
+
+        $resultado = array();
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $resultado[] = [
+                    'id' => $id_veiculo,
+                    'nome' => $nomeVeiculo,
+                    'estado' => $estadoVeiculo
+                ]; 
+            }
+        }
+        mysqli_stmt_close($stmt);
+        return $resultado;
+    }
+
+    function buscaCliente ($conexao, $dados){
+        $busca = "%" . $dados . "%";
+
+        $sql = "SELECT id_cliente, nome_cliente FROM tb_cliente WHERE nome_cliente LIKE ?";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_bind_param($stmt, "s", $$busca);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $id, $nome);
+        mysqli_stmt_store_result($stmt);
+
+        $dados_cliente = [];
+
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+
+            mysqli_stmt_fetch($stmt);
+
+            $dados_cliente[] = [
+                "id" =>$id, 
+                "nome" => $nome,
+            ];
+        }
+
+        mysqli_stmt_close($stmt);
+
+        return $dados_cliente;
+    }
+
     function alterarSenha ($conexao, $password, $id_funcionario){
 
         $sql = "UPDATE tb_funcionario SET senha_funcionario = ? WHERE id_funcionario = ?";
@@ -678,7 +734,7 @@
             
         mysqli_stmt_close($stmt);
     }
-
+    
     function removerRepetidosArray ($array){
         $unico = array_unique($array, SORT_REGULAR);
         return $unico;
