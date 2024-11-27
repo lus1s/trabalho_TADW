@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <a href="./home.php">Voltar</a>
+    <a href="./home.php">Voltar</a> <br><br>
     Veiculos correspondentes:
     <?php
         if (empty($veiculo)) { //Verifica se a variável de sessão $_SESSION['veiculo'] está vazia.
@@ -50,6 +50,7 @@
             echo '</div>';
         }
     ?>
+
     <div class="position-absolute top-0 end-0" id="frame">
         Clientes correspondentes
 

@@ -188,6 +188,7 @@
 
         ?>
     </table>
+    <button><a href="">Imprimir relatorio</a></button>
 </body>
 
 </html>

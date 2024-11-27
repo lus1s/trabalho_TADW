@@ -138,7 +138,7 @@
         <input type="hidden" name="valorDevolucao" value="<?php echo $valorTotal; ?>">
         <input type="hidden" name="tipoPgamento" value="<?php echo $metPagamento; ?>">
         <!-- input para submetar o formulario -->
-        <input type="submit" value="Confirmar">
+        <input type="submit" value="Confirmar e imprimmir relatorio">
     </form>
 </body>
 </html>

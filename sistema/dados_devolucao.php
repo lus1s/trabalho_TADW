@@ -49,7 +49,7 @@
     <?php echo "<a href='dados_individuais.php?nome_cliente=$nome_cliente&id_cliente=$id_cliente'>home</a>"; ?> <br><br>
 
     <!--Inicia um formulário que, ao ser submetido, enviará os dados para o arquivo confirmar_devolucao.php usando o método padrão GET.-->
-<form action="confirmar_devolucao.php">
+<form action="confirmar_devolucao.php" id="formDevolucao">
 
     Data das Devoluções:
     <input type="text" disabled value="<?php echo $date; ?>">  
@@ -59,7 +59,7 @@
         <input type="hidden" name="dt_devolucao" value="<?php echo $date; ?>">
 
         Funcionario responsável pela devolução: 
-        <input type="text" name="funcdevolucao" disabled value="<?php echo $nomeFuncionario; ?>">
+        <input type="text" name="funcdevolucao" readonly value="<?php echo $nomeFuncionario; ?>">
         <!--Cria um campo de texto desativado, com o nome "funcdevolucao", que exibe o valor da variável PHP $nomeFuncionario sem permitir edição.-->
 
         <input type="hidden" name="funcdevolucao" value="<?php echo $nomeFuncionario; ?>">
@@ -90,9 +90,9 @@
 
                    echo "Marca: " . $marca_veiculo . "<br>";
 
-                   echo "Km ao alugar: <input type='text' class='calculo' id='kmInicial' disabled name='km_inicial'  value=" . $km_incial . "> ";
+                   echo "Km ao alugar: <input type='text' class='calculo' id='kmInicial' readonly name='km_inicial'  value=" . $km_incial . "> ";
 
-                   echo 'Km ao devolver: <input type="text" class="calculo" id="km_final" name="km_devolucao[' . $id_veiculo . ']">';
+                   echo 'Km ao devolver: <input type="text" class="calculo" id="kmFinal" name="km_devolucao[' . $id_veiculo . ']">';
                    echo "<hr>";                   
                 }
             }
@@ -110,26 +110,45 @@
 
         valor por km (R$): <input type="text" class="calculo" name="custo" id="custo"> <br> <br>
 
-        Valor cobrado:
+        Valor cobrado (R$):
         <input type="text" name="total" readonly id="total">
 
         <br><br>
         <input type="submit" value="Confirmar devolução">
     </form>
         
+    
     <script>
-        $(document).ready (function () {
+        $(document).ready(function () {
             $(".calculo").keyup (function(){
-                const kmInicial= $("#kmInicial").val();
-                const km_final = $("#km_final").val();
-                
+                let somakmInicial = 0;
+                $("input#kmInicial").each(function() {
+                    var kmInicio = $(this).val();
+                    if (kmInicio) {
+                        somakmInicial += parseFloat(kmInicio);
+                    }
+                })
+                let somakmFinal = 0;
+                $("input#kmFinal").each(function() {
+                    var kmFim = $(this).val();
+                    if (kmFim) {
+                        somakmFinal += parseFloat(kmFim);
+                    }
+                })
+
                 let valor = $("#custo").val();
 
-                let kmRodados = km_final-kmInicial;
+                let kmRodados = somakmFinal - somakmInicial;
 
                 let total = kmRodados * valor;
 
-                $("#total").val(total);
+                $("#total").val(total.toFixed(2));
+            })
+
+            $("#formDevolucao").validate({
+                rules: {
+                    
+                }
             })
         })
     </script>
