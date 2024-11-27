@@ -49,24 +49,36 @@ $id_cliente = $_GET['id_cliente'];
             <button class="btn btn-danger" type="submit"><a href="limpar_sessions.php?origem=1" id="sair">Sair</a></button>
         </div>
     </nav>
-    <a href="home.php">home</a>
-    <form action="cadastroCliente.php">
 
-        <!-- Hidden == escondido. Serve para marcar a origem da página-->
-        <input type="hidden" name="origem" value="5">
-        <input type="hidden" name="id_cliente" value=' . $id_cliente .'>
-        <input type="hidden" name="nome_cliente" value=' . $nome .'>
-        <input type="hidden" name="tipo" value="e">
+    <div class="container">
+        <div class="container-func">
+            <h3>Cadastro de empresa</h3>
+            <form action="cadastroCliente.php">
+            <!-- Hidden == escondido. Serve para marcar a origem da página-->
 
-        cnpj: <br>
-        <input type="text" name="cnpj" id=""><br><br>
-        funcionário responsável: <br>
-        <input type="text" name="func_resp" id=""> <br><br>
-        endereco: <br>
-        <input type="text" name="endereco" id=""> <br><br>
+                <input type="hidden" name="origem" value="5">
+                <input type="hidden" name="id_cliente" value=' . $id_cliente .'>
+                <input type="hidden" name="nome_cliente" value=' . $nome .'>
+                <input type="hidden" name="tipo" value="e">
 
-        <input type="submit" value="Realizar pedido">
-    </form>
+                <div class="required-dados-empresa">
+                    <p>Número do CNPJ:</p>
+                    <input type="text" name="cnpj" id="" placeholder="12.345.678/0001-00">
+                </div>
+                <div class="required-dados-empresa">
+                    <p>Nome do Funcionário resposável:</p>
+                    <input type="text" name="func_resp" id="" placeholder="Ricardo Talayuki Ferreira...">
+                </div>
+                <div class="required-dados-empresa">
+                    <p>Endereço:</p>
+                    <input type="text" name="endereco" id="" placeholder="Rua Karl Marx ...">
+                </div>
+                <hr>
+                <input type="submit" value="Concluir cadastro">
+            </form>
+        </div>
+    </div>
+    
     <script>
         $(document).ready(function() {
             $("#cadastroCliente").validate({

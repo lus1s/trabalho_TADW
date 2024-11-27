@@ -53,6 +53,7 @@ nav {
     }
     .card .btn {
         background-color: #2c2c2c;
+        border: 1px;
         color: aliceblue;
         width: 100%;
     }
@@ -107,6 +108,23 @@ input {
         }
 
         .required-dados input {
+            width: 98.5%;
+            height: 40px;
+            border-style: none;
+            background-color: aliceblue;
+        }
+
+        .required-dados-empresa {
+            background-color: #444444;
+            border-radius: 5px;
+            width: 34.85rem;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            margin-bottom: 0.65rem;
+        }
+
+        .required-dados-empresa input {
             width: 98.5%;
             height: 40px;
             border-style: none;
