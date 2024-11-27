@@ -120,6 +120,29 @@
     
     <script>
         $(document).ready(function () {
+            $("#formDevolucao").validate({
+                rules: {
+                    custo: {
+                        required: true,
+                        number: true,
+                        min: 1
+                    },
+                    met_pagamento: {
+                        required: true
+                    }
+                },
+                messages:{
+                custo: {
+                        required: "Por favor, insira o custo por km.",
+                        number: "Por favor, insira apenas números.",
+                        min: "O custo deve ser maior que zero."
+                    },
+                    met_pagamento: {
+                        required: "Por favor, selecione um método de pagamento."
+                    }
+                }
+            })
+
             $(".calculo").keyup (function(){
                 let somakmInicial = 0;
                 $("input#kmInicial").each(function() {
@@ -135,21 +158,28 @@
                         somakmFinal += parseFloat(kmFim);
                     }
                 })
+                $(".calculo").keyup("input", function () {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+            if (kmFinal >= kmInicial) {
+                        let valor = $("#custo").val();
 
-                let valor = $("#custo").val();
+                        let distancia = somakmFinal - somakmInicial;
+                        let total = distancia * custo;
+                        $("#total").val(total.toFixed(2));                       
+                    } else {
+                        alert("Corrija os valores antes de enviar.");
+                    }
+                // let valor = $("#custo").val();
 
-                let kmRodados = somakmFinal - somakmInicial;
+                // let kmRodados = somakmFinal - somakmInicial;
 
-                let total = kmRodados * valor;
+                // let total = kmRodados * valor;
 
-                $("#total").val(total.toFixed(2));
+                // $("#total").val(total.toFixed(2));
             })
 
-            $("#formDevolucao").validate({
-                rules: {
-                    
-                }
-            })
+            
         })
     </script>
     
