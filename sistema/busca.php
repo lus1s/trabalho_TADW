@@ -19,6 +19,7 @@
 </head>
 
 <body>
+    <a href="./home.php">Voltar</a>
     Veiculos correspondentes:
     <?php
         if (empty($veiculo)) { //Verifica se a variável de sessão $_SESSION['veiculo'] está vazia.
