@@ -69,7 +69,7 @@ elseif ($_GET['origem'] == 4){
 
     /** 
      * a função a seguir tem o propósito de inserir o cliente no banco
-     */<h5>Quantidade de Portas do Veículo:</h5>
+     */
 
     inserePessoa($conexao, $cpf, $cnh, $id_cliente);
 
