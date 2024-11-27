@@ -29,7 +29,7 @@
 
 
     $sql = "INSERT INTO tb_veiculo (nome_veiculo, ano_veiculo, marca_veiculo, tipo_veiculo, cor_veiculo, placa_veiculo, estado_veiculo, motor_veiculo, 
-    km_rodados, descricao_veiculo, qtd_portas, arcondicionado_veiculo, portamala_veiculo, tamanho_veiculo, cambio_veiculo, npassageiro_veiculo)VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    km_rodados, descricao_veiculo, qtd_portas, arcondicionado_veiculo, portamala_veiculo, tamanho_veiculo, cambio_veiculo)VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     #       1  2  3  4  5  6  7  8  9  0  1  2  3  4  5  6
     $stmt =  mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($stmt,"sssississssiiii", $nomeveiculo, $anoveiculo,$marcaveiculo, $tipoveiculo, $corveiculo, $placaveiculo, $disponibilidade, $motor, $kmrodado, $descricao, $portas, $arcondicionado, $portamala,$tamanho, $cambio);
