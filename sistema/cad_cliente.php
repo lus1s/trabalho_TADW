@@ -31,20 +31,49 @@ require_once 'operacoes.php';
 </head>
 
 <body>
-    <a href="home.php">home</a>
+    <nav class="navbar">
+        <div class="container" id="navbar">
+          <a href="home.php" id="logo">Veículos FARIA</a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-1" type="search" placeholder="Pesquisar" aria-label="search" style="width: 300px;">
+            <button class="btn btn-outline-dark" type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg>
+            </button>
+          </form>
+          <button class="btn btn-danger" type="submit"><a href="limpar_sessions.php?origem=1" id="sair">Sair</a></button>
+        </div>
+    </nav>
 
-    <form id="formulario_cliente" action="cadastroCliente.php">
+    <div class="container">
+        <div class="container-func">
+        <h2>Dados do Cliente</h2>
+            <form id="formulario_cliente" action="cadastroCliente.php">
+                <!-- Hidden == escondido. Serve para marcar a origem da página-->
+                <input type="hidden" name="origem" value="2">
+                
+                <p>Nome do cliente:</p>
+                <p><input type="text" name="nome" id="nome" placeholder="Rosana Medeiro Buarque..."></p>
+                <hr>
 
-        <!-- Hidden == escondido. Serve para marcar a origem da página-->
-        <input type="hidden" name="origem" value="2">
+                <h3>Dados do tipo do Cliente</h3>
+                <hr>
+                <h6>Selecione abaixo o tipo do cliente que será cadastrado.</h6>
+                <div class="tipo-cliente">
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="tipo" value="p" id="tipo1" class="tipo">CPF
+                    </div>
+                    <div class="veiculo" id="radio1">
+                        <input type="radio" name="tipo" value="e" id="tipo2" class="tipo">CNPJ
+                    </div>                    
+                </div>
 
-        Nome do cliente: <br>
-        <input type="text" name="nome" id="nome"><br><br>
-        <input type="radio" name="tipo" value="p" id="tipo1"><label for="tipo1">CPF</label>
-        <input type="radio" name="tipo" value="e" id="tipo2"><label for="tipo2">CNPJ</label> <br><br>
+                <input type="submit" value="Próximo">
+            </form>
+        </div>
+    </div>
 
-        <input type="submit" value="&#10145;&#65039;">
-    </form>
     <script>
         $(document).ready(function() {
             $("#formulario_cliente").validate({
@@ -60,11 +89,11 @@ require_once 'operacoes.php';
                 },
                 messages: {
                     nome: {
-                        required: "campo nome obrigatório.",
+                        required: "O campo nome é obrigatório.",
                         minlength: "O nome deve ter pelo menos 2 caracteres."
                     },
                     tipo: {
-                        required: "Adicione um dos campus.",
+                        required: "Selecione um dos campos.",
                     },
                 }
             });
