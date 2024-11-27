@@ -49,6 +49,26 @@
             echo '</div>';
         }
     ?>
+    <div class="position-absolute top-0 end-0" id="frame">
+        Clientes correspondentes
+
+        <?php
+            foreach ($cliente as $valores) {
+                
+                $idCliente = $valores['id'];
+                $nomeCliente = $valores['nome'];
+
+                echo "
+                  <div class='card' style='width: 18rem;'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>" . $nomeCliente . "</h5>
+                                <a href='dados_individuais.php?id_cliente=$idCliente&nome_cliente=$nomeCliente' class='btn btn-primary'>verificar</a> 
+                            </div>
+                    </div> <br>
+                ";
+            }
+        ?>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

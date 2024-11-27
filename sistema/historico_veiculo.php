@@ -18,8 +18,8 @@
     <title>Historico de Alugueis</title>
 </head>
 <body>
-<a href="./busca_clientes.html">voltar</a>
-    <table border="1">
+<a href="./home.php">voltar</a> <br><br>
+<table border="1">
         <tr>
             <td colspan="4">Aluguel Pendente</td>
         </tr>

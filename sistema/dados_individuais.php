@@ -22,7 +22,7 @@ $id_cliente = $_GET['id_cliente'];
 </head>
 
 <body>
-    <a href="./busca_clientes.html">voltar</a> <br><br>
+    <a href="./home.php">voltar</a> <br><br>
     <?php
 
     $id_aluguel[] = idAluguelPorTbCliente($conexao, $id_cliente);

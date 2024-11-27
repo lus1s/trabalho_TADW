@@ -672,7 +672,6 @@
         $sql = "SELECT id_veiculo, nome_veiculo, estado_veiculo FROM tb_veiculo WHERE nome_veiculo LIKE ?";
 
         $stmt = mysqli_prepare($conexao, $sql);
-        $stmt = mysqli_prepare($conexao, $sql);
 
         mysqli_stmt_bind_param($stmt, "s", $busca);
         mysqli_stmt_execute($stmt);
@@ -680,6 +679,7 @@
         mysqli_stmt_store_result($stmt);
 
         $resultado = array();
+        
         if (mysqli_stmt_num_rows($stmt) > 0) {
             while (mysqli_stmt_fetch($stmt)) {
                 $resultado[] = [
@@ -690,6 +690,7 @@
             }
         }
         mysqli_stmt_close($stmt);
+
         return $resultado;
     }
 
@@ -700,21 +701,21 @@
 
         $stmt = mysqli_prepare($conexao, $sql);
 
-        mysqli_stmt_bind_param($stmt, "s", $$busca);
+        mysqli_stmt_bind_param($stmt, "s", $busca);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $id, $nome);
         mysqli_stmt_store_result($stmt);
 
-        $dados_cliente = [];
+        $dados_cliente = array();
 
         if (mysqli_stmt_num_rows($stmt) > 0) {
+            while(mysqli_stmt_fetch($stmt)){
 
-            mysqli_stmt_fetch($stmt);
-
-            $dados_cliente[] = [
-                "id" =>$id, 
-                "nome" => $nome,
-            ];
+                $dados_cliente[] = [
+                    'id' => $id, 
+                    'nome' => $nome,
+                ];
+            }
         }
 
         mysqli_stmt_close($stmt);

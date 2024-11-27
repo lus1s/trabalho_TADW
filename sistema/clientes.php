@@ -51,7 +51,7 @@
         $acao           => ação     => seleciona um cliente ou executa um ação de pesquiza;
     -->
     
-    <a href="./busca_clientes.html">voltar</a>
+    <a href="./home.php">voltar</a>
     <table border="1">
         <?php
             if ($origem == 1) {

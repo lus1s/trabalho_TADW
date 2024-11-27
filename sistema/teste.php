@@ -19,10 +19,10 @@
     <pre>
         <?php
             $a = "a";
-            $array = buscaVeiculo($conexao, $a);    
+            $array = buscaCliente($conexao, $a);    
 
-            print_r($array);
             foreach ($array as $value) {                
+                print_r($array);
                
             }
 
