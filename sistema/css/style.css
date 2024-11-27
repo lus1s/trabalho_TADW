@@ -73,6 +73,26 @@ input {
     background-color: aliceblue;
 }
 
+.main-exibir {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+    .container-main-exibir {
+        display: flex;
+        color: aliceblue;
+        justify-content: center;
+        border-radius: 15px;
+        border: 1px;
+        border-color: aliceblue;
+        background-color: #444444;
+        border-style:groove;
+        width: 94rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
 .main {
     display: flex;
     justify-content: center;
@@ -211,6 +231,22 @@ input {
     background-color: #444444;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.container-exibir-1 {
+    width: 70rem;
+    margin-left: 0.71rem;
+    margin-top: 1px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: aliceblue;
+    background-color: #444444;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+    .container-exibir-1 table {
+        width: 67.5rem;
+    }
 
 #btn-novo-func {
     background-color: #2c2c2c;
