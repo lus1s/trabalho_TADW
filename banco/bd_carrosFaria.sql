@@ -114,7 +114,6 @@ CREATE TABLE `tb_veiculo` (
   `portamala_veiculo` enum('1','2') NOT NULL,
   `tamanho_veiculo` enum('1','2','3') NOT NULL,
   `cambio_veiculo` enum('1','2') NOT NULL,
-  `npassageiro_veiculo` enum('2','4','5','6','7') NOT NULL,
   PRIMARY KEY (`id_veiculo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -196,28 +195,20 @@ INSERT INTO `tb_funcionario` (`id_funcionario`, `nome_funcionario`, `cpf_funcion
 (5, 'Lucas Faria' , '987.456.789.00', 'senha121');
 
 -- Inserindo dados na tabela tb_veiculo
-INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`, `npassageiro_veiculo`) VALUES
-(1,	'Civic',	'2022',	'Honda',	'1',	'Preto',	'ABC-1234',	'2',	'2.0',	'10000',	'Sedan confortável',	'4',	'1',	'1',	'2',	'1',	'7'),
-(2,	'Corolla',	'2021',	'Toyota',	'1',	'Branco',	'XYZ-5678',	'2',	'1.8',	'15000',	'Sedan econômico',	'4',	'1',	'1',	'2',	'1',	'7'),
-(3,	'Uno',	'2015',	'Fiat',	'1',	'Vermelho',	'DEF-9876',	'2',	'1.0',	'50000',	'Compacto urbano',	'2',	'2',	'2',	'1',	'2',	'6'),
-(4,	'Gol',	'2019',	'Volkswagen',	'1',	'Prata',	'GHI-5432',	'2',	'1.6',	'30000',	'Hatch popular',	'2',	'2',	'1',	'1',	'2',	'7'),
-(5,	'Tucson',	'2018',	'Hyundai',	'2',	'Azul',	'JKL-3210',	'1',	'2.0',	'40000',	'SUV espaçoso',	'4',	'1',	'1',	'3',	'1',	'7'),
-(6,	'EcoSport',	'2020',	'Ford',	'2',	'Cinza',	'MNO-6543',	'2',	'1.5',	'20000',	'SUV compacto',	'4',	'1',	'1',	'3',	'2',	'7'),
-(7,	'HB20',	'2017',	'Hyundai',	'1',	'Branco',	'PQR-8765',	'2',	'1.6',	'35000',	'Hatchback confiável',	'4',	'1',	'2',	'2',	'2',	'7'),
-(8,	'Polo',	'2022',	'Volkswagen',	'1',	'Preto',	'STU-4321',	'2',	'1.0',	'5000',	'Hatch moderno',	'4',	'1',	'2',	'2',	'1',	'7'),
-(9,	'Duster',	'2019',	'Renault',	'2',	'Verde',	'VWX-0987',	'2',	'2.0',	'25000',	'SUV robusto',	'4',	'1',	'1',	'3',	'1',	'7'),
-(10,	'Focus',	'2016',	'Ford',	'1',	'Prata',	'YZA-7654',	'2',	'2.0',	'60000',	'Sedan esportivo',	'4',	'1',	'1',	'2',	'1',	'7'),
-(11,	'Celta',	'2014',	'Chevrolet',	'1',	'Vermelho',	'BCD-2345',	'2',	'1.0',	'70000',	'Compacto econômico',	'2',	'2',	'2',	'1',	'2',	'6'),
-(12,	'Ranger',	'2020',	'Ford',	'2',	'Preto',	'EFG-8765',	'1',	'3.2',	'15000',	'Picape poderosa',	'4',	'1',	'1',	'3',	'2',	'7'),
-(13,	'Cruze',	'2017',	'Chevrolet',	'1',	'Branco',	'NOP-5432',	'1',	'1.4',	'35000',	'Sedan sofisticado',	'4',	'1',	'1',	'2',	'1',	'7'),
-(14,	'CB 500F',	'2022',	'Honda',	'2',	'Preto',	'JKL-7890',	'1',	'500cc',	'5000',	'Moto esportiva',	'0',	'2',	'2',	'1',	'2',	'4'),
-(15,	'Ninja 300',	'2021',	'Kawasaki',	'2',	'Verde',	'MNO-0987',	'1',	'300cc',	'7000',	'Moto esportiva',	'0',	'2',	'2',	'1',	'2',	'4'),
-(16,	'Fazer 250',	'2019',	'Yamaha',	'2',	'Azul',	'PQR-4321',	'1',	'250cc',	'10000',	'Moto urbana',	'0',	'2',	'2',	'1',	'2',	'4'),
-(17,	'Harley-Davidson',	'2018',	'Harley-Davidson',	'2',	'Preto',	'STU-6543',	'1',	'883cc',	'8000',	'Moto custom',	'0',	'2',	'2',	'2',	'2',	'4'),
-(18,	'CB 650R',	'2020',	'Honda',	'2',	'Vermelho',	'VWX-3210',	'1',	'650cc',	'45678',	'Moto naked',	'0',	'2',	'2',	'1',	'2',	'4'),
-(19,	'MT-09',	'2021',	'Yamaha',	'2',	'Cinza',	'YZA-8765',	'1',	'900cc',	'26000',	'Moto naked',	'0',	'2',	'2',	'1',	'2',	'4'),
-(20,	'Ducati Panigale V4',	'2022',	'Ducati',	'2',	'Vermelho',	'BCD-5432',	'1',	'1103cc',	'2000',	'Moto esportiva premium',	'0',	'2',	'2',	'1',	'2',	'4');
-
+INSERT INTO `tb_veiculo` (`id_veiculo`, `nome_veiculo`, `ano_veiculo`, `marca_veiculo`, `tipo_veiculo`, `cor_veiculo`, `placa_veiculo`, `estado_veiculo`, `motor_veiculo`, `km_rodados`, `descricao_veiculo`, `qtd_portas`, `arcondicionado_veiculo`, `portamala_veiculo`, `tamanho_veiculo`, `cambio_veiculo`) VALUES
+(1,	'Civic',	'2022',	'Honda',	'1',	'Preto',	'ABC-1234',	'2',	'2.0',	'10000',	'Sedan confortável',	'4',	'1',	'1',	'2',	'1'),
+(2,	'Corolla',	'2021',	'Toyota',	'1',	'Branco',	'XYZ-5678',	'2',	'1.8',	'15000',	'Sedan econômico',	'4',	'1',	'1',	'2',	'1'),
+(3,	'Uno',	'2015',	'Fiat',	'1',	'Vermelho',	'DEF-9876',	'2',	'1.0',	'50000',	'Compacto urbano',	'2',	'2',	'2',	'1',	'2'),
+(4,	'Gol',	'2019',	'Volkswagen',	'1',	'Prata',	'GHI-5432',	'2',	'1.6',	'30000',	'Hatch popular',	'2',	'2',	'1',	'1',	'2'),
+(5,	'Tucson',	'2018',	'Hyundai',	'2',	'Azul',	'JKL-3210',	'2',	'2.0',	'40000',	'SUV espaçoso',	'4',	'1',	'1',	'3',	'1'),
+(6,	'EcoSport',	'2020',	'Ford',	'2',	'Cinza',	'MNO-6543',	'2',	'1.5',	'20000',	'SUV compacto',	'4',	'1',	'1',	'3',	'2'),
+(7,	'HB20',	'2017',	'Hyundai',	'1',	'Branco',	'PQR-8765',	'1',	'1.6',	'35000',	'Hatchback confiável',	'4',	'1',	'2',	'2',	'2'),
+(8,	'Polo',	'2022',	'Volkswagen',	'1',	'Preto',	'STU-4321',	'1',	'1.0',	'5000',	'Hatch moderno',	'4',	'1',	'2',	'2',	'1'),
+(9,	'Duster',	'2019',	'Renault',	'2',	'Verde',	'VWX-0987',	'1',	'2.0',	'25000',	'SUV robusto',	'4',	'1',	'1',	'3',	'1'),
+(10,	'Focus',	'2016',	'Ford',	'1',	'Prata',	'YZA-7654',	'1',	'2.0',	'60000',	'Sedan esportivo',	'4',	'1',	'1',	'2',	'1'),
+(11,	'Celta',	'2014',	'Chevrolet',	'1',	'Vermelho',	'BCD-2345',	'1',	'1.0',	'70000',	'Compacto econômico',	'2',	'2',	'2',	'1',	'2'),
+(12,	'Ranger',	'2020',	'Ford',	'2',	'Preto',	'EFG-8765',	'1',	'3.2',	'15000',	'Picape poderosa',	'4',	'1',	'1',	'3',	'2'),
+(13,	'Cruze',	'2017',	'Chevrolet',	'1',	'Branco',	'NOP-5432',	'1',	'1.4',	'35000',	'Sedan sofisticado',	'4',	'1',	'1',	'2',	'1');
 
 
 -- Inserindo dados na tabela tb_aluguel
@@ -227,12 +218,7 @@ INSERT INTO `tb_aluguel` (`id_aluguel`, `data_aluguel`, `tb_funcionario_id_funci
 (3,	'2024-09-05 23:19:50',	1,	9),
 (4,	'2024-09-05 23:29:44',	1,	12),
 (5,	'2024-09-05 23:31:57',	1,	13),
-(6,	'2024-09-05 23:32:30',	1,	14),
-(7,	'2024-09-07 19:27:38',	1,	8),
-(8,	'2024-09-07 19:28:10',	1,	8),
-(9,	'2024-09-07 19:31:37',	1,	9),
-(10,	'2024-09-12 18:37:45',	1,	12);
-
+(6,	'2024-09-05 23:32:30',	1,	14);
 -- Inserindo dados na tabela tb_enderecos
 INSERT INTO `tb_enderecos` (`id_enderecos`, `endereco`, `tb_cliente_id_cliente`) VALUES
 (1, 'Rua A, 123', 1),
@@ -263,4 +249,4 @@ INSERT INTO `tb_veiculo_aluguel` (`tb_veiculo_id_veiculo`, `tb_aluguel_id_alugue
 (3,	3,	'50000',	'0'),
 (6,	4,	'20000',	'0'),
 (4,	5,	'30000',	'0'),
-(4,	6,	'30000',	'0');
+(5,	6,	'30000',	'0');

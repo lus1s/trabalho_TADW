@@ -61,6 +61,8 @@
     <div class="container-func">
     <!-- Formulário que envia dados para a página 'devolver_varios.php' -->
     <form action="devolver_varios.php">
+
+    <input type="hidden" name="nomeCliente" value="<?php echo $nome_cliente; ?>">
          <!-- Tabela para organizar e exibir os dados do recibo -->
         <table id="tabela">
             <!-- Linha com o título do recibo -->

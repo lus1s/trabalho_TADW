@@ -7,6 +7,7 @@
       require_once 'conexao.php';
       
       $idCliente = $_GET['idCliente'];
+      $nomeCliente = $_GET['nomeCliente'];
       $kmRodado = $_SESSION['kmdevolucao'];
       $valorDevolucao = $_GET['valorDevolucao'];
       $tipoPgamento = $_GET['tipoPgamento'];
@@ -33,10 +34,10 @@
 
             updateEstadoVeiculo($conexao, $id);
 
-            limparSessionDevolucao();
+            
       }
 
-      header('Location: home.php');
+      header('Location: relatorios.php?origem=5&cliente='.$nomeCliente.'&valor='.$valorDevolucao.'&tipo='.$tipoPgamento);
       exit();
 
 ?>
