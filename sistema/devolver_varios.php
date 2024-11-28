@@ -14,7 +14,9 @@
       foreach($_SESSION['dados_funcionario'] as $dados){$id_funcionario = $dados[1];}
 
       $veiculo = $_SESSION['carrinho_devolucao']['veiculo_devolucao'];
-      $veiculoKm = array_combine($veiculo, $kmRodado);
+
+      $veiculoUnico = removerRepetidosArray($veiculo);
+      $veiculoKm = array_combine($veiculoUnico, $kmRodado);
       
       
       foreach ($veiculoKm as $id => $km) {

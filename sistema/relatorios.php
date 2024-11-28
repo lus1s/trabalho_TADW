@@ -85,7 +85,14 @@
         }
         
     }
+    elseif ($_GET['origem'] == 2) {
+        $pdf->addpage();
 
+        $pdf->setFont('helvetica', '', 15);
+
+        $pdf->Cell(0, 5, 'VEICULOS FARIA', 0, 1, 'C');
+        $pdf->Ln();
+    }
 
 
     $pdf->Output();

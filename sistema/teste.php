@@ -19,10 +19,10 @@
     <pre>
         <?php
             $a = "a";
-            $array = buscaCliente($conexao, $a);    
+            $array = $_SESSION['carrinho_devolucao']['veiculo_devolucao'];   
+            print_r($array);
 
             foreach ($array as $value) {                
-                print_r($array);
                
             }
 
