@@ -112,7 +112,7 @@ require_once 'operacoes.php';
                         ?>
                 </table>
                 <div id="impressao">
-                    <a href="" class="btn btn-primary" id="impressao">Imprimir Relatório</a>
+                    <a href="relatorios.php?origem=4    " class="btn btn-primary" id="impressao">Imprimir Relatório</a>
                 </div>
             </div>
             

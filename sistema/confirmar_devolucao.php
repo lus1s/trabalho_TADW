@@ -58,6 +58,8 @@
 
     <!-- Formulário que envia dados para a página 'devolver_varios.php' -->
     <form action="devolver_varios.php">
+
+    <input type="hidden" name="nomeCliente" value="<?php echo $nome_cliente; ?>">
          <!-- Tabela para organizar e exibir os dados do recibo -->
         <table border="1">
             <!-- Linha com o título do recibo -->
@@ -138,7 +140,7 @@
         <input type="hidden" name="valorDevolucao" value="<?php echo $valorTotal; ?>">
         <input type="hidden" name="tipoPgamento" value="<?php echo $metPagamento; ?>">
         <!-- input para submetar o formulario -->
-        <input type="submit" value="Confirmar e imprimmir relatorio">
+        <input type="submit" value="Confirmar e imprimir relatorio">
     </form>
 </body>
 </html>

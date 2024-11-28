@@ -102,9 +102,10 @@
 
         mysqli_stmt_execute($stmt);
         
+        mysqli_stmt_close($stmt);
+
         return $id_cliente = mysqli_stmt_insert_id($stmt);
 
-        mysqli_stmt_close($stmt);
 
     }
 
@@ -222,6 +223,34 @@
         mysqli_stmt_close($stmt);
 
         return $dados_veiculos;
+    }
+
+    function dadosCompletosVeiculo($conexao){
+        $sql = "SELECT nome_veiculo, marca_veiculo, placa_veiculo, km_rodados, estado_veiculo FROM tb_veiculo";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_bind_result($stmt, $nome, $marca, $placa, $km_rodados, $estado);
+
+        mysqli_stmt_store_result($stmt);
+
+        $veiculos = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $veiculos[] = [
+                    "nome" => $nome,
+                    "marca" => $marca,
+                    "placa" => $placa,
+                    "km" => $km_rodados,
+                    "estado" => $estado
+                ];
+            }
+        }
+        mysqli_stmt_close($stmt);
+
+        return $veiculos;
     }
 
     function devolucaoIndividual ($conexao, $valor, $pagamento, $id_aluguel, $id_funcionario){
@@ -503,6 +532,32 @@
 
     }
 
+    function cliente ($conexao){
+        $sql = "SELECT c.nome_cliente, e.endereco
+        FROM tb_cliente AS c, tb_enderecos AS e
+        WHERE c.id_cliente = e.tb_cliente_id_cliente";
+
+        $stmt = mysqli_prepare($conexao, $sql);
+
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_bind_result($stmt, $nome, $endereco);
+
+        mysqli_stmt_store_result($stmt);
+
+        $clientes = [];
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            while (mysqli_stmt_fetch($stmt)) {
+                $clientes[] = [
+                    "endereco" => $endereco,
+                    "nome" => $nome
+                ];
+            }
+        }
+        mysqli_stmt_close($stmt);
+
+        return $clientes;
+    }
     function dadosAluguelNaoDevolvido($conexao){
         $sql = "SELECT a.data_aluguel, c.nome_cliente, c.id_cliente, f.nome_funcionario
                 FROM tb_aluguel AS a, tb_veiculo AS n, tb_veiculo_aluguel AS va, tb_cliente as c, tb_funcionario as f
