@@ -88,7 +88,7 @@ input {
         border-color: aliceblue;
         background-color: #444444;
         border-style:groove;
-        width: 94rem;
+        width: 60rem;
         padding-top: 10px;
         padding-bottom: 10px;
     }
@@ -233,7 +233,7 @@ input {
 }
 
 .container-exibir-1 {
-    width: 70rem;
+    width: 39.2rem;
     margin-left: 0.71rem;
     margin-top: 1px;
     padding: 20px;
@@ -243,9 +243,49 @@ input {
     color: aliceblue;
     background-color: #444444;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
 }
     .container-exibir-1 table {
-        width: 67.5rem;
+        text-align: justify;
+        width: 38rem;
+    }
+
+.container-exibe-veiculo {
+    width: 20rem;
+    border: 1px solid #ccc;
+    margin-top: 1px;
+    margin-right: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: aliceblue;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    display: flex;
+}
+    .card-veiculo {
+        width: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    #cancelar {
+        margin-right: 5px;
+    }
+    .card-body-veiculo {
+        display: flex;
+        padding-top: 5px;
+        padding-left: 5px;
+        justify-content: space-between;
+    }
+    .card-button {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 11px;
+        padding-bottom: 10px;
+        height: 6%;
+        width: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 
 #btn-novo-func {
@@ -278,4 +318,20 @@ label {
 #portamala-error {
     color: #10be00;
     position: relative;
+}
+
+#impressao {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#novo-cliente {
+    width: 250px;
+    height: 2%;
+    margin-left: 10px;
+    margin-right: 150px;
+}
+
+table {
+    width: 70%;
 }

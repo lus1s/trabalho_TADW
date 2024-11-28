@@ -104,31 +104,39 @@ require_once 'operacoes.php';
                                 echo "<td scope='col'> $placa </td>";
                                 echo "<td scope='col'> $estado_exibido </td>";
                                 echo "<td scope='col'> $acao </td>";
+                                echo "<tr>
+                                        <td colspan='5'><hr></td>
+                                    </tr>";
                                 echo "</tr>";
                             }
                         ?>
                 </table>
-                <a href="" class="btn">Imprimir Relatório</a>
+                <div id="impressao">
+                    <a href="" class="btn btn-primary" id="impressao">Imprimir Relatório</a>
+                </div>
             </div>
+            
             <?php
                 //Exibição do carrinho
-                echo '<div class="container-func">';
+                echo '<div class="container-exibe-veiculo">';
                 if (empty($_SESSION['nome_veiculo'])) { //Verifica se a variável de sessão $_SESSION['nome_veiculo'] está vazia.
                     echo "selecione alguns veiculos"; //Exibe a mensagem "selecione alguns veículos" caso a variável de sessão esteja vazia.
                 } else {
                     $nome_veiculo = $_SESSION['nome_veiculo']; //Atribui o conteúdo de $_SESSION['nome_veiculo'] à variável local $nome_veiculo.
                     foreach ($nome_veiculo as $id => $nome) { //Percorre o array $nome_veiculo, atribuindo a chave a $id e o valor a $nome.
                         echo "
-                            <div class='card' style='width: 18rem;'>
-                                <img src='...' class='card-img-top' alt='...'>
-                                <div class='card-body'>
+                            <div class='card-veiculo'>
+                                <div class='card-body-veiculo'>
                                     <h5 class='card-title'>$nome</h5>
-                                    <a href='limpar_sessions.php?id=$id&origem=3' class='btn btn-primary'>remover</a> 
+                                    <a href='limpar_sessions.php?id=$id&origem=3' class='btn btn-danger' id='cancelar'>Remover</a> 
                                 </div>";
                         }
-                        echo "<a href='limpar_sessions.php?origem=2'>esvaziar carrinho</a>";
-                        echo '<button> <a href="clientes.php?origem=2">Continuar Aluguel</a></button>';
                         echo '</div>';
+                        echo '<hr>';
+                        echo "<div class='card-button'>
+                                <a href='limpar_sessions.php?origem=2' class='btn btn-danger'>Cancelar</a>
+                                <a href='clientes.php?origem=2' class='btn btn-dark'>Próximo</a>
+                              </div>";
                     }
                 } else {
                     echo "<td colspan='5'>não há veiculos cadastrados</td>

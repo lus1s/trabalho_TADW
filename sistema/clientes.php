@@ -33,6 +33,8 @@
 <html lang="en">
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -51,8 +53,24 @@
         $acao           => ação     => seleciona um cliente ou executa um ação de pesquiza;
     -->
     
-    <a href="./home.php">voltar</a>
-    <table border="1">
+    <nav class="navbar">
+        <div class="container" id="navbar">
+          <a href="home.php" id="logo">Veículos FARIA</a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-1" type="search" placeholder="Pesquisar" aria-label="search" style="width: 300px;">
+            <button class="btn btn-outline-dark" type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg>
+            </button>
+          </form>
+          <button class="btn btn-danger" type="submit"><a href="limpar_sessions.php?origem=1" id="sair">Sair</a></button>
+        </div>
+    </nav>
+
+    <div class="main-exibir">
+        <div class="container-main-exibir">
+        <table>
         <?php
             if ($origem == 1) {
                 $nome = $_GET['cliente'];
@@ -72,10 +90,13 @@
                 $dados_cliente = [];
 
                 echo "<tr>
-                        <td>#</td>
-                        <td>Nome Cliente</td>
-                        <td>Tipo Cliente</td>
-                        <td>Ação</td>
+                        <td><h3>#</h3></td>
+                        <td><h3>Nome Cliente</h3></td>
+                        <td><h3>Tipo Cliente</h3></td>
+                        <td><h3>Ação</h3></td>
+                        <tr>
+                            <td colspan='5'><hr></td>
+                        </tr>
                      </tr>";
 
                 //$sql  => mysqli   => seleciona o cliente da tabela cliente onde o nome for o pesquisado;
@@ -110,7 +131,7 @@
                             $acao = "<button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button>";
                         }
                         else {
-                            $acao = "<button><a href='dados_cliente.php?origem=4&id_cliente=$id_cliente'>selecionar</a></button>";
+                            $acao = "<a href='dados_cliente.php?origem=4&id_cliente=$id_cliente' class='btn btn-success'>Selecionar</a>";
                         }
 
                         //echo          =>  serve para exibir na tela algum texto/ mensagem ou item;
@@ -125,13 +146,16 @@
                         echo "<td> $cliente </td>";
                         echo "<td> $acao </td>";
                         echo "</tr>";
+                        echo "<tr>
+                                <td colspan='5'><hr></td>
+                            </tr>";
                         $valor++;
                     }
 
                     //echo          =>  serve para exibir na tela algum texto/ mensagem ou item;
                     //foi usado echo para exibir um botão que possibilita o cadastro de um novo cliente;
 
-                    echo "<button><a href='cad_cliente.php?origem=1'>cadastrar novo cliente</a></button>";
+                    echo "<a href='cad_cliente.php?origem=1' class='btn btn-dark' id='novo-cliente'>Cadastrar novo cliente</a>";
                 }
             }
             
@@ -176,7 +200,9 @@
                     echo "<td>" . $valor . "</td>";
                     echo "<td>" . $dados["cliente"] ."</td>";
                     echo "<td>" . $cliente . "</td>";
-                    echo "<td><button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button></td>";
+                    echo "<td>
+                            <a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'  class='btn btn-success'>Exibir</a>
+                        </td>";
                     echo "</tr>";
                     $valor++;
                 }
@@ -188,7 +214,14 @@
 
         ?>
     </table>
-    <button><a href="">Imprimir relatorio</a></button>
-</body>
+    </div>
+    </div>
 
+    <div id="impressao">
+        <a href="" class="btn btn-primary" id="impressao">Imprimir Relatório</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
 </html>

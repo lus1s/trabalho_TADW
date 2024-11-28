@@ -17,8 +17,8 @@ require_once 'conexao.php';
 require_once 'testeLogin.php';
 require_once 'operacoes.php';
 
-$id_cliente = $_GET['id_cliente'];
-
+    $nome = $_GET['nome'];
+    $tipo = $_GET['tipo'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@ $id_cliente = $_GET['id_cliente'];
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de: <?php echo$nome; ?></title>
 </head>
 
 <body>
@@ -57,9 +57,8 @@ $id_cliente = $_GET['id_cliente'];
             <!-- Hidden == escondido. Serve para marcar a origem da página-->
 
                 <input type="hidden" name="origem" value="5">
-                <input type="hidden" name="id_cliente" value=' . $id_cliente .'>
-                <input type="hidden" name="nome_cliente" value=' . $nome .'>
                 <input type="hidden" name="tipo" value="e">
+                <input type="hidden" name="nome_cliente" value="<?php echo$nome; ?>">
 
                 <div class="required-dados-empresa">
                     <p>Número do CNPJ:</p>

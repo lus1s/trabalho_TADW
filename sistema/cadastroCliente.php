@@ -41,8 +41,13 @@ if ($_GET['origem'] == 2) {
     $nome = $_GET['nome'];
     $tipo = $_GET['tipo'];
 
-    header("Location: cad_cliente.php?origem=3&tipo=$tipo&nome=$nome");
-    exit();
+    if ($tipo == "p") {
+        header("Location: form_pessoa.php?&tipo=$tipo&nome=$nome");
+        exit();
+    }else {
+        header("Location: form_empresa.php?&tipo=$tipo&nome=$nome");
+        exit();
+    }
 }
 
 /**
@@ -100,6 +105,8 @@ elseif ($_GET['origem'] == 5){
     $cnpj_cliente = $_GET['cnpj'];
     $responsavel = $_GET['func_resp'];
     $endereco = $_GET['endereco'];
+    $tipo = $_GET['tipo'];
+
 
     $id_cliente = insereClienteVerificaID($conexao, $nome, $tipo);
 

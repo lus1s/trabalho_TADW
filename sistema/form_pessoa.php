@@ -31,7 +31,7 @@ $nome = $_GET['nome'];
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de: <?php echo$nome; ?></title>
 </head>
 
 <body>
@@ -58,8 +58,8 @@ $nome = $_GET['nome'];
 
                 <!-- Hidden == escondido. Serve para marcar a origem da página-->
                 <input type="hidden" name="origem" value="4">
-                <input type="hidden" name="tipo" value=' . $tipo .'>
-                <input type="hidden" name="nome_cliente" value=' . $nome .'>
+                <input type="hidden" name="tipo" value="<?php echo $tipo; ?>" >
+                <input type="hidden" name="nome_cliente" value="<?php echo$nome; ?>" >
                 <input type="hidden" name="tipo" value="p">
 
                 <div class="required-dados-empresa">
