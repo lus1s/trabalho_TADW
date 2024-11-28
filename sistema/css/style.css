@@ -335,3 +335,18 @@ label {
 table {
     width: 70%;
 }
+
+#tabela {
+    width: 100%;
+}
+
+.card{
+    margin-top: 85px;
+    margin-bottom: 20px;
+    display: flex;
+    padding-bottom: -25px;
+}
+
+.card-veiculo-devolver {
+    width: 200px;
+}

@@ -34,7 +34,7 @@ require_once 'operacoes.php';
     <nav class="navbar">
         <div class="container" id="navbar">
           <a href="home.php" id="logo">Veículos FARIA</a>
-          <form class="d-flex" role="search">
+          <form class="d-flex" action="busca.php" role="search">
             <input class="form-control me-1" type="search" placeholder="Pesquisar" aria-label="search" style="width: 300px;">
             <button class="btn btn-outline-dark" type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

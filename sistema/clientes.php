@@ -56,7 +56,7 @@
     <nav class="navbar">
         <div class="container" id="navbar">
           <a href="home.php" id="logo">Veículos FARIA</a>
-          <form class="d-flex" role="search">
+          <form class="d-flex" action="busca.php" role="search">
             <input class="form-control me-1" type="search" placeholder="Pesquisar" aria-label="search" style="width: 300px;">
             <button class="btn btn-outline-dark" type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -68,9 +68,8 @@
         </div>
     </nav>
 
-    <div class="main-exibir">
-        <div class="container-main-exibir">
-        <table>
+        <div class="container-func">
+        <table id="tabela">
         <?php
             if ($origem == 1) {
                 $nome = $_GET['cliente'];
@@ -128,7 +127,7 @@
                             $cliente = "empresa";
                         }
                         if (empty($_SESSION['nome_veiculo'])) {
-                            $acao = "<button><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'>exibir</a></button>";
+                            $acao = "<a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente' class='btn btn-success'>Exibir</a>";
                         }
                         else {
                             $acao = "<a href='dados_cliente.php?origem=4&id_cliente=$id_cliente' class='btn btn-success'>Selecionar</a>";
@@ -200,9 +199,7 @@
                     echo "<td>" . $valor . "</td>";
                     echo "<td>" . $dados["cliente"] ."</td>";
                     echo "<td>" . $cliente . "</td>";
-                    echo "<td>
-                            <a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente'  class='btn btn-success'>Exibir</a>
-                        </td>";
+                    echo "<td><a href='dados_individuais.php?id_cliente=$id_cliente&nome_cliente=$nome_cliente' class='btn btn-success'>Exibir</a></td>";
                     echo "</tr>";
                     $valor++;
                 }
@@ -215,7 +212,7 @@
         ?>
     </table>
     </div>
-    </div>
+
 
     <div id="impressao">
         <a href="relatorios.php?origem=3" class="btn btn-primary" id="impressao">Imprimir Relatório</a>
